@@ -10,7 +10,9 @@ export default function StackNavigatior() {
         animation: 'slide_from_left',
         headerShown: false,
       }}
-      initialRouteName="HomeScreen">
+      initialRouteName="LoginScreen">
+      <Stack.Screen name="LoginScreen" component={screens.LoginScreen} />
+      <Stack.Screen name="SignupScreen" component={screens.SignupScreen} />
       <Stack.Screen name="HomeScreen" component={screens.HomeScreen} />
       <Stack.Screen name="ProductScreen" component={screens.ProductScreen} />
     </Stack.Navigator>
