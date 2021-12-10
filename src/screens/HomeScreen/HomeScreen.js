@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -6,6 +6,7 @@ import {
   TextInput,
   ScrollView,
   Image,
+  FlatList,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {color} from '../../Reusedcomponents/color';
@@ -17,6 +18,26 @@ import {styles} from '../HomeScreen/style';
 import {InputField} from '../../Reusedcomponents/InputField/inputFeild';
 
 export default function HomeScreen({navigation, route}) {
+  const [silderData, setSliderData] = useState([
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    },
+    {
+      id: 5,
+    },
+    {
+      id: 6,
+    },
+  ]);
   return (
     <View>
       <View style={styles.header}>
@@ -58,14 +79,18 @@ export default function HomeScreen({navigation, route}) {
             />
           </TouchableOpacity>
           <View style={{marginTop: hp('5'), marginLeft: wp('2.6')}}>
+            {/* <FlatList
+           data={data}
+
+           /> */}
             <ScrollView
               showsHorizontalScrollIndicator={false}
               horizontal={true}
               contentContainerStyle={{flexDirection: 'row'}}>
-              <Image source={require('../../images/sale.png')} />
-              <Image source={require('../../images/sale.png')} />
-              <Image source={require('../../images/sale.png')} />
-              <Image source={require('../../images/sale.png')} />
+              {silderData?.length > 0 &&
+                silderData?.map(res => {
+                  return <Image source={require('../../images/sale.png')} />;
+                })}
             </ScrollView>
           </View>
         </View>

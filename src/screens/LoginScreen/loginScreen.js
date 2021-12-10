@@ -77,7 +77,7 @@ export default function loginScreen({navigation}) {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.loginButton}
-            onPress={() => navigation.navigate('HomeScreen')}>
+            onPress={() => navigation.navigate('MybottomTabs')}>
             <Text
               style={{
                 color: 'white',
