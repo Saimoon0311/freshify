@@ -88,7 +88,7 @@ export default function Signup({navigation}) {
                 fontSize: hp('2.8'),
                 fontFamily: 'Poppins-Regular',
               }}>
-              L:ogin
+              Login
             </Text>
           </TouchableOpacity>
         </View>
