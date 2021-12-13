@@ -12,14 +12,15 @@ export const styles = StyleSheet.create({
     marginRight: wp('3.6'),
     borderRadius: 10,
     marginBottom: hp('2'),
-    shadowColor: 'green',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 5,
     },
     shadowOpacity: 0.2,
     shadowRadius: 10,
-    elevation: 3,
+    elevation: hp('0.5'),
+    backgroundColor: 'white',
   },
   main: {
     width: wp('93'),

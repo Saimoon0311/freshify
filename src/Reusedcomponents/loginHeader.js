@@ -14,7 +14,7 @@ export const LoginHeader = () => {
         borderBottomColor: 'gray',
       }}>
       <Image
-        style={{width: wp('49'), height: hp('7')}}
+        style={{width: wp('60'), height: hp('7')}}
         source={require('../images/header.png')}
       />
     </View>

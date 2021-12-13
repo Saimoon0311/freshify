@@ -37,8 +37,8 @@ export const HomeScreenAllProductData = props => {
       showsHorizontalScrollIndicator={false}
       renderItem={({item}) => {
         return (
-          <View style={styles.mainContainer}>
-            <TouchableOpacity>
+          <TouchableOpacity style={styles.mainContainer}>
+            <View>
               <Text style={styles.topText}>Fresh Milk</Text>
               <Text style={styles.priceText}>Price 12585</Text>
               <Image
@@ -48,8 +48,8 @@ export const HomeScreenAllProductData = props => {
               <TouchableOpacity style={styles.addCartbutton}>
                 <Ionicons name="add" size={25} color={'white'} />
               </TouchableOpacity>
-            </TouchableOpacity>
-          </View>
+            </View>
+          </TouchableOpacity>
         );
       }}
     />

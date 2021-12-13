@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
   },
   mainContainer: {
     width: wp('40'),
-    //               backgroundColor: 'red',
+    // backgroundColor: 'red',
     borderRadius: 15,
     marginRight: wp('3'),
     //               backgroundColor: '#F3F5F7',
@@ -28,9 +28,11 @@ export const styles = StyleSheet.create({
     shadowOffset: {width: 1, height: 3},
     shadowOpacity: 0.5,
     shadowRadius: 0.2,
-    elevation: 2,
+    elevation: hp('0.5'),
+    // elevation: 10,
     marginTop: hp('1'),
     marginBottom: hp('1'),
+    backgroundColor: 'white',
   },
   topText: {
     color: 'black',
@@ -59,7 +61,6 @@ export const styles = StyleSheet.create({
     width: wp('10'),
     alignItems: 'center',
     justifyContent: 'center',
-
-    marginRight: wp('0.5'),
+    // marginRight: wp('0.4'),
   },
 });
