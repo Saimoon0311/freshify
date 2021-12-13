@@ -41,7 +41,10 @@ export default function Signup({navigation}) {
             defaultCode="DM"
             layout="first"
             containerStyle={styles.input}
-            codeTextStyle={{backgroundColor: 'transparent'}}
+            codeTextStyle={{
+              backgroundColor: 'transparent',
+              height: hp('4'),
+            }}
             textContainerStyle={{
               borderRadius: 5,
               backgroundColor: 'transparent',

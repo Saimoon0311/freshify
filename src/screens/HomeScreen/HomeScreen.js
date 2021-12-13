@@ -16,6 +16,9 @@ import {
 } from 'react-native-responsive-screen';
 import {styles} from '../HomeScreen/style';
 import {InputField} from '../../Reusedcomponents/InputField/inputFeild';
+import {HomeBrandAllText} from '../../Reusedcomponents/homeBrandAllText/homeBrandAllText';
+import {HomeScreenAllProductData} from '../../Reusedcomponents/HomeScreenProductAllData/homeScreenAllProductData';
+import {HomeScreenCategoryData} from '../../Reusedcomponents/homeScreenCategoryData/homeScreenCatergoryData';
 
 export default function HomeScreen({navigation, route}) {
   const [silderData, setSliderData] = useState([
@@ -69,7 +72,7 @@ export default function HomeScreen({navigation, route}) {
           </TouchableOpacity>
         </View>
       </View>
-      <ScrollView>
+      <ScrollView contentContainerStyle={{paddingBottom: hp('15')}}>
         <View>
           <TouchableOpacity style={styles.search}>
             <Ionicons name="search" size={20} color={'gray'} />
@@ -78,7 +81,11 @@ export default function HomeScreen({navigation, route}) {
               placeholderTextColor={'gray'}
             />
           </TouchableOpacity>
-          <View style={{marginTop: hp('5'), marginLeft: wp('2.6')}}>
+          <View
+            style={{
+              marginTop: hp('5'),
+              paddingLeft: wp('2.6'),
+            }}>
             {/* <FlatList
            data={data}
 
@@ -92,6 +99,17 @@ export default function HomeScreen({navigation, route}) {
                   return <Image source={require('../../images/sale.png')} />;
                 })}
             </ScrollView>
+            <HomeBrandAllText name="Top Selling" />
+            <HomeScreenAllProductData />
+            <HomeBrandAllText name="Popular Deals" />
+            <HomeScreenAllProductData />
+            <View style={{flexDirection: 'row'}}>
+              <HomeBrandAllText name="Categories" />
+              <TouchableOpacity style={styles.viewmore}>
+                <Text style={{color: color.textPrimaryColor}}>View more</Text>
+              </TouchableOpacity>
+            </View>
+            <HomeScreenCategoryData />
           </View>
         </View>
       </ScrollView>

@@ -29,15 +29,16 @@ function MybottomTabs() {
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarHideOnKeyboard: true,
-        tabBarActiveTintColor: '#E9691D',
-        tabBarInactiveTintColor: '#512500',
+        tabBarActiveTintColor: color.textPrimaryColor,
+        tabBarInactiveTintColor: '#919191',
         swipeEnabled: true,
         animationEnabled: true,
-        tabBarActiveBackgroundColor: '#FFDDC9',
-        tabBarInactiveBackgroundColor: '#FFDDC9',
+        tabBarActiveBackgroundColor: 'white',
+        tabBarInactiveBackgroundColor: 'white',
         tabBarStyle: {
           height: hp(Platform?.OS == 'ios' ? '10%' : '8%'),
           backgroundColor: '#FFDDC9',
+          // borderBottomRightRadius: 20,
         },
       })}>
       <Tab.Screen
@@ -49,7 +50,7 @@ function MybottomTabs() {
           title: 'Home',
           tabBarLabelStyle: {
             fontSize: 15,
-            fontWeight: 'bold',
+            // fontWeight: 'bold',
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
@@ -68,7 +69,7 @@ function MybottomTabs() {
           title: 'Category',
           tabBarLabelStyle: {
             fontSize: 15,
-            fontWeight: 'bold',
+            // fontWeight: 'bold',
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
@@ -78,12 +79,21 @@ function MybottomTabs() {
         name="offerScreen"
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <Ionicons name="basket-sharp" color={color} size={hp('3')} />
+            <Ionicons
+              name="cart"
+              style={{
+                // backgroundColor: 'red',
+                position: 'absolute',
+                bottom: hp('-2'),
+              }}
+              color={color}
+              size={hp('10')}
+            />
           ),
-          title: 'Offers',
+          title: '',
           tabBarLabelStyle: {
             fontSize: 15,
-            fontWeight: 'bold',
+            // fontWeight: 'bold',
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
@@ -93,12 +103,12 @@ function MybottomTabs() {
         name="cartScreen"
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <Ionicons name="cart" color={color} size={hp('3')} />
+            <Ionicons name="basket-sharp" color={color} size={hp('3')} />
           ),
           title: 'Offers',
           tabBarLabelStyle: {
             fontSize: 15,
-            fontWeight: 'bold',
+            // fontWeight: 'bold',
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
@@ -113,7 +123,7 @@ function MybottomTabs() {
           title: 'Setting',
           tabBarLabelStyle: {
             fontSize: 15,
-            fontWeight: 'bold',
+            // fontWeight: 'bold',
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}

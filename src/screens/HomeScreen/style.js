@@ -31,4 +31,10 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     height: hp('7'),
   },
+  viewmore: {
+    marginLeft: 'auto',
+    marginRight: wp('3'),
+    marginTop: hp('3'),
+    marginBottom: hp('3'),
+  },
 });
