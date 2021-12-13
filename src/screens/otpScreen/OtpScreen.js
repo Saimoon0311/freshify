@@ -33,14 +33,7 @@ function OtpScreen() {
             }}
           />
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            // backgroundColor: '#000',
-            width: wp('80%'),
-            alignSelf: 'center',
-          }}>
+        <View style={styles.buttonMainContainer}>
           <View style={styles.buttonResendContainer}>
             <Text
               style={{

@@ -49,7 +49,12 @@ export const styles = StyleSheet.create({
   underlineStyleHighLighted: {
     borderColor: color.textPrimaryColor,
   },
-
+  buttonMainContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: wp('80%'),
+    alignSelf: 'center',
+  },
   buttonResendContainer: {
     width: wp(35),
     height: hp(8),
