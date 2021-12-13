@@ -16,10 +16,12 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {InputField} from '../../Reusedcomponents/InputField/inputFeild';
+import {BackHeader} from '../../Reusedcomponents/Header/BackHeader';
 
 export default function loginScreen({navigation}) {
   return (
     <>
+      <BackHeader icon={'arrow-back'} text={'Order Invoive'} />
       <LoginHeader />
       <ScrollView>
         <Text style={styles.title}>Login</Text>
