@@ -6,6 +6,7 @@ import offerScreen from './offersScreen/offerScreen';
 import catergoryScreen from './categoryScreen/catergoryScreen';
 import acountScreen from './accountScreen/accountScreen';
 import cartScreen from './cartScreen/cartScreen';
+import OtpScreen from './otpScreen/OtpScreen';
 
 export const screens = {
   HomeScreen,
@@ -16,4 +17,5 @@ export const screens = {
   catergoryScreen,
   acountScreen,
   cartScreen,
+  OtpScreen,
 };
