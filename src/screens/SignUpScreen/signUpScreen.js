@@ -67,7 +67,9 @@ export default function Signup({navigation}) {
             By clicking "Sign Up" you are agreeing to The Freshify's Terms &
             Conditions
           </Text>
-          <TouchableOpacity style={styles.loginButton}>
+          <TouchableOpacity
+            style={styles.loginButton}
+            onPress={() => navigation.navigate('OtpScreen')}>
             <Text
               style={{
                 color: 'white',
