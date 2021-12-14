@@ -16,6 +16,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {InputField} from '../../Reusedcomponents/InputField/inputFeild';
+import {BackHeader} from '../../Reusedcomponents/Header/BackHeader';
 
 export default function loginScreen({navigation}) {
   return (
@@ -58,7 +59,10 @@ export default function loginScreen({navigation}) {
             defaultCode="DM"
             layout="first"
             containerStyle={styles.input}
-            codeTextStyle={{backgroundColor: 'transparent'}}
+            codeTextStyle={{
+              backgroundColor: 'transparent',
+              height: hp('4'),
+            }}
             textContainerStyle={{
               borderRadius: 5,
               backgroundColor: 'transparent',
@@ -66,7 +70,7 @@ export default function loginScreen({navigation}) {
             textInputStyle={{
               backgroundColor: 'transparent',
               fontSize: hp('2.5'),
-              height: hp('10'),
+              height: hp('7'),
             }}
           />
           <InputField inputText="Password" placeholder="Password" />

@@ -10,12 +10,11 @@ export const LoginHeader = () => {
     <View
       style={{
         alignItems: 'center',
-        //         backgroundColor: 'red',
         borderBottomWidth: 0.3,
         borderBottomColor: 'gray',
       }}>
       <Image
-        style={{width: wp('49'), height: hp('7')}}
+        style={{width: wp('60'), height: hp('7')}}
         source={require('../images/header.png')}
       />
     </View>

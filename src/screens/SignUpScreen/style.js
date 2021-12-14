@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     //     paddingLeft: wp('3'),
     borderRadius: 5,
     backgroundColor: 'transparent',
-    height: hp('9'),
+    height: hp('7'),
   },
   forgetText: {
     marginLeft: 'auto',
