@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
   },
   viewmore: {
     marginLeft: 'auto',
-    marginRight: wp('3'),
+    marginRight: wp('6'),
     marginTop: hp('3'),
     marginBottom: hp('3'),
   },

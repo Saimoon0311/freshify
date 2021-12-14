@@ -21,7 +21,6 @@ import {BackHeader} from '../../Reusedcomponents/Header/BackHeader';
 export default function loginScreen({navigation}) {
   return (
     <>
-      <BackHeader icon={'arrow-back'} text={'Order Invoive'} />
       <LoginHeader />
       <ScrollView>
         <Text style={styles.title}>Login</Text>

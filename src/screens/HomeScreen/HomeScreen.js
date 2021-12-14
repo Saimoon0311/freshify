@@ -72,7 +72,9 @@ export default function HomeScreen({navigation, route}) {
           </TouchableOpacity>
         </View>
       </View>
-      <ScrollView contentContainerStyle={{paddingBottom: hp('15')}}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom: hp('15')}}>
         <View>
           <TouchableOpacity style={styles.search}>
             <Ionicons name="search" size={20} color={'gray'} />
@@ -84,7 +86,7 @@ export default function HomeScreen({navigation, route}) {
           <View
             style={{
               marginTop: hp('5'),
-              paddingLeft: wp('2.6'),
+              marginLeft: wp('3'),
             }}>
             {/* <FlatList
            data={data}

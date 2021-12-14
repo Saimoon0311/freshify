@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {widthPercentageToDP} from 'react-native-responsive-screen';
 import {LoginHeader} from '../../Reusedcomponents/loginHeader';
 import {
@@ -34,26 +34,30 @@ function OtpScreen() {
           />
         </View>
         <View style={styles.buttonMainContainer}>
-          <View style={styles.buttonResendContainer}>
-            <Text
-              style={{
-                ...styles.button,
-                color: color.textPrimaryColor,
-                fontSize: 18,
-                paddingTop: hp(4),
-              }}>
-              Resend
-            </Text>
-            <Text style={{...styles.button, paddingBottom: hp(3)}}>
-              Resend in 29sec
-            </Text>
-          </View>
-
-          <View style={styles.buttonNextContainer}>
-            <Text style={{...styles.button, fontSize: 18, color: color.white}}>
-              Next
-            </Text>
-          </View>
+          <TouchableOpacity>
+            <View style={styles.buttonResendContainer}>
+              <Text
+                style={{
+                  ...styles.button,
+                  color: color.textPrimaryColor,
+                  fontSize: 18,
+                  paddingTop: hp(4),
+                }}>
+                Resend
+              </Text>
+              <Text style={{...styles.button, paddingBottom: hp(3)}}>
+                Resend in 29sec
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={styles.buttonNextContainer}>
+              <Text
+                style={{...styles.button, fontSize: 18, color: color.white}}>
+                Next
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet, Platform} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Platform,
+  TouchableOpacity,
+} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -7,19 +14,14 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {color} from '../color';
 
-export const BackHeader = ({text, icon}) => {
+export const BackHeader = props => {
   return (
     <View style={styles.container}>
-      <Ionicons name={icon} color={color.textPrimaryColor} size={35} />
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          paddingTop: hp('1'),
-          marginRight: wp('10'),
-        }}>
-        <Text style={styles.textContainer}>{text}</Text>
+      <TouchableOpacity>
+        <Ionicons name={props?.icon} color={color.textPrimaryColor} size={35} />
+      </TouchableOpacity>
+      <View style={styles.headerContainer}>
+        <Text style={styles.textContainer}>{props?.text}</Text>
       </View>
     </View>
   );
@@ -43,5 +45,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: color.textSecondaryColor,
     fontFamily: 'Poppins-SemiBold',
+  },
+  headerContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: hp('1'),
+    marginRight: wp('10'),
   },
 });
