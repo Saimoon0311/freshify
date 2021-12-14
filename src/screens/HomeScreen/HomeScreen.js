@@ -19,8 +19,10 @@ import {InputField} from '../../Reusedcomponents/InputField/inputFeild';
 import {HomeBrandAllText} from '../../Reusedcomponents/homeBrandAllText/homeBrandAllText';
 import {HomeScreenAllProductData} from '../../Reusedcomponents/HomeScreenProductAllData/homeScreenAllProductData';
 import {HomeScreenCategoryData} from '../../Reusedcomponents/homeScreenCategoryData/homeScreenCatergoryData';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 export default function HomeScreen({navigation, route}) {
+  const [loading, setLoading] = useState(true);
   const [silderData, setSliderData] = useState([
     {
       id: 1,

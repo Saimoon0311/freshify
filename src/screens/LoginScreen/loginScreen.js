@@ -62,6 +62,8 @@ export default function loginScreen({navigation}) {
             codeTextStyle={{
               backgroundColor: 'transparent',
               height: hp('4'),
+              justifyContent: 'center',
+              textAlign: 'center',
             }}
             textContainerStyle={{
               borderRadius: 5,

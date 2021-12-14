@@ -97,7 +97,7 @@ function MybottomTabs() {
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
-        component={screens.offerScreen}
+        component={screens.cartScreen}
       />
       <Tab.Screen
         name="cartScreen"
@@ -112,7 +112,7 @@ function MybottomTabs() {
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
-        component={screens.cartScreen}
+        component={screens.offerScreen}
       />
       <Tab.Screen
         name="acountScreen"
