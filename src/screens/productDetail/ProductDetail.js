@@ -1,8 +1,19 @@
 import React from 'react';
-import {Image, Text, TouchableOpacity, View, FlatList} from 'react-native';
+import {
+  Image,
+  Text,
+  TouchableOpacity,
+  View,
+  FlatList,
+  ScrollView,
+} from 'react-native';
 import {color} from '../../Reusedcomponents/color';
 import {BackHeader} from '../../Reusedcomponents/Header/BackHeader';
 import {styles} from './styles';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const flatListProduct = [
   {
@@ -53,34 +64,54 @@ export default function ProductDetail() {
               <Image
                 style={styles.flatListMainContainer}
                 source={item?.image}
-                resizeMode="contain"
+                // resizeMode="contain"
               />
             );
           }}
         />
-        <View>
-          <Text style={styles.textMainContainer}>
-            Fresify Pure Milk, 300gm Soft Pack
-          </Text>
-          <View style={{flexDirection: 'row'}}>
-            <Text
-              style={{
-                textAlignVertical: 'center',
-              }}>
-              Rs
-            </Text>
-            <Text style={styles.textMainContainer}>605</Text>
-          </View>
+        <ScrollView contentContainerStyle={{paddingBottom: hp('100')}}>
           <View>
-            <Text style={styles.textDescription}>Description</Text>
-            <View style={styles.textDescriptionContainer}></View>
-          </View>
-          <TouchableOpacity>
-            <View style={styles.cartButton}>
-              <Text style={styles.textCart}>Add to Cart</Text>
+            <Text style={styles.textMainContainer}>
+              Fresify Pure Milk, 300gm Soft Pack
+            </Text>
+            <View style={{flexDirection: 'row'}}>
+              <Text
+                style={{
+                  textAlignVertical: 'center',
+                }}>
+                Rs
+              </Text>
+              <Text style={styles.textMainContainer}>605</Text>
             </View>
-          </TouchableOpacity>
-        </View>
+            <View>
+              <Text style={styles.textDescription}>Description</Text>
+              <View style={styles.textDescriptionContainer}></View>
+            </View>
+            <View>
+              <Text style={styles.textDescription}>Description</Text>
+              <View style={styles.textDescriptionContainer}></View>
+            </View>
+            <View>
+              <Text style={styles.textDescription}>Description</Text>
+              <View style={styles.textDescriptionContainer}></View>
+            </View>
+            <View>
+              <Text style={styles.textDescription}>Description</Text>
+              <View style={styles.textDescriptionContainer}></View>
+            </View>
+
+            <View>
+              <Text style={styles.textDescription}>Description</Text>
+              <View style={styles.textDescriptionContainer}></View>
+            </View>
+
+            <TouchableOpacity>
+              <View style={styles.cartButton}>
+                <Text style={styles.textCart}>Add to Cart</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       </View>
     </View>
   );

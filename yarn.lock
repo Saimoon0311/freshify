@@ -1648,7 +1648,7 @@
   "resolved" "https://registry.npmjs.org/@react-native-community/netinfo/-/netinfo-7.1.4.tgz"
   "version" "7.1.4"
 
-"@react-native-masked-view/masked-view@^0.2.3":
+"@react-native-masked-view/masked-view@^0.2.3", "@react-native-masked-view/masked-view@^0.2.6":
   "integrity" "sha512-303CxmetUmgiX9NSUxatZkNh9qTYYdiM8xkGf9I3Uj20U3eGY3M78ljeNQ4UVCJA+FNGS5nC1dtS9GjIqvB4dg=="
   "resolved" "https://registry.npmjs.org/@react-native-masked-view/masked-view/-/masked-view-0.2.6.tgz"
   "version" "0.2.6"

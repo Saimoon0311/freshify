@@ -1,5 +1,5 @@
 import HomeScreen from './HomeScreen/HomeScreen';
-import ProductScreen from './productScreen/ProductScreen';
+// import ProductScreen from './productScreen/ProductScreen';
 import SignupScreen from './SignUpScreen/signUpScreen';
 import LoginScreen from './LoginScreen/loginScreen';
 import offerScreen from './offersScreen/offerScreen';
@@ -11,7 +11,7 @@ import ProductDetail from './productDetail/ProductDetail';
 
 export const screens = {
   HomeScreen,
-  ProductScreen,
+  // ProductScreen,
   SignupScreen,
   LoginScreen,
   offerScreen,

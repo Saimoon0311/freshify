@@ -92,8 +92,8 @@ function MybottomTabs() {
                     Dimensions.get('window').height,
                 ),
                 alignSelf: 'center',
-                width: Dimensions.get('screen').width * 0.19,
-                height: Dimensions.get('screen').width * 0.19,
+                width: Dimensions.get('screen').width * 0.18,
+                height: Dimensions.get('screen').width * 0.18,
                 // alignItems: 'center',
                 alignContent: 'center',
                 justifyContent: 'center',
@@ -109,19 +109,19 @@ function MybottomTabs() {
                       Dimensions.get('window').height,
                   ),
                   alignSelf: 'center',
-                  width: Dimensions.get('screen').width * 0.16,
-                  height: Dimensions.get('screen').width * 0.16,
+                  width: Dimensions.get('screen').width * 0.15,
+                  height: Dimensions.get('screen').width * 0.15,
                   // alignItems: 'center',
                   alignContent: 'center',
                   justifyContent: 'center',
-                  borderWidth: 3,
+                  borderWidth: 2,
                   borderColor: 'white',
                 }}>
                 <Ionicons
                   name="cart-outline"
                   color={'white'}
                   size={hp('5')}
-                  style={{alignSelf: 'center'}}
+                  style={{alignSelf: 'center', transform: [{rotate: '-10deg'}]}}
                 />
               </View>
             </View>
