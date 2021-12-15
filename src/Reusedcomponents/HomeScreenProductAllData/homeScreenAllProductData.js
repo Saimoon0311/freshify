@@ -7,8 +7,10 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {color} from '../color';
 import {styles} from './style';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 export const HomeScreenAllProductData = props => {
+  const [loading, setLoading] = useState(false);
   const [allProduct, setAllProduct] = useState([
     {
       id: 1,
@@ -29,7 +31,16 @@ export const HomeScreenAllProductData = props => {
       id: 6,
     },
   ]);
-  return (
+  return loading ? (
+    <SkeletonPlaceholder>
+      <View style={{flexDirection: 'row'}}>
+        <View style={styles.mainContainer}></View>
+        <View style={styles.mainContainer}></View>
+        <View style={styles.mainContainer}></View>
+        <View style={styles.mainContainer}></View>
+      </View>
+    </SkeletonPlaceholder>
+  ) : (
     <FlatList
       data={allProduct}
       keyExtractor={(item, index) => index.toString()}

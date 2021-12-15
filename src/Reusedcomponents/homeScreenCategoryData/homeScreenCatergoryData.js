@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -7,8 +7,10 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {color} from '../color';
 import {styles} from './styles';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 export const HomeScreenCategoryData = () => {
+  const [loading, setLoading] = useState(false);
   const [categoryData, setcategoryData] = useState([
     {
       id: 1,
@@ -35,7 +37,23 @@ export const HomeScreenCategoryData = () => {
       id: 8,
     },
   ]);
-  return (
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  });
+  return loading ? (
+    <SkeletonPlaceholder>
+      <View style={styles.main}>
+        <View
+          style={{
+            ...styles.touchContainer,
+            width: wp('19.6'),
+            height: hp('10'),
+          }}></View>
+      </View>
+    </SkeletonPlaceholder>
+  ) : (
     <View style={styles.main}>
       <FlatList
         data={categoryData}

@@ -14,15 +14,32 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {color} from '../color';
 
-export const BackHeader = props => {
+export const BackHeader = (props, {navigation}) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
-        <Ionicons name={props?.icon} color={color.textPrimaryColor} size={35} />
-      </TouchableOpacity>
+      <View
+        style={{
+          width: wp('15'),
+          height: hp(Platform?.OS == 'ios' ? '10' : '9'),
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Ionicons
+            name={props?.Iconname}
+            color={color.textPrimaryColor}
+            size={35}
+          />
+        </TouchableOpacity>
+      </View>
       <View style={styles.headerContainer}>
         <Text style={styles.textContainer}>{props?.text}</Text>
       </View>
+      <View
+        style={{
+          width: wp('15'),
+          height: hp('5'),
+        }}></View>
     </View>
   );
 };
@@ -32,7 +49,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingLeft: wp(2),
+    // paddingLeft: wp(2),
     backgroundColor: 'white',
     shadowColor: '#000',
     shadowOffset: {width: 1, height: 3},
@@ -40,17 +57,19 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     elevation: 5,
     height: hp(Platform?.OS == 'ios' ? '10' : '9'),
+    width: wp('100'),
   },
   textContainer: {
     fontSize: 18,
     color: color.textSecondaryColor,
     fontFamily: 'Poppins-SemiBold',
+    textAlign: 'center',
   },
   headerContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: hp('1'),
-    marginRight: wp('10'),
+    // marginRight: wp('10'),
   },
 });
