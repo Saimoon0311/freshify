@@ -17,6 +17,7 @@ import {
   Image,
   Linking,
   Platform,
+  Dimensions,
 } from 'react-native';
 import {screens} from '../screens';
 import {color} from '../Reusedcomponents/color';
@@ -78,17 +79,52 @@ function MybottomTabs() {
       <Tab.Screen
         name="offerScreen"
         options={{
-          tabBarIcon: ({focused, color, size}) => (
-            <Ionicons
-              name="cart"
+          tabBarIcon: ({focused, size}) => (
+            <View
               style={{
                 // backgroundColor: 'red',
+                backgroundColor: color.textPrimaryColor,
                 position: 'absolute',
                 bottom: hp('-2'),
-              }}
-              color={color}
-              size={hp('10')}
-            />
+                // left: wp('1'),
+                borderRadius: Math.round(
+                  Dimensions.get('window').width +
+                    Dimensions.get('window').height,
+                ),
+                alignSelf: 'center',
+                width: Dimensions.get('screen').width * 0.19,
+                height: Dimensions.get('screen').width * 0.19,
+                // alignItems: 'center',
+                alignContent: 'center',
+                justifyContent: 'center',
+              }}>
+              <View
+                style={{
+                  backgroundColor: color.textPrimaryColor,
+                  position: 'absolute',
+                  // bottom: hp('-0.'),
+                  // left: wp('1'),
+                  borderRadius: Math.round(
+                    Dimensions.get('window').width +
+                      Dimensions.get('window').height,
+                  ),
+                  alignSelf: 'center',
+                  width: Dimensions.get('screen').width * 0.16,
+                  height: Dimensions.get('screen').width * 0.16,
+                  // alignItems: 'center',
+                  alignContent: 'center',
+                  justifyContent: 'center',
+                  borderWidth: 3,
+                  borderColor: 'white',
+                }}>
+                <Ionicons
+                  name="cart-outline"
+                  color={'white'}
+                  size={hp('5')}
+                  style={{alignSelf: 'center'}}
+                />
+              </View>
+            </View>
           ),
           title: '',
           tabBarLabelStyle: {

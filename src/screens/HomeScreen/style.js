@@ -37,4 +37,11 @@ export const styles = StyleSheet.create({
     marginTop: hp('3'),
     marginBottom: hp('3'),
   },
+  fab: {
+    position: 'absolute',
+    // margin: 16,
+    right: wp('3'),
+    bottom: hp('15'),
+    textAlign: 'center',
+  },
 });
