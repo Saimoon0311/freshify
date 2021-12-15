@@ -17,6 +17,7 @@ export default function StackNavigatior() {
       <Stack.Screen name="SignupScreen" component={screens.SignupScreen} />
       <Stack.Screen name="MybottomTabs" component={MybottomTabs} />
       <Stack.Screen name="OtpScreen" component={screens.OtpScreen} />
+      <Stack.Screen name="ProductDetail" component={screens.ProductDetail} />
       {/* <Stack.Screen name="HomeScreen" component={screens.HomeScreen} />
       <Stack.Screen name="ProductScreen" component={screens.ProductScreen} /> */}
     </Stack.Navigator>
