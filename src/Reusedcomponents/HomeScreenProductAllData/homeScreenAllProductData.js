@@ -48,7 +48,9 @@ export const HomeScreenAllProductData = props => {
       showsHorizontalScrollIndicator={false}
       renderItem={({item}) => {
         return (
-          <TouchableOpacity style={styles.mainContainer}>
+          <TouchableOpacity
+            style={styles.mainContainer}
+            onPress={() => props.ProductDetail()}>
             <View>
               <Text style={styles.topText}>Fresh Milk</Text>
               <Text style={styles.priceText}>Price 12585</Text>

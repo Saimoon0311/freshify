@@ -100,7 +100,7 @@ export default function loginScreen({navigation}) {
               borderColor: '#434345',
               borderWidth: 1,
             }}
-            onPress={() => navigation.navigate('ProductDetail')}>
+            onPress={() => navigation.navigate('SignupScreen')}>
             <Text
               style={{
                 color: '#434345',

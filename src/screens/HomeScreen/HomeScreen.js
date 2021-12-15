@@ -25,6 +25,9 @@ import {FAB} from 'react-native-paper';
 import {Fab, Icon, NativeBaseProvider, Box, extendTheme} from 'native-base';
 
 export default function HomeScreen({navigation, route}) {
+  const ProductDetail = item => {
+    navigation.navigate('ProductDetail', item);
+  };
   const theme = extendTheme({
     components: {
       FAB: {
@@ -118,7 +121,7 @@ export default function HomeScreen({navigation, route}) {
                   })}
               </ScrollView>
               <HomeBrandAllText name="Top Selling" />
-              <HomeScreenAllProductData />
+              <HomeScreenAllProductData ProductDetail={ProductDetail} />
               <HomeBrandAllText name="Popular Deals" />
               <HomeScreenAllProductData />
               <View style={{flexDirection: 'row'}}>
