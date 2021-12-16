@@ -51,6 +51,7 @@ export default function SubCategory({navigation, props}) {
   const navigate = () => {
     navigation.goBack();
   };
+
   return (
     <View style={styles.container}>
       <BackHeader
@@ -87,7 +88,7 @@ export default function SubCategory({navigation, props}) {
             <View style={styles.categoryContainer}>
               <TouchableOpacity
                 style={styles.mainContainer}
-                onPress={() => props.ProductDetail()}>
+                onPress={() => navigation.navigate('ProductDetail')}>
                 <View>
                   <Text style={styles.topText}>Fresh Milk</Text>
                   <Text style={styles.priceText}>Price 12585</Text>
