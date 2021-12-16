@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  ActivityIndicatorBase,
+} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -8,7 +15,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {color} from '../color';
 import {styles} from './style';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
-
+import {ActivityIndicator} from 'react-native-paper';
 export const HomeScreenAllProductData = props => {
   const [loading, setLoading] = useState(false);
   const [allProduct, setAllProduct] = useState([
@@ -31,40 +38,62 @@ export const HomeScreenAllProductData = props => {
       id: 6,
     },
   ]);
-  return loading ? (
-    <SkeletonPlaceholder>
-      <View style={{flexDirection: 'row'}}>
-        <View style={styles.mainContainer}></View>
-        <View style={styles.mainContainer}></View>
-        <View style={styles.mainContainer}></View>
-        <View style={styles.mainContainer}></View>
-      </View>
-    </SkeletonPlaceholder>
-  ) : (
-    <FlatList
-      data={allProduct}
-      keyExtractor={(item, index) => index.toString()}
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      renderItem={({item}) => {
-        return (
-          <TouchableOpacity
-            style={styles.mainContainer}
-            onPress={() => props.ProductDetail()}>
-            <View>
-              <Text style={styles.topText}>Fresh Milk</Text>
-              <Text style={styles.priceText}>Price 12585</Text>
-              <Image
-                source={require('../../images/1.png')}
-                style={styles.insideImage}
-              />
-              <TouchableOpacity style={styles.addCartbutton}>
-                <Ionicons name="add" size={25} color={'white'} />
+  return (
+    <View>
+      {loading ? (
+        <SkeletonPlaceholder>
+          <View style={{flexDirection: 'row'}}>
+            <View
+              style={{
+                ...styles.mainContainer,
+                height: hp('25%'),
+                marginLeft: wp('4.5'),
+              }}></View>
+            <View
+              style={{
+                ...styles.mainContainer,
+                height: hp('25%'),
+              }}></View>
+            <View
+              style={{
+                ...styles.mainContainer,
+                height: hp('25%'),
+              }}></View>
+            <View
+              style={{
+                ...styles.mainContainer,
+                height: hp('25%'),
+              }}></View>
+          </View>
+        </SkeletonPlaceholder>
+      ) : (
+        // <ActivityIndicator size={50} color="black" />
+        <FlatList
+          data={allProduct}
+          keyExtractor={(item, index) => index.toString()}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          renderItem={({item}) => {
+            return (
+              <TouchableOpacity
+                style={styles.mainContainer}
+                onPress={() => props.ProductDetail()}>
+                <View>
+                  <Text style={styles.topText}>Fresh Milk</Text>
+                  <Text style={styles.priceText}>Price 12585</Text>
+                  <Image
+                    source={require('../../images/1.png')}
+                    style={styles.insideImage}
+                  />
+                  <TouchableOpacity style={styles.addCartbutton}>
+                    <Ionicons name="add" size={25} color={'white'} />
+                  </TouchableOpacity>
+                </View>
               </TouchableOpacity>
-            </View>
-          </TouchableOpacity>
-        );
-      }}
-    />
+            );
+          }}
+        />
+      )}
+    </View>
   );
 };

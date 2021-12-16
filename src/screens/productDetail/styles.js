@@ -42,12 +42,13 @@ export const styles = StyleSheet.create({
     marginVertical: hp('1'),
     marginRight: 20,
     marginLeft: 3,
-    borderRadius: 25,
+    borderRadius: 15,
     shadowColor: '#000',
     shadowOffset: {width: 1, height: 3},
     shadowOpacity: 0.4,
     shadowRadius: 3,
     elevation: 3,
+    backgroundColor: 'red',
   },
   image: {
     alignSelf: 'center',
@@ -56,7 +57,7 @@ export const styles = StyleSheet.create({
   },
   textMainContainer: {
     fontFamily: 'Poppins-SemiBold',
-    fontSize: 18,
+    fontSize: hp('2.5'),
     color: '#434345',
   },
   textDescription: {

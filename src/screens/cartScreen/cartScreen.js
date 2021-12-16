@@ -51,7 +51,7 @@ export default function cartScreen() {
                     style={{
                       width: wp('23'),
                       height: hp('15'),
-
+                      resizeMode: 'contain',
                       // backgroundColor: 'red',
                     }}
                   />

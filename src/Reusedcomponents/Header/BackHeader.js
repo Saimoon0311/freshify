@@ -24,7 +24,7 @@ export const BackHeader = (props, {navigation}) => {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={() => props?.navigate()}>
           <Ionicons
             name={props?.Iconname}
             color={color.textPrimaryColor}
