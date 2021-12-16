@@ -44,6 +44,9 @@ export default function SubCategory({navigation, props}) {
     {
       id: 6,
     },
+    {
+      id: 7,
+    },
   ]);
   const navigate = () => {
     navigation.goBack();
