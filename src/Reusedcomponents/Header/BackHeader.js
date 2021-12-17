@@ -14,7 +14,7 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {color} from '../color';
 
-export const BackHeader = (props, {navigation}) => {
+export const BackHeader = props => {
   return (
     <View style={styles.container}>
       <View
@@ -24,7 +24,7 @@ export const BackHeader = (props, {navigation}) => {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={() => props?.navigate()}>
           <Ionicons
             name={props?.Iconname}
             color={color.textPrimaryColor}

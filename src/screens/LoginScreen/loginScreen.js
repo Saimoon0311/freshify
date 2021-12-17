@@ -73,6 +73,7 @@ export default function loginScreen({navigation}) {
               backgroundColor: 'transparent',
               fontSize: hp('2.5'),
               height: hp('7'),
+              color: 'black',
             }}
           />
           <InputField inputText="Password" placeholder="Password" />
@@ -100,7 +101,7 @@ export default function loginScreen({navigation}) {
               borderColor: '#434345',
               borderWidth: 1,
             }}
-            onPress={() => navigation.navigate('ProductDetail')}>
+            onPress={() => navigation.navigate('SignupScreen')}>
             <Text
               style={{
                 color: '#434345',

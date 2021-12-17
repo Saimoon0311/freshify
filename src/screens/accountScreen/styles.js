@@ -38,4 +38,9 @@ export const styles = StyleSheet.create({
     elevation: hp('1'),
     marginTop: hp('2'),
   },
+  containerText: {
+    fontSize: hp('2.3'),
+    fontFamily: 'Poppins-SemiBold',
+    color: 'gray',
+  },
 });

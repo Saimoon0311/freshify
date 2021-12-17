@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import {color} from '../../Reusedcomponents/color';
 import {
   widthPercentageToDP as wp,
@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     marginLeft: wp('7'),
   },
   topButtonMainContainer: {
-    width: wp('65'),
+    width: wp('20'),
     height: hp('5'),
     marginLeft: wp(1),
     flexDirection: 'row',
@@ -38,7 +38,8 @@ export const styles = StyleSheet.create({
 
   flatListMainContainer: {
     width: wp('88%'),
-    height: hp('26%'),
+    height: hp('35%'),
+    marginVertical: hp('1'),
     marginRight: 20,
     marginLeft: 3,
     borderRadius: 15,
@@ -68,11 +69,8 @@ export const styles = StyleSheet.create({
     // height: hp('16'),
     // width: wp('85'),
     backgroundColor: 'white',
-    width: wp('88%'),
-    height: hp('16%'),
-    marginRight: 20,
-    marginLeft: 3,
-    borderRadius: 18,
+    width: wp('86%'),
+    borderRadius: 7,
     shadowColor: '#000',
     shadowOffset: {width: 1, height: 3},
     shadowOpacity: 0.4,
@@ -81,11 +79,13 @@ export const styles = StyleSheet.create({
     elevation: 3,
   },
   cartButton: {
-    marginTop: hp('12'),
     height: hp('7'),
     width: wp('85'),
     borderRadius: 5,
     backgroundColor: color.textPrimaryColor,
+    position: 'absolute',
+    bottom: Platform?.OS == 'ios' ? 110 : 20,
+    alignSelf: 'center',
   },
   textCart: {
     flex: 1,

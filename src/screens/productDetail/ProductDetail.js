@@ -29,47 +29,68 @@ const flatListProduct = [
     image: require('../../images/PureMilk.png'),
   },
 ];
+const flatGramButtonLists = [
+  {
+    id: 1,
+    name: '300gm',
+  },
+  {
+    id: 2,
+    name: '600gm',
+  },
+  {
+    id: 3,
+    name: '900gm',
+  },
+];
 
-export default function ProductDetail() {
+export default function ProductDetail({navigation}) {
+  const navigate = () => {
+    navigation.goBack();
+  };
   return (
     <View style={styles.mainContainer}>
-      <BackHeader text="Add To Cart" />
+      <BackHeader
+        Iconname="arrow-back-sharp"
+        navigate={navigate}
+        text="Add To Cart"
+      />
+
       <View style={styles.container}>
-        <View style={styles.topButtonMainContainer}>
-          <TouchableOpacity>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>300gm</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>900gm</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>600gm</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
         <FlatList
-          data={flatListProduct}
+          data={flatGramButtonLists}
           horizontal
           showsHorizontalScrollIndicator={false}
-          //   keyExtractor={(item)}
           renderItem={({item}) => {
             return (
-              // <TouchableOpacity onPress={() => console.log(item.id)}>
-
-              <Image
-                style={styles.flatListMainContainer}
-                source={item?.image}
-                // resizeMode="contain"
-              />
+              <View style={styles.topButtonMainContainer}>
+                <TouchableOpacity>
+                  <View style={styles.button}>
+                    <Text style={styles.buttonText}>300gm</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
             );
           }}
         />
-        <ScrollView contentContainerStyle={{paddingBottom: hp('100')}}>
+        <ScrollView>
+          <FlatList
+            data={flatListProduct}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            //   keyExtractor={(item)}
+            renderItem={({item}) => {
+              return (
+                // <TouchableOpacity onPress={() => console.log(item.id)}>
+
+                <Image
+                  style={styles.flatListMainContainer}
+                  source={item?.image}
+                  resizeMode="cover"
+                />
+              );
+            }}
+          />
           <View>
             <Text style={styles.textMainContainer}>
               Fresify Pure Milk, 300gm Soft Pack
@@ -85,34 +106,16 @@ export default function ProductDetail() {
             </View>
             <View>
               <Text style={styles.textDescription}>Description</Text>
-              <View style={styles.textDescriptionContainer}></View>
-            </View>
-            <View>
-              <Text style={styles.textDescription}>Description</Text>
-              <View style={styles.textDescriptionContainer}></View>
-            </View>
-            <View>
-              <Text style={styles.textDescription}>Description</Text>
-              <View style={styles.textDescriptionContainer}></View>
-            </View>
-            <View>
-              <Text style={styles.textDescription}>Description</Text>
-              <View style={styles.textDescriptionContainer}></View>
-            </View>
-
-            <View>
-              <Text style={styles.textDescription}>Description</Text>
-              <View style={styles.textDescriptionContainer}></View>
-            </View>
-
-            <TouchableOpacity>
-              <View style={styles.cartButton}>
-                <Text style={styles.textCart}>Add to Cart</Text>
+              <View style={styles.textDescriptionContainer}>
+                <Text>hello world</Text>
               </View>
-            </TouchableOpacity>
+            </View>
           </View>
         </ScrollView>
       </View>
+      <TouchableOpacity style={styles.cartButton}>
+        <Text style={styles.textCart}>Add to Cart</Text>
+      </TouchableOpacity>
     </View>
   );
 }
