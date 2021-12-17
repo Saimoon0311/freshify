@@ -8,7 +8,7 @@ import {
 
 export const styles = StyleSheet.create({
   helloText: {
-    marginTop: hp('5'),
+    marginTop: hp('3'),
     marginLeft: wp('5'),
     fontSize: hp('4'),
     color: 'black',

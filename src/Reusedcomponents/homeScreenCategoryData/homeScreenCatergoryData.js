@@ -63,9 +63,17 @@ export const HomeScreenCategoryData = () => {
           return (
             <TouchableOpacity style={styles.touchContainer}>
               <Image
-                style={{width: wp('19.6'), height: hp('10')}}
+                style={{width: wp('19.6'), height: hp('7')}}
                 source={require('../../images/No.png')}
               />
+              <Text
+                style={{
+                  color: 'black',
+                  fontSize: hp('1.7'),
+                  textAlign: 'center',
+                }}>
+                Fresh Meat
+              </Text>
             </TouchableOpacity>
           );
         }}

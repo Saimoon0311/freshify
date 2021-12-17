@@ -17,7 +17,7 @@ export default function acountScreen() {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          paddingBottom: hp('15'),
+          paddingBottom: hp('18'),
         }}>
         <Text style={styles.helloText}>Hello!</Text>
         <Text style={styles.username}>Nora</Text>

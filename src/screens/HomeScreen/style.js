@@ -46,4 +46,15 @@ export const styles = StyleSheet.create({
     bottom: hp('15'),
     textAlign: 'center',
   },
+  searchInput: {
+    color: 'gray',
+    maxWidth: wp('80'),
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlignVertical: 'center',
+    alignContent: 'center',
+    paddingTop: hp('1'),
+    // top: hp('1'),
+    // marginTop: hp('1'),
+  },
 });

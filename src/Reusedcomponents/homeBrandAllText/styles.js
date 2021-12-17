@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     fontSize: hp('2.5'),
     fontFamily: 'Poppins-SemiBold',
     marginLeft: wp('3'),
-    marginTop: hp('3'),
-    marginBottom: hp('3'),
+    marginTop: hp('1'),
+    marginBottom: hp('1'),
   },
 });

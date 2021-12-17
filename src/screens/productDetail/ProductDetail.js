@@ -10,10 +10,6 @@ import {
 import {color} from '../../Reusedcomponents/color';
 import {BackHeader} from '../../Reusedcomponents/Header/BackHeader';
 import {styles} from './styles';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
 
 const flatListProduct = [
   {

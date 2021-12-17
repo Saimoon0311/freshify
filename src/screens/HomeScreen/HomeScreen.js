@@ -118,22 +118,12 @@ export default function HomeScreen({navigation, route}) {
               <TextInput
                 placeholder="Search fresh grocery"
                 placeholderTextColor={'gray'}
-                style={{
-                  color: 'gray',
-                  maxWidth: wp('80'),
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  textAlignVertical: 'center',
-                  alignContent: 'center',
-                  paddingTop: hp('1'),
-                  // top: hp('1'),
-                  // marginTop: hp('1'),
-                }}
+                style={styles.searchInput}
               />
             </View>
             <View
               style={{
-                marginTop: hp('5'),
+                marginTop: hp('2'),
                 marginLeft: wp('3'),
               }}>
               {/* <FlatList

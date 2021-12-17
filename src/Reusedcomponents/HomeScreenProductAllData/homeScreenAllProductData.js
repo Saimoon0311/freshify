@@ -16,7 +16,6 @@ import {color} from '../color';
 import {styles} from './style';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {ActivityIndicator} from 'react-native-paper';
-
 export const HomeScreenAllProductData = props => {
   const [loading, setLoading] = useState(false);
   const [allProduct, setAllProduct] = useState([
