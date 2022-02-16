@@ -11,6 +11,7 @@ export const InputField = props => {
         style={styles?.textinput}
         placeholder={props?.placeholder}
         placeholderTextColor="gray"
+        keyboardType={props?.keyboardType}
       />
     </>
   );

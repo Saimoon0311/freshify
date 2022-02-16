@@ -92,12 +92,9 @@ export default function HomeScreen({navigation, route}) {
             style={{
               width: wp('20'),
               justifyContent: 'center',
-              // backgroundColor: 'yellow',
             }}>
             <TouchableOpacity
               style={{
-                // marginLeft: 'auto',
-                // marginRight: wp('2'),
                 alignSelf: 'center',
               }}>
               <Ionicons name="arrow-down" color="black" size={30} />
@@ -109,7 +106,7 @@ export default function HomeScreen({navigation, route}) {
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
-          contentContainerStyle={{paddingBottom: hp('20')}}>
+          contentContainerStyle={{paddingBottom: hp('25')}}>
           <View>
             <View style={styles.search}>
               <TouchableOpacity>
@@ -124,12 +121,7 @@ export default function HomeScreen({navigation, route}) {
             <View
               style={{
                 marginTop: hp('2'),
-                marginLeft: wp('3'),
               }}>
-              {/* <FlatList
-           data={data}
-
-           /> */}
               <ScrollView
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
@@ -155,22 +147,23 @@ export default function HomeScreen({navigation, route}) {
             </View>
           </View>
         </ScrollView>
-        {/* <Fab
-          placement="bottom-right"
-          colorScheme="#38B349"
-          size="lg"
-          style={{
-            bottom: hp('7'),
-            alignItems: 'center',
-            // width: wp('17'),
-            // height: hp('10'),
-          }}
-          label={'Track Your Order'}
-          textAlign={'center'}
-          fontSize={hp('1')}
-          // icon={<Icon name="share" type="Entypo" />}
-        /> */}
       </View>
+      {/* <FAB
+        style={styles.fab}
+        // small
+        // icon="plus"
+        label="Track Your Order"
+        onPress={() => console.log('Pressed')}
+      /> */}
+      <Fab
+        // style={styles.fab}
+        renderInPortal={false}
+        shadow={2}
+        style={{backgroundColor: color.textPrimaryColor}}
+        fontStyle={{color: 'red'}}
+        size="sm"
+        label={'Track your order'}
+      />
     </NativeBaseProvider>
   );
 }

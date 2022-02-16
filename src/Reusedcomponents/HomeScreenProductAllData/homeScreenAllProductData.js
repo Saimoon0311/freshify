@@ -46,32 +46,32 @@ export const HomeScreenAllProductData = props => {
             <View
               style={{
                 ...styles.mainContainer,
-                height: hp('25%'),
+                height: hp('28%'),
                 marginLeft: wp('4.5'),
               }}></View>
             <View
               style={{
                 ...styles.mainContainer,
-                height: hp('25%'),
+                height: hp('28%'),
               }}></View>
             <View
               style={{
                 ...styles.mainContainer,
-                height: hp('25%'),
+                height: hp('28%'),
               }}></View>
             <View
               style={{
                 ...styles.mainContainer,
-                height: hp('25%'),
+                height: hp('28%'),
               }}></View>
           </View>
         </SkeletonPlaceholder>
       ) : (
-        // <ActivityIndicator size={50} color="black" />
         <FlatList
           data={allProduct}
           keyExtractor={(item, index) => index.toString()}
           horizontal
+          contentContainerStyle={{paddingRight: wp('3')}}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => {
             return (

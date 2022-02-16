@@ -10,7 +10,7 @@ import {styles} from './styles';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 export const HomeScreenCategoryData = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [categoryData, setcategoryData] = useState([
     {
       id: 1,

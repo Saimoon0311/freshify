@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
   },
   forgetText: {
     marginLeft: 'auto',
-    marginTop: hp('5'),
+    marginTop: hp('1'),
     color: '#0088FF',
   },
   termText: {

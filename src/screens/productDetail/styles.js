@@ -11,8 +11,8 @@ export const styles = StyleSheet.create({
     // backgroundColor: 'blue',
   },
   container: {
-    marginTop: hp('2'),
-    marginLeft: wp('7'),
+    paddingTop: hp('2'),
+    // marginLeft: wp('7'),
   },
   topButtonMainContainer: {
     width: wp('20'),
@@ -37,18 +37,23 @@ export const styles = StyleSheet.create({
   },
 
   flatListMainContainer: {
-    width: wp('88%'),
-    height: hp('35%'),
-    marginVertical: hp('1'),
-    marginRight: 20,
-    marginLeft: 3,
+    width: wp('95'),
+    height: hp('35'),
+    marginBottom: hp('2'),
+
+    // marginVertical: hp('1'),
+    marginRight: wp('4'),
+    // marginLeft: 3,
     borderRadius: 15,
     shadowColor: '#000',
     shadowOffset: {width: 1, height: 3},
     shadowOpacity: 0.4,
     shadowRadius: 3,
     elevation: 3,
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   image: {
     alignSelf: 'center',
@@ -59,6 +64,7 @@ export const styles = StyleSheet.create({
     fontFamily: 'Poppins-SemiBold',
     fontSize: hp('2.5'),
     color: '#434345',
+    marginLeft: wp('5'),
   },
   textDescription: {
     fontFamily: 'Poppins',
@@ -69,7 +75,7 @@ export const styles = StyleSheet.create({
     // height: hp('16'),
     // width: wp('85'),
     backgroundColor: 'white',
-    width: wp('86%'),
+    width: wp('93%'),
     borderRadius: 7,
     shadowColor: '#000',
     shadowOffset: {width: 1, height: 3},
@@ -77,6 +83,7 @@ export const styles = StyleSheet.create({
     shadowRadius: 3,
     marginTop: hp('1'),
     elevation: 3,
+    padding: 10,
   },
   cartButton: {
     height: hp('7'),

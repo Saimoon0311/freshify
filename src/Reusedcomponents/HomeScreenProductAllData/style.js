@@ -17,7 +17,8 @@ export const styles = StyleSheet.create({
     width: wp('40'),
     // backgroundColor: 'red',
     borderRadius: 15,
-    marginRight: wp('3'),
+    // marginRight: wp('1'),
+    marginLeft: wp('3'),
     //               backgroundColor: '#F3F5F7',
     //     shadowColor: '#ECECEC',
     //     shadowOffset: {width: 1, height: 3},
@@ -47,7 +48,7 @@ export const styles = StyleSheet.create({
   },
   insideImage: {
     width: wp('23'),
-    backgroundColor: 'yellow',
+    // backgroundColor: 'yellow',
     height: hp('15'),
     marginTop: hp('2'),
     marginBottom: hp('2'),

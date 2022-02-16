@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import {color} from '../../Reusedcomponents/color';
 import {
   widthPercentageToDP as wp,
@@ -56,5 +56,22 @@ export const styles = StyleSheet.create({
     paddingTop: hp('1'),
     // top: hp('1'),
     // marginTop: hp('1'),
+  },
+  fab: {
+    // position: 'absolute',
+    // // margin: 16,
+    // right: 10,
+    // bottom: 10,
+    // left: wp('1'),
+    borderRadius: Math.round(
+      Dimensions.get('window').width + Dimensions.get('window').height,
+    ),
+    // alignSelf: 'center',
+    width: Dimensions.get('screen').width * 0.2,
+    height: Dimensions.get('screen').width * 0.2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: hp('0.5'),
+    color: 'red',
   },
 });

@@ -72,10 +72,10 @@ export const styles = StyleSheet.create({
   },
   insideImage: {
     width: wp('23'),
-    backgroundColor: 'yellow',
+    // backgroundColor: 'yellow',
     height: hp('20'),
-    marginTop: hp('2'),
-    marginBottom: hp('2'),
+    marginTop: hp('1'),
+    marginBottom: hp('1'),
     alignSelf: 'center',
   },
   addCartbutton: {

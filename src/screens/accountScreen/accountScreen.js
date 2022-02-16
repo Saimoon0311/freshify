@@ -10,7 +10,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {styles} from './styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function acountScreen() {
+export default function acountScreen({navigation}) {
   return (
     <View>
       <LoginHeader />
@@ -22,17 +22,17 @@ export default function acountScreen() {
         <Text style={styles.helloText}>Hello!</Text>
         <Text style={styles.username}>Nora</Text>
         <TouchableOpacity style={styles.touchContainer}>
-          <View style={{marginLeft: wp('3'), marginRight: wp('3')}}>
+          <View style={styles.leftIcon}>
             <FontAwesome5
               name="shopping-basket"
               color={color.textPrimaryColor}
               size={20}
             />
           </View>
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <View style={styles.centerText}>
             <Text style={styles.containerText}>Order</Text>
           </View>
-          <View style={{marginLeft: 'auto', marginRight: wp('3')}}>
+          <View style={styles.rightIcon}>
             <FontAwesome5
               name="arrow-right"
               color={color.textPrimaryColor}
@@ -40,18 +40,20 @@ export default function acountScreen() {
             />
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.touchContainer}>
-          <View style={{marginLeft: wp('3'), marginRight: wp('3')}}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('WalletScreen')}
+          style={styles.touchContainer}>
+          <View style={styles.leftIcon}>
             <FontAwesome5
               name="wallet"
               color={color.textPrimaryColor}
               size={20}
             />
           </View>
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <View style={styles.centerText}>
             <Text style={styles.containerText}>Wallet</Text>
           </View>
-          <View style={{marginLeft: 'auto', marginRight: wp('3')}}>
+          <View style={styles.rightIcon}>
             <FontAwesome5
               name="arrow-right"
               color={color.textPrimaryColor}
@@ -60,17 +62,17 @@ export default function acountScreen() {
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.touchContainer}>
-          <View style={{marginLeft: wp('3'), marginRight: wp('3')}}>
+          <View style={styles.leftIcon}>
             <Ionicons
               name="location-sharp"
               color={color.textPrimaryColor}
               size={20}
             />
           </View>
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <View style={styles.centerText}>
             <Text style={styles.containerText}>Address</Text>
           </View>
-          <View style={{marginLeft: 'auto', marginRight: wp('3')}}>
+          <View style={styles.rightIcon}>
             <FontAwesome5
               name="arrow-right"
               color={color.textPrimaryColor}
@@ -80,17 +82,17 @@ export default function acountScreen() {
         </TouchableOpacity>
         <TouchableOpacity
           style={{...styles.touchContainer, marginTop: hp('20')}}>
-          <View style={{marginLeft: wp('3'), marginRight: wp('3')}}>
+          <View style={styles.leftIcon}>
             <Ionicons
               name="notifications"
               color={color.textPrimaryColor}
               size={20}
             />
           </View>
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <View style={styles.centerText}>
             <Text style={styles.containerText}>Notifications</Text>
           </View>
-          <View style={{marginLeft: 'auto', marginRight: wp('3')}}>
+          <View style={styles.rightIcon}>
             <FontAwesome5
               name="arrow-right"
               color={color.textPrimaryColor}
@@ -99,17 +101,17 @@ export default function acountScreen() {
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.touchContainer}>
-          <View style={{marginLeft: wp('3'), marginRight: wp('3')}}>
+          <View style={styles.leftIcon}>
             <Ionicons
               name="help-circle"
               color={color.textPrimaryColor}
               size={20}
             />
           </View>
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <View style={styles.centerText}>
             <Text style={styles.containerText}>Help and Support</Text>
           </View>
-          <View style={{marginLeft: 'auto', marginRight: wp('3')}}>
+          <View style={styles.rightIcon}>
             <FontAwesome5
               name="arrow-right"
               color={color.textPrimaryColor}
@@ -122,10 +124,14 @@ export default function acountScreen() {
             ...styles.touchContainer,
             backgroundColor: color.textPrimaryColor,
           }}>
-          <View style={{marginLeft: wp('3'), marginRight: wp('3')}}>
+          <View
+            style={{
+              marginLeft: wp('3'),
+              marginRight: wp('3'),
+            }}>
             <Ionicons name="help-circle" color={'white'} size={20} />
           </View>
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <View style={styles.centerText}>
             <Text
               style={{
                 fontSize: hp('2.3'),
@@ -135,7 +141,7 @@ export default function acountScreen() {
               Customer Care
             </Text>
           </View>
-          <View style={{marginLeft: 'auto', marginRight: wp('3')}}>
+          <View style={styles.rightIcon}>
             <FontAwesome5 name="arrow-right" color={'white'} size={20} />
           </View>
         </TouchableOpacity>

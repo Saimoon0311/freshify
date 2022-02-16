@@ -19,6 +19,7 @@ export default function StackNavigatior() {
       <Stack.Screen name="OtpScreen" component={screens.OtpScreen} />
       <Stack.Screen name="ProductDetail" component={screens.ProductDetail} />
       <Stack.Screen name="SubCategory" component={screens.SubCategory} />
+      <Stack.Screen name="WalletScreen" component={screens.WalletScreen} />
 
       {/* <Stack.Screen name="HomeScreen" component={screens.HomeScreen} />
       <Stack.Screen name="ProductScreen" component={screens.ProductScreen} /> */}

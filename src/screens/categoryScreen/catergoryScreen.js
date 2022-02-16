@@ -110,10 +110,11 @@ export default function catergoryScreen({navigation}) {
                             style={{
                               width: wp('28'),
                               height: hp('7'),
+                              marginTop: hp('1'),
                               borderRadius: 20,
                             }}
-                            resizeMode="cover"
-                            source={require('../../images/catergory.png')}
+                            // resizeMode="cover"
+                            source={require('../../images/milkPack.png')}
                           />
                           <Text
                             style={{

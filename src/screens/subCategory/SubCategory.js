@@ -4,6 +4,10 @@ import {color} from '../../Reusedcomponents/color';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {BackHeader} from '../../Reusedcomponents/Header/BackHeader';
 import {styles} from './styles';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export default function SubCategory({navigation, props}) {
   const subCategoryFlatList = [
@@ -83,6 +87,7 @@ export default function SubCategory({navigation, props}) {
         data={allProduct}
         keyExtractor={(item, index) => index.toString()}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom: hp('2')}}
         renderItem={({item}) => {
           return (
             <View style={styles.categoryContainer}>
@@ -95,7 +100,9 @@ export default function SubCategory({navigation, props}) {
                   <Image
                     source={require('../../images/1.png')}
                     style={styles.insideImage}
+                    resizeMode="cover"
                   />
+                  {/* <View style={styles.insideImage} /> */}
                   <TouchableOpacity style={styles.addCartbutton}>
                     <Ionicons name="add" size={25} color={'white'} />
                   </TouchableOpacity>
