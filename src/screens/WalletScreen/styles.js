@@ -4,6 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import {color} from '../../Reusedcomponents/color';
 
 export const styles = StyleSheet.create({
   header: {
@@ -31,5 +32,35 @@ export const styles = StyleSheet.create({
   cardTitle: {
     color: 'black',
     fontSize: hp('2.5'),
+  },
+  addCartButton: {
+    marginBottom: hp('1.5'),
+    marginTop: hp('1.5'),
+    width: wp('20'),
+  },
+  addCartButtonText: {
+    color: color.textPrimaryColor,
+    fontSize: hp('2'),
+    marginLeft: wp('2.5'),
+  },
+  transcationView: {
+    width: wp('90'),
+    alignSelf: 'center',
+    backgroundColor: 'white',
+    borderRadius: 5,
+    marginTop: hp('2'),
+  },
+  transcationText: {
+    color: 'gray',
+    fontSize: hp('2.4'),
+    marginLeft: wp('2.5'),
+    marginTop: hp('1.5'),
+    marginBottom: hp('3'),
+  },
+  transcationBottomText: {
+    color: 'gray',
+    fontSize: hp('2.4'),
+    textAlign: 'center',
+    marginBottom: hp('2'),
   },
 });

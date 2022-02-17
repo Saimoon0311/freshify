@@ -21,7 +21,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {NineCubesLoader, BallIndicator} from 'react-native-indicators';
 
-export default function cartScreen() {
+export default function cartScreen({navigation}) {
   const [loading, setLoading] = useState(false);
   const [cartData, setCartData] = useState([
     {
@@ -139,7 +139,9 @@ export default function cartScreen() {
                   Rs 125
                 </Text>
               </View>
-              <TouchableOpacity style={styles.processButton}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('checkOutScreen')}
+                style={styles.processButton}>
                 <Text style={styles.processText}>Proceed To Checkout</Text>
               </TouchableOpacity>
             </View>

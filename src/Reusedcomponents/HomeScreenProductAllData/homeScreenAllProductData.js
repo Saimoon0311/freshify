@@ -46,23 +46,23 @@ export const HomeScreenAllProductData = props => {
             <View
               style={{
                 ...styles.mainContainer,
-                height: hp('28%'),
+                height: hp('29%'),
                 marginLeft: wp('4.5'),
               }}></View>
             <View
               style={{
                 ...styles.mainContainer,
-                height: hp('28%'),
+                height: hp('29%'),
               }}></View>
             <View
               style={{
                 ...styles.mainContainer,
-                height: hp('28%'),
+                height: hp('29%'),
               }}></View>
             <View
               style={{
                 ...styles.mainContainer,
-                height: hp('28%'),
+                height: hp('29%'),
               }}></View>
           </View>
         </SkeletonPlaceholder>

@@ -8,9 +8,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {color} from '../color';
 import {styles} from './styles';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import {ScrollView} from 'native-base';
 
 export const HomeScreenCategoryData = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [categoryData, setcategoryData] = useState([
     {
       id: 1,
@@ -37,20 +38,80 @@ export const HomeScreenCategoryData = () => {
       id: 8,
     },
   ]);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 5000);
-  });
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 5000);
+  // });
   return loading ? (
+    // <View style={styles.main}>
     <SkeletonPlaceholder>
-      <View style={styles.main}>
+      <View
+        style={{
+          flexDirection: 'row',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignSelf: 'center',
+          width: wp('100'),
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
         <View
           style={{
             ...styles.touchContainer,
             width: wp('19.6'),
             height: hp('10'),
-          }}></View>
+          }}
+        />
+        <View
+          style={{
+            ...styles.touchContainer,
+            width: wp('19.6'),
+            height: hp('10'),
+          }}
+        />
+        <View
+          style={{
+            ...styles.touchContainer,
+            width: wp('19.6'),
+            height: hp('10'),
+          }}
+        />
+        <View
+          style={{
+            ...styles.touchContainer,
+            width: wp('19.6'),
+            height: hp('10'),
+          }}
+        />
+        <View
+          style={{
+            ...styles.touchContainer,
+            width: wp('19.6'),
+            height: hp('10'),
+          }}
+        />
+        <View
+          style={{
+            ...styles.touchContainer,
+            width: wp('19.6'),
+            height: hp('10'),
+          }}
+        />
+        <View
+          style={{
+            ...styles.touchContainer,
+            width: wp('19.6'),
+            height: hp('10'),
+          }}
+        />
+        <View
+          style={{
+            ...styles.touchContainer,
+            width: wp('19.6'),
+            height: hp('10'),
+          }}
+        />
       </View>
     </SkeletonPlaceholder>
   ) : (

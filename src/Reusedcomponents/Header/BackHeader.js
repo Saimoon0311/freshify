@@ -26,7 +26,7 @@ export const BackHeader = props => {
         }}>
         <TouchableOpacity onPress={() => props?.navigate()}>
           <Ionicons
-            name={props?.Iconname}
+            name={'arrow-back-sharp'}
             color={color.textPrimaryColor}
             size={35}
           />

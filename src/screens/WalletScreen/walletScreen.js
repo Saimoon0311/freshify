@@ -20,11 +20,7 @@ import {BackHeader} from '../../Reusedcomponents/Header/BackHeader';
 export default function WalletScreen({navigation}) {
   return (
     <View>
-      <BackHeader
-        text="Wallet"
-        Iconname="arrow-back-sharp"
-        navigate={() => navigation.goBack()}
-      />
+      <BackHeader text="Wallet" navigate={() => navigation.goBack()} />
       <Text style={styles.header}>Cards</Text>
       <View style={styles.card}>
         <View style={styles.cardInsideContainer}>
@@ -39,47 +35,13 @@ export default function WalletScreen({navigation}) {
             </Text>
           </View>
         </View>
-        <TouchableOpacity
-          style={{
-            marginBottom: hp('1.5'),
-            marginTop: hp('1.5'),
-            width: wp('20'),
-          }}>
-          <Text
-            style={{
-              color: color.textPrimaryColor,
-              fontSize: hp('2'),
-              marginLeft: wp('2.5'),
-            }}>
-            Add Card
-          </Text>
+        <TouchableOpacity style={styles.addCartButton}>
+          <Text style={styles.addCartButtonText}>Add Card</Text>
         </TouchableOpacity>
       </View>
-      <View
-        style={{
-          width: wp('90'),
-          alignSelf: 'center',
-          backgroundColor: 'white',
-          borderRadius: 5,
-          marginTop: hp('2'),
-        }}>
-        <Text
-          style={{
-            color: 'gray',
-            fontSize: hp('2.4'),
-            marginLeft: wp('2.5'),
-            marginTop: hp('1.5'),
-            marginBottom: hp('3'),
-          }}>
-          Transactions
-        </Text>
-        <Text
-          style={{
-            color: 'gray',
-            fontSize: hp('2.4'),
-            textAlign: 'center',
-            marginBottom: hp('2'),
-          }}>
+      <View style={styles.transcationView}>
+        <Text style={styles.transcationText}>Transactions</Text>
+        <Text style={styles.transcationBottomText}>
           You have no transactions
         </Text>
       </View>
