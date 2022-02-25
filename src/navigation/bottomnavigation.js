@@ -51,7 +51,6 @@ function MybottomTabs() {
           title: 'Home',
           tabBarLabelStyle: {
             fontSize: 15,
-            // fontWeight: 'bold',
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
@@ -70,7 +69,6 @@ function MybottomTabs() {
           title: 'Category',
           tabBarLabelStyle: {
             fontSize: 15,
-            // fontWeight: 'bold',
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
@@ -80,43 +78,8 @@ function MybottomTabs() {
         name="offerScreen"
         options={{
           tabBarIcon: ({focused, size}) => (
-            <View
-              style={{
-                // backgroundColor: 'red',
-                backgroundColor: color.textPrimaryColor,
-                position: 'absolute',
-                bottom: hp('-2'),
-                // left: wp('1'),
-                borderRadius: Math.round(
-                  Dimensions.get('window').width +
-                    Dimensions.get('window').height,
-                ),
-                alignSelf: 'center',
-                width: Dimensions.get('screen').width * 0.18,
-                height: Dimensions.get('screen').width * 0.18,
-                // alignItems: 'center',
-                alignContent: 'center',
-                justifyContent: 'center',
-              }}>
-              <View
-                style={{
-                  backgroundColor: color.textPrimaryColor,
-                  position: 'absolute',
-                  // bottom: hp('-0.'),
-                  // left: wp('1'),
-                  borderRadius: Math.round(
-                    Dimensions.get('window').width +
-                      Dimensions.get('window').height,
-                  ),
-                  alignSelf: 'center',
-                  width: Dimensions.get('screen').width * 0.15,
-                  height: Dimensions.get('screen').width * 0.15,
-                  // alignItems: 'center',
-                  alignContent: 'center',
-                  justifyContent: 'center',
-                  borderWidth: 2,
-                  borderColor: 'white',
-                }}>
+            <View style={styles.cartCircle}>
+              <View style={styles.cartInsideCircle}>
                 <Ionicons
                   name="cart-outline"
                   color={'white'}
@@ -129,7 +92,6 @@ function MybottomTabs() {
           title: '',
           tabBarLabelStyle: {
             fontSize: 15,
-            // fontWeight: 'bold',
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
@@ -144,7 +106,6 @@ function MybottomTabs() {
           title: 'Offers',
           tabBarLabelStyle: {
             fontSize: 15,
-            // fontWeight: 'bold',
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
@@ -159,7 +120,6 @@ function MybottomTabs() {
           title: 'Setting',
           tabBarLabelStyle: {
             fontSize: 15,
-            // fontWeight: 'bold',
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
@@ -169,3 +129,33 @@ function MybottomTabs() {
   );
 }
 export default MybottomTabs;
+
+const styles = StyleSheet.create({
+  cartCircle: {
+    backgroundColor: color.textSecondaryColor,
+    position: 'absolute',
+    bottom: hp('-2'),
+    borderRadius: Math.round(
+      Dimensions.get('window').width + Dimensions.get('window').height,
+    ),
+    alignSelf: 'center',
+    width: Dimensions.get('screen').width * 0.18,
+    height: Dimensions.get('screen').width * 0.18,
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
+  cartInsideCircle: {
+    backgroundColor: color.textSecondaryColor,
+    position: 'absolute',
+    borderRadius: Math.round(
+      Dimensions.get('window').width + Dimensions.get('window').height,
+    ),
+    alignSelf: 'center',
+    width: Dimensions.get('screen').width * 0.15,
+    height: Dimensions.get('screen').width * 0.15,
+    alignContent: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderColor: 'white',
+  },
+});

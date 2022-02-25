@@ -66,5 +66,11 @@ export const styles = StyleSheet.create({
   totalText: {
     color: 'black',
     fontFamily: 'Poppins-SemiBold',
+    fontSize: hp('2.5'),
+  },
+  bottomTotalText: {
+    color: 'gray',
+    fontFamily: 'Poppins-SemiBold',
+    fontSize: hp('1.5'),
   },
 });

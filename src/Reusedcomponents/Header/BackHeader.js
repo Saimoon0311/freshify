@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     fontSize: 18,
-    color: color.textSecondaryColor,
+    color: 'black',
     fontFamily: 'Poppins-SemiBold',
     textAlign: 'center',
   },

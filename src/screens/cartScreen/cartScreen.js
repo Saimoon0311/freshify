@@ -56,7 +56,6 @@ export default function cartScreen({navigation}) {
             <FlatList
               data={cartData}
               keyExtractor={item => item.key}
-              // contentContainerStyle={{flexWrap: 'wrap', flexDirection: 'row'}}
               renderItem={({item}) => {
                 return (
                   <TouchableOpacity
@@ -78,7 +77,6 @@ export default function cartScreen({navigation}) {
                       <View
                         style={{
                           flexDirection: 'row',
-                          // backgroundColor: 'red',
                           width: wp('63'),
                         }}>
                         <Text
@@ -93,7 +91,6 @@ export default function cartScreen({navigation}) {
                           style={{
                             marginLeft: 'auto',
                             height: hp('3.5'),
-                            // alignSelf: '',
                           }}>
                           <Entypo name="cross" color={'gray'} size={20} />
                         </TouchableOpacity>
@@ -137,6 +134,17 @@ export default function cartScreen({navigation}) {
                 <Text style={styles.totalText}>Total</Text>
                 <Text style={{...styles.totalText, marginLeft: 'auto'}}>
                   Rs 125
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  margin: wp('5'),
+                  marginTop: wp('-6'),
+                }}>
+                <Text style={styles.bottomTotalText}>(1 Items)</Text>
+                <Text style={{...styles.bottomTotalText, marginLeft: 'auto'}}>
+                  (Inc of taxes)
                 </Text>
               </View>
               <TouchableOpacity

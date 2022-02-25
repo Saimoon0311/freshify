@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     marginTop: hp('1.5'),
   },
   priceText: {
-    color: 'green',
+    color: color.textSecondaryColor,
     fontSize: hp('1.5'),
     marginLeft: wp('3'),
   },

@@ -80,11 +80,12 @@ export default function HomeScreen({navigation, route}) {
           <View style={styles.locationText}>
             <Ionicons
               name="location-outline"
-              color={color.textPrimaryColor}
+              color={color.textSecondaryColor}
               size={20}
             />
             <Text style={styles.headerText}>Delivery To</Text>
-            <Text style={{...styles.headerText, color: 'green'}}>
+            <Text
+              style={{...styles.headerText, color: color.textSecondaryColor}}>
               Gulshan-e-Iqbal, Karachi, Sindh
             </Text>
           </View>
@@ -128,7 +129,7 @@ export default function HomeScreen({navigation, route}) {
                 contentContainerStyle={{flexDirection: 'row'}}>
                 {silderData?.length > 0 &&
                   silderData?.map(res => {
-                    return <Image source={require('../../images/sale.png')} />;
+                    return <Image source={require('../../images/sale2.png')} />;
                   })}
               </ScrollView>
               <HomeBrandAllText name="Top Selling" />
