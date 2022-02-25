@@ -12,9 +12,18 @@ export const LoginHeader = () => {
         alignItems: 'center',
         borderBottomWidth: 0.3,
         borderBottomColor: 'gray',
+        paddingBottom: hp('1'),
+        justifyContent: 'center',
+        alignContent: 'center',
+        paddingTop: hp('1'),
       }}>
       <Image
-        style={{width: wp('60'), height: hp('7')}}
+        style={{
+          width: wp('60'),
+          height: hp('7'),
+          justifyContent: 'center',
+          alignSelf: 'center',
+        }}
         source={require('../images/header.png')}
       />
     </View>

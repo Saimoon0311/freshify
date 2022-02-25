@@ -9,7 +9,8 @@ import {
 export const styles = StyleSheet.create({
   touchContainer: {
     //                 backgroundColor: 'red',
-    marginRight: wp('3.6'),
+    // marginRight: wp('3.6'),
+    marginLeft: wp('3.5'),
     borderRadius: 10,
     marginBottom: hp('2'),
     shadowColor: '#000',
@@ -21,10 +22,12 @@ export const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: hp('0.5'),
     backgroundColor: 'white',
+    alignSelf: 'flex-start',
   },
   main: {
     width: wp('93'),
-    alignSelf: 'center',
-    alignItems: 'center',
+    // marginLeft: wp('3'),
+    // alignSelf: 'center',
+    // alignItems: 'center',
   },
 });

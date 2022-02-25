@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
   },
   forgetText: {
     marginLeft: 'auto',
-    marginTop: hp('5'),
+    marginTop: hp('1'),
     color: '#0088FF',
   },
   loginButton: {
@@ -51,5 +51,35 @@ export const styles = StyleSheet.create({
     marginTop: hp('5'),
     alignItems: 'center',
     borderRadius: 5,
+  },
+  inputTitle: {
+    marginBottom: hp('2'),
+    fontSize: hp('2.5'),
+    fontFamily: 'Poppins-SemiBold',
+  },
+  codeTextStyle: {
+    backgroundColor: 'transparent',
+    height: hp('4'),
+    justifyContent: 'center',
+    textAlign: 'center',
+  },
+  textContainerStyle: {
+    borderRadius: 5,
+    backgroundColor: 'transparent',
+  },
+  textInputStyle: {
+    backgroundColor: 'transparent',
+    fontSize: hp('2.5'),
+    height: hp('7'),
+    color: 'black',
+  },
+  forgetPassword: {
+    color: '#0088FF',
+    fontFamily: 'Poppins-Regular',
+  },
+  loginButtonText: {
+    color: 'white',
+    fontSize: hp('2.8'),
+    fontFamily: 'Poppins-Regular',
   },
 });

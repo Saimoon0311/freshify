@@ -26,7 +26,7 @@ export const BackHeader = props => {
         }}>
         <TouchableOpacity onPress={() => props?.navigate()}>
           <Ionicons
-            name={props?.Iconname}
+            name={'arrow-back-sharp'}
             color={color.textPrimaryColor}
             size={35}
           />
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     fontSize: 18,
-    color: color.textSecondaryColor,
+    color: 'black',
     fontFamily: 'Poppins-SemiBold',
     textAlign: 'center',
   },

@@ -30,6 +30,7 @@
     "react-native-animate-loading-button": "^1.0.3",
     "react-native-animated-loader": "^0.0.9",
     "react-native-awesome-alerts": "^1.5.2",
+    "react-native-elements": "^3.4.2",
     "react-native-flash-message": "^0.2.0",
     "react-native-image-slider-box": "^1.1.12",
     "react-native-indicator": "^1.2.2",
@@ -46,7 +47,11 @@
     "react-native-screens": "^3.10.1",
     "react-native-skeleton-placeholder": "^5.0.0",
     "react-native-svg": "^12.1.1",
-    "react-native-vector-icons": "^9.0.0"
+    "react-native-vector-icons": "^9.0.0",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

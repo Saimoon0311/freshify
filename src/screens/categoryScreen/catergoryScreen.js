@@ -15,8 +15,9 @@ import {
 } from 'react-native-responsive-screen';
 import {NineCubesLoader, BallIndicator} from 'react-native-indicators';
 import {color} from '../../Reusedcomponents/color';
+import {styles} from './styles';
 
-export default function catergoryScreen() {
+export default function catergoryScreen({navigation}) {
   const wait = timeout => {
     return new Promise(resolve => setTimeout(resolve, timeout));
   };
@@ -73,9 +74,12 @@ export default function catergoryScreen() {
       id: 12,
     },
   ]);
+  const navigate = () => {
+    navigation.goBack();
+  };
   return (
     <View>
-      <BackHeader text="Catergory" />
+      <BackHeader text="Catergory" navigate={navigate} />
       <ScrollView
         showsVerticalScrollIndicator={false}
         refreshControl={
@@ -98,55 +102,32 @@ export default function catergoryScreen() {
             renderItem={({item}) => {
               return (
                 <View>
-                  <Text
-                    style={{
-                      marginLeft: wp('5'),
-                      marginTop: hp('3'),
-                      fontFamily: 'Poppins-Regular',
-                      fontSize: hp('2.3'),
-                      color: 'black',
-                    }}>
-                    Fresh Meat (Frozen)
-                  </Text>
-                  <View
-                    style={{
-                      width: wp('90'),
-                      flexDirection: 'row',
-                      alignSelf: 'center',
-                      // justifyContent: 'space-around',
-                      flexWrap: 'wrap',
-                      // display: 'flex',
-                      justifyContent: 'space-between',
-                    }}>
+                  <Text style={styles.headText}>Fresh Meat (Frozen)</Text>
+                  <View style={styles.mainContainer}>
                     {catergoryData.map(res => {
                       return (
                         <TouchableOpacity
-                          style={{
-                            shadowColor: '#000',
-                            shadowOffset: {
-                              width: 0,
-                              height: 5,
-                            },
-                            shadowOpacity: 0.2,
-                            shadowRadius: 10,
-                            elevation: hp('0.5'),
-                            backgroundColor: 'white',
-                            marginBottom: hp('1.5'),
-                            // width: wp('28'),
-                            // height: hp('10'),
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            borderRadius: 6,
-                          }}>
+                          onPress={() => navigation.navigate('SubCategory')}
+                          style={styles.touchContainer}>
                           <Image
                             style={{
                               width: wp('28'),
-                              height: hp('10'),
+                              height: hp('7'),
+                              marginTop: hp('1'),
                               borderRadius: 20,
                             }}
-                            resizeMode="cover"
-                            source={require('../../images/catergory.png')}
+                            // resizeMode="cover"
+                            source={require('../../images/milkPack.png')}
                           />
+                          <Text
+                            style={{
+                              paddingTop: hp('0'),
+                              // paddingBottom: hp('1'),
+                              color: '#6E6D6D',
+                              fontFamily: 'Poppins-Regular',
+                            }}>
+                            Chicken
+                          </Text>
                         </TouchableOpacity>
                       );
                     })}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
@@ -21,10 +21,11 @@ import {
 } from 'react-native';
 import {screens} from '../screens';
 import {color} from '../Reusedcomponents/color';
+import {Badge, withBadge} from 'react-native-elements';
 
 const Tab = createBottomTabNavigator();
-
 function MybottomTabs() {
+  const [badge, setBadge] = useState(99);
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -51,7 +52,6 @@ function MybottomTabs() {
           title: 'Home',
           tabBarLabelStyle: {
             fontSize: 15,
-            // fontWeight: 'bold',
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
@@ -70,7 +70,6 @@ function MybottomTabs() {
           title: 'Category',
           tabBarLabelStyle: {
             fontSize: 15,
-            // fontWeight: 'bold',
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
@@ -80,43 +79,27 @@ function MybottomTabs() {
         name="offerScreen"
         options={{
           tabBarIcon: ({focused, size}) => (
-            <View
-              style={{
-                // backgroundColor: 'red',
-                backgroundColor: color.textPrimaryColor,
-                position: 'absolute',
-                bottom: hp('-2'),
-                // left: wp('1'),
-                borderRadius: Math.round(
-                  Dimensions.get('window').width +
-                    Dimensions.get('window').height,
-                ),
-                alignSelf: 'center',
-                width: Dimensions.get('screen').width * 0.18,
-                height: Dimensions.get('screen').width * 0.18,
-                // alignItems: 'center',
-                alignContent: 'center',
-                justifyContent: 'center',
-              }}>
-              <View
-                style={{
-                  backgroundColor: color.textPrimaryColor,
-                  position: 'absolute',
-                  // bottom: hp('-0.'),
-                  // left: wp('1'),
-                  borderRadius: Math.round(
-                    Dimensions.get('window').width +
-                      Dimensions.get('window').height,
-                  ),
-                  alignSelf: 'center',
-                  width: Dimensions.get('screen').width * 0.15,
-                  height: Dimensions.get('screen').width * 0.15,
-                  // alignItems: 'center',
-                  alignContent: 'center',
-                  justifyContent: 'center',
-                  borderWidth: 2,
-                  borderColor: 'white',
-                }}>
+            <View style={styles.cartCircle}>
+              <View style={styles.cartInsideCircle}>
+                <View>
+                  <Badge
+                    status="error"
+                    value={badge}
+                    containerStyle={[
+                      styles.badgeContainer,
+                      {
+                        width:
+                          badge > 10
+                            ? Dimensions.get('screen').width / 14
+                            : Dimensions.get('screen').width / 16,
+                        height:
+                          badge > 10
+                            ? Dimensions.get('screen').width / 16
+                            : Dimensions.get('screen').width / 16,
+                      },
+                    ]}
+                  />
+                </View>
                 <Ionicons
                   name="cart-outline"
                   color={'white'}
@@ -129,7 +112,6 @@ function MybottomTabs() {
           title: '',
           tabBarLabelStyle: {
             fontSize: 15,
-            // fontWeight: 'bold',
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
@@ -144,7 +126,6 @@ function MybottomTabs() {
           title: 'Offers',
           tabBarLabelStyle: {
             fontSize: 15,
-            // fontWeight: 'bold',
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
@@ -159,7 +140,6 @@ function MybottomTabs() {
           title: 'Setting',
           tabBarLabelStyle: {
             fontSize: 15,
-            // fontWeight: 'bold',
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
           },
         }}
@@ -169,3 +149,47 @@ function MybottomTabs() {
   );
 }
 export default MybottomTabs;
+
+const styles = StyleSheet.create({
+  cartCircle: {
+    backgroundColor: color.textSecondaryColor,
+    position: 'absolute',
+    bottom: hp('-2'),
+    borderRadius: Math.round(
+      Dimensions.get('window').width + Dimensions.get('window').height,
+    ),
+    alignSelf: 'center',
+    width: Dimensions.get('screen').width * 0.18,
+    height: Dimensions.get('screen').width * 0.18,
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
+  cartInsideCircle: {
+    backgroundColor: color.textSecondaryColor,
+    position: 'absolute',
+    borderRadius: Math.round(
+      Dimensions.get('window').width + Dimensions.get('window').height,
+    ),
+    alignSelf: 'center',
+    width: Dimensions.get('screen').width * 0.15,
+    height: Dimensions.get('screen').width * 0.15,
+    alignContent: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderColor: 'white',
+  },
+  badgeContainer: {
+    position: 'absolute',
+    top: -27,
+    left: 28,
+    backgroundColor: color.white,
+    // borderRadius: 30,
+    borderRadius: Math.round(
+      Dimensions.get('window').width + Dimensions.get('window').height,
+    ),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: 'red',
+    borderWidth: 2,
+  },
+});

@@ -26,7 +26,11 @@ export default function Signup({navigation}) {
         contentContainerStyle={{paddingBottom: hp('10')}}>
         <Text style={styles.title}>Sign Up</Text>
         <View style={styles.body}>
-          <InputField inputText="Full Name*" placeholder="Full Name*" />
+          <InputField
+            inputText="Full Name*"
+            keyboardType="default"
+            placeholder="Full Name*"
+          />
           <Text
             style={{
               marginBottom: heightPercentageToDP('2'),
@@ -57,8 +61,16 @@ export default function Signup({navigation}) {
               height: hp('10'),
             }}
           />
-          <InputField inputText="Email*" placeholder="Email*" />
-          <InputField inputText="Password*" placeholder="Password*" />
+          <InputField
+            inputText="Email*"
+            keyboardType="email-address"
+            placeholder="Email*"
+          />
+          <InputField
+            inputText="Password*"
+            keyboardType="visible-password"
+            placeholder="Password*"
+          />
           <TouchableOpacity style={styles.forgetText}>
             <Text style={{color: '#0088FF', fontFamily: 'Poppins-Regular'}}>
               Forget Password?

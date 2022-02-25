@@ -21,7 +21,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {NineCubesLoader, BallIndicator} from 'react-native-indicators';
 
-export default function cartScreen() {
+export default function cartScreen({navigation}) {
   const [loading, setLoading] = useState(false);
   const [cartData, setCartData] = useState([
     {
@@ -56,7 +56,6 @@ export default function cartScreen() {
             <FlatList
               data={cartData}
               keyExtractor={item => item.key}
-              // contentContainerStyle={{flexWrap: 'wrap', flexDirection: 'row'}}
               renderItem={({item}) => {
                 return (
                   <TouchableOpacity
@@ -78,7 +77,6 @@ export default function cartScreen() {
                       <View
                         style={{
                           flexDirection: 'row',
-                          // backgroundColor: 'red',
                           width: wp('63'),
                         }}>
                         <Text
@@ -93,7 +91,6 @@ export default function cartScreen() {
                           style={{
                             marginLeft: 'auto',
                             height: hp('3.5'),
-                            // alignSelf: '',
                           }}>
                           <Entypo name="cross" color={'gray'} size={20} />
                         </TouchableOpacity>
@@ -139,7 +136,20 @@ export default function cartScreen() {
                   Rs 125
                 </Text>
               </View>
-              <TouchableOpacity style={styles.processButton}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  margin: wp('5'),
+                  marginTop: wp('-6'),
+                }}>
+                <Text style={styles.bottomTotalText}>(1 Items)</Text>
+                <Text style={{...styles.bottomTotalText, marginLeft: 'auto'}}>
+                  (Inc of taxes)
+                </Text>
+              </View>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('checkOutScreen')}
+                style={styles.processButton}>
                 <Text style={styles.processText}>Proceed To Checkout</Text>
               </TouchableOpacity>
             </View>

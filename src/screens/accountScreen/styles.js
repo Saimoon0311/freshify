@@ -8,7 +8,7 @@ import {
 
 export const styles = StyleSheet.create({
   helloText: {
-    marginTop: hp('5'),
+    marginTop: hp('3'),
     marginLeft: wp('5'),
     fontSize: hp('4'),
     color: 'black',
@@ -42,5 +42,17 @@ export const styles = StyleSheet.create({
     fontSize: hp('2.3'),
     fontFamily: 'Poppins-SemiBold',
     color: 'gray',
+  },
+  leftIcon: {
+    marginLeft: wp('3'),
+    marginRight: wp('3'),
+  },
+  centerText: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  rightIcon: {
+    marginLeft: 'auto',
+    marginRight: wp('3'),
   },
 });

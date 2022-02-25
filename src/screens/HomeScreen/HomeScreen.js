@@ -80,11 +80,12 @@ export default function HomeScreen({navigation, route}) {
           <View style={styles.locationText}>
             <Ionicons
               name="location-outline"
-              color={color.textPrimaryColor}
+              color={color.textSecondaryColor}
               size={20}
             />
             <Text style={styles.headerText}>Delivery To</Text>
-            <Text style={{...styles.headerText, color: 'green'}}>
+            <Text
+              style={{...styles.headerText, color: color.textSecondaryColor}}>
               Gulshan-e-Iqbal, Karachi, Sindh
             </Text>
           </View>
@@ -92,12 +93,9 @@ export default function HomeScreen({navigation, route}) {
             style={{
               width: wp('20'),
               justifyContent: 'center',
-              // backgroundColor: 'yellow',
             }}>
             <TouchableOpacity
               style={{
-                // marginLeft: 'auto',
-                // marginRight: wp('2'),
                 alignSelf: 'center',
               }}>
               <Ionicons name="arrow-down" color="black" size={30} />
@@ -109,7 +107,7 @@ export default function HomeScreen({navigation, route}) {
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
-          contentContainerStyle={{paddingBottom: hp('20')}}>
+          contentContainerStyle={{paddingBottom: hp('25')}}>
           <View>
             <View style={styles.search}>
               <TouchableOpacity>
@@ -118,35 +116,20 @@ export default function HomeScreen({navigation, route}) {
               <TextInput
                 placeholder="Search fresh grocery"
                 placeholderTextColor={'gray'}
-                style={{
-                  color: 'gray',
-                  maxWidth: wp('80'),
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  textAlignVertical: 'center',
-                  alignContent: 'center',
-                  paddingTop: hp('1'),
-                  // top: hp('1'),
-                  // marginTop: hp('1'),
-                }}
+                style={styles.searchInput}
               />
             </View>
             <View
               style={{
-                marginTop: hp('5'),
-                marginLeft: wp('3'),
+                marginTop: hp('2'),
               }}>
-              {/* <FlatList
-           data={data}
-
-           /> */}
               <ScrollView
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
                 contentContainerStyle={{flexDirection: 'row'}}>
                 {silderData?.length > 0 &&
                   silderData?.map(res => {
-                    return <Image source={require('../../images/sale.png')} />;
+                    return <Image source={require('../../images/sale2.png')} />;
                   })}
               </ScrollView>
               <HomeBrandAllText name="Top Selling" />
@@ -165,22 +148,23 @@ export default function HomeScreen({navigation, route}) {
             </View>
           </View>
         </ScrollView>
-        {/* <Fab
-          placement="bottom-right"
-          colorScheme="#38B349"
-          size="lg"
-          style={{
-            bottom: hp('7'),
-            alignItems: 'center',
-            // width: wp('17'),
-            // height: hp('10'),
-          }}
-          label={'Track Your Order'}
-          textAlign={'center'}
-          fontSize={hp('1')}
-          // icon={<Icon name="share" type="Entypo" />}
-        /> */}
       </View>
+      {/* <FAB
+        style={styles.fab}
+        // small
+        // icon="plus"
+        label="Track Your Order"
+        onPress={() => console.log('Pressed')}
+      /> */}
+      <Fab
+        // style={styles.fab}
+        renderInPortal={false}
+        shadow={2}
+        style={{backgroundColor: color.textPrimaryColor}}
+        fontStyle={{color: 'red'}}
+        size="sm"
+        label={'Track your order'}
+      />
     </NativeBaseProvider>
   );
 }

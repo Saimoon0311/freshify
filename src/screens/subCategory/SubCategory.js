@@ -4,8 +4,13 @@ import {color} from '../../Reusedcomponents/color';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {BackHeader} from '../../Reusedcomponents/Header/BackHeader';
 import {styles} from './styles';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export default function SubCategory({navigation, props}) {
+  const [active, setActive] = useState(1);
   const subCategoryFlatList = [
     {
       id: 1,
@@ -66,10 +71,20 @@ export default function SubCategory({navigation, props}) {
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => {
             return (
-              <View style={styles.topButtonMainContainer}>
-                <TouchableOpacity>
-                  <View style={styles.button}>
-                    <Text style={styles.buttonText}>{item.name}</Text>
+              <View style={styles.topButtonMainContainerActive}>
+                <TouchableOpacity onPress={() => setActive(item.id)}>
+                  <View
+                    style={
+                      active == item.id ? styles.button : styles.inactiveButton
+                    }>
+                    <Text
+                      style={
+                        active == item.id
+                          ? styles.buttonText
+                          : styles.inactiveButtonText
+                      }>
+                      {item.name}
+                    </Text>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -83,19 +98,22 @@ export default function SubCategory({navigation, props}) {
         data={allProduct}
         keyExtractor={(item, index) => index.toString()}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom: hp('2')}}
         renderItem={({item}) => {
           return (
             <View style={styles.categoryContainer}>
               <TouchableOpacity
                 style={styles.mainContainer}
                 onPress={() => navigation.navigate('ProductDetail')}>
-                <View>
-                  <Text style={styles.topText}>Fresh Milk</Text>
-                  <Text style={styles.priceText}>Price 12585</Text>
-                  <Image
-                    source={require('../../images/1.png')}
-                    style={styles.insideImage}
-                  />
+                <Text style={styles.topText}>Fresh Milk</Text>
+                <Image
+                  source={require('../../images/1.png')}
+                  style={styles.insideImage}
+                  resizeMode="cover"
+                />
+                <Text style={styles.priceText}>Rs50 Per/L</Text>
+                <View style={{flexDirection: 'row'}}>
+                  <Text style={styles.mlText}>225 ml</Text>
                   <TouchableOpacity style={styles.addCartbutton}>
                     <Ionicons name="add" size={25} color={'white'} />
                   </TouchableOpacity>
