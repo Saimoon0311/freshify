@@ -8,7 +8,7 @@ export const InputField = props => {
     <>
       <Text style={styles.inputtext}>{props?.inputText}</Text>
       <TextInput
-        style={styles?.textinput}
+        style={styles.textinput}
         placeholder={props?.placeholder}
         placeholderTextColor="gray"
         keyboardType={props?.keyboardType}
