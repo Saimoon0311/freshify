@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
   insideImage: {
     width: wp('23'),
     backgroundColor: 'yellow',
-    height: hp('20'),
+    height: hp('15'),
     marginTop: hp('2'),
     marginBottom: hp('2'),
     alignSelf: 'center',

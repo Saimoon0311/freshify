@@ -73,7 +73,7 @@ export const styles = StyleSheet.create({
     backgroundColor: color.textPrimaryColor,
   },
   button: {
-    color: color.borderColor,
+    color: color.borderThirdColor,
     fontFamily: 'Poppins-Regular',
     textAlign: 'center',
   },

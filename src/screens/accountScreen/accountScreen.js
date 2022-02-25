@@ -30,9 +30,7 @@ export default function acountScreen() {
             />
           </View>
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <Text style={{fontSize: hp('2.3'), fontFamily: 'Poppins-SemiBold'}}>
-              Order
-            </Text>
+            <Text style={styles.containerText}>Order</Text>
           </View>
           <View style={{marginLeft: 'auto', marginRight: wp('3')}}>
             <FontAwesome5
@@ -51,9 +49,7 @@ export default function acountScreen() {
             />
           </View>
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <Text style={{fontSize: hp('2.3'), fontFamily: 'Poppins-SemiBold'}}>
-              Wallet
-            </Text>
+            <Text style={styles.containerText}>Wallet</Text>
           </View>
           <View style={{marginLeft: 'auto', marginRight: wp('3')}}>
             <FontAwesome5
@@ -72,9 +68,7 @@ export default function acountScreen() {
             />
           </View>
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <Text style={{fontSize: hp('2.3'), fontFamily: 'Poppins-SemiBold'}}>
-              Address
-            </Text>
+            <Text style={styles.containerText}>Address</Text>
           </View>
           <View style={{marginLeft: 'auto', marginRight: wp('3')}}>
             <FontAwesome5
@@ -94,9 +88,7 @@ export default function acountScreen() {
             />
           </View>
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <Text style={{fontSize: hp('2.3'), fontFamily: 'Poppins-SemiBold'}}>
-              Notifications
-            </Text>
+            <Text style={styles.containerText}>Notifications</Text>
           </View>
           <View style={{marginLeft: 'auto', marginRight: wp('3')}}>
             <FontAwesome5
@@ -115,9 +107,7 @@ export default function acountScreen() {
             />
           </View>
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <Text style={{fontSize: hp('2.3'), fontFamily: 'Poppins-SemiBold'}}>
-              Help and Support
-            </Text>
+            <Text style={styles.containerText}>Help and Support</Text>
           </View>
           <View style={{marginLeft: 'auto', marginRight: wp('3')}}>
             <FontAwesome5

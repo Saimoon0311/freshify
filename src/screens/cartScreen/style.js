@@ -8,9 +8,6 @@ import {color} from '../../Reusedcomponents/color';
 
 export const styles = StyleSheet.create({
   maincomponent: {
-    flexDirection: 'row',
-    marginBottom: hp('3'),
-    padding: wp('2'),
     width: wp('90'),
     backgroundColor: 'white',
     shadowColor: '#000',

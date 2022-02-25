@@ -73,6 +73,7 @@ export default function loginScreen({navigation}) {
               backgroundColor: 'transparent',
               fontSize: hp('2.5'),
               height: hp('7'),
+              color: 'black',
             }}
           />
           <InputField inputText="Password" placeholder="Password" />

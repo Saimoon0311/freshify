@@ -4,6 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import {color} from '../color';
 
 export const styles = StyleSheet.create({
   textinput: {
@@ -13,10 +14,12 @@ export const styles = StyleSheet.create({
     paddingLeft: wp('3'),
     marginTop: hp('2'),
     height: hp('7'),
+    color: 'black',
   },
   inputtext: {
     marginTop: hp('2'),
     fontSize: hp('2.5'),
     fontFamily: 'Poppins-SemiBold',
+    color: 'gray',
   },
 });

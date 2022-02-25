@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   Image,
   FlatList,
   Dimensions,
+  RefreshControl,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {color} from '../../Reusedcomponents/color';
@@ -38,7 +39,6 @@ export default function HomeScreen({navigation, route}) {
       },
     },
   });
-  const [loading, setLoading] = useState(true);
   const [silderData, setSliderData] = useState([
     {
       id: 1,
@@ -59,6 +59,19 @@ export default function HomeScreen({navigation, route}) {
       id: 6,
     },
   ]);
+  const wait = timeout => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
+  };
+  const [refreshing, setRefreshing] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const onRefresh = useCallback(() => {
+    // setRefreshing(true);
+    setLoading(true);
+    // setAloading(true);
+    wait(2000).then(() => {
+      setLoading(false);
+    });
+  }, []);
   return (
     <NativeBaseProvider theme={theme}>
       <View>
@@ -93,15 +106,31 @@ export default function HomeScreen({navigation, route}) {
         </View>
         <ScrollView
           showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
           contentContainerStyle={{paddingBottom: hp('20')}}>
           <View>
-            <TouchableOpacity style={styles.search}>
-              <Ionicons name="search" size={20} color={'gray'} />
+            <View style={styles.search}>
+              <TouchableOpacity>
+                <Ionicons name="search" size={20} color={'gray'} />
+              </TouchableOpacity>
               <TextInput
                 placeholder="Search fresh grocery"
                 placeholderTextColor={'gray'}
+                style={{
+                  color: 'gray',
+                  maxWidth: wp('80'),
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  textAlignVertical: 'center',
+                  alignContent: 'center',
+                  paddingTop: hp('1'),
+                  // top: hp('1'),
+                  // marginTop: hp('1'),
+                }}
               />
-            </TouchableOpacity>
+            </View>
             <View
               style={{
                 marginTop: hp('5'),
@@ -123,10 +152,12 @@ export default function HomeScreen({navigation, route}) {
               <HomeBrandAllText name="Top Selling" />
               <HomeScreenAllProductData ProductDetail={ProductDetail} />
               <HomeBrandAllText name="Popular Deals" />
-              <HomeScreenAllProductData />
+              <HomeScreenAllProductData ProductDetail={ProductDetail} />
               <View style={{flexDirection: 'row'}}>
                 <HomeBrandAllText name="Categories" />
-                <TouchableOpacity style={styles.viewmore}>
+                <TouchableOpacity
+                  style={styles.viewmore}
+                  onPress={() => navigation.navigate('catergoryScreen')}>
                   <Text style={{color: color.textPrimaryColor}}>View more</Text>
                 </TouchableOpacity>
               </View>

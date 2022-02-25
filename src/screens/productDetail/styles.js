@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
 
   flatListMainContainer: {
     width: wp('88%'),
-    height: hp('28%'),
+    height: hp('35%'),
     marginVertical: hp('1'),
     marginRight: 20,
     marginLeft: 3,

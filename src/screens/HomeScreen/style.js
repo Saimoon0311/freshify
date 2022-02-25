@@ -16,9 +16,11 @@ export const styles = StyleSheet.create({
   locationText: {
     width: wp('60'),
     alignItems: 'center',
+    marginTop: hp('2'),
   },
   headerText: {
     fontSize: hp('2'),
+    color: 'black',
   },
   search: {
     flexDirection: 'row',
@@ -29,7 +31,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     borderRadius: 5,
-    height: hp('7'),
+    height: hp('6'),
   },
   viewmore: {
     marginLeft: 'auto',

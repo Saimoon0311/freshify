@@ -40,10 +40,17 @@ const flatGramButtonLists = [
   },
 ];
 
-export default function ProductDetail() {
+export default function ProductDetail({navigation}) {
+  const navigate = () => {
+    navigation.goBack();
+  };
   return (
     <View style={styles.mainContainer}>
-      <BackHeader text="Add To Cart" />
+      <BackHeader
+        Iconname="arrow-back-sharp"
+        navigate={navigate}
+        text="Add To Cart"
+      />
 
       <View style={styles.container}>
         <FlatList
@@ -75,7 +82,7 @@ export default function ProductDetail() {
                 <Image
                   style={styles.flatListMainContainer}
                   source={item?.image}
-                  resizeMode="contain"
+                  resizeMode="cover"
                 />
               );
             }}
