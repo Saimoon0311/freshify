@@ -63,12 +63,17 @@ export default function ProductDetail({navigation}) {
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={styles.container}
-        contentContainerStyle={{paddingBottom: hp('15')}}>
+        contentContainerStyle={{
+          paddingBottom: hp('15'),
+          width: wp('94'),
+          alignSelf: 'center',
+          // backgroundColor: 'yellow',
+        }}>
         <FlatList
           data={flatGramButtonLists}
           horizontal
           nestedScrollEnabled={true}
-          contentContainerStyle={{marginLeft: wp('3'), marginBottom: hp('1')}}
+          contentContainerStyle={{marginBottom: hp('1')}}
           keyExtractor={item => item.key}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => {
@@ -100,7 +105,7 @@ export default function ProductDetail({navigation}) {
           pagingEnabled={true}
           nestedScrollEnabled={true}
           contentContainerStyle={{
-            paddingLeft: wp('3.5'),
+            // paddingLeft: wp('3.5'),
             justifyContent: 'space-around',
           }}
           keyExtractor={item => item.key}
@@ -116,18 +121,23 @@ export default function ProductDetail({navigation}) {
           <Text style={styles.textMainContainer}>
             Fresify Pure Milk, 300gm Soft Pack
           </Text>
-          <View style={{flexDirection: 'row', marginLeft: wp('5')}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              // backgroundColor: 'yellow',
+            }}>
             <Text
               style={{
-                textAlignVertical: 'center',
+                fontSize: hp('3'),
+                fontFamily: 'Poppins-SemiBold',
+                color: '#434345',
               }}>
-              Rs
+              Rs{' '}
             </Text>
-            <Text style={{...styles.textMainContainer, marginLeft: wp('0')}}>
-              605
-            </Text>
+            <Text style={{...styles.textMainContainer}}>605</Text>
           </View>
-          <View style={{marginLeft: wp('5')}}>
+          <View>
             <Text style={styles.textDescription}>Description</Text>
             <View style={styles.textDescriptionContainer}>
               <Text

@@ -22,11 +22,21 @@ import {Radio, NativeBaseProvider} from 'native-base';
 import {RadioButton} from 'react-native-paper';
 import {InputField} from '../../Reusedcomponents/InputField/inputFeild';
 import BottomButton from '../../Reusedcomponents/BottomButton/bottomButton';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+// import  from 'react-native-modal-datetime-picker';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import moment from 'moment';
 
 function checkOutScreen({navigation}) {
+  var today = moment().format('DD MMM');
+  var tomorrow = moment().add(1, 'days').format('DD MMM');
+  var time = new Date();
+
   const [topButton, setTopButton] = useState(1);
   const [paymentInfo, setPaymentInfo] = useState();
   const [value, setValue] = useState('one');
+  const [scheduleDay, setSchedulaDay] = useState(0);
+  const [isDate, setIsDate] = useState(false);
   const centerItem = () => {
     return (
       <>
@@ -131,6 +141,81 @@ function checkOutScreen({navigation}) {
       </>
     );
   };
+  // var Date;
+  const scheduleContainer = () => {
+    return (
+      <View>
+        <View
+          style={{
+            ...styles.topButtonView,
+            width: wp('80'),
+            alignSelf: 'center',
+          }}>
+          <TouchableOpacity
+            onPress={() => setSchedulaDay(1)}
+            style={
+              scheduleDay == 1
+                ? {...styles.topActiveButton, width: wp('30')}
+                : {...styles.topInactiveButton, width: wp('30')}
+            }>
+            <Text
+              style={
+                scheduleDay == 1
+                  ? {...styles.topActiveText, fontSize: hp('2')}
+                  : {...styles.topInactiveText, fontSize: hp('2')}
+              }>
+              Today -{today}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => setSchedulaDay(2)}
+            style={
+              scheduleDay == 2
+                ? {...styles.topActiveButton, width: wp('30')}
+                : {...styles.topInactiveButton, width: wp('30')}
+            }>
+            <Text
+              style={
+                scheduleDay == 2
+                  ? {...styles.topActiveText, fontSize: hp('2')}
+                  : {...styles.topInactiveText, fontSize: hp('2')}
+              }>
+              Tomorrow -{tomorrow}
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <TouchableOpacity
+          onPress={() => {
+            setIsDate(true), console.log(195, isDate);
+          }}
+          style={{
+            ...styles.topInactiveButton,
+            width: wp('60'),
+            alignSelf: 'center',
+            marginTop: hp('2'),
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
+          <View style={{width: wp('7')}} />
+          <Text
+            style={{
+              ...styles.topInactiveText,
+              fontSize: hp('2'),
+              textAlign: 'center',
+              alignSelf: 'center',
+            }}>
+            Select a Time of Delivery
+          </Text>
+          <Ionicons
+            name="chevron-down-sharp"
+            color={'gray'}
+            size={20}
+            // style={{alignSelf: 'bas/'}}
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  };
   return (
     <View style={{flex: 1}}>
       <BackHeader text="Checkout" navigate={() => navigation.goBack()} />
@@ -164,14 +249,30 @@ function checkOutScreen({navigation}) {
             </Text>
           </TouchableOpacity>
         </View>
+        {topButton == 2 && scheduleContainer()}
         {centerItem()}
         {paymentInfoContainer()}
         {additionalInformation()}
         <BottomButton
-          navigate={() => navigation.navigate('confirmOrderScreen')}
+          onPress={() => navigation.navigate('confirmOrderScreen')}
           title="Place Order"
         />
       </ScrollView>
+      {isDate && (
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={time}
+          mode={'time'}
+          is24Hour={false}
+          display="default"
+          onChange={e => {
+            console.log(143, e), setIsDate(false);
+          }}
+          onTouchCancel={() => {
+            console.log(276), setIsDate(false);
+          }}
+        />
+      )}
     </View>
   );
 }

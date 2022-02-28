@@ -7,10 +7,11 @@ import {
 } from 'react-native-responsive-screen';
 
 const BottomButton = props => {
+  var width = props.width ? props.width : '85';
   return (
     <TouchableOpacity
-      onPress={() => props?.navigate()}
-      style={styles.cartButton}>
+      onPress={() => props?.onPress()}
+      style={{...styles.cartButton, width: wp(width)}}>
       <Text style={styles.textCart}>{props?.title}</Text>
     </TouchableOpacity>
   );
@@ -21,6 +22,7 @@ export default BottomButton;
 const styles = StyleSheet.create({
   cartButton: {
     height: hp('7'),
+    // width: wp(),
     width: wp('85'),
     borderRadius: 5,
     backgroundColor: color.textPrimaryColor,

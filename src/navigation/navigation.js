@@ -26,7 +26,10 @@ export default function StackNavigatior() {
         name="confirmOrderScreen"
         component={screens.confirmOrderScreen}
       />
-      {/* <Stack.Screen name="ProductScreen" component={screens.ProductScreen} /> */}
+      <Stack.Screen
+        name="orderInvoiceScreen"
+        component={screens.orderInvoiceScreen}
+      />
     </Stack.Navigator>
   );
 }

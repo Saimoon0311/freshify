@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import {LoginHeader} from '../../Reusedcomponents/loginHeader';
 import {
@@ -9,16 +9,13 @@ import {color} from '../../Reusedcomponents/color';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {styles} from './styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import BottomButton from '../../Reusedcomponents/BottomButton/bottomButton';
 
 export default function acountScreen({navigation}) {
-  return (
-    <View>
-      <LoginHeader />
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          paddingBottom: hp('18'),
-        }}>
+  const [isLogined, setIslogined] = useState(false);
+  const ifLogin = () => {
+    return (
+      <>
         <Text style={styles.helloText}>Hello!</Text>
         <Text style={styles.username}>Nora</Text>
         <TouchableOpacity style={styles.touchContainer}>
@@ -80,8 +77,40 @@ export default function acountScreen({navigation}) {
             />
           </View>
         </TouchableOpacity>
+      </>
+    );
+  };
+  const forLogin = () => {
+    return (
+      <View style={{marginBottom: hp('10')}}>
+        <Text
+          style={{
+            ...styles.helloText,
+            fontSize: hp('3'),
+            marginBottom: hp('3'),
+          }}>
+          Welcome ! Nice to meet you
+        </Text>
+        <BottomButton
+          width="80"
+          title="Login/Signup"
+          onPress={() => navigation.navigate('LoginScreen')}
+        />
+      </View>
+    );
+  };
+  return (
+    <View>
+      <LoginHeader />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingBottom: hp('18'),
+        }}>
+        {isLogined ? ifLogin() : forLogin()}
         <TouchableOpacity
-          style={{...styles.touchContainer, marginTop: hp('20')}}>
+          onPress={() => setIslogined(true)}
+          style={{...styles.touchContainer}}>
           <View style={styles.leftIcon}>
             <Ionicons
               name="notifications"
@@ -100,7 +129,9 @@ export default function acountScreen({navigation}) {
             />
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.touchContainer}>
+        <TouchableOpacity
+          onPress={() => setIslogined(false)}
+          style={styles.touchContainer}>
           <View style={styles.leftIcon}>
             <Ionicons
               name="help-circle"

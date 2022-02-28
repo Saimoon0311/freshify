@@ -8,7 +8,9 @@ import {
 export const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    // width: wp('90'),
     // backgroundColor: 'blue',
+    // alignSelf: 'center',
   },
   container: {
     paddingTop: hp('2'),
@@ -53,16 +55,16 @@ export const styles = StyleSheet.create({
   },
 
   flatListMainContainer: {
-    width: wp('95'),
+    width: wp('94'),
     height: hp('35'),
     marginBottom: hp('2'),
-    marginRight: wp('4'),
+    // marginRight: wp('4'),
     borderRadius: 15,
-    shadowColor: '#000',
-    shadowOffset: {width: 1, height: 3},
-    shadowOpacity: 0.4,
-    shadowRadius: 3,
-    elevation: 3,
+    // shadowColor: '#000',
+    // shadowOffset: {width: 1, height: 3},
+    // shadowOpacity: 0.4,
+    // shadowRadius: 3,
+    // elevation: 3,
     overflow: 'hidden',
     alignItems: 'center',
     justifyContent: 'center',
@@ -76,7 +78,7 @@ export const styles = StyleSheet.create({
     fontFamily: 'Poppins-SemiBold',
     fontSize: hp('2.5'),
     color: '#434345',
-    marginLeft: wp('5'),
+    // marginLeft: wp('5'),
   },
   textDescription: {
     fontFamily: 'Poppins-SemiBold',

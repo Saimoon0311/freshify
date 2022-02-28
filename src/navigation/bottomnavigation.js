@@ -25,7 +25,7 @@ import {Badge, withBadge} from 'react-native-elements';
 
 const Tab = createBottomTabNavigator();
 function MybottomTabs() {
-  const [badge, setBadge] = useState(99);
+  const [badge, setBadge] = useState(999);
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
