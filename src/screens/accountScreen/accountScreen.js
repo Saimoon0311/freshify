@@ -21,7 +21,9 @@ export default function acountScreen({navigation}) {
         }}>
         <Text style={styles.helloText}>Hello!</Text>
         <Text style={styles.username}>Nora</Text>
-        <TouchableOpacity style={styles.touchContainer}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('OrderList')}
+          style={styles.touchContainer}>
           <View style={styles.leftIcon}>
             <FontAwesome5
               name="shopping-basket"
