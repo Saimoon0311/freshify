@@ -11,6 +11,7 @@ import ProductDetail from './productDetail/ProductDetail';
 import SubCategory from './subCategory/SubCategory';
 import WalletScreen from './WalletScreen/walletScreen';
 import checkOutScreen from './CheckOutScreen/checkOutScreen';
+import confirmOrderScreen from './confirmOrderScreen/confirmOrderScreen';
 
 export const screens = {
   HomeScreen,
@@ -26,4 +27,5 @@ export const screens = {
   SubCategory,
   WalletScreen,
   checkOutScreen,
+  confirmOrderScreen,
 };

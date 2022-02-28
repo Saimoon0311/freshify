@@ -6,6 +6,7 @@ import {
   View,
   FlatList,
   ScrollView,
+  Platform,
 } from 'react-native';
 import {color} from '../../Reusedcomponents/color';
 import {BackHeader} from '../../Reusedcomponents/Header/BackHeader';
@@ -14,6 +15,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import BottomButton from '../../Reusedcomponents/BottomButton/bottomButton';
 
 const flatListProduct = [
   {
@@ -149,9 +151,9 @@ export default function ProductDetail({navigation}) {
           </View>
         </View>
       </ScrollView>
-      <TouchableOpacity style={styles.cartButton}>
-        <Text style={styles.textCart}>Add to Cart</Text>
-      </TouchableOpacity>
+      <View style={styles.bottomView}>
+        <BottomButton title="Add to Cart" />
+      </View>
     </View>
   );
 }

@@ -113,4 +113,9 @@ export const styles = StyleSheet.create({
     fontFamily: 'Poppins-SemiBold',
     fontSize: hp('2'),
   },
+  bottomView: {
+    position: 'absolute',
+    bottom: Platform?.OS == 'ios' ? 110 : 20,
+    alignSelf: 'center',
+  },
 });
