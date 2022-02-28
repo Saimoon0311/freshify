@@ -21,11 +21,11 @@ import {
 } from 'react-native';
 import {screens} from '../screens';
 import {color} from '../Reusedcomponents/color';
-import {Badge, withBadge} from 'react-native-elements';
+import {Badge} from 'react-native-paper';
 
 const Tab = createBottomTabNavigator();
 function MybottomTabs() {
-  const [badge, setBadge] = useState(99);
+  const [badge, setBadge] = useState(1);
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -81,24 +81,28 @@ function MybottomTabs() {
           tabBarIcon: ({focused, size}) => (
             <View style={styles.cartCircle}>
               <View style={styles.cartInsideCircle}>
-                <View>
-                  <Badge
-                    status="error"
-                    value={badge}
-                    containerStyle={[
-                      styles.badgeContainer,
-                      {
-                        width:
-                          badge > 10
-                            ? Dimensions.get('screen').width / 14
-                            : Dimensions.get('screen').width / 16,
-                        height:
-                          badge > 10
-                            ? Dimensions.get('screen').width / 16
-                            : Dimensions.get('screen').width / 16,
-                      },
-                    ]}
-                  />
+                <View
+                  style={{
+                    position: 'absolute',
+                    left: 21,
+                    top: -16,
+
+                    borderRadius: Math.round(
+                      Dimensions.get('window').width +
+                        Dimensions.get('window').height,
+                    ),
+                    width: Dimensions.get('screen').width * 0.07,
+                    height: Dimensions.get('screen').width * 0.07,
+                    backgroundColor: color.white,
+                    alignContent: 'center',
+                    borderColor: 'red',
+                    borderWidth: 2,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Badge size={22} style={styles.badgeContainer}>
+                    {badge}
+                  </Badge>
                 </View>
                 <Ionicons
                   name="cart-outline"
@@ -180,16 +184,14 @@ const styles = StyleSheet.create({
   },
   badgeContainer: {
     position: 'absolute',
-    top: -27,
-    left: 28,
-    backgroundColor: color.white,
-    // borderRadius: 30,
-    borderRadius: Math.round(
-      Dimensions.get('window').width + Dimensions.get('window').height,
-    ),
+    left: 1,
+    top: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: 'red',
-    borderWidth: 2,
+    fontWeight: 'Poppins-Bold',
+    fontSize: 14,
+    // borderRadius: 30,
+
+    backgroundColor: color.badgeColor,
   },
 });
