@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Image,
   Text,
@@ -47,6 +47,8 @@ const flatGramButtonLists = [
 ];
 
 export default function ProductDetail({navigation}) {
+  const [active, setActive] = useState(1);
+
   const navigate = () => {
     navigation.goBack();
   };
@@ -72,9 +74,19 @@ export default function ProductDetail({navigation}) {
           renderItem={({item}) => {
             return (
               <View style={styles.topButtonMainContainer}>
-                <TouchableOpacity>
-                  <View style={styles.button}>
-                    <Text style={styles.buttonText}>300gm</Text>
+                <TouchableOpacity onPress={() => setActive(item.id)}>
+                  <View
+                    style={
+                      active == item.id ? styles.button : styles.inactiveButton
+                    }>
+                    <Text
+                      style={
+                        active == item.id
+                          ? styles.buttonText
+                          : styles.inactiveButtonText
+                      }>
+                      {item.name}
+                    </Text>
                   </View>
                 </TouchableOpacity>
               </View>

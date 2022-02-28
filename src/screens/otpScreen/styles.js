@@ -12,8 +12,8 @@ export const styles = StyleSheet.create({
   },
   Text: {
     textAlign: 'center',
-    fontSize: 18,
-    color: color.textSecondaryColor,
+    fontSize: 17,
+    color: color.textColor,
     fontFamily: 'Poppins-SemiBold',
   },
   topTextContainer: {
@@ -23,8 +23,8 @@ export const styles = StyleSheet.create({
   },
   numTextContainer: {
     textAlign: 'center',
-    fontSize: 18,
-    color: color.textPrimaryColor,
+    fontSize: 23,
+    color: color.textSecondaryColor,
     fontFamily: 'Poppins-SemiBold',
   },
 
@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
   },
 
   underlineStyleBase: {
-    width: wp(10),
+    width: wp(15),
     height: hp(8),
     borderWidth: 3,
     borderBottomWidth: 2,
@@ -61,8 +61,7 @@ export const styles = StyleSheet.create({
     borderColor: color.borderThirdColor,
     borderWidth: 2,
     justifyContent: 'center',
-
-    // backgroundColor: '#0f0',
+    borderRadius: 5,
   },
   buttonNextContainer: {
     width: wp(35),
@@ -71,10 +70,11 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     justifyContent: 'center',
     backgroundColor: color.textPrimaryColor,
+    borderRadius: 7,
   },
   button: {
-    color: color.borderThirdColor,
-    fontFamily: 'Poppins-Regular',
+    color: color.textColor,
+    fontFamily: 'Poppins-SemiBold',
     textAlign: 'center',
   },
 });

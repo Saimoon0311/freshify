@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
@@ -21,10 +21,11 @@ import {
 } from 'react-native';
 import {screens} from '../screens';
 import {color} from '../Reusedcomponents/color';
+import {Badge, withBadge} from 'react-native-elements';
 
 const Tab = createBottomTabNavigator();
-
 function MybottomTabs() {
+  const [badge, setBadge] = useState(99);
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -80,6 +81,25 @@ function MybottomTabs() {
           tabBarIcon: ({focused, size}) => (
             <View style={styles.cartCircle}>
               <View style={styles.cartInsideCircle}>
+                <View>
+                  <Badge
+                    status="error"
+                    value={badge}
+                    containerStyle={[
+                      styles.badgeContainer,
+                      {
+                        width:
+                          badge > 10
+                            ? Dimensions.get('screen').width / 14
+                            : Dimensions.get('screen').width / 16,
+                        height:
+                          badge > 10
+                            ? Dimensions.get('screen').width / 16
+                            : Dimensions.get('screen').width / 16,
+                      },
+                    ]}
+                  />
+                </View>
                 <Ionicons
                   name="cart-outline"
                   color={'white'}
@@ -157,5 +177,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 2,
     borderColor: 'white',
+  },
+  badgeContainer: {
+    position: 'absolute',
+    top: -27,
+    left: 28,
+    backgroundColor: color.white,
+    // borderRadius: 30,
+    borderRadius: Math.round(
+      Dimensions.get('window').width + Dimensions.get('window').height,
+    ),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: 'red',
+    borderWidth: 2,
   },
 });

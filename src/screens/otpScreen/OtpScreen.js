@@ -39,19 +39,20 @@ function OtpScreen() {
               <Text
                 style={{
                   ...styles.button,
-                  color: color.textPrimaryColor,
+                  color: color.textSecondaryColor,
                   fontSize: 18,
                   paddingTop: hp(4),
                 }}>
                 Resend
               </Text>
-              <Text style={{...styles.button, paddingBottom: hp(3)}}>
+              <Text
+                style={{...styles.button, paddingBottom: hp(3), fontSize: 10}}>
                 Resend in 29sec
               </Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity>
-            <View style={styles.buttonNextContainer}>
+            <View style={[styles.buttonNextContainer]}>
               <Text
                 style={{...styles.button, fontSize: 18, color: color.white}}>
                 Next

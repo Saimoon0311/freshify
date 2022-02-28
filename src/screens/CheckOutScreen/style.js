@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
     height: hp('5'),
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: 'gray',
+    borderColor: color.borderThirdColor,
   },
   topActiveText: {
     color: color.textPrimaryColor,

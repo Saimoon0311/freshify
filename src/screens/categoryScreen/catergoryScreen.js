@@ -74,9 +74,12 @@ export default function catergoryScreen({navigation}) {
       id: 12,
     },
   ]);
+  const navigate = () => {
+    navigation.goBack();
+  };
   return (
     <View>
-      <BackHeader text="Catergory" />
+      <BackHeader text="Catergory" navigate={navigate} />
       <ScrollView
         showsVerticalScrollIndicator={false}
         refreshControl={
