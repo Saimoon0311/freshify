@@ -5,4 +5,5 @@ export const color = {
   borderThirdColor: '#999999',
   white: '#ffff',
   black: '#000000',
+  badgeColor: '#FF2D2D',
 };

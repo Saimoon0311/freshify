@@ -12,6 +12,8 @@ import SubCategory from './subCategory/SubCategory';
 import WalletScreen from './WalletScreen/walletScreen';
 import checkOutScreen from './CheckOutScreen/checkOutScreen';
 import confirmOrderScreen from './confirmOrderScreen/confirmOrderScreen';
+import OrderListScreen from './orderListScreen/OrderListScreen';
+import OrderDetailsScreen from './orderDetailScreen/OrderDetailsScreen';
 import orderInvoiceScreen from './OrderInvoiceScreen/orderInvoiceScreen';
 
 export const screens = {
@@ -29,5 +31,7 @@ export const screens = {
   WalletScreen,
   checkOutScreen,
   confirmOrderScreen,
+  OrderListScreen,
+  OrderDetailsScreen,
   orderInvoiceScreen,
 };

@@ -21,6 +21,11 @@ export default function StackNavigatior() {
       <Stack.Screen name="SubCategory" component={screens.SubCategory} />
       <Stack.Screen name="WalletScreen" component={screens.WalletScreen} />
       <Stack.Screen name="checkOutScreen" component={screens.checkOutScreen} />
+      <Stack.Screen name="OrderList" component={screens.OrderListScreen} />
+      <Stack.Screen
+        name="OrderDetails"
+        component={screens.OrderDetailsScreen}
+      />
 
       <Stack.Screen
         name="confirmOrderScreen"
