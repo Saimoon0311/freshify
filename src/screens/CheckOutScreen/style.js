@@ -38,20 +38,20 @@ export const styles = StyleSheet.create({
   },
   topActiveText: {
     color: color.textPrimaryColor,
-    fontSize: hp('2.5'),
+    fontSize: hp('2'),
   },
   topInactiveText: {
     color: 'gray',
-    fontSize: hp('2.5'),
+    fontSize: hp('2'),
   },
   billSummaryView: {
-    width: wp('80'),
+    width: wp('90'),
     alignSelf: 'center',
     marginTop: hp('2'),
   },
   innerContainer: {
     flexDirection: 'row',
-    width: wp('80'),
+    width: wp('45'),
     marginBottom: hp('1'),
   },
   innerText: {color: '#434345', fontSize: hp('2.3')},
@@ -60,7 +60,7 @@ export const styles = StyleSheet.create({
     fontSize: hp('1.5'),
     color: 'black',
   },
-  textContainer: {width: wp('40')},
+  textContainer: {width: wp('45')},
   radioText: {
     // marginTop: hp('0.9'),
     color: 'gray',
@@ -93,5 +93,10 @@ export const styles = StyleSheet.create({
     color: color.white,
     fontFamily: 'Poppins-SemiBold',
     fontSize: hp('2'),
+  },
+  informationView: {
+    alignSelf: 'center',
+    marginTop: hp('-5'),
+    marginBottom: hp('2'),
   },
 });

@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
   insideImage: {
     width: wp('23'),
     // backgroundColor: 'yellow',
-    height: hp('15'),
+    height: hp('12'),
     marginTop: hp('2'),
     marginBottom: hp('2'),
     alignSelf: 'center',

@@ -30,6 +30,22 @@ export const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     height: hp('7'),
   },
+  codeTextStyle: {
+    backgroundColor: 'transparent',
+    height: hp('4'),
+    justifyContent: 'center',
+    textAlign: 'center',
+  },
+  textContainerStyle: {
+    borderRadius: 5,
+    backgroundColor: 'transparent',
+  },
+  textInputStyle: {
+    backgroundColor: 'transparent',
+    fontSize: hp('2.5'),
+    height: hp('7'),
+    color: 'black',
+  },
   forgetText: {
     marginLeft: 'auto',
     marginTop: hp('1'),
@@ -50,5 +66,12 @@ export const styles = StyleSheet.create({
     marginTop: hp('5'),
     alignItems: 'center',
     borderRadius: 5,
+  },
+  inputTitle: {
+    marginBottom: hp('2'),
+    fontSize: hp('2.5'),
+    fontFamily: 'Poppins-SemiBold',
+    color: 'gray',
+    marginTop: hp('2'),
   },
 });

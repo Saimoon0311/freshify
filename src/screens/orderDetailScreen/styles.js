@@ -68,6 +68,7 @@ export const styles = StyleSheet.create({
   rightText: {
     fontFamily: 'Poppins-SemiBold',
     fontSize: hp('2.2'),
+    color: 'gray',
   },
   totalBillContainer: {
     fontFamily: 'Poppins-Bold',

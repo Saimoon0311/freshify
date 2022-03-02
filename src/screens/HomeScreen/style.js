@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     width: wp('100'),
     borderBottomWidth: 0.5,
-    paddingBottom: hp('1.5'),
+    paddingBottom: hp('1'),
   },
   locationText: {
     width: wp('60'),

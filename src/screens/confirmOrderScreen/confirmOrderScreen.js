@@ -85,62 +85,70 @@ export default function confirmOrderScreen({navigation}) {
         text="Confirm Your Order"
         navigate={() => navigation.goBack()}
       />
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          // backgroundColor: 'white',
-          paddingBottom: hp('4'),
-        }}>
-        <View style={styles.upperContainer}>
-          <Image
-            source={require('../../images/Group23.png')}
-            style={{width: wp('30'), height: hp('20')}}
-            resizeMode="contain"
-          />
-          <Text style={styles.upperContainerText}>
-            Your Order {'\n'} has been received
-          </Text>
-        </View>
-        <View style={{backgroundColor: 'white', paddingTop: hp('4')}}>
-          <BottomButton
-            title={'Place Order'}
-            onPress={() => resetNavigation()}
-          />
-          <View style={styles.bottomContainer}>
-            <BottomButton
-              title="Cancel Your Order"
-              onPress={() => setShowAlert(true)}
+      <View style={{flex: 1, backgroundColor: 'white'}}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            // backgroundColor: 'white',
+            paddingBottom: hp('4'),
+          }}>
+          <View style={styles.upperContainer}>
+            <Image
+              source={require('../../images/Group23.png')}
+              style={{width: wp('30'), height: hp('20')}}
+              resizeMode="contain"
             />
-            <Text style={{...styles.bottomBoldText, marginTop: hp('2')}}>
-              Order#110000
+            <Text style={styles.upperContainerText}>
+              Your Order {'\n'} has been received
             </Text>
-            <Text style={styles.bottomNormalText}>Delivering To</Text>
-            <Text style={styles.bottomBoldText}>Gulshan-e-Iqbal, Karachi.</Text>
-            <Text style={styles.bottomNormalText}>
-              Estiamated Delivery Time
-            </Text>
-            <Text
-              style={{
-                ...styles.bottomBoldText,
-                color: color.textSecondaryColor,
-              }}>
-              11:59 PM
-            </Text>
-            <Text style={{...styles.bottomNormalText, color: 'black'}}>
-              11 Nov 2021
-            </Text>
-            <Divider style={styles.divider} />
-            <View style={styles.invoiceContainer}>
-              <Text style={styles.invoiceIcon}>Order Invoice</Text>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('orderInvoiceScreen')}>
-                <Ionicons name="arrow-forward" size={30} color="black" />
-              </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              backgroundColor: 'white',
+              paddingTop: hp('4'),
+            }}>
+            <BottomButton
+              title={'Place Order'}
+              onPress={() => resetNavigation()}
+            />
+            <View style={styles.bottomContainer}>
+              <BottomButton
+                title="Cancel Your Order"
+                onPress={() => setShowAlert(true)}
+              />
+              <Text style={{...styles.bottomBoldText, marginTop: hp('2')}}>
+                Order#110000
+              </Text>
+              <Text style={styles.bottomNormalText}>Delivering To</Text>
+              <Text style={styles.bottomBoldText}>
+                Gulshan-e-Iqbal, Karachi.
+              </Text>
+              <Text style={styles.bottomNormalText}>
+                Estiamated Delivery Time
+              </Text>
+              <Text
+                style={{
+                  ...styles.bottomBoldText,
+                  color: color.textSecondaryColor,
+                }}>
+                11:59 PM
+              </Text>
+              <Text style={{...styles.bottomNormalText, color: 'black'}}>
+                11 Nov 2021
+              </Text>
+              <Divider style={styles.divider} />
+              <View style={styles.invoiceContainer}>
+                <Text style={styles.invoiceIcon}>Order Invoice</Text>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('orderInvoiceScreen')}>
+                  <Ionicons name="arrow-forward" size={30} color="black" />
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
-        </View>
-        {cancelContainer()}
-      </ScrollView>
+          {cancelContainer()}
+        </ScrollView>
+      </View>
     </>
   );
 }

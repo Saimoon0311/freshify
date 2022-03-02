@@ -46,8 +46,14 @@ function checkOutScreen({navigation}) {
             <View style={styles.textContainer}>
               <Text style={styles.innerText}>Payment Total</Text>
             </View>
-            <View style={{...styles.textContainer, alignItems: 'flex-end'}}>
-              <Text style={styles.innerText}>Rs 150</Text>
+            <View
+              style={{
+                ...styles.textContainer,
+                alignItems: 'flex-end',
+              }}>
+              <Text numberOfLines={1} style={styles.innerText}>
+                Rs 150
+              </Text>
             </View>
           </View>
           <View style={styles.innerContainer}>
@@ -55,7 +61,9 @@ function checkOutScreen({navigation}) {
               <Text style={styles.innerText}>Fresify Delivery</Text>
             </View>
             <View style={{...styles.textContainer, alignItems: 'flex-end'}}>
-              <Text style={styles.innerText}>Rs 150</Text>
+              <Text numberOfLines={1} style={styles.innerText}>
+                Rs 150
+              </Text>
             </View>
           </View>
           <Divider
@@ -69,6 +77,7 @@ function checkOutScreen({navigation}) {
             </View>
             <View style={{...styles.textContainer, alignItems: 'flex-end'}}>
               <Text
+                numberOfLines={1}
                 style={{
                   fontSize: hp('2.3'),
                   fontWeight: 'bold',
@@ -89,7 +98,7 @@ function checkOutScreen({navigation}) {
         <Text style={styles.topTitle}>Payment Information</Text>
         <View
           style={{
-            width: wp('80'),
+            width: wp('93'),
             alignSelf: 'center',
             marginTop: hp('1'),
           }}>
@@ -130,12 +139,7 @@ function checkOutScreen({navigation}) {
     return (
       <>
         <Text style={styles.topTitle}>Additional Information</Text>
-        <View
-          style={{
-            alignSelf: 'center',
-            marginTop: hp('-5'),
-            marginBottom: hp('2'),
-          }}>
+        <View style={styles.informationView}>
           <InputField placeholder="Delivery Instructions" />
         </View>
       </>
@@ -161,8 +165,8 @@ function checkOutScreen({navigation}) {
             <Text
               style={
                 scheduleDay == 1
-                  ? {...styles.topActiveText, fontSize: hp('2')}
-                  : {...styles.topInactiveText, fontSize: hp('2')}
+                  ? {...styles.topActiveText, fontSize: hp('1.6')}
+                  : {...styles.topInactiveText, fontSize: hp('1.6')}
               }>
               Today -{today}
             </Text>
@@ -177,8 +181,8 @@ function checkOutScreen({navigation}) {
             <Text
               style={
                 scheduleDay == 2
-                  ? {...styles.topActiveText, fontSize: hp('2')}
-                  : {...styles.topInactiveText, fontSize: hp('2')}
+                  ? {...styles.topActiveText, fontSize: hp('1.6')}
+                  : {...styles.topInactiveText, fontSize: hp('1.6')}
               }>
               Tomorrow -{tomorrow}
             </Text>

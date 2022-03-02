@@ -51,7 +51,7 @@ export default function cartScreen({navigation}) {
           <View
             style={{
               marginTop: hp('3'),
-              alignItems: 'center',
+              // alignItems: 'center',
             }}>
             <FlatList
               data={cartData}
@@ -68,8 +68,8 @@ export default function cartScreen({navigation}) {
                     <Image
                       source={require('../../images/Group.png')}
                       style={{
-                        width: wp('23'),
-                        height: hp('15'),
+                        width: wp('21'),
+                        height: hp('12'),
                         resizeMode: 'contain',
                       }}
                     />

@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
     height: hp('35'),
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#F1F1F1',
   },
   upperContainerText: {
     fontSize: hp('4'),

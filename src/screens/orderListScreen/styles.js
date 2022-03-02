@@ -7,7 +7,10 @@ import {
 import {color} from '../../Reusedcomponents/color';
 
 export const styles = StyleSheet.create({
-  container: {alignItems: 'center', marginVertical: hp('4')},
+  container: {
+    // alignItems: 'center',
+    marginVertical: hp('4'),
+  },
   quantityContainer: {
     flexDirection: 'row',
     marginLeft: 'auto',
@@ -43,6 +46,7 @@ export const styles = StyleSheet.create({
     shadowRadius: 30,
     elevation: hp('0.8'),
     borderRadius: 10,
+    alignSelf: 'center',
   },
   processButton: {
     width: wp('90'),

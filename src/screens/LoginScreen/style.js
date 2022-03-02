@@ -56,6 +56,7 @@ export const styles = StyleSheet.create({
     marginBottom: hp('2'),
     fontSize: hp('2.5'),
     fontFamily: 'Poppins-SemiBold',
+    color: 'gray',
   },
   codeTextStyle: {
     backgroundColor: 'transparent',

@@ -52,7 +52,9 @@ const OrderDetailsScreen = ({navigation}) => {
             <Text style={styles.totalBillContainer}>Total Bill</Text>
             <View>
               <Text style={styles.totalBillContainer}>RS 150</Text>
-              <Text style={{fontSize: hp('1.5')}}>(Inc. of taxes)</Text>
+              <Text style={{fontSize: hp('1.5'), color: 'gray'}}>
+                (Inc. of taxes)
+              </Text>
             </View>
           </View>
         </View>

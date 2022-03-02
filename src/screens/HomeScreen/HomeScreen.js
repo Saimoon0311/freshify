@@ -76,7 +76,7 @@ export default function HomeScreen({navigation, route}) {
     <NativeBaseProvider theme={theme}>
       <View>
         <View style={styles.header}>
-          <View style={{width: wp('20')}}></View>
+          <View style={{width: wp('20')}} />
           <View style={styles.locationText}>
             <Ionicons
               name="location-outline"
@@ -107,7 +107,7 @@ export default function HomeScreen({navigation, route}) {
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
-          contentContainerStyle={{paddingBottom: hp('25')}}>
+          contentContainerStyle={{paddingBottom: hp('23')}}>
           <View>
             <View style={styles.search}>
               <TouchableOpacity>

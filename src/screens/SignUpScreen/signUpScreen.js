@@ -31,35 +31,15 @@ export default function Signup({navigation}) {
             keyboardType="default"
             placeholder="Full Name*"
           />
-          <Text
-            style={{
-              marginBottom: heightPercentageToDP('2'),
-              // fontWeight: 'bold',
-              fontSize: hp('2.5'),
-              fontFamily: 'Poppins-SemiBold',
-              marginTop: hp('4'),
-            }}>
-            Enter your Phone Number
-          </Text>
+          <Text style={styles.inputTitle}>Enter your Phone Number</Text>
           <PhoneInput
             defaultCode="DM"
             layout="first"
             containerStyle={styles.input}
-            codeTextStyle={{
-              backgroundColor: 'transparent',
-              height: hp('4'),
-              justifyContent: 'center',
-              textAlign: 'center',
-            }}
-            textContainerStyle={{
-              borderRadius: 5,
-              backgroundColor: 'transparent',
-            }}
-            textInputStyle={{
-              backgroundColor: 'transparent',
-              fontSize: hp('2.5'),
-              height: hp('10'),
-            }}
+            placeholderTextColor="red"
+            codeTextStyle={styles.codeTextStyle}
+            textContainerStyle={styles.textContainerStyle}
+            textInputStyle={styles.textInputStyle}
           />
           <InputField
             inputText="Email*"

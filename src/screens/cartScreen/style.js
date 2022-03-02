@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
   priceContainer: {
     flexDirection: 'row',
     marginLeft: wp('2'),
-    marginTop: hp('6'),
+    marginTop: hp('4'),
   },
   TotalMaincontainer: {
     width: wp('90'),
@@ -48,6 +48,7 @@ export const styles = StyleSheet.create({
     shadowRadius: 30,
     elevation: hp('0.8'),
     borderRadius: 10,
+    alignSelf: 'center',
   },
   processButton: {
     width: wp('90'),

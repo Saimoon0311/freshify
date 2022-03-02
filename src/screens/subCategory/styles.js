@@ -28,6 +28,8 @@ export const styles = StyleSheet.create({
     borderColor: color.textPrimaryColor,
     borderWidth: 1,
     marginRight: wp('2'),
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   inactiveButton: {
     width: wp('20'),
@@ -36,6 +38,8 @@ export const styles = StyleSheet.create({
     borderColor: color.borderThirdColor,
     borderWidth: 1,
     marginRight: wp('2'),
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   buttonText: {
     fontFamily: 'Poppins-Regular',
@@ -84,18 +88,21 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: hp('1.7'),
     marginLeft: wp('3'),
+    top: hp('2'),
   },
   mlText: {
     fontFamily: 'Poppins-Regular',
     color: color.textColor,
     fontSize: hp('1.7'),
     marginLeft: wp('3'),
+    top: hp('1.5'),
   },
   insideImage: {
     width: wp('23'),
-    height: hp('15'),
+    height: hp('12'),
     alignSelf: 'center',
     marginBottom: hp('1'),
+    marginTop: hp('0.5'),
   },
   addCartbutton: {
     marginLeft: 'auto',

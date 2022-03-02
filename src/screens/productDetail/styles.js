@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
 
   flatListMainContainer: {
     width: wp('94'),
-    height: hp('35'),
+    height: hp('40'),
     marginBottom: hp('2'),
     // marginRight: wp('4'),
     borderRadius: 15,

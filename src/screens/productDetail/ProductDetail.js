@@ -16,20 +16,26 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import BottomButton from '../../Reusedcomponents/BottomButton/bottomButton';
+import {SliderBox, FastImage} from 'react-native-image-slider-box';
 
+// const flatListProduct = [
+//   {
+//     id: 1,
+//     image: require('../../images/PureMilk.png'),
+//   },
+//   {
+//     id: 2,
+//     image: require('../../images/Product.jpg'),
+//   },
+//   {
+//     id: 3,
+//     image: require('../../images/PureMilk.png'),
+//   },
+// ];
 const flatListProduct = [
-  {
-    id: 1,
-    image: require('../../images/PureMilk.png'),
-  },
-  {
-    id: 2,
-    image: require('../../images/Product.jpg'),
-  },
-  {
-    id: 3,
-    image: require('../../images/PureMilk.png'),
-  },
+  require('../../images/PureMilk.png'),
+  require('../../images/Product.jpg'),
+  require('../../images/PureMilk.png'),
 ];
 const flatGramButtonLists = [
   {
@@ -98,7 +104,7 @@ export default function ProductDetail({navigation}) {
             );
           }}
         />
-        <FlatList
+        {/* <FlatList
           data={flatListProduct}
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -115,6 +121,24 @@ export default function ProductDetail({navigation}) {
                 <Image source={item?.image} resizeMode="cover" />
               </View>
             );
+          }}
+        /> */}
+        <SliderBox
+          ImageComponent={FastImage}
+          images={flatListProduct}
+          style={styles.flatListMainContainer}
+          dotColor={color.textPrimaryColor}
+          inactiveDotColor="#90A4AE"
+          resizeMode={'cover'}
+          autoplay
+          circleLoop
+          dotStyle={{
+            width: 10,
+            height: 10,
+            borderRadius: 5,
+            marginHorizontal: 0,
+            padding: 0,
+            // marginBottom: -60,
           }}
         />
         <View>
