@@ -16,31 +16,11 @@ import {color} from '../color';
 import {styles} from './style';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {ActivityIndicator} from 'react-native-paper';
+import {IMAGE_BASED_URL} from '../../Config/Url';
 export const HomeScreenAllProductData = props => {
-  const [loading, setLoading] = useState(false);
-  const [allProduct, setAllProduct] = useState([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    },
-    {
-      id: 5,
-    },
-    {
-      id: 6,
-    },
-  ]);
   return (
     <View>
-      {loading ? (
+      {props?.isloading ? (
         <SkeletonPlaceholder>
           <View style={{flexDirection: 'row'}}>
             <View
@@ -68,7 +48,7 @@ export const HomeScreenAllProductData = props => {
         </SkeletonPlaceholder>
       ) : (
         <FlatList
-          data={allProduct}
+          data={props?.allProduct}
           keyExtractor={(item, index) => index.toString()}
           horizontal
           contentContainerStyle={{paddingRight: wp('3')}}
@@ -77,12 +57,12 @@ export const HomeScreenAllProductData = props => {
             return (
               <TouchableOpacity
                 style={styles.mainContainer}
-                onPress={() => props.ProductDetail()}>
+                onPress={() => props?.navigation1(item)}>
                 <View>
-                  <Text style={styles.topText}>Fresh Milk</Text>
-                  <Text style={styles.priceText}>Price 12585</Text>
+                  <Text style={styles.topText}>{item?.name}</Text>
+                  <Text style={styles.priceText}>Price {item?.price}</Text>
                   <Image
-                    source={require('../../images/1.png')}
+                    source={{uri: IMAGE_BASED_URL + item.image.url}}
                     style={styles.insideImage}
                   />
                   <TouchableOpacity style={styles.addCartbutton}>
