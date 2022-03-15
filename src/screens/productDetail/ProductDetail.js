@@ -32,11 +32,6 @@ import {SliderBox, FastImage} from 'react-native-image-slider-box';
 //     image: require('../../images/PureMilk.png'),
 //   },
 // ];
-const flatListProduct = [
-  require('../../images/PureMilk.png'),
-  require('../../images/Product.jpg'),
-  require('../../images/PureMilk.png'),
-];
 const flatGramButtonLists = [
   {
     id: 1,
@@ -52,12 +47,16 @@ const flatGramButtonLists = [
   },
 ];
 
-export default function ProductDetail({navigation}) {
+export default function ProductDetail({navigation, route}) {
+  const item = route.params;
   const [active, setActive] = useState(1);
 
   const navigate = () => {
     navigation.goBack();
   };
+
+  const flatListProduct = [item.image_url];
+  console.log(63, item.image_url);
   return (
     <View style={styles.mainContainer}>
       <BackHeader
@@ -143,7 +142,7 @@ export default function ProductDetail({navigation}) {
         />
         <View>
           <Text style={styles.textMainContainer}>
-            Fresify Pure Milk, 300gm Soft Pack
+            {item.name}, 300gm Soft Pack
           </Text>
           <View
             style={{
@@ -159,7 +158,7 @@ export default function ProductDetail({navigation}) {
               }}>
               Rs{' '}
             </Text>
-            <Text style={{...styles.textMainContainer}}>605</Text>
+            <Text style={{...styles.textMainContainer}}>{item.price}</Text>
           </View>
           <View>
             <Text style={styles.textDescription}>Description</Text>
@@ -170,16 +169,7 @@ export default function ProductDetail({navigation}) {
                   color: 'gray',
                   textAlign: 'justify',
                 }}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.
+                {item.description}
               </Text>
             </View>
           </View>

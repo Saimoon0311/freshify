@@ -25,8 +25,8 @@ export const ApiGet = async url => {
     .then(json => {
       return {success: true, data: json};
     })
-    .catch(error => {
-      return {success: false, data: error};
+    .catch(err => {
+      return {success: false, data: err};
     });
 };
 
@@ -44,8 +44,8 @@ export const ApiPut = async (url, body) => {
     .then(json => {
       return {success: true, data: json};
     })
-    .catch(error => {
-      return {success: false, data: error};
+    .catch(err => {
+      return {success: false, data: err};
     });
 };
 

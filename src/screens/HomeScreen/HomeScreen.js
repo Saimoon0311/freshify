@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 import {
   View,
   Text,
@@ -24,9 +24,41 @@ import {HomeScreenCategoryData} from '../../Reusedcomponents/homeScreenCategoryD
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {FAB} from 'react-native-paper';
 import {Fab, Icon, NativeBaseProvider, Box, extendTheme} from 'native-base';
+import {ApiGet} from '../../Config/helperFunction';
+import {FrontProductUrl} from '../../Config/Url';
+import {showMessage} from 'react-native-flash-message';
 
 export default function HomeScreen({navigation, route}) {
-  const ProductDetail = item => {
+  const [allProduct, setAllProduct] = useState();
+  const [isloading, setIsLoading] = useState(true);
+
+  const getFrontProduct = () => {
+    ApiGet(FrontProductUrl).then(res => {
+      if (res.success == true) {
+        setAllProduct(res.data.products);
+        setIsLoading(false);
+      } else if (res.success == false) {
+        setIsLoading(true);
+        showMessage({
+          type: 'danger',
+          icon: 'danger',
+          message: 'Warning',
+          description: 'Some thing is wrong',
+          backgroundColor: color.textPrimaryColor,
+        });
+      } else {
+        setIsLoading(true);
+        showMessage({
+          type: 'danger',
+          icon: 'danger',
+          message: 'Warning',
+          description: 'Success not found',
+          backgroundColor: color.textPrimaryColor,
+        });
+      }
+    });
+  };
+  const navigation1 = item => {
     navigation.navigate('ProductDetail', item);
   };
   const theme = extendTheme({
@@ -62,6 +94,9 @@ export default function HomeScreen({navigation, route}) {
   const wait = timeout => {
     return new Promise(resolve => setTimeout(resolve, timeout));
   };
+  useEffect(() => {
+    getFrontProduct();
+  }, []);
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setLoading] = useState(false);
   const onRefresh = useCallback(() => {
@@ -133,9 +168,17 @@ export default function HomeScreen({navigation, route}) {
                   })}
               </ScrollView>
               <HomeBrandAllText name="Top Selling" />
-              <HomeScreenAllProductData ProductDetail={ProductDetail} />
+              <HomeScreenAllProductData
+                navigation1={navigation1}
+                allProduct={allProduct}
+                isloading={isloading}
+              />
               <HomeBrandAllText name="Popular Deals" />
-              <HomeScreenAllProductData ProductDetail={ProductDetail} />
+              <HomeScreenAllProductData
+                navigation1={navigation1}
+                allProduct={allProduct}
+                isloading={isloading}
+              />
               <View style={{flexDirection: 'row'}}>
                 <HomeBrandAllText name="Categories" />
                 <TouchableOpacity

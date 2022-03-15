@@ -1,3 +1,4 @@
+// export const BASE_URL='https://api.thefreshify.com/api';
 export const API_BASED_URL = 'https://api.thefreshify.com/api/';
 export const IMAGE_BASED_URL = 'http://api.thefreshify.com/storage/';
 
