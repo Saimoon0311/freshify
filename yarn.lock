@@ -2441,11 +2441,6 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/geojson@^7946.0.7":
-  "integrity" "sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA=="
-  "resolved" "https://registry.npmjs.org/@types/geojson/-/geojson-7946.0.8.tgz"
-  "version" "7946.0.8"
-
 "@types/graceful-fs@^4.1.2":
   "integrity" "sha512-anKkLmZZ+xm4p8JWBf4hElkM4XR+EZeA2M9BAkkTldmcyDY4mbdIJnRghDJH3Ov5ooY7/UAoENtmdMSkaAd7Cw=="
   "resolved" "https://registry.npmjs.org/@types/graceful-fs/-/graceful-fs-4.1.5.tgz"
@@ -4509,6 +4504,11 @@
   "integrity" "sha1-FQStJSMVjKpA20onh8sBQRmU6k8="
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
+
+"fsevents@^2.1.2", "fsevents@^2.3.2":
+  "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
+  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
+  "version" "2.3.2"
 
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
@@ -7373,13 +7373,6 @@
   "resolved" "https://registry.npmjs.org/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz"
   "version" "2.5.6"
 
-"react-native-maps@^0.29.4":
-  "integrity" "sha512-Td2KE8+KODcHOxfB1GBNnzFo4/89rlLiC7yTvqQZh0tGVrEzIcgSleUZRrjtq/WvSWSR4rql4AS+0VsBgDkYrw=="
-  "resolved" "https://registry.npmjs.org/react-native-maps/-/react-native-maps-0.29.4.tgz"
-  "version" "0.29.4"
-  dependencies:
-    "@types/geojson" "^7946.0.7"
-
 "react-native-modal-datetime-picker@^13.0.1":
   "integrity" "sha512-uPgonEKa/nIotmboEEriTCVfWLgrtuR+fybqSw6XcPc/+ve7Q6p55cbUGKtne3+sFcelk+QHcb0aPu56+VbsJA=="
   "resolved" "https://registry.npmjs.org/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-13.0.1.tgz"
@@ -7501,7 +7494,7 @@
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
 
-"react-native-web@*", "react-native-web@>= 0.11", "react-native-web@0.9.x":
+"react-native-web@*", "react-native-web@0.9.x":
   "integrity" "sha512-P1nCvBVFrv3J5BXu39iS4A3fR7m0vtGaCAy4MigAtZpakIuara/98h516fDQajPqoVy2T4cQgYZUQAr+FBnppQ=="
   "resolved" "https://registry.npmjs.org/react-native-web/-/react-native-web-0.9.13.tgz"
   "version" "0.9.13"
@@ -7517,7 +7510,7 @@
     "prop-types" "^15.6.0"
     "react-timer-mixin" "^0.13.4"
 
-"react-native@*", "react-native@^0.0.0-0 || ^0.60.6 || ^0.61.5 || ^0.62.2 || ^0.63.2 || ^0.64.0 || ^0.65.0 || ^0.66.0 || 1000.0.0", "react-native@^0.66.3", "react-native@>= 0.51", "react-native@>=0.35", "react-native@>=0.42.0", "react-native@>=0.46", "react-native@>=0.48.4", "react-native@>=0.50.0", "react-native@>=0.50.1", "react-native@>=0.55", "react-native@>=0.57", "react-native@>=0.57.0", "react-native@>=0.59", "react-native@>=0.60.0", "react-native@>=0.65.0":
+"react-native@*", "react-native@^0.0.0-0 || ^0.60.6 || ^0.61.5 || ^0.62.2 || ^0.63.2 || ^0.64.0 || ^0.65.0 || ^0.66.0 || 1000.0.0", "react-native@^0.66.3", "react-native@>=0.35", "react-native@>=0.42.0", "react-native@>=0.46", "react-native@>=0.48.4", "react-native@>=0.50.0", "react-native@>=0.50.1", "react-native@>=0.55", "react-native@>=0.57", "react-native@>=0.57.0", "react-native@>=0.59", "react-native@>=0.60.0", "react-native@>=0.65.0":
   "integrity" "sha512-B/dQpuvta9YvF5MihDWefoGlTvxzUHK5X5RjdrXHAu/ihTehJXxEA+m6z/tufp1ZUMDjU+tMZK6gnehzCuYfzw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.66.3.tgz"
   "version" "0.66.3"
@@ -7594,7 +7587,7 @@
   "resolved" "https://registry.npmjs.org/react-timer-mixin/-/react-timer-mixin-0.13.4.tgz"
   "version" "0.13.4"
 
-"react@*", "react@^16.0.0 || ^17.0.0", "react@^16.13.1", "react@^16.14.0 || ^17.0.0", "react@^16.3.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0-rc.1", "react@^16.8.3 || ^17", "react@^16.8.6 || ^17.0.0", "react@^17.0.0", "react@>= 16.0 || < 18.0", "react@>=0.14.8", "react@>=15.0.0", "react@>=16.0", "react@>=16.3.0", "react@>=16.5.1", "react@>=16.8", "react@16 || 17", "react@16.x.x", "react@17.0.2":
+"react@*", "react@^16.0.0 || ^17.0.0", "react@^16.13.1", "react@^16.14.0 || ^17.0.0", "react@^16.3.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0-rc.1", "react@^16.8.3 || ^17", "react@^16.8.6 || ^17.0.0", "react@^17.0.0", "react@>=0.14.8", "react@>=15.0.0", "react@>=16.0", "react@>=16.3.0", "react@>=16.5.1", "react@>=16.8", "react@16 || 17", "react@16.x.x", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
