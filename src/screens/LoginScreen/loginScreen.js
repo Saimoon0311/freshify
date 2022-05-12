@@ -54,6 +54,7 @@ export default function loginScreen({navigation}) {
               backgroundColor: 'transparent',
               borderColor: '#434345',
               borderWidth: 1,
+              marginTop: hp('3'),
             }}
             onPress={() => navigation.navigate('SignupScreen')}>
             <Text style={{...styles.loginButtonText, color: '#434345'}}>

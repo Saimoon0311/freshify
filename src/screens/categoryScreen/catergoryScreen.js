@@ -96,7 +96,7 @@ export default function catergoryScreen({navigation}) {
         ) : (
           <FlatList
             data={catergoryName}
-            keyExtractor={item => item.key}
+            keyExtractor={item => item.id}
             contentContainerStyle={{paddingBottom: hp('15')}}
             showsVerticalScrollIndicator={false}
             renderItem={({item}) => {
@@ -110,19 +110,12 @@ export default function catergoryScreen({navigation}) {
                           onPress={() => navigation.navigate('SubCategory')}
                           style={styles.touchContainer}>
                           <Image
-                            style={{
-                              width: wp('28'),
-                              height: hp('7'),
-                              marginTop: hp('1'),
-                              borderRadius: 20,
-                            }}
-                            // resizeMode="cover"
+                            style={styles.imageStyle}
                             source={require('../../images/milkPack.png')}
                           />
                           <Text
                             style={{
                               paddingTop: hp('0'),
-                              // paddingBottom: hp('1'),
                               color: '#6E6D6D',
                               fontFamily: 'Poppins-Regular',
                             }}>

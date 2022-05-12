@@ -22,17 +22,14 @@ export default BottomButton;
 const styles = StyleSheet.create({
   cartButton: {
     height: hp('7'),
-    // width: wp(),
     width: wp('85'),
-    borderRadius: 5,
+    borderRadius: 10,
     backgroundColor: color.textPrimaryColor,
-    // position: 'absolute',
-    // bottom: Platform?.OS == 'ios' ? 110 : 20,
     alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   textCart: {
-    flex: 1,
-    flexDirection: 'row',
     textAlign: 'center',
     textAlignVertical: 'center',
     color: color.white,

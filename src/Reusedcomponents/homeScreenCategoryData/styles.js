@@ -16,10 +16,10 @@ export const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 5,
+      height: 2,
     },
     shadowOpacity: 0.2,
-    shadowRadius: 10,
+    shadowRadius: 2,
     elevation: hp('0.5'),
     backgroundColor: 'white',
     alignSelf: 'flex-start',

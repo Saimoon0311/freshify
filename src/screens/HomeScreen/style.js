@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions, StyleSheet} from 'react-native';
+import {Dimensions, Platform, StyleSheet} from 'react-native';
 import {color} from '../../Reusedcomponents/color';
 import {
   widthPercentageToDP as wp,
@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     width: wp('100'),
     borderBottomWidth: 0.5,
     paddingBottom: hp('1'),
+    marginTop: Platform.OS == 'ios' ? hp('3') : hp('0'),
   },
   locationText: {
     width: wp('60'),
@@ -19,7 +20,7 @@ export const styles = StyleSheet.create({
     marginTop: hp('2'),
   },
   headerText: {
-    fontSize: hp('2'),
+    fontSize: hp('1.8'),
     color: 'black',
   },
   search: {
@@ -53,7 +54,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     textAlignVertical: 'center',
     alignContent: 'center',
-    paddingTop: hp('1'),
+    paddingTop: Platform.OS == 'ios' ? hp('0') : hp('1'),
     // top: hp('1'),
     // marginTop: hp('1'),
   },
@@ -73,5 +74,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     fontSize: hp('0.5'),
     color: 'red',
+  },
+  headerArrowStyle: {
+    width: wp('20'),
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: hp('5'),
+    alignSelf: 'center',
   },
 });

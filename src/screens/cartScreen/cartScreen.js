@@ -51,11 +51,10 @@ export default function cartScreen({navigation}) {
           <View
             style={{
               marginTop: hp('3'),
-              // alignItems: 'center',
             }}>
             <FlatList
               data={cartData}
-              keyExtractor={item => item.key}
+              keyExtractor={item => item.id}
               renderItem={({item}) => {
                 return (
                   <TouchableOpacity
@@ -67,26 +66,11 @@ export default function cartScreen({navigation}) {
                     }}>
                     <Image
                       source={require('../../images/Group.png')}
-                      style={{
-                        width: wp('21'),
-                        height: hp('12'),
-                        resizeMode: 'contain',
-                      }}
+                      style={styles.imageStyle}
                     />
                     <View>
-                      <View
-                        style={{
-                          flexDirection: 'row',
-                          width: wp('63'),
-                        }}>
-                        <Text
-                          style={{
-                            fontSize: hp('2.3'),
-                            color: 'black',
-                            marginLeft: wp('2'),
-                          }}>
-                          Olpers Milk 0.25 L
-                        </Text>
+                      <View style={styles.innerMainView}>
+                        <Text style={styles.itemName}>Olpers Milk 0.25 L</Text>
                         <TouchableOpacity
                           style={{
                             marginLeft: 'auto',
@@ -126,22 +110,13 @@ export default function cartScreen({navigation}) {
               }}
             />
             <View style={styles.TotalMaincontainer}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  margin: wp('5'),
-                }}>
+              <View style={styles.innerTotalView}>
                 <Text style={styles.totalText}>Total</Text>
                 <Text style={{...styles.totalText, marginLeft: 'auto'}}>
                   Rs 125
                 </Text>
               </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  margin: wp('5'),
-                  marginTop: wp('-6'),
-                }}>
+              <View style={{...styles.innerTotalView, marginTop: wp('-6')}}>
                 <Text style={styles.bottomTotalText}>(1 Items)</Text>
                 <Text style={{...styles.bottomTotalText, marginLeft: 'auto'}}>
                   (Inc of taxes)

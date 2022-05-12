@@ -63,6 +63,7 @@ export const HomeScreenAllProductData = props => {
                   <Text style={styles.priceText}>Price {item?.price}</Text>
                   <Image
                     source={{uri: IMAGE_BASED_URL + item.image.url}}
+                    // resizeMode="contain"
                     style={styles.insideImage}
                   />
                   <TouchableOpacity style={styles.addCartbutton}>

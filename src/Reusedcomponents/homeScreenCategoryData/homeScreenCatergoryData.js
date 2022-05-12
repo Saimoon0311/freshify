@@ -130,7 +130,7 @@ export const HomeScreenCategoryData = () => {
               <Text
                 style={{
                   color: 'black',
-                  fontSize: hp('1.7'),
+                  fontSize: hp('1.5'),
                   textAlign: 'center',
                 }}>
                 Fresh Meat

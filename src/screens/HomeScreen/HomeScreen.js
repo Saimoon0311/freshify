@@ -34,7 +34,7 @@ export default function HomeScreen({navigation, route}) {
 
   const getFrontProduct = () => {
     ApiGet(FrontProductUrl).then(res => {
-      if (res.success == true) {
+      if (res.data.success == true) {
         setAllProduct(res.data.products);
         setIsLoading(false);
       } else if (res.success == false) {
@@ -100,9 +100,7 @@ export default function HomeScreen({navigation, route}) {
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setLoading] = useState(false);
   const onRefresh = useCallback(() => {
-    // setRefreshing(true);
     setLoading(true);
-    // setAloading(true);
     wait(2000).then(() => {
       setLoading(false);
     });
@@ -124,15 +122,8 @@ export default function HomeScreen({navigation, route}) {
               Gulshan-e-Iqbal, Karachi, Sindh
             </Text>
           </View>
-          <View
-            style={{
-              width: wp('20'),
-              justifyContent: 'center',
-            }}>
-            <TouchableOpacity
-              style={{
-                alignSelf: 'center',
-              }}>
+          <View style={styles.headerArrowStyle}>
+            <TouchableOpacity>
               <Ionicons name="arrow-down" color="black" size={30} />
             </TouchableOpacity>
           </View>
@@ -180,7 +171,9 @@ export default function HomeScreen({navigation, route}) {
                 isloading={isloading}
               />
               <View style={{flexDirection: 'row'}}>
-                <HomeBrandAllText name="Categories" />
+                <View style={{marginTop: hp('1.3')}}>
+                  <HomeBrandAllText name="Categories" />
+                </View>
                 <TouchableOpacity
                   style={styles.viewmore}
                   onPress={() => navigation.navigate('catergoryScreen')}>
@@ -192,15 +185,7 @@ export default function HomeScreen({navigation, route}) {
           </View>
         </ScrollView>
       </View>
-      {/* <FAB
-        style={styles.fab}
-        // small
-        // icon="plus"
-        label="Track Your Order"
-        onPress={() => console.log('Pressed')}
-      /> */}
       <Fab
-        // style={styles.fab}
         renderInPortal={false}
         shadow={2}
         style={{backgroundColor: color.textPrimaryColor}}

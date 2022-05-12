@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     color: color.textSecondaryColor,
     textAlign: 'center',
     marginTop: hp('2'),
-    fontSize: hp('2.5'),
+    fontSize: hp('2.3'),
   },
   topButtonView: {
     flexDirection: 'row',
@@ -54,7 +54,7 @@ export const styles = StyleSheet.create({
     width: wp('45'),
     marginBottom: hp('1'),
   },
-  innerText: {color: '#434345', fontSize: hp('2.3')},
+  innerText: {color: '#434345', fontSize: hp('2')},
   totalSubTitle: {
     alignSelf: 'flex-end',
     fontSize: hp('1.5'),

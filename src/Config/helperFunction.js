@@ -12,10 +12,10 @@ export const ApiPost = async (url, body) => {
   })
     .then(res => res.json())
     .then(json => {
-      return {success: true, data: json};
+      return json;
     })
-    .catch(error => {
-      return {success: false, data: error};
+    .catch(err => {
+      return err;
     });
 };
 
@@ -23,10 +23,10 @@ export const ApiGet = async url => {
   return fetch(url)
     .then(res => res.json())
     .then(json => {
-      return {success: true, data: json};
+      return json;
     })
     .catch(err => {
-      return {success: false, data: err};
+      return err;
     });
 };
 
@@ -42,10 +42,10 @@ export const ApiPut = async (url, body) => {
   })
     .then(res => res.json())
     .then(json => {
-      return {success: true, data: json};
+      return json;
     })
     .catch(err => {
-      return {success: false, data: err};
+      return err;
     });
 };
 
@@ -56,9 +56,9 @@ export const ApiDelete = async url => {
   })
     .then(res => res.json())
     .then(json => {
-      return {success: true, data: json};
+      return json;
     })
-    .catch(error => {
-      return {success: false, data: error};
+    .catch(err => {
+      return err;
     });
 };

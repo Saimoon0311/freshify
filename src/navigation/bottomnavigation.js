@@ -39,8 +39,7 @@ function MybottomTabs() {
         tabBarInactiveBackgroundColor: 'white',
         tabBarStyle: {
           height: hp(Platform?.OS == 'ios' ? '10%' : '8%'),
-          backgroundColor: '#FFDDC9',
-          // borderBottomRightRadius: 20,
+          backgroundColor: 'white',
         },
       })}>
       <Tab.Screen

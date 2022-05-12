@@ -107,9 +107,12 @@ export default function SubCategory({navigation, props}) {
                 onPress={() => navigation.navigate('ProductDetail')}>
                 <Text style={styles.topText}>Fresh Milk</Text>
                 <Image
-                  source={require('../../images/1.png')}
+                  // source={require('../../images/1.png')}
+                  source={{
+                    uri: 'http://api.thefreshify.com/storage/products/kptqzoxPeWfFQdeOCl5r0ACOD3i9DSh5WGw3OBMb.jpg',
+                  }}
                   style={styles.insideImage}
-                  resizeMode="cover"
+                  // resizeMode="cover"
                 />
                 <Text style={styles.priceText}>Rs50 Per/L</Text>
                 <View style={{flexDirection: 'row'}}>

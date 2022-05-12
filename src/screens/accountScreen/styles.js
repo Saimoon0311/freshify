@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   helloText: {
     marginTop: hp('3'),
     marginLeft: wp('5'),
-    fontSize: hp('4'),
+    fontSize: hp('3'),
     color: 'black',
   },
   username: {
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     color: color.textPrimaryColor,
     // marginTop: hp(''),
     marginLeft: wp('5'),
-    fontSize: hp('5'),
+    fontSize: hp('3'),
   },
   touchContainer: {
     flexDirection: 'row',
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
     marginTop: hp('2'),
   },
   containerText: {
-    fontSize: hp('2.3'),
+    fontSize: hp('2'),
     fontFamily: 'Poppins-SemiBold',
     color: 'gray',
   },

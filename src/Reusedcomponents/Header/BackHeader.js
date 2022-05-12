@@ -23,6 +23,7 @@ export const BackHeader = props => {
           height: hp(Platform?.OS == 'ios' ? '10' : '9'),
           alignItems: 'center',
           justifyContent: 'center',
+          paddingTop: Platform.OS == 'ios' ? hp('3') : hp('0'),
         }}>
         <TouchableOpacity onPress={() => props?.navigate()}>
           <Ionicons
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: hp('1'),
+    paddingTop: Platform.OS == 'ios' ? hp('3') : hp('0'),
     // marginRight: wp('10'),
   },
 });

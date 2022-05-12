@@ -39,13 +39,12 @@ export const styles = StyleSheet.create({
     width: wp('90'),
     backgroundColor: 'white',
     shadowColor: '#000',
-    // shadowColor: 'red',
     shadowOffset: {
       width: 0,
-      height: 5,
+      height: 2,
     },
     shadowOpacity: 0.2,
-    shadowRadius: 30,
+    shadowRadius: 2,
     elevation: hp('0.8'),
     borderRadius: 10,
     alignSelf: 'center',
@@ -61,7 +60,7 @@ export const styles = StyleSheet.create({
   },
   processText: {
     color: 'white',
-    fontSize: hp('2.5'),
+    fontSize: hp('2'),
     fontFamily: 'Poppins-SemiBold',
   },
   totalText: {
@@ -73,5 +72,24 @@ export const styles = StyleSheet.create({
     color: 'gray',
     fontFamily: 'Poppins-SemiBold',
     fontSize: hp('1.5'),
+  },
+  imageStyle: {
+    width: wp('21'),
+    height: hp('12'),
+    resizeMode: 'contain',
+  },
+  itemName: {
+    fontSize: hp('2'),
+    color: 'black',
+    marginLeft: wp('2'),
+  },
+  innerMainView: {
+    flexDirection: 'row',
+    width: wp('63'),
+    marginTop: hp('1'),
+  },
+  innerTotalView: {
+    flexDirection: 'row',
+    margin: wp('5'),
   },
 });

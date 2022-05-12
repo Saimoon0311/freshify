@@ -137,7 +137,6 @@ export default function ProductDetail({navigation, route}) {
             borderRadius: 5,
             marginHorizontal: 0,
             padding: 0,
-            // marginBottom: -60,
           }}
         />
         <View>
@@ -148,11 +147,10 @@ export default function ProductDetail({navigation, route}) {
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              // backgroundColor: 'yellow',
             }}>
             <Text
               style={{
-                fontSize: hp('3'),
+                fontSize: hp('2.5'),
                 fontFamily: 'Poppins-SemiBold',
                 color: '#434345',
               }}>
@@ -163,14 +161,7 @@ export default function ProductDetail({navigation, route}) {
           <View>
             <Text style={styles.textDescription}>Description</Text>
             <View style={styles.textDescriptionContainer}>
-              <Text
-                style={{
-                  fontSize: hp('2.3'),
-                  color: 'gray',
-                  textAlign: 'justify',
-                }}>
-                {item.description}
-              </Text>
+              <Text style={styles.description}>{item.description}</Text>
             </View>
           </View>
         </View>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -28,13 +28,15 @@ export const styles = StyleSheet.create({
     //     paddingLeft: wp('3'),
     borderRadius: 5,
     backgroundColor: 'transparent',
-    height: hp('7'),
+    height: hp('6'),
   },
   codeTextStyle: {
     backgroundColor: 'transparent',
     height: hp('4'),
     justifyContent: 'center',
     textAlign: 'center',
+    textAlignVertical: 'center',
+    paddingTop: Platform.OS == 'ios' ? hp('0.8') : hp('0'),
   },
   textContainerStyle: {
     borderRadius: 5,
@@ -60,7 +62,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center',
     color: 'white',
-    width: wp('60'),
+    width: Platform.OS == 'ios' ? wp('60') : wp('50'),
     height: hp('6'),
     alignSelf: 'center',
     marginTop: hp('5'),
@@ -69,9 +71,14 @@ export const styles = StyleSheet.create({
   },
   inputTitle: {
     marginBottom: hp('2'),
-    fontSize: hp('2.5'),
+    fontSize: hp('2'),
     fontFamily: 'Poppins-SemiBold',
     color: 'gray',
     marginTop: hp('2'),
+  },
+  loginSignUpText: {
+    color: '#434345',
+    fontSize: Platform.OS == 'ios' ? hp('2.5') : hp('2.3'),
+    fontFamily: 'Poppins-Regular',
   },
 });

@@ -71,7 +71,7 @@ function checkOutScreen({navigation}) {
           />
           <View style={styles.innerContainer}>
             <View style={styles.textContainer}>
-              <Text style={{color: 'black', fontSize: hp('2.3')}}>
+              <Text style={{color: 'black', fontSize: hp('2')}}>
                 Payment Total
               </Text>
             </View>
@@ -79,7 +79,7 @@ function checkOutScreen({navigation}) {
               <Text
                 numberOfLines={1}
                 style={{
-                  fontSize: hp('2.3'),
+                  fontSize: hp('2'),
                   fontWeight: 'bold',
                   color: 'black',
                 }}>

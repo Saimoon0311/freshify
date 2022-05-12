@@ -64,12 +64,7 @@ export default function Signup({navigation}) {
           <TouchableOpacity
             style={styles.loginButton}
             onPress={() => navigation.navigate('OtpScreen')}>
-            <Text
-              style={{
-                color: 'white',
-                fontSize: hp('2.8'),
-                fontFamily: 'Poppins-Regular',
-              }}>
+            <Text style={{...styles.loginSignUpText, color: 'white'}}>
               Sign Up
             </Text>
           </TouchableOpacity>
@@ -81,14 +76,7 @@ export default function Signup({navigation}) {
               borderWidth: 1,
             }}
             onPress={() => navigation.navigate('LoginScreen')}>
-            <Text
-              style={{
-                color: '#434345',
-                fontSize: hp('2.8'),
-                fontFamily: 'Poppins-Regular',
-              }}>
-              Login
-            </Text>
+            <Text style={styles.loginSignUpText}>Login</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

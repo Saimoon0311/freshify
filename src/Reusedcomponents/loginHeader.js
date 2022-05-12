@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, Platform} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -12,10 +12,9 @@ export const LoginHeader = () => {
         alignItems: 'center',
         borderBottomWidth: 0.3,
         borderBottomColor: 'gray',
-        paddingBottom: hp('1'),
         justifyContent: 'center',
+        paddingTop: Platform.OS == 'ios' ? hp('4') : hp('0'),
         alignContent: 'center',
-        paddingTop: hp('1'),
       }}>
       <Image
         style={{
