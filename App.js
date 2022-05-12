@@ -13,6 +13,9 @@ import {
 import FlashMessage from 'react-native-flash-message';
 import {NavigationContainer} from '@react-navigation/native';
 import StackNavigatior from './src/navigation/navigation';
+import {Provider, useDispatch} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import {persistor, store} from './src/Redux/Reducer';
 
 function App({navigation}) {
   const [isVisible, setIsVisible] = useState(true);
@@ -50,14 +53,18 @@ function App({navigation}) {
   );
   return (
     <>
-      {isVisible === true ? (
-        Platform?.OS == 'android' && Splash_Screen
-      ) : (
-        <NavigationContainer>
-          <StackNavigatior />
-        </NavigationContainer>
-      )}
-      <FlashMessage position="top" />
+      <Provider store={store}>
+        <PersistGate persistor={persistor} loading={null}>
+          {isVisible === true ? (
+            Platform?.OS == 'android' && Splash_Screen
+          ) : (
+            <NavigationContainer>
+              <StackNavigatior />
+            </NavigationContainer>
+          )}
+          <FlashMessage position="top" />
+        </PersistGate>
+      </Provider>
     </>
   );
 }
@@ -79,6 +86,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: '100%',
+    backgroundColor: 'white',
   },
 
   SplashScreen_ChildView: {

@@ -26,34 +26,31 @@ export default function Signup({navigation}) {
         contentContainerStyle={{paddingBottom: hp('10')}}>
         <Text style={styles.title}>Sign Up</Text>
         <View style={styles.body}>
-          <InputField inputText="Full Name*" placeholder="Full Name*" />
-          <Text
-            style={{
-              marginBottom: heightPercentageToDP('2'),
-              // fontWeight: 'bold',
-              fontSize: hp('2.5'),
-              fontFamily: 'Poppins-SemiBold',
-              marginTop: hp('4'),
-            }}>
-            Enter your Phone Number
-          </Text>
+          <InputField
+            inputText="Full Name*"
+            keyboardType="default"
+            placeholder="Full Name*"
+          />
+          <Text style={styles.inputTitle}>Enter your Phone Number</Text>
           <PhoneInput
             defaultCode="DM"
             layout="first"
             containerStyle={styles.input}
-            codeTextStyle={{backgroundColor: 'transparent'}}
-            textContainerStyle={{
-              borderRadius: 5,
-              backgroundColor: 'transparent',
-            }}
-            textInputStyle={{
-              backgroundColor: 'transparent',
-              fontSize: hp('2.5'),
-              height: hp('10'),
-            }}
+            placeholderTextColor="red"
+            codeTextStyle={styles.codeTextStyle}
+            textContainerStyle={styles.textContainerStyle}
+            textInputStyle={styles.textInputStyle}
           />
-          <InputField inputText="Email*" placeholder="Email*" />
-          <InputField inputText="Password*" placeholder="Password*" />
+          <InputField
+            inputText="Email*"
+            keyboardType="email-address"
+            placeholder="Email*"
+          />
+          <InputField
+            inputText="Password*"
+            keyboardType="visible-password"
+            placeholder="Password*"
+          />
           <TouchableOpacity style={styles.forgetText}>
             <Text style={{color: '#0088FF', fontFamily: 'Poppins-Regular'}}>
               Forget Password?
@@ -64,13 +61,10 @@ export default function Signup({navigation}) {
             By clicking "Sign Up" you are agreeing to The Freshify's Terms &
             Conditions
           </Text>
-          <TouchableOpacity style={styles.loginButton}>
-            <Text
-              style={{
-                color: 'white',
-                fontSize: hp('2.8'),
-                fontFamily: 'Poppins-Regular',
-              }}>
+          <TouchableOpacity
+            style={styles.loginButton}
+            onPress={() => navigation.navigate('OtpScreen')}>
+            <Text style={{...styles.loginSignUpText, color: 'white'}}>
               Sign Up
             </Text>
           </TouchableOpacity>
@@ -82,14 +76,7 @@ export default function Signup({navigation}) {
               borderWidth: 1,
             }}
             onPress={() => navigation.navigate('LoginScreen')}>
-            <Text
-              style={{
-                color: '#434345',
-                fontSize: hp('2.8'),
-                fontFamily: 'Poppins-Regular',
-              }}>
-              L:ogin
-            </Text>
+            <Text style={styles.loginSignUpText}>Login</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

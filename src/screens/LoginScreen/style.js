@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -9,7 +9,7 @@ import {color} from '../../Reusedcomponents/color';
 export const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
-    fontSize: hp('5'),
+    fontSize: hp('3'),
     // fontWeight: 'bold',
     color: color.textPrimaryColor,
     marginTop: hp('5'),
@@ -33,11 +33,13 @@ export const styles = StyleSheet.create({
     //     paddingLeft: wp('3'),
     borderRadius: 5,
     backgroundColor: 'transparent',
-    height: hp('9'),
+    height: hp('6'),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   forgetText: {
     marginLeft: 'auto',
-    marginTop: hp('5'),
+    marginTop: hp('1'),
     color: '#0088FF',
   },
   loginButton: {
@@ -45,11 +47,44 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center',
     color: 'white',
-    width: wp('60'),
+    width: Platform.OS == 'ios' ? wp('60') : wp('50'),
     height: hp('6'),
     alignSelf: 'center',
     marginTop: hp('5'),
     alignItems: 'center',
     borderRadius: 5,
+  },
+  inputTitle: {
+    marginBottom: hp('2'),
+    fontSize: hp('2'),
+    fontFamily: 'Poppins-SemiBold',
+    color: 'gray',
+  },
+  codeTextStyle: {
+    backgroundColor: 'transparent',
+    height: hp('4'),
+    justifyContent: 'center',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    paddingTop: Platform.OS == 'ios' ? hp('0.8') : hp('0'),
+  },
+  textContainerStyle: {
+    borderRadius: 5,
+    backgroundColor: 'transparent',
+  },
+  textInputStyle: {
+    backgroundColor: 'transparent',
+    fontSize: hp('2.5'),
+    height: hp('7'),
+    color: 'black',
+  },
+  forgetPassword: {
+    color: '#0088FF',
+    fontFamily: 'Poppins-Regular',
+  },
+  loginButtonText: {
+    color: 'white',
+    fontSize: Platform.OS == 'ios' ? hp('2.5') : hp('2.3'),
+    fontFamily: 'Poppins-Regular',
   },
 });

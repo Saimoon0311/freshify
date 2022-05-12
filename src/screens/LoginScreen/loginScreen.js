@@ -16,6 +16,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {InputField} from '../../Reusedcomponents/InputField/inputFeild';
+import {BackHeader} from '../../Reusedcomponents/Header/BackHeader';
 
 export default function loginScreen({navigation}) {
   return (
@@ -24,66 +25,28 @@ export default function loginScreen({navigation}) {
       <ScrollView>
         <Text style={styles.title}>Login</Text>
         <View style={styles.body}>
-          <Text
-            style={{
-              marginBottom: heightPercentageToDP('2'),
-              // fontWeight: 'bold',
-              fontSize: hp('2.5'),
-              fontFamily: 'Poppins-SemiBold',
-            }}>
-            Enter your Phone Number
-          </Text>
-          {/* <View
-            style={{
-              flexDirection: 'row',
-            }}>
-            <View style={styles.picker}>
-              <Picker
-                style={{
-                  width: wp('29.9'),
-                  justifyContent: 'center',
-                }}>
-                <Picker.Item value="+90" label="+92" />
-              </Picker>
-            </View>
-            <TextInput
-              style={styles.input}
-              placeholder="301-2345678"
-              placeholderTextColor="gray"
-              keyboardType="number-pad"
-            />
-          </View> */}
+          <Text style={styles.inputTitle}>Enter your Phone Number</Text>
 
           <PhoneInput
             defaultCode="DM"
             layout="first"
             containerStyle={styles.input}
-            codeTextStyle={{backgroundColor: 'transparent'}}
-            textContainerStyle={{
-              borderRadius: 5,
-              backgroundColor: 'transparent',
-            }}
-            textInputStyle={{
-              backgroundColor: 'transparent',
-              fontSize: hp('2.5'),
-              height: hp('10'),
-            }}
+            codeTextStyle={styles.codeTextStyle}
+            textContainerStyle={styles.textContainerStyle}
+            textInputStyle={styles.textInputStyle}
           />
-          <InputField inputText="Password" placeholder="Password" />
+          <InputField
+            keyboardType="visible-password"
+            inputText="Password"
+            placeholder="Password"
+          />
           <TouchableOpacity style={styles.forgetText}>
-            <Text style={{color: '#0088FF', fontFamily: 'Poppins-Regular'}}>
-              Forget Password?
-            </Text>
+            <Text style={styles.forgetPassword}>Forget Password?</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.loginButton}>
-            <Text
-              style={{
-                color: 'white',
-                fontSize: hp('2.8'),
-                fontFamily: 'Poppins-Regular',
-              }}>
-              Login
-            </Text>
+          <TouchableOpacity
+            style={styles.loginButton}
+            onPress={() => navigation.navigate('MybottomTabs')}>
+            <Text style={styles.loginButtonText}>Login</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -91,14 +54,10 @@ export default function loginScreen({navigation}) {
               backgroundColor: 'transparent',
               borderColor: '#434345',
               borderWidth: 1,
+              marginTop: hp('3'),
             }}
             onPress={() => navigation.navigate('SignupScreen')}>
-            <Text
-              style={{
-                color: '#434345',
-                fontSize: hp('2.8'),
-                fontFamily: 'Poppins-Regular',
-              }}>
+            <Text style={{...styles.loginButtonText, color: '#434345'}}>
               Sign Up
             </Text>
           </TouchableOpacity>
