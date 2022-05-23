@@ -10,7 +10,7 @@ const BottomButton = props => {
   var width = props.width ? props.width : '85';
   return (
     <TouchableOpacity
-      onPress={() => props?.onPress()}
+      onPress={() => props?.onPress}
       style={{...styles.cartButton, width: wp(width)}}>
       <Text style={styles.textCart}>{props?.title}</Text>
     </TouchableOpacity>

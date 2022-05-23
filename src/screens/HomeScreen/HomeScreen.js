@@ -9,6 +9,7 @@ import {
   FlatList,
   Dimensions,
   RefreshControl,
+  StatusBar,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {color} from '../../Reusedcomponents/color';
@@ -27,12 +28,15 @@ import {Fab, Icon, NativeBaseProvider, Box, extendTheme} from 'native-base';
 import {ApiGet} from '../../Config/helperFunction';
 import {allCategoriesUrl, FrontProductUrl} from '../../Config/Url';
 import {showMessage} from 'react-native-flash-message';
+import {useSelector} from 'react-redux';
 
 export default function HomeScreen({navigation, route}) {
   const [allProduct, setAllProduct] = useState();
   const [categoryFeatureProduct, setCategoryFeatureProduct] = useState();
   const [isloading, setIsLoading] = useState(true);
   const [isCategoryloading, setIsCategoryLoading] = useState(true);
+  const {cartData} = useSelector(state => state.cartData);
+  console.log(7687, cartData);
 
   const getFrontProduct = () => {
     ApiGet(FrontProductUrl).then(res => {
@@ -50,7 +54,6 @@ export default function HomeScreen({navigation, route}) {
         });
       } else {
         setIsLoading(true);
-        console.log(51);
         showMessage({
           type: 'danger',
           icon: 'danger',
@@ -63,8 +66,8 @@ export default function HomeScreen({navigation, route}) {
   };
 
   const getFeathureFrontProduct = () => {
-    ApiGet(allCategoriesUrl + '?is_featured=1').then(res => {
-      console.log(res, 67);
+    let url = allCategoriesUrl + '?is_featured=1';
+    ApiGet(url).then(res => {
       if (res.success == true) {
         setCategoryFeatureProduct(res.data);
         setIsCategoryLoading(false);
@@ -79,7 +82,6 @@ export default function HomeScreen({navigation, route}) {
         });
       } else {
         setIsCategoryLoading(true);
-        console.log(51);
         showMessage({
           type: 'danger',
           icon: 'danger',
@@ -94,6 +96,7 @@ export default function HomeScreen({navigation, route}) {
     navigation.navigate('ProductDetail', item);
   };
   const navigation2 = item => {
+    console.log(99, item);
     navigation.navigate('SubCategory', item);
   };
   const theme = extendTheme({
@@ -130,7 +133,6 @@ export default function HomeScreen({navigation, route}) {
     return new Promise(resolve => setTimeout(resolve, timeout));
   };
   useEffect(() => {
-    console.log(133);
     getFrontProduct();
     getFeathureFrontProduct();
   }, []);
@@ -145,7 +147,8 @@ export default function HomeScreen({navigation, route}) {
   return (
     <NativeBaseProvider theme={theme}>
       <View>
-        <View style={styles.header}>
+        <StatusBar barStyle="dark-content" />
+        {/* <View style={styles.header}>
           <View style={{width: wp('20')}} />
           <View style={styles.locationText}>
             <Ionicons
@@ -164,6 +167,16 @@ export default function HomeScreen({navigation, route}) {
               <Ionicons name="arrow-down" color="black" size={30} />
             </TouchableOpacity>
           </View>
+        </View> */}
+        <View style={styles.search}>
+          <TouchableOpacity>
+            <Ionicons name="search" size={20} color={'gray'} />
+          </TouchableOpacity>
+          <TextInput
+            placeholder="Search fresh grocery"
+            placeholderTextColor={'gray'}
+            style={styles.searchInput}
+          />
         </View>
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -172,16 +185,6 @@ export default function HomeScreen({navigation, route}) {
           }
           contentContainerStyle={{paddingBottom: hp('23')}}>
           <View>
-            <View style={styles.search}>
-              <TouchableOpacity>
-                <Ionicons name="search" size={20} color={'gray'} />
-              </TouchableOpacity>
-              <TextInput
-                placeholder="Search fresh grocery"
-                placeholderTextColor={'gray'}
-                style={styles.searchInput}
-              />
-            </View>
             <View
               style={{
                 marginTop: hp('2'),
@@ -220,21 +223,21 @@ export default function HomeScreen({navigation, route}) {
               {console.log(220)}
               <HomeScreenCategoryData
                 navigation2={navigation2}
-                allProduct={categoryFeatureProduct}
+                categoryFeatureProduct={categoryFeatureProduct}
                 isCategoryloading={isCategoryloading}
               />
             </View>
           </View>
         </ScrollView>
       </View>
-      <Fab
+      {/* <Fab
         renderInPortal={false}
         shadow={2}
         style={{backgroundColor: color.textPrimaryColor}}
         fontStyle={{color: 'red'}}
         size="sm"
         label={'Track your order'}
-      />
+      /> */}
     </NativeBaseProvider>
   );
 }

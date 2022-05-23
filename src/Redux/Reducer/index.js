@@ -4,15 +4,16 @@ import auth from './auth';
 import {persistStore, persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import thunk from 'redux-thunk';
+import CartData from './CartData';
 
 const persistConfig1 = {
-  key: 'root',
+  key: 'CartData',
   storage: AsyncStorage,
-  whitelist: 'userData',
+  whitelist: 'cartData',
 };
 
 const rootReducer = combineReducers({
-  auth: persistReducer(persistConfig1, auth),
+  cartData: persistReducer(persistConfig1, CartData),
   // savePosts: persistReducer(persistConfig2, savedata),
   // themeChange,
 });

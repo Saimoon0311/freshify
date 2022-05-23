@@ -29,7 +29,8 @@ export const BackHeader = props => {
           <Ionicons
             name={'arrow-back-sharp'}
             color={color.textPrimaryColor}
-            size={35}
+            size={hp('4')}
+            style={{paddingTop: Platform.OS == 'ios' ? hp('1') : hp('0')}}
           />
         </TouchableOpacity>
       </View>
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: Platform.OS == 'ios' ? hp('3') : hp('0'),
+    paddingTop: Platform.OS == 'ios' ? hp('4') : hp('0'),
     // marginRight: wp('10'),
   },
 });

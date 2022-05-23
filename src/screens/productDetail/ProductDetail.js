@@ -17,6 +17,7 @@ import {
 } from 'react-native-responsive-screen';
 import BottomButton from '../../Reusedcomponents/BottomButton/bottomButton';
 import {SliderBox, FastImage} from 'react-native-image-slider-box';
+import {IMAGE_BASED_URL} from '../../Config/Url';
 
 // const flatListProduct = [
 //   {
@@ -55,7 +56,7 @@ export default function ProductDetail({navigation, route}) {
     navigation.goBack();
   };
 
-  const flatListProduct = [item.image_url];
+  const flatListProduct = [IMAGE_BASED_URL + item.image.url];
   console.log(63, item.image_url);
   return (
     <View style={styles.mainContainer}>
@@ -72,56 +73,9 @@ export default function ProductDetail({navigation, route}) {
           paddingBottom: hp('15'),
           width: wp('94'),
           alignSelf: 'center',
+          paddingTop: hp('2'),
           // backgroundColor: 'yellow',
         }}>
-        <FlatList
-          data={flatGramButtonLists}
-          horizontal
-          nestedScrollEnabled={true}
-          contentContainerStyle={{marginBottom: hp('1')}}
-          keyExtractor={item => item.key}
-          showsHorizontalScrollIndicator={false}
-          renderItem={({item}) => {
-            return (
-              <View style={styles.topButtonMainContainer}>
-                <TouchableOpacity onPress={() => setActive(item.id)}>
-                  <View
-                    style={
-                      active == item.id ? styles.button : styles.inactiveButton
-                    }>
-                    <Text
-                      style={
-                        active == item.id
-                          ? styles.buttonText
-                          : styles.inactiveButtonText
-                      }>
-                      {item.name}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            );
-          }}
-        />
-        {/* <FlatList
-          data={flatListProduct}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          pagingEnabled={true}
-          nestedScrollEnabled={true}
-          contentContainerStyle={{
-            // paddingLeft: wp('3.5'),
-            justifyContent: 'space-around',
-          }}
-          keyExtractor={item => item.key}
-          renderItem={({item}) => {
-            return (
-              <View style={styles.flatListMainContainer}>
-                <Image source={item?.image} resizeMode="cover" />
-              </View>
-            );
-          }}
-        /> */}
         <SliderBox
           ImageComponent={FastImage}
           images={flatListProduct}
@@ -167,7 +121,14 @@ export default function ProductDetail({navigation, route}) {
         </View>
       </ScrollView>
       <View style={styles.bottomView}>
-        <BottomButton title="Add to Cart" />
+        <BottomButton
+          onPress={
+            item.in_stock == 0
+              ? console.log('jahdbvfj')
+              : console.log('jahdbvfj')
+          }
+          title={item.in_stock == 0 ? 'Out Of Stock' : 'Add to Cart'}
+        />
       </View>
     </View>
   );

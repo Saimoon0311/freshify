@@ -1,9 +1,9 @@
 import {configureStore} from '@reduxjs/toolkit';
-import auth from './Reducer/auth';
+import CartData from './Reducer/CartData';
 
 export const store = configureStore({
   reducer: {
-    auth: auth,
+    CartData: CartData,
     // savedata: savedata,
     // themeChange: themeChange,
   },

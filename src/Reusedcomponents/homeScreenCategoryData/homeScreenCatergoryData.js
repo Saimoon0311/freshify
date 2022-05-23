@@ -9,6 +9,7 @@ import {color} from '../color';
 import {styles} from './styles';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {ScrollView} from 'native-base';
+import {IMAGE_BASED_URL} from '../../Config/Url';
 
 export const HomeScreenCategoryData = props => {
   const [loading, setLoading] = useState(false);
@@ -124,10 +125,13 @@ export const HomeScreenCategoryData = props => {
             contentContainerStyle={{flexWrap: 'wrap', flexDirection: 'row'}}
             renderItem={({item}) => {
               return (
-                <TouchableOpacity style={styles.touchContainer}>
+                <TouchableOpacity
+                  onPress={() => props?.navigation2(item)}
+                  style={styles.touchContainer}>
                   <Image
                     style={{width: wp('19.6'), height: hp('7')}}
-                    source={{uri: IMAGE_BASED_URL + item?.image?.url}}
+                    resizeMode="contain"
+                    source={{uri: IMAGE_BASED_URL + item?.icon?.url}}
                   />
                   <Text
                     style={{
@@ -135,7 +139,7 @@ export const HomeScreenCategoryData = props => {
                       fontSize: hp('1.5'),
                       textAlign: 'center',
                     }}>
-                    Fresh Meat
+                    {item?.name}
                   </Text>
                 </TouchableOpacity>
               );
