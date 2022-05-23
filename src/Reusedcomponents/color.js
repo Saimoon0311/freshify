@@ -2,8 +2,8 @@ export const color = {
   textPrimaryColor: '#37b34a',
   textSecondaryColor: '#37b34a',
 
-  textPrimaryColor: '#800000',
-  textSecondaryColor: '#FF724C',
+  // textPrimaryColor: '#800000',
+  // textSecondaryColor: '#FF724C',
 
   textColor: '#434345',
   borderThirdColor: '#999999',
