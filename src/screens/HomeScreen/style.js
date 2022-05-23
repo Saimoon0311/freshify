@@ -28,11 +28,12 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 0.5,
     width: wp('90'),
-    marginTop: hp('2'),
+    marginTop: Platform.OS == 'ios' ? hp('6') : hp('2'),
     alignItems: 'center',
     alignSelf: 'center',
     borderRadius: 5,
     height: hp('6'),
+    marginBottom: hp('1.5'),
   },
   viewmore: {
     marginLeft: 'auto',

@@ -9,6 +9,7 @@ import {
   FlatList,
   Dimensions,
   RefreshControl,
+  StatusBar,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {color} from '../../Reusedcomponents/color';
@@ -110,7 +111,8 @@ export default function HomeScreen({navigation, route}) {
   return (
     <NativeBaseProvider theme={theme}>
       <View>
-        <View style={styles.header}>
+        <StatusBar barStyle="dark-content" />
+        {/* <View style={styles.header}>
           <View style={{width: wp('20')}} />
           <View style={styles.locationText}>
             <Ionicons
@@ -129,6 +131,16 @@ export default function HomeScreen({navigation, route}) {
               <Ionicons name="arrow-down" color="black" size={30} />
             </TouchableOpacity>
           </View>
+        </View> */}
+        <View style={styles.search}>
+          <TouchableOpacity>
+            <Ionicons name="search" size={20} color={'gray'} />
+          </TouchableOpacity>
+          <TextInput
+            placeholder="Search fresh grocery"
+            placeholderTextColor={'gray'}
+            style={styles.searchInput}
+          />
         </View>
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -137,16 +149,6 @@ export default function HomeScreen({navigation, route}) {
           }
           contentContainerStyle={{paddingBottom: hp('23')}}>
           <View>
-            <View style={styles.search}>
-              <TouchableOpacity>
-                <Ionicons name="search" size={20} color={'gray'} />
-              </TouchableOpacity>
-              <TextInput
-                placeholder="Search fresh grocery"
-                placeholderTextColor={'gray'}
-                style={styles.searchInput}
-              />
-            </View>
             <View
               style={{
                 marginTop: hp('2'),
@@ -187,14 +189,14 @@ export default function HomeScreen({navigation, route}) {
           </View>
         </ScrollView>
       </View>
-      <Fab
+      {/* <Fab
         renderInPortal={false}
         shadow={2}
         style={{backgroundColor: color.textPrimaryColor}}
         fontStyle={{color: 'red'}}
         size="sm"
         label={'Track your order'}
-      />
+      /> */}
     </NativeBaseProvider>
   );
 }

@@ -4,7 +4,6 @@ export const ApiPost = async (url, body) => {
   var myHeaders = new Headers();
   myHeaders.append('Content-Type', 'application/json');
   return fetch(url, {
-    //   return fetch('http://localhost:5000/api/v1/auth/register', {
     method: 'POST',
     body: body,
     headers: myHeaders,

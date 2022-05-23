@@ -58,11 +58,12 @@ export const HomeScreenAllProductData = props => {
               <TouchableOpacity
                 style={styles.mainContainer}
                 onPress={() => props?.navigation1(item)}>
-                <Text style={styles.topText}>{item?.name}</Text>
+                <Text numberOfLines={1} style={styles.topText}>
+                  {item?.name}
+                </Text>
                 <Text style={styles.priceText}>Price {item?.price}</Text>
                 <Image
                   source={{uri: IMAGE_BASED_URL + item.image.url}}
-                  // resizeMode="contain"
                   style={styles.insideImage}
                 />
                 <TouchableOpacity style={styles.addCartbutton}>

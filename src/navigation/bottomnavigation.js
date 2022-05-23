@@ -58,24 +58,7 @@ function MybottomTabs() {
       />
 
       <Tab.Screen
-        name="catergoryScreen"
-        options={{
-          tabBarIcon: ({focused, color, size}) => (
-            <Ionicons name="list" color={color} size={hp('3')} />
-          ),
-          tabBarIconStyle: {
-            color: 'red',
-          },
-          title: 'Category',
-          tabBarLabelStyle: {
-            fontSize: 15,
-            marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
-          },
-        }}
-        component={screens.catergoryScreen}
-      />
-      <Tab.Screen
-        name="offerScreen"
+        name="cartScreen"
         options={{
           tabBarIcon: ({focused, size}) => (
             <View style={styles.cartCircle}>
@@ -119,7 +102,24 @@ function MybottomTabs() {
         component={screens.cartScreen}
       />
       <Tab.Screen
-        name="cartScreen"
+        name="catergoryScreen"
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Ionicons name="list" color={color} size={hp('3')} />
+          ),
+          tabBarIconStyle: {
+            color: 'red',
+          },
+          title: 'Category',
+          tabBarLabelStyle: {
+            fontSize: 15,
+            marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
+          },
+        }}
+        component={screens.catergoryScreen}
+      />
+      {/* <Tab.Screen
+        name="offerScreen"
         options={{
           tabBarIcon: ({focused, color, size}) => (
             <Ionicons name="basket-sharp" color={color} size={hp('3')} />
@@ -131,8 +131,8 @@ function MybottomTabs() {
           },
         }}
         component={screens.offerScreen}
-      />
-      <Tab.Screen
+      /> */}
+      {/* <Tab.Screen
         name="acountScreen"
         options={{
           tabBarIcon: ({focused, color, size}) => (
@@ -145,7 +145,7 @@ function MybottomTabs() {
           },
         }}
         component={screens.acountScreen}
-      />
+      /> */}
     </Tab.Navigator>
   );
 }
