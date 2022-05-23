@@ -16,8 +16,12 @@ import {
 import {NineCubesLoader, BallIndicator} from 'react-native-indicators';
 import {color} from '../../Reusedcomponents/color';
 import {styles} from './styles';
+import {useSelector} from 'react-redux';
 
 export default function catergoryScreen({navigation}) {
+  const {cartData} = useSelector(state => state.cartData);
+  console.log(7687, cartData);
+
   const wait = timeout => {
     return new Promise(resolve => setTimeout(resolve, timeout));
   };

@@ -21,7 +21,7 @@ import {createCartIdUrl} from './src/Config/Url';
 import types from './src/Redux/type';
 
 function AppTwo({navigation}) {
-  const {CartData} = useSelector(state => state.CartData);
+  const {cartData} = useSelector(state => state.cartData);
   const [isVisible, setIsVisible] = useState(true);
 
   const Hide_Splash_Screen = () => {
@@ -36,7 +36,7 @@ function AppTwo({navigation}) {
   };
   const dispatch = useDispatch();
   const createCartId = () => {
-    if (CartData != {}) {
+    if (cartData != {}) {
       let url = createCartIdUrl;
       let body = {};
       ApiPost(url, body).then(res => {
@@ -47,6 +47,8 @@ function AppTwo({navigation}) {
           });
         }
       });
+    } else {
+      console.log('kjadbfbak');
     }
   };
   useEffect(() => {

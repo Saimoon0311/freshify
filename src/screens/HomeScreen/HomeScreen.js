@@ -28,12 +28,15 @@ import {Fab, Icon, NativeBaseProvider, Box, extendTheme} from 'native-base';
 import {ApiGet} from '../../Config/helperFunction';
 import {allCategoriesUrl, FrontProductUrl} from '../../Config/Url';
 import {showMessage} from 'react-native-flash-message';
+import {useSelector} from 'react-redux';
 
 export default function HomeScreen({navigation, route}) {
   const [allProduct, setAllProduct] = useState();
   const [categoryFeatureProduct, setCategoryFeatureProduct] = useState();
   const [isloading, setIsLoading] = useState(true);
   const [isCategoryloading, setIsCategoryLoading] = useState(true);
+  const {cartData} = useSelector(state => state.cartData);
+  console.log(7687, cartData);
 
   const getFrontProduct = () => {
     ApiGet(FrontProductUrl).then(res => {
@@ -93,6 +96,7 @@ export default function HomeScreen({navigation, route}) {
     navigation.navigate('ProductDetail', item);
   };
   const navigation2 = item => {
+    console.log(99, item);
     navigation.navigate('SubCategory', item);
   };
   const theme = extendTheme({

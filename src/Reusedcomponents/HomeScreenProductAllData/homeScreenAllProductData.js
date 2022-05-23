@@ -66,9 +66,19 @@ export const HomeScreenAllProductData = props => {
                   source={{uri: IMAGE_BASED_URL + item.image.url}}
                   style={styles.insideImage}
                 />
-                <TouchableOpacity style={styles.addCartbutton}>
-                  <Ionicons name="add" size={25} color={'white'} />
-                </TouchableOpacity>
+                {item?.in_stock == 0 ? (
+                  <Text
+                    style={{
+                      color: color.textPrimaryColor,
+                      textAlign: 'center',
+                    }}>
+                    Out of stock
+                  </Text>
+                ) : (
+                  <TouchableOpacity style={styles.addCartbutton}>
+                    <Ionicons name="add" size={25} color={'white'} />
+                  </TouchableOpacity>
+                )}
               </TouchableOpacity>
             );
           }}

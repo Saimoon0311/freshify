@@ -7,13 +7,13 @@ import thunk from 'redux-thunk';
 import CartData from './CartData';
 
 const persistConfig1 = {
-  key: 'root',
+  key: 'CartData',
   storage: AsyncStorage,
-  whitelist: 'CartData',
+  whitelist: 'cartData',
 };
 
 const rootReducer = combineReducers({
-  CartData: persistReducer(persistConfig1, CartData),
+  cartData: persistReducer(persistConfig1, CartData),
   // savePosts: persistReducer(persistConfig2, savedata),
   // themeChange,
 });

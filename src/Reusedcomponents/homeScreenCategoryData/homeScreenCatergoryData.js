@@ -125,7 +125,9 @@ export const HomeScreenCategoryData = props => {
             contentContainerStyle={{flexWrap: 'wrap', flexDirection: 'row'}}
             renderItem={({item}) => {
               return (
-                <TouchableOpacity style={styles.touchContainer}>
+                <TouchableOpacity
+                  onPress={() => props?.navigation2(item)}
+                  style={styles.touchContainer}>
                   <Image
                     style={{width: wp('19.6'), height: hp('7')}}
                     resizeMode="contain"
