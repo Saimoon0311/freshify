@@ -129,18 +129,15 @@ export const HomeScreenCategoryData = props => {
                   onPress={() => props?.navigation2(item)}
                   style={styles.touchContainer}>
                   <Image
-                    style={{width: wp('19.6'), height: hp('7')}}
+                    style={{
+                      width: wp('19.6'),
+                      height: hp('7'),
+                      marginTop: hp('0.5'),
+                    }}
                     resizeMode="contain"
                     source={{uri: IMAGE_BASED_URL + item?.icon?.url}}
                   />
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontSize: hp('1.5'),
-                      textAlign: 'center',
-                    }}>
-                    {item?.name}
-                  </Text>
+                  <Text style={styles.name}>{item?.name}</Text>
                 </TouchableOpacity>
               );
             }}

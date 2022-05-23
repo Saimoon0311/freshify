@@ -8,10 +8,13 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {SubCategoryUrl} from '../../Config/Url';
+import {IMAGE_BASED_URL, SubCategoryUrl} from '../../Config/Url';
 import {ApiPost} from '../../Config/helperFunction';
 import {showMessage} from 'react-native-flash-message';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import {globalStyles} from '../../Reusedcomponents/globalStyle';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import NoProductView from '../../Reusedcomponents/NoProductView/noProductView';
 
 export default function SubCategory({route, navigation}) {
   const item = route.params;
@@ -23,16 +26,10 @@ export default function SubCategory({route, navigation}) {
     navigation.goBack();
   };
   const getSubCategoryData = () => {
-    let body = {
-      slug: item.name,
-    };
-    console.log(78, body);
-    ApiPost(SubCategoryUrl, body, true).then(res => {
-      console.log(88, res);
-
+    ApiPost(SubCategoryUrl, item.name, true).then(res => {
       if (res.success == true) {
         setSubCategoryFlatList(res.data);
-        // setIsLoading(false);
+        setIsLoading(false);
       } else if (res.success == false) {
         setIsLoading(true);
         showMessage({
@@ -50,7 +47,13 @@ export default function SubCategory({route, navigation}) {
   }, []);
   return (
     <View style={styles.container}>
-      <BackHeader text={item?.name} Iconname="arrow-back" navigate={navigate} />
+      <View style={{marginBottom: hp('2')}}>
+        <BackHeader
+          text={item?.name}
+          Iconname="arrow-back"
+          navigate={navigate}
+        />
+      </View>
       {/* <View style={styles.subContainer}>
         <FlatList
           data={subCategoryFlatList}
@@ -88,12 +91,11 @@ export default function SubCategory({route, navigation}) {
               alignSelf: 'center',
               width: wp('100'),
               justifyContent: 'center',
-              marginTop: hp('3'),
             }}>
             <View
               style={{
                 ...styles.mainContainer,
-                height: hp('29%'),
+                height: hp('25'),
                 marginLeft: wp('3'),
                 marginRight: wp('3'),
               }}></View>
@@ -102,52 +104,54 @@ export default function SubCategory({route, navigation}) {
                 ...styles.mainContainer,
                 marginLeft: wp('3'),
                 marginRight: wp('3'),
-                height: hp('29%'),
+                height: hp('25'),
               }}></View>
             <View
               style={{
                 ...styles.mainContainer,
                 marginLeft: wp('3'),
                 marginRight: wp('3'),
-                height: hp('29%'),
+                height: hp('25'),
               }}></View>
             <View
               style={{
                 ...styles.mainContainer,
                 marginLeft: wp('3'),
                 marginRight: wp('3'),
-                height: hp('29%'),
+                height: hp('25'),
               }}></View>
             <View
               style={{
                 ...styles.mainContainer,
                 marginLeft: wp('3'),
                 marginRight: wp('3'),
-                height: hp('29%'),
+                height: hp('25'),
               }}></View>
             <View
               style={{
                 ...styles.mainContainer,
                 marginLeft: wp('3'),
                 marginRight: wp('3'),
-                height: hp('29%'),
+                height: hp('25'),
               }}></View>
             <View
               style={{
                 ...styles.mainContainer,
                 marginLeft: wp('3'),
                 marginRight: wp('3'),
-                height: hp('29%'),
+                height: hp('25'),
               }}></View>
             <View
               style={{
                 ...styles.mainContainer,
                 marginLeft: wp('3'),
                 marginRight: wp('3'),
-                height: hp('29%'),
+                height: hp('25'),
               }}></View>
           </View>
         </SkeletonPlaceholder>
+      ) : subCategoryFlatList.length == 0 ? (
+        <NoProductView />
       ) : (
         <FlatList
           numColumns={2}
@@ -160,18 +164,22 @@ export default function SubCategory({route, navigation}) {
               <View style={styles.categoryContainer}>
                 <TouchableOpacity
                   style={styles.mainContainer}
-                  onPress={() => navigation.navigate('ProductDetail')}>
-                  <Text style={styles.topText}>Fresh Milk</Text>
+                  onPress={() => navigation.navigate('ProductDetail', item)}>
+                  <Text numberOfLines={1} style={styles.topText}>
+                    {item?.name}
+                  </Text>
                   <Image
                     source={{
-                      uri: 'https://api.thefreshify.com/storage/products/kptqzoxPeWfFQdeOCl5r0ACOD3i9DSh5WGw3OBMb.jpg',
+                      uri: IMAGE_BASED_URL + item?.image?.url,
                     }}
-                    style={styles.insideImage}
-                    // resizeMode="cover"
+                    style={globalStyles.globalInsideImage}
+                    // resizeMode=""
                   />
-                  <Text style={styles.priceText}>Rs50 Per/L</Text>
+                  <Text numberOfLines={1} style={styles.priceText}>
+                    Rs{item?.price} {item?.product_sale_type?.single_qty_text}
+                  </Text>
                   <View style={{flexDirection: 'row'}}>
-                    <Text style={styles.mlText}>225 ml</Text>
+                    {/* <Text style={styles.mlText}>225 ml</Text> */}
                     <TouchableOpacity style={styles.addCartbutton}>
                       <Ionicons name="add" size={25} color={'white'} />
                     </TouchableOpacity>

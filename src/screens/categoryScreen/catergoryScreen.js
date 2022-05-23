@@ -21,6 +21,7 @@ import {allCategoriesUrl, IMAGE_BASED_URL} from '../../Config/Url';
 import {ApiGet} from '../../Config/helperFunction';
 import {Skeleton} from 'native-base';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import NoProductView from '../../Reusedcomponents/NoProductView/noProductView';
 
 export default function catergoryScreen({navigation}) {
   const {cartData} = useSelector(state => state.cartData);
@@ -55,7 +56,7 @@ export default function catergoryScreen({navigation}) {
     let url = allCategoriesUrl;
     ApiGet(url).then(res => {
       if (res.success == true) {
-        setCatergoryData(res.data);
+        // setCatergoryData(res.data);
         setLoading(false);
       } else if (res.success == false) {
         setLoading(true);
@@ -180,6 +181,8 @@ export default function catergoryScreen({navigation}) {
               />
             </View>
           </SkeletonPlaceholder>
+        ) : catergoryData.length == 0 ? (
+          <NoProductView text={'No Category Found'} />
         ) : (
           <FlatList
             data={catergoryData}
@@ -190,7 +193,7 @@ export default function catergoryScreen({navigation}) {
             renderItem={({item}) => {
               return (
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('SubCategory')}
+                  onPress={() => navigation.navigate('SubCategory', item)}
                   style={{
                     ...styles.touchContainer,
                     marginLeft: wp('3'),

@@ -17,6 +17,7 @@ import {styles} from './style';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {ActivityIndicator} from 'react-native-paper';
 import {IMAGE_BASED_URL} from '../../Config/Url';
+import {globalStyles} from '../globalStyle';
 export const HomeScreenAllProductData = props => {
   return (
     <View>
@@ -64,13 +65,15 @@ export const HomeScreenAllProductData = props => {
                 <Text style={styles.priceText}>Price {item?.price}</Text>
                 <Image
                   source={{uri: IMAGE_BASED_URL + item.image.url}}
-                  style={styles.insideImage}
+                  style={globalStyles.globalInsideImage}
                 />
                 {item?.in_stock == 0 ? (
                   <Text
                     style={{
                       color: color.textPrimaryColor,
                       textAlign: 'center',
+                      marginTop: hp('1.5'),
+                      marginBottom: hp('0.5'),
                     }}>
                     Out of stock
                   </Text>

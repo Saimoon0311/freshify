@@ -139,9 +139,13 @@ export default function HomeScreen({navigation, route}) {
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setLoading] = useState(false);
   const onRefresh = useCallback(() => {
-    setLoading(true);
+    setIsLoading(true);
+    setIsCategoryLoading(true);
+    setRefreshing(true);
     wait(2000).then(() => {
-      setLoading(false);
+      getFrontProduct();
+      getFeathureFrontProduct();
+      setRefreshing(false);
     });
   }, []);
   return (

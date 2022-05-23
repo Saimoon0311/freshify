@@ -30,4 +30,10 @@ export const styles = StyleSheet.create({
     // alignSelf: 'center',
     // alignItems: 'center',
   },
+  name: {
+    color: 'black',
+    fontSize: hp('1.5'),
+    textAlign: 'center',
+    marginBottom: hp('0.5'),
+  },
 });
