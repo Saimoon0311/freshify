@@ -4,12 +4,12 @@ export const ApiPost = async (url, body, confirm) => {
   var myHeaders = new Headers();
   var formdata = new FormData();
   confirm == true
-    ? formdata.append('slug', 'meat')
+    ? formdata.append('slug', body)
     : myHeaders.append('Content-Type', 'application/json');
   return fetch(url, {
     method: 'POST',
-    body: body,
-    headers: confirm == true ? formdata : myHeaders,
+    body: formdata,
+    headers: myHeaders,
     redirect: 'follow',
   })
     .then(res => res.json())
