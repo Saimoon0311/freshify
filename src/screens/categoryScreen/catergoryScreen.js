@@ -17,6 +17,11 @@ import {NineCubesLoader, BallIndicator} from 'react-native-indicators';
 import {color} from '../../Reusedcomponents/color';
 import {styles} from './styles';
 import {useSelector} from 'react-redux';
+import {allCategoriesUrl, IMAGE_BASED_URL} from '../../Config/Url';
+import {ApiGet} from '../../Config/helperFunction';
+import {Skeleton} from 'native-base';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import NoProductView from '../../Reusedcomponents/NoProductView/noProductView';
 
 export default function catergoryScreen({navigation}) {
   const {cartData} = useSelector(state => state.cartData);
@@ -26,7 +31,7 @@ export default function catergoryScreen({navigation}) {
     return new Promise(resolve => setTimeout(resolve, timeout));
   };
   const [refreshing, setRefreshing] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const onRefresh = useCallback(() => {
     // setRefreshing(true);
     setLoading(true);
@@ -35,52 +40,50 @@ export default function catergoryScreen({navigation}) {
       setLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    getCategoryProduct();
+  }, []);
+
   const [catergoryName, setCatergoryName] = useState([
     {id: 1},
     {id: 2},
     {id: 3},
   ]);
-  const [catergoryData, setCatergoryData] = useState([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    },
-    {
-      id: 5,
-    },
-    {
-      id: 6,
-    },
-    {
-      id: 7,
-    },
-    {
-      id: 8,
-    },
-    {
-      id: 9,
-    },
-    {
-      id: 10,
-    },
-    {
-      id: 11,
-    },
-    {
-      id: 12,
-    },
-  ]);
+  const [catergoryData, setCatergoryData] = useState([]);
+
+  const getCategoryProduct = () => {
+    let url = allCategoriesUrl;
+    ApiGet(url).then(res => {
+      if (res.success == true) {
+        // setCatergoryData(res.data);
+        setLoading(false);
+      } else if (res.success == false) {
+        setLoading(true);
+        showMessage({
+          type: 'danger',
+          icon: 'danger',
+          message: 'Warning',
+          description: 'Some thing is wrong',
+          backgroundColor: color.textPrimaryColor,
+        });
+      } else {
+        setLoading(true);
+        showMessage({
+          type: 'danger',
+          icon: 'danger',
+          message: 'Warning',
+          description: 'Success not found',
+          backgroundColor: color.textPrimaryColor,
+        });
+      }
+    });
+  };
+
   const navigate = () => {
     navigation.goBack();
   };
+
   return (
     <View>
       <BackHeader text="Catergory" navigate={navigate} />
@@ -90,46 +93,127 @@ export default function catergoryScreen({navigation}) {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>
         {loading ? (
-          <View style={{marginTop: hp('20%'), marginBottom: hp('10')}}>
-            <BallIndicator
-              size={50}
-              color={color.textPrimaryColor}
-              dotRadius={10}
-            />
-          </View>
+          <SkeletonPlaceholder>
+            <View style={{...styles.mainContainer, marginTop: hp('2')}}>
+              <View
+                style={{
+                  ...styles.touchContainer,
+                  width: wp('27'),
+                  height: hp('11'),
+                }}
+              />
+              <View
+                style={{
+                  ...styles.touchContainer,
+                  width: wp('27'),
+                  height: hp('11'),
+                }}
+              />
+              <View
+                style={{
+                  ...styles.touchContainer,
+                  width: wp('27'),
+                  height: hp('11'),
+                }}
+              />
+              <View
+                style={{
+                  ...styles.touchContainer,
+                  width: wp('27'),
+                  height: hp('11'),
+                }}
+              />
+              <View
+                style={{
+                  ...styles.touchContainer,
+                  width: wp('27'),
+                  height: hp('11'),
+                }}
+              />
+              <View
+                style={{
+                  ...styles.touchContainer,
+                  width: wp('27'),
+                  height: hp('11'),
+                }}
+              />
+              <View
+                style={{
+                  ...styles.touchContainer,
+                  width: wp('27'),
+                  height: hp('11'),
+                }}
+              />
+              <View
+                style={{
+                  ...styles.touchContainer,
+                  width: wp('27'),
+                  height: hp('11'),
+                }}
+              />
+              <View
+                style={{
+                  ...styles.touchContainer,
+                  width: wp('27'),
+                  height: hp('11'),
+                }}
+              />
+              <View
+                style={{
+                  ...styles.touchContainer,
+                  width: wp('27'),
+                  height: hp('11'),
+                }}
+              />
+              <View
+                style={{
+                  ...styles.touchContainer,
+                  width: wp('27'),
+                  height: hp('11'),
+                }}
+              />
+              <View
+                style={{
+                  ...styles.touchContainer,
+                  width: wp('27'),
+                  height: hp('11'),
+                }}
+              />
+            </View>
+          </SkeletonPlaceholder>
+        ) : catergoryData.length == 0 ? (
+          <NoProductView text={'No Category Found'} />
         ) : (
           <FlatList
-            data={catergoryName}
+            data={catergoryData}
             keyExtractor={item => item.id}
+            numColumns={3}
             contentContainerStyle={{paddingBottom: hp('15')}}
             showsVerticalScrollIndicator={false}
             renderItem={({item}) => {
               return (
-                <View>
-                  <Text style={styles.headText}>Fresh Meat (Frozen)</Text>
-                  <View style={styles.mainContainer}>
-                    {catergoryData.map(res => {
-                      return (
-                        <TouchableOpacity
-                          onPress={() => navigation.navigate('SubCategory')}
-                          style={styles.touchContainer}>
-                          <Image
-                            style={styles.imageStyle}
-                            source={require('../../images/milkPack.png')}
-                          />
-                          <Text
-                            style={{
-                              paddingTop: hp('0'),
-                              color: '#6E6D6D',
-                              fontFamily: 'Poppins-Regular',
-                            }}>
-                            Chicken
-                          </Text>
-                        </TouchableOpacity>
-                      );
-                    })}
-                  </View>
-                </View>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('SubCategory', item)}
+                  style={{
+                    ...styles.touchContainer,
+                    marginLeft: wp('3'),
+                    marginRight: wp('2.0'),
+                    marginTop: hp('1.5'),
+                  }}>
+                  <Image
+                    resizeMode="contain"
+                    style={styles.imageStyle}
+                    source={{uri: IMAGE_BASED_URL + item?.image?.url}}
+                  />
+                  <Text
+                    style={{
+                      paddingTop: hp('0'),
+                      color: '#6E6D6D',
+                      fontFamily: 'Poppins-Regular',
+                    }}>
+                    {item?.name}
+                  </Text>
+                </TouchableOpacity>
               );
             }}
           />

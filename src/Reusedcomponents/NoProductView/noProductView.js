@@ -7,7 +7,7 @@ import {
 } from 'react-native-responsive-screen';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-export default function NoProductView() {
+export default function NoProductView(props) {
   return (
     <View style={styles.mainView}>
       <View style={styles.innerView}>
@@ -16,7 +16,7 @@ export default function NoProductView() {
           color={color.themeColorDark}
           size={100}
         />
-        <Text style={styles.noProductText}>No product found.</Text>
+        <Text style={styles.noProductText}>{props?.text}</Text>
       </View>
     </View>
   );
