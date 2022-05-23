@@ -56,7 +56,7 @@ export default function catergoryScreen({navigation}) {
     let url = allCategoriesUrl;
     ApiGet(url).then(res => {
       if (res.success == true) {
-        // setCatergoryData(res.data);
+        setCatergoryData(res.data);
         setLoading(false);
       } else if (res.success == false) {
         setLoading(true);
@@ -182,7 +182,7 @@ export default function catergoryScreen({navigation}) {
             </View>
           </SkeletonPlaceholder>
         ) : catergoryData.length == 0 ? (
-          <NoProductView text={'No Category Found'} />
+          <NoProductView text={'No Category Found.'} />
         ) : (
           <FlatList
             data={catergoryData}

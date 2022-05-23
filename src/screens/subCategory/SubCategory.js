@@ -122,7 +122,7 @@ export default function SubCategory({route, navigation}) {
           </View>
         </SkeletonPlaceholder>
       ) : subCategoryFlatList.length == 0 ? (
-        <NoProductView />
+        <NoProductView text={'No Products found.'} />
       ) : (
         <FlatList
           numColumns={2}
