@@ -7,3 +7,4 @@ export const getApi = endpoint => API_BASED_URL + endpoint;
 export const FrontProductUrl = getApi('front/products');
 export const PostCreateUrl = getApi('posts/createpost');
 export const createCartIdUrl = getApi('front/cart');
+export const allCategoriesUrl = getApi('front/categories');
