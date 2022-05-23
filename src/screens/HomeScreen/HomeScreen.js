@@ -25,12 +25,14 @@ import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {FAB} from 'react-native-paper';
 import {Fab, Icon, NativeBaseProvider, Box, extendTheme} from 'native-base';
 import {ApiGet} from '../../Config/helperFunction';
-import {FrontProductUrl} from '../../Config/Url';
+import {allCategoriesUrl, FrontProductUrl} from '../../Config/Url';
 import {showMessage} from 'react-native-flash-message';
 
 export default function HomeScreen({navigation, route}) {
   const [allProduct, setAllProduct] = useState();
+  const [categoryFeatureProduct, setCategoryFeatureProduct] = useState();
   const [isloading, setIsLoading] = useState(true);
+  const [isCategoryloading, setIsCategoryLoading] = useState(true);
 
   const getFrontProduct = () => {
     ApiGet(FrontProductUrl).then(res => {
@@ -39,7 +41,6 @@ export default function HomeScreen({navigation, route}) {
         setIsLoading(false);
       } else if (res.success == false) {
         setIsLoading(true);
-        console.log(51, res);
         showMessage({
           type: 'danger',
           icon: 'danger',
@@ -60,8 +61,40 @@ export default function HomeScreen({navigation, route}) {
       }
     });
   };
+
+  const getFeathureFrontProduct = () => {
+    ApiGet(allCategoriesUrl + '?is_featured=1').then(res => {
+      console.log(res, 67);
+      if (res.success == true) {
+        setCategoryFeatureProduct(res.data);
+        setIsCategoryLoading(false);
+      } else if (res.success == false) {
+        setIsCategoryLoading(true);
+        showMessage({
+          type: 'danger',
+          icon: 'danger',
+          message: 'Warning',
+          description: 'Some thing is wrong',
+          backgroundColor: color.textPrimaryColor,
+        });
+      } else {
+        setIsCategoryLoading(true);
+        console.log(51);
+        showMessage({
+          type: 'danger',
+          icon: 'danger',
+          message: 'Warning',
+          description: 'Success not found',
+          backgroundColor: color.textPrimaryColor,
+        });
+      }
+    });
+  };
   const navigation1 = item => {
     navigation.navigate('ProductDetail', item);
+  };
+  const navigation2 = item => {
+    navigation.navigate('SubCategory', item);
   };
   const theme = extendTheme({
     components: {
@@ -97,8 +130,10 @@ export default function HomeScreen({navigation, route}) {
     return new Promise(resolve => setTimeout(resolve, timeout));
   };
   useEffect(() => {
+    console.log(133);
     getFrontProduct();
-  }, []);
+    getFeathureFrontProduct();
+  });
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setLoading] = useState(false);
   const onRefresh = useCallback(() => {
@@ -182,7 +217,12 @@ export default function HomeScreen({navigation, route}) {
                   <Text style={{color: color.textPrimaryColor}}>View more</Text>
                 </TouchableOpacity>
               </View>
-              <HomeScreenCategoryData />
+              {console.log(220)}
+              <HomeScreenCategoryData
+                navigation2={navigation2}
+                allProduct={categoryFeatureProduct}
+                isCategoryloading={isCategoryloading}
+              />
             </View>
           </View>
         </ScrollView>

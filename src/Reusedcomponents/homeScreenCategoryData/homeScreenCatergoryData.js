@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -10,7 +10,7 @@ import {styles} from './styles';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {ScrollView} from 'native-base';
 
-export const HomeScreenCategoryData = () => {
+export const HomeScreenCategoryData = props => {
   const [loading, setLoading] = useState(false);
   const [categoryData, setcategoryData] = useState([
     {
@@ -43,102 +43,106 @@ export const HomeScreenCategoryData = () => {
   //     setLoading(false);
   //   }, 5000);
   // });
-  return loading ? (
-    // <View style={styles.main}>
-    <SkeletonPlaceholder>
-      <View
-        style={{
-          flexDirection: 'row',
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignSelf: 'center',
-          width: wp('100'),
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <View
-          style={{
-            ...styles.touchContainer,
-            width: wp('19.6'),
-            height: hp('10'),
-          }}
-        />
-        <View
-          style={{
-            ...styles.touchContainer,
-            width: wp('19.6'),
-            height: hp('10'),
-          }}
-        />
-        <View
-          style={{
-            ...styles.touchContainer,
-            width: wp('19.6'),
-            height: hp('10'),
-          }}
-        />
-        <View
-          style={{
-            ...styles.touchContainer,
-            width: wp('19.6'),
-            height: hp('10'),
-          }}
-        />
-        <View
-          style={{
-            ...styles.touchContainer,
-            width: wp('19.6'),
-            height: hp('10'),
-          }}
-        />
-        <View
-          style={{
-            ...styles.touchContainer,
-            width: wp('19.6'),
-            height: hp('10'),
-          }}
-        />
-        <View
-          style={{
-            ...styles.touchContainer,
-            width: wp('19.6'),
-            height: hp('10'),
-          }}
-        />
-        <View
-          style={{
-            ...styles.touchContainer,
-            width: wp('19.6'),
-            height: hp('10'),
-          }}
-        />
-      </View>
-    </SkeletonPlaceholder>
-  ) : (
-    <View style={styles.main}>
-      <FlatList
-        data={categoryData}
-        keyExtractor={item => item.key}
-        contentContainerStyle={{flexWrap: 'wrap', flexDirection: 'row'}}
-        renderItem={({item}) => {
-          return (
-            <TouchableOpacity style={styles.touchContainer}>
-              <Image
-                style={{width: wp('19.6'), height: hp('7')}}
-                source={require('../../images/No.png')}
-              />
-              <Text
-                style={{
-                  color: 'black',
-                  fontSize: hp('1.5'),
-                  textAlign: 'center',
-                }}>
-                Fresh Meat
-              </Text>
-            </TouchableOpacity>
-          );
-        }}
-      />
+  return (
+    <View>
+      {props?.isCategoryloading ? (
+        // <View style={styles.main}>
+        <SkeletonPlaceholder>
+          <View
+            style={{
+              flexDirection: 'row',
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignSelf: 'center',
+              width: wp('100'),
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <View
+              style={{
+                ...styles.touchContainer,
+                width: wp('19.6'),
+                height: hp('10'),
+              }}
+            />
+            <View
+              style={{
+                ...styles.touchContainer,
+                width: wp('19.6'),
+                height: hp('10'),
+              }}
+            />
+            <View
+              style={{
+                ...styles.touchContainer,
+                width: wp('19.6'),
+                height: hp('10'),
+              }}
+            />
+            <View
+              style={{
+                ...styles.touchContainer,
+                width: wp('19.6'),
+                height: hp('10'),
+              }}
+            />
+            <View
+              style={{
+                ...styles.touchContainer,
+                width: wp('19.6'),
+                height: hp('10'),
+              }}
+            />
+            <View
+              style={{
+                ...styles.touchContainer,
+                width: wp('19.6'),
+                height: hp('10'),
+              }}
+            />
+            <View
+              style={{
+                ...styles.touchContainer,
+                width: wp('19.6'),
+                height: hp('10'),
+              }}
+            />
+            <View
+              style={{
+                ...styles.touchContainer,
+                width: wp('19.6'),
+                height: hp('10'),
+              }}
+            />
+          </View>
+        </SkeletonPlaceholder>
+      ) : (
+        <View style={styles.main}>
+          <FlatList
+            data={props?.categoryFeatureProduct}
+            keyExtractor={item => item.key}
+            contentContainerStyle={{flexWrap: 'wrap', flexDirection: 'row'}}
+            renderItem={({item}) => {
+              return (
+                <TouchableOpacity style={styles.touchContainer}>
+                  <Image
+                    style={{width: wp('19.6'), height: hp('7')}}
+                    source={{uri: IMAGE_BASED_URL + item?.image?.url}}
+                  />
+                  <Text
+                    style={{
+                      color: 'black',
+                      fontSize: hp('1.5'),
+                      textAlign: 'center',
+                    }}>
+                    Fresh Meat
+                  </Text>
+                </TouchableOpacity>
+              );
+            }}
+          />
+        </View>
+      )}
     </View>
   );
 };

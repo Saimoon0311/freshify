@@ -1,12 +1,12 @@
 // export const BASE_URL='https://api.thefreshify.com/api';
 export const API_BASED_URL = 'https://api.thefreshify.com/api/';
-export const IMAGE_BASED_URL = 'http://api.thefreshify.com/storage/';
+export const IMAGE_BASED_URL = 'https://api.thefreshify.com/storage/';
 
 export const getApi = endpoint => API_BASED_URL + endpoint;
 
 export const LoginUrl = getApi('auth/login');
 export const SignUpUrl = getApi('auth/register');
-export const FrontProductUrl = getApi('front/products');
+export const FrontProductUrl = getApi('front/products/');
 export const PostCreateUrl = getApi('posts/createpost');
 export const ImageUploadUrl = getApi('upload');
 export const LikeUrl = getApi('posts/');
@@ -19,3 +19,4 @@ export const FollowUserUrl = getApi('users/');
 export const getaUserUrl = getApi('users/');
 export const getAllFriendsUrl = getApi('users/friends/');
 export const getUserAllPostUrl = getApi('posts/profile/');
+export const allCategoriesUrl = getApi('front/categories');
