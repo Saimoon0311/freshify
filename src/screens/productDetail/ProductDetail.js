@@ -161,7 +161,7 @@ export default function ProductDetail({navigation, route}) {
           <View>
             <Text style={styles.textDescription}>Description</Text>
             <View style={styles.textDescriptionContainer}>
-              <Text style={styles.description}>{item.description}</Text>
+              <Text style={styles.description}>{item?.short_description}</Text>
             </View>
           </View>
         </View>

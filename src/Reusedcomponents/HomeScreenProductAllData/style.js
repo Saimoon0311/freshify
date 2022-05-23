@@ -21,14 +21,14 @@ export const styles = StyleSheet.create({
     elevation: hp('0.5'),
     marginTop: hp('1'),
     marginBottom: hp('1'),
-    backgroundColor: 'white',
-    paddingBottom: hp('0'),
+    paddingBottom: hp('-10'),
     shadowOffset: {
       width: 0,
       height: 2,
     },
     shadowOpacity: 0.2,
     shadowRadius: 2,
+    backgroundColor: 'white',
   },
   topText: {
     color: 'black',
@@ -56,7 +56,8 @@ export const styles = StyleSheet.create({
     borderBottomRightRadius: 15,
     width: wp('10'),
     alignItems: 'center',
-    justifyContent: 'center',
+    marginBottom: hp('-2.5'),
+    // justifyContent: 'center',
     // marginRight: wp('0.4'),
   },
 });

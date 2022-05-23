@@ -34,11 +34,12 @@ export default function HomeScreen({navigation, route}) {
 
   const getFrontProduct = () => {
     ApiGet(FrontProductUrl).then(res => {
-      if (res.data.success == true) {
-        setAllProduct(res.data.products);
+      if (res.success == true) {
+        setAllProduct(res.data);
         setIsLoading(false);
       } else if (res.success == false) {
         setIsLoading(true);
+        console.log(51, res);
         showMessage({
           type: 'danger',
           icon: 'danger',
@@ -48,6 +49,7 @@ export default function HomeScreen({navigation, route}) {
         });
       } else {
         setIsLoading(true);
+        console.log(51);
         showMessage({
           type: 'danger',
           icon: 'danger',
