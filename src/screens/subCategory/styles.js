@@ -108,7 +108,7 @@ export const styles = StyleSheet.create({
   },
   addCartbutton: {
     marginLeft: 'auto',
-    backgroundColor: color.textPrimaryColor,
+    backgroundColor: color.themeColorDark,
     borderTopLeftRadius: 15,
     borderBottomRightRadius: 15,
     width: wp('12'),

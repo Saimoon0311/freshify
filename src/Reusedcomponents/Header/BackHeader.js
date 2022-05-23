@@ -28,7 +28,7 @@ export const BackHeader = props => {
         <TouchableOpacity onPress={() => props?.navigate()}>
           <Ionicons
             name={'arrow-back-sharp'}
-            color={color.textPrimaryColor}
+            color={color.themeColorDark}
             size={hp('4')}
             style={{paddingTop: Platform.OS == 'ios' ? hp('1') : hp('0')}}
           />
@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
     width: wp('100'),
   },
   textContainer: {
-    fontSize: 18,
-    color: 'black',
+    fontSize: hp('2.5'),
+    color: color.themeColorDark,
     fontFamily: 'Poppins-SemiBold',
     textAlign: 'center',
   },

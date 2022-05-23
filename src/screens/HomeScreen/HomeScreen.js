@@ -29,6 +29,7 @@ import {ApiGet} from '../../Config/helperFunction';
 import {allCategoriesUrl, FrontProductUrl} from '../../Config/Url';
 import {showMessage} from 'react-native-flash-message';
 import {useSelector} from 'react-redux';
+import {LoginHeader} from '../../Reusedcomponents/loginHeader';
 
 export default function HomeScreen({navigation, route}) {
   const [allProduct, setAllProduct] = useState();
@@ -172,16 +173,8 @@ export default function HomeScreen({navigation, route}) {
             </TouchableOpacity>
           </View>
         </View> */}
-        <View style={styles.search}>
-          <TouchableOpacity>
-            <Ionicons name="search" size={20} color={'gray'} />
-          </TouchableOpacity>
-          <TextInput
-            placeholder="Search fresh grocery"
-            placeholderTextColor={'gray'}
-            style={styles.searchInput}
-          />
-        </View>
+        <LoginHeader />
+
         <ScrollView
           showsVerticalScrollIndicator={false}
           refreshControl={
@@ -189,6 +182,16 @@ export default function HomeScreen({navigation, route}) {
           }
           contentContainerStyle={{paddingBottom: hp('23')}}>
           <View>
+            <View style={styles.search}>
+              <TouchableOpacity>
+                <Ionicons name="search" size={20} color={'gray'} />
+              </TouchableOpacity>
+              <TextInput
+                placeholder="Search fresh grocery"
+                placeholderTextColor={'gray'}
+                style={styles.searchInput}
+              />
+            </View>
             <View
               style={{
                 marginTop: hp('2'),

@@ -29,7 +29,7 @@ export default function SubCategory({route, navigation}) {
     ApiPost(SubCategoryUrl, item.name, true).then(res => {
       if (res.success == true) {
         setSubCategoryFlatList(res.data);
-        setIsLoading(false);
+        // setIsLoading(false);
       } else if (res.success == false) {
         setIsLoading(true);
         showMessage({
@@ -41,6 +41,25 @@ export default function SubCategory({route, navigation}) {
         });
       }
     });
+  };
+  const loadingView = () => {
+    return (
+      <View
+        style={{
+          ...styles.mainContainer,
+          marginLeft: wp('3'),
+          marginRight: wp('3'),
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          borderColor: 'black',
+        }}>
+        <View style={{...styles.topText, backgroundColor: 'white'}} />
+        <View
+          style={{...globalStyles.globalInsideImage, backgroundColor: 'white'}}
+        />
+        <View style={{...styles.priceText, backgroundColor: 'white'}} />
+      </View>
+    );
   };
   useEffect(() => {
     getSubCategoryData();
@@ -92,55 +111,7 @@ export default function SubCategory({route, navigation}) {
               width: wp('100'),
               justifyContent: 'center',
             }}>
-            <View
-              style={{
-                ...styles.mainContainer,
-                height: hp('25'),
-                marginLeft: wp('3'),
-                marginRight: wp('3'),
-              }}></View>
-            <View
-              style={{
-                ...styles.mainContainer,
-                marginLeft: wp('3'),
-                marginRight: wp('3'),
-                height: hp('25'),
-              }}></View>
-            <View
-              style={{
-                ...styles.mainContainer,
-                marginLeft: wp('3'),
-                marginRight: wp('3'),
-                height: hp('25'),
-              }}></View>
-            <View
-              style={{
-                ...styles.mainContainer,
-                marginLeft: wp('3'),
-                marginRight: wp('3'),
-                height: hp('25'),
-              }}></View>
-            <View
-              style={{
-                ...styles.mainContainer,
-                marginLeft: wp('3'),
-                marginRight: wp('3'),
-                height: hp('25'),
-              }}></View>
-            <View
-              style={{
-                ...styles.mainContainer,
-                marginLeft: wp('3'),
-                marginRight: wp('3'),
-                height: hp('25'),
-              }}></View>
-            <View
-              style={{
-                ...styles.mainContainer,
-                marginLeft: wp('3'),
-                marginRight: wp('3'),
-                height: hp('25'),
-              }}></View>
+            {loadingView()}
             <View
               style={{
                 ...styles.mainContainer,
@@ -181,7 +152,7 @@ export default function SubCategory({route, navigation}) {
                   <View style={{flexDirection: 'row'}}>
                     {/* <Text style={styles.mlText}>225 ml</Text> */}
                     <TouchableOpacity style={styles.addCartbutton}>
-                      <Ionicons name="add" size={25} color={'white'} />
+                      <Ionicons name="add" size={hp('3')} color={'white'} />
                     </TouchableOpacity>
                   </View>
                 </TouchableOpacity>
