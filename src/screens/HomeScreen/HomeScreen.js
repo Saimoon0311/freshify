@@ -133,7 +133,7 @@ export default function HomeScreen({navigation, route}) {
     console.log(133);
     getFrontProduct();
     getFeathureFrontProduct();
-  });
+  }, []);
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setLoading] = useState(false);
   const onRefresh = useCallback(() => {
