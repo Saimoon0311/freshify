@@ -6,11 +6,26 @@ import {
 } from 'react-native-responsive-screen';
 
 export const styles = StyleSheet.create({
+  text: {
+    //     backgroundColor: '#F3F5F7',
+    backgroundColor: 'white',
+    height: hp('8'),
+    width: wp('75'),
+    alignSelf: 'center',
+    fontSize: hp('2.5'),
+    //     marginLeft:wp('4%')
+  },
   topTitle: {
     color: color.textSecondaryColor,
     textAlign: 'center',
     marginTop: hp('2'),
     fontSize: hp('2.3'),
+  },
+  topTitle2: {
+    color: color.textSecondaryColor,
+    marginTop: hp('2'),
+    fontSize: hp('2.3'),
+    marginLeft: wp('7'),
   },
   topButtonView: {
     flexDirection: 'row',
@@ -98,5 +113,28 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: hp('-5'),
     marginBottom: hp('2'),
+  },
+  centerText: {
+    marginLeft: wp('8'),
+    color: color.defaultcolor,
+    marginTop: wp('4'),
+  },
+  checkBoxButtonContainer: {
+    marginTop: hp('2'),
+    marginLeft: wp('4'),
+  },
+  box: {
+    padding: 13,
+    margin: wp('7'),
+    marginBottom: hp('1'),
+    backgroundColor: 'white',
+    //     backgroundColor: '#F3F5F7',
+    shadowColor: '#000',
+    shadowOpacity: 0.4,
+    shadowOffset: {width: 1, height: 3},
+    shadowRadius: 2,
+    elevation: 5,
+    // height: hp('30'),
+    borderRadius: 10,
   },
 });
