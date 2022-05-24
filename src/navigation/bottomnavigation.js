@@ -22,10 +22,12 @@ import {
 import {screens} from '../screens';
 import {color} from '../Reusedcomponents/color';
 import {Badge} from 'react-native-paper';
+import {useSelector} from 'react-redux';
 
 const Tab = createBottomTabNavigator();
 function MybottomTabs() {
-  const [badge, setBadge] = useState('99+');
+  const {cartDataLength} = useSelector(state => state.cartDataLength);
+  const [badge, setBadge] = useState(cartDataLength);
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({

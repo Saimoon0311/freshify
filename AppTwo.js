@@ -36,7 +36,7 @@ function AppTwo({navigation}) {
   };
   const dispatch = useDispatch();
   const createCartId = () => {
-    if (cartData != {}) {
+    if (cartData == {}) {
       let url = createCartIdUrl;
       let body = {};
       ApiPost(url, body).then(res => {

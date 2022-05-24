@@ -35,10 +35,10 @@ export default function cartScreen({navigation}) {
   const [loading, setLoading] = useState(true);
   const [cartAllData, setCartAllData] = useState([]);
   const {cartData} = useSelector(state => state.cartData);
-
+  console.log(8686, cartData);
   const getCartData = () => {
-    // let url = allCartDataUrl + cartData.id;
-    let url = allCartDataUrl + '39';
+    let url = allCartDataUrl + cartData.id;
+    // let url = allCartDataUrl + '39';
     ApiGet(url).then(res => {
       if (res.success == true) {
         setCartAllData(res?.data);
@@ -275,7 +275,9 @@ export default function cartScreen({navigation}) {
                   </Text>
                 </View>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('checkOutScreen')}
+                  onPress={() =>
+                    navigation.navigate('checkOutScreen', cartAllData.items)
+                  }
                   style={styles.processButton}>
                   <Text style={styles.processText}>Proceed To Checkout</Text>
                 </TouchableOpacity>

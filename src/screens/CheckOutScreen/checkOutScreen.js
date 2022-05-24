@@ -27,11 +27,12 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
 
-function checkOutScreen({navigation}) {
+function checkOutScreen({route, navigation}) {
+  const item = route.params;
   var today = moment().format('DD MMM');
   var tomorrow = moment().add(1, 'days').format('DD MMM');
   var time = new Date();
-
+  console.log(56, item);
   const [topButton, setTopButton] = useState(1);
   const [paymentInfo, setPaymentInfo] = useState();
   const [value, setValue] = useState('one');
@@ -42,30 +43,26 @@ function checkOutScreen({navigation}) {
       <>
         <Text style={styles.topTitle}>Bill Summary</Text>
         <View style={styles.billSummaryView}>
-          <View style={styles.innerContainer}>
-            <View style={styles.textContainer}>
-              <Text style={styles.innerText}>Payment Total</Text>
-            </View>
-            <View
-              style={{
-                ...styles.textContainer,
-                alignItems: 'flex-end',
-              }}>
-              <Text numberOfLines={1} style={styles.innerText}>
-                Rs 150
-              </Text>
-            </View>
-          </View>
-          <View style={styles.innerContainer}>
-            <View style={styles.textContainer}>
-              <Text style={styles.innerText}>Fresify Delivery</Text>
-            </View>
-            <View style={{...styles.textContainer, alignItems: 'flex-end'}}>
-              <Text numberOfLines={1} style={styles.innerText}>
-                Rs 150
-              </Text>
-            </View>
-          </View>
+          {item.map(res => {
+            return (
+              <View style={styles.innerContainer}>
+                <View style={styles.textContainer}>
+                  <Text style={styles.innerText}>
+                    {res?.products?.name} x {res?.quantity}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    ...styles.textContainer,
+                    alignItems: 'flex-end',
+                  }}>
+                  <Text numberOfLines={1} style={styles.innerText}>
+                    Rs {res?.rowtotal}
+                  </Text>
+                </View>
+              </View>
+            );
+          })}
           <Divider
             style={{borderWidth: 1, borderColor: 'gray', marginBottom: hp('1')}}
           />

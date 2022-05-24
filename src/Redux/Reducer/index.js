@@ -5,6 +5,7 @@ import {persistStore, persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import thunk from 'redux-thunk';
 import CartData from './CartData';
+import cartDataLength from './cartDataLength';
 
 const persistConfig1 = {
   key: 'CartData',
@@ -14,7 +15,7 @@ const persistConfig1 = {
 
 const rootReducer = combineReducers({
   cartData: persistReducer(persistConfig1, CartData),
-  // savePosts: persistReducer(persistConfig2, savedata),
+  cartDataLength: cartDataLength,
   // themeChange,
 });
 

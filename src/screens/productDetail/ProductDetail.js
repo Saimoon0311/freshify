@@ -19,13 +19,13 @@ import BottomButton from '../../Reusedcomponents/BottomButton/bottomButton';
 import {SliderBox, FastImage} from 'react-native-image-slider-box';
 import {allCartDataUrl, IMAGE_BASED_URL} from '../../Config/Url';
 import {ApiPost} from '../../Config/helperFunction';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {showMessage} from 'react-native-flash-message';
 import {SkypeIndicator} from 'react-native-indicators';
 
 export default function ProductDetail({navigation, route}) {
   const {cartData} = useSelector(state => state.cartData);
-
+  const dispatch = useDispatch();
   const item = route.params;
   const [buttonLoading, setButtonLoading] = useState(false);
 
@@ -35,7 +35,7 @@ export default function ProductDetail({navigation, route}) {
   const addToCart = () => {
     setButtonLoading(true);
     console.log(345435345);
-    let url = allCartDataUrl + cartData?.id;
+    let url = allCartDataUrl + cartData.id;
     let body = JSON.stringify({
       product_id: item?.id,
       variation_id: '0',
