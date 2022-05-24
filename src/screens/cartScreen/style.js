@@ -39,13 +39,11 @@ export const styles = StyleSheet.create({
     width: wp('90'),
     backgroundColor: 'white',
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-    elevation: hp('0.8'),
+    shadowOpacity: 0.4,
+    shadowOffset: {width: 3, height: 3},
+    // marginTop: hp('1'),
+    shadowRadius: 3,
+    elevation: 7,
     borderRadius: 10,
     alignSelf: 'center',
   },
@@ -76,7 +74,7 @@ export const styles = StyleSheet.create({
   imageStyle: {
     width: wp('21'),
     height: hp('12'),
-    resizeMode: 'contain',
+    borderRadius: 10,
   },
   itemName: {
     fontSize: hp('2'),
