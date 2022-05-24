@@ -8,7 +8,7 @@ export const ApiPost = async (url, body, confirm) => {
     : myHeaders.append('Content-Type', 'application/json');
   return fetch(url, {
     method: 'POST',
-    body: formdata,
+    body: confirm == true ? formdata : body,
     headers: myHeaders,
     redirect: 'follow',
   })

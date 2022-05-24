@@ -29,13 +29,15 @@ import {ApiGet} from '../../Config/helperFunction';
 import {allCategoriesUrl, FrontProductUrl} from '../../Config/Url';
 import {showMessage} from 'react-native-flash-message';
 import {useSelector} from 'react-redux';
+import {LoginHeader} from '../../Reusedcomponents/loginHeader';
 
 export default function HomeScreen({navigation, route}) {
-  const [allProduct, setAllProduct] = useState();
-  const [categoryFeatureProduct, setCategoryFeatureProduct] = useState();
+  const [allProduct, setAllProduct] = useState([]);
+  const [categoryFeatureProduct, setCategoryFeatureProduct] = useState([]);
   const [isloading, setIsLoading] = useState(true);
   const [isCategoryloading, setIsCategoryLoading] = useState(true);
   const {cartData} = useSelector(state => state.cartData);
+  const [searchHome, setSearchHome] = useState('');
   console.log(7687, cartData);
 
   const getFrontProduct = () => {
@@ -71,6 +73,9 @@ export default function HomeScreen({navigation, route}) {
       if (res.success == true) {
         setCategoryFeatureProduct(res.data);
         setIsCategoryLoading(false);
+      } else if (res.data == []) {
+        setIsCategoryLoading(false);
+        setCategoryFeatureProduct([]);
       } else if (res.success == false) {
         setIsCategoryLoading(true);
         showMessage({
@@ -96,7 +101,6 @@ export default function HomeScreen({navigation, route}) {
     navigation.navigate('ProductDetail', item);
   };
   const navigation2 = item => {
-    console.log(99, item);
     navigation.navigate('SubCategory', item);
   };
   const theme = extendTheme({
@@ -136,6 +140,13 @@ export default function HomeScreen({navigation, route}) {
     getFrontProduct();
     getFeathureFrontProduct();
   }, []);
+  const searchHomeProducts = () => {
+    navigation.navigate('SubCategory', {
+      name: searchHome,
+      search: true,
+    });
+    setSearchHome('');
+  };
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setLoading] = useState(false);
   const onRefresh = useCallback(() => {
@@ -172,16 +183,8 @@ export default function HomeScreen({navigation, route}) {
             </TouchableOpacity>
           </View>
         </View> */}
-        <View style={styles.search}>
-          <TouchableOpacity>
-            <Ionicons name="search" size={20} color={'gray'} />
-          </TouchableOpacity>
-          <TextInput
-            placeholder="Search fresh grocery"
-            placeholderTextColor={'gray'}
-            style={styles.searchInput}
-          />
-        </View>
+        <LoginHeader />
+
         <ScrollView
           showsVerticalScrollIndicator={false}
           refreshControl={
@@ -189,6 +192,22 @@ export default function HomeScreen({navigation, route}) {
           }
           contentContainerStyle={{paddingBottom: hp('23')}}>
           <View>
+            <View style={styles.search}>
+              <TouchableOpacity onPress={() => searchHomeProducts()}>
+                <Ionicons name="search" size={20} color={'gray'} />
+              </TouchableOpacity>
+              <TextInput
+                placeholder="Search fresh grocery"
+                placeholderTextColor={'gray'}
+                style={styles.searchInput}
+                onChangeText={e => setSearchHome(e)}
+                onSubmitEditing={() => searchHomeProducts()}
+                value={searchHome}
+                autoFocus={false}
+                focusable={true}
+                autoCorrect={false}
+              />
+            </View>
             <View
               style={{
                 marginTop: hp('2'),

@@ -36,4 +36,18 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: hp('0.5'),
   },
+  categoryImage: {
+    width: wp('19.6'),
+    height: hp('7'),
+    marginTop: hp('0.5'),
+  },
+  placeholderView: {
+    flexDirection: 'row',
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignSelf: 'center',
+    width: wp('100'),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

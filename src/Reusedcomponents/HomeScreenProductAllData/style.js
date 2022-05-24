@@ -55,8 +55,14 @@ export const styles = StyleSheet.create({
     borderBottomRightRadius: 15,
     width: wp('10'),
     alignItems: 'center',
-    // marginBottom: hp('-2.5'),
+    bottom: hp('-0.2'),
     // justifyContent: 'center',
     // marginRight: wp('0.4'),
+  },
+  outOfStockContainer: {
+    color: color.textPrimaryColor,
+    textAlign: 'center',
+    // marginTop: hp(''),
+    marginBottom: hp('0.5'),
   },
 });

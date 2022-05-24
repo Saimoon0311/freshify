@@ -8,13 +8,15 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export default function NoProductView(props) {
+  let width = props?.width ? props.width : wp('70');
+  let height = props?.height ? props.height : hp('30');
   return (
     <View style={styles.mainView}>
-      <View style={styles.innerView}>
+      <View style={{...styles.innerView, width: width, height: height}}>
         <MaterialIcons
           name="search-off"
           color={color.themeColorDark}
-          size={100}
+          size={hp('10')}
         />
         <Text style={styles.noProductText}>{props?.text}</Text>
       </View>
@@ -24,12 +26,10 @@ export default function NoProductView(props) {
 const styles = StyleSheet.create({
   noProductText: {
     color: color.themeColorDark,
-    fontSize: hp('3'),
+    fontSize: hp('2'),
     fontWeight: 'bold',
   },
   innerView: {
-    width: wp('90'),
-    height: hp('30'),
     alignSelf: 'center',
     backgroundColor: color.themeColorlight,
     justifyContent: 'center',

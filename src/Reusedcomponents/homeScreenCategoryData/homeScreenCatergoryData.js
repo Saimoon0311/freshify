@@ -10,6 +10,7 @@ import {styles} from './styles';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {ScrollView} from 'native-base';
 import {IMAGE_BASED_URL} from '../../Config/Url';
+import NoProductView from '../NoProductView/noProductView';
 
 export const HomeScreenCategoryData = props => {
   const [loading, setLoading] = useState(false);
@@ -39,84 +40,65 @@ export const HomeScreenCategoryData = props => {
       id: 8,
     },
   ]);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 5000);
-  // });
+  const categoriesPlaceholder = () => {
+    return (
+      <View
+        style={{
+          ...styles.touchContainer,
+          width: wp('19.6'),
+          height: hp('10'),
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          alignItems: 'center',
+        }}>
+        <View
+          style={{
+            ...styles.categoryImage,
+            width: wp('15'),
+            borderRadius: 10,
+            height: hp('5'),
+          }}
+        />
+        <View
+          style={{
+            ...styles.name,
+            width: wp('10'),
+            height: hp('2'),
+            marginTop: hp('1'),
+            borderRadius: 10,
+          }}
+        />
+      </View>
+    );
+  };
+
   return (
     <View>
       {props?.isCategoryloading ? (
-        // <View style={styles.main}>
         <SkeletonPlaceholder>
-          <View
-            style={{
-              flexDirection: 'row',
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignSelf: 'center',
-              width: wp('100'),
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <View
-              style={{
-                ...styles.touchContainer,
-                width: wp('19.6'),
-                height: hp('10'),
-              }}
-            />
-            <View
-              style={{
-                ...styles.touchContainer,
-                width: wp('19.6'),
-                height: hp('10'),
-              }}
-            />
-            <View
-              style={{
-                ...styles.touchContainer,
-                width: wp('19.6'),
-                height: hp('10'),
-              }}
-            />
-            <View
-              style={{
-                ...styles.touchContainer,
-                width: wp('19.6'),
-                height: hp('10'),
-              }}
-            />
-            <View
-              style={{
-                ...styles.touchContainer,
-                width: wp('19.6'),
-                height: hp('10'),
-              }}
-            />
-            <View
-              style={{
-                ...styles.touchContainer,
-                width: wp('19.6'),
-                height: hp('10'),
-              }}
-            />
-            <View
-              style={{
-                ...styles.touchContainer,
-                width: wp('19.6'),
-                height: hp('10'),
-              }}
-            />
-            <View
-              style={{
-                ...styles.touchContainer,
-                width: wp('19.6'),
-                height: hp('10'),
-              }}
-            />
+          <View style={styles.placeholderView}>
+            {categoriesPlaceholder()}
+            {categoriesPlaceholder()}
+            {categoriesPlaceholder()}
+            {categoriesPlaceholder()}
+            {categoriesPlaceholder()}
+            {categoriesPlaceholder()}
+            {categoriesPlaceholder()}
+            {categoriesPlaceholder()}
           </View>
         </SkeletonPlaceholder>
+      ) : props?.categoryFeatureProduct.length == 0 ? (
+        <View
+          style={{
+            height: hp('30'),
+            marginTop: hp('2'),
+          }}>
+          <NoProductView
+            width={wp('50')}
+            height={hp('20')}
+            text="No Category Found"
+          />
+        </View>
       ) : (
         <View style={styles.main}>
           <FlatList
@@ -129,11 +111,7 @@ export const HomeScreenCategoryData = props => {
                   onPress={() => props?.navigation2(item)}
                   style={styles.touchContainer}>
                   <Image
-                    style={{
-                      width: wp('19.6'),
-                      height: hp('7'),
-                      marginTop: hp('0.5'),
-                    }}
+                    style={styles.categoryImage}
                     resizeMode="contain"
                     source={{uri: IMAGE_BASED_URL + item?.icon?.url}}
                   />

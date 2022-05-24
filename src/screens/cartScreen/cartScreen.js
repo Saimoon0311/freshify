@@ -20,8 +20,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {NineCubesLoader, BallIndicator} from 'react-native-indicators';
-import {allCartDataUrl, deleteCartUrl, IMAGE_BASED_URL} from '../../Config/Url';
-import {ApiGet} from '../../Config/helperFunction';
+import {
+  allCartDataUrl,
+  deleteCartUrl,
+  IMAGE_BASED_URL,
+  quantityControllerUrl,
+} from '../../Config/Url';
+import {ApiGet, ApiPost} from '../../Config/helperFunction';
 import {useSelector} from 'react-redux';
 import {showMessage} from 'react-native-flash-message';
 import NoProductView from '../../Reusedcomponents/NoProductView/noProductView';
@@ -97,7 +102,54 @@ export default function cartScreen({navigation}) {
       }
     });
   };
-
+  const quantityController = (id, product_id, quantity, confirm) => {
+    let url = quantityControllerUrl + '39';
+    // let url = quantityControllerUrl + cartData.id;
+    console.log(129, url);
+    if (confirm == 'increanment' && quantity >= 1) {
+      let quantityCheck = quantity + 1;
+      let body = JSON.stringify({
+        product_id: product_id,
+        item_id: id,
+        quantity: quantityCheck,
+      });
+      console.log(116, body);
+      ApiPost(url, body, false).then(res => {
+        console.log(129, res);
+        if (res.success == true) {
+          setCartAllData(res?.data);
+        } else if (res.success == false) {
+          showMessage({
+            type: 'danger',
+            icon: 'danger',
+            message: 'Warning',
+            description: 'Network Request Failed',
+            backgroundColor: color.textPrimaryColor,
+          });
+        }
+      });
+    } else if (confirm == 'decreanment' && quantity > 1) {
+      let quantityCheck = quantity - 1;
+      let body = JSON.stringify({
+        product_id: product_id,
+        item_id: id,
+        quantity: quantityCheck,
+      });
+      ApiPost(url, body, false).then(res => {
+        if (res.success == true) {
+          setCartAllData(res?.data);
+        } else if (res.success == false) {
+          showMessage({
+            type: 'danger',
+            icon: 'danger',
+            message: 'Warning',
+            description: 'Network Request Failed',
+            backgroundColor: color.textPrimaryColor,
+          });
+        }
+      });
+    }
+  };
   useEffect(() => {
     getCartData();
   }, []);
@@ -136,7 +188,7 @@ export default function cartScreen({navigation}) {
                       padding: wp('2'),
                     }}>
                     <Image
-                      resizeMode="contain"
+                      // resizeMode="contain"
                       source={{
                         uri: IMAGE_BASED_URL + item?.products?.image?.url,
                       }}
@@ -162,24 +214,40 @@ export default function cartScreen({navigation}) {
                           Rs {item?.products?.price} x {item?.quantity}
                         </Text>
                         <View style={styles.quantityContainer}>
-                          <TouchableOpacity>
+                          <TouchableOpacity
+                            onPress={() =>
+                              quantityController(
+                                item.id,
+                                item.product_id,
+                                item.quantity,
+                                'decreanment',
+                              )
+                            }>
                             <FontAwesome5
                               color={color.textPrimaryColor}
                               name="minus"
-                              size={10}
+                              size={hp('2')}
                             />
                           </TouchableOpacity>
                           <Text style={{marginLeft: wp('1'), color: 'black'}}>
                             1
                           </Text>
-                          <TouchableOpacity>
+                          <TouchableOpacity
+                            onPress={() =>
+                              quantityController(
+                                item.id,
+                                item.product_id,
+                                item.quantity,
+                                'increanment',
+                              )
+                            }>
                             <MaterialIcons
                               color={color.textPrimaryColor}
                               style={{
-                                marginRight: wp('-1.5'),
+                                marginRight: wp('-0.8'),
                               }}
                               name="add"
-                              size={18}
+                              size={hp('2')}
                             />
                           </TouchableOpacity>
                         </View>
@@ -195,7 +263,7 @@ export default function cartScreen({navigation}) {
                 <View style={styles.innerTotalView}>
                   <Text style={styles.totalText}>Total</Text>
                   <Text style={{...styles.totalText, marginLeft: 'auto'}}>
-                    Rs {cartAllData?.total}:
+                    Rs {cartAllData?.total}
                   </Text>
                 </View>
                 <View style={{...styles.innerTotalView, marginTop: wp('-6')}}>

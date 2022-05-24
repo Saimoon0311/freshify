@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   ActivityIndicatorBase,
+  ScrollView,
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -19,33 +20,68 @@ import {ActivityIndicator} from 'react-native-paper';
 import {IMAGE_BASED_URL} from '../../Config/Url';
 import {globalStyles} from '../globalStyle';
 export const HomeScreenAllProductData = props => {
+  const productsPlaceholder = () => {
+    return (
+      <View
+        style={{
+          ...styles.mainContainer,
+          height: hp('29%'),
+          marginLeft: wp('4.5'),
+          backgroundColor: 'transparent',
+          width: wp('45'),
+          borderWidth: 2,
+        }}>
+        <View
+          style={{
+            ...styles.topText,
+            width: wp('30'),
+            height: hp('2'),
+            backgroundColor: 'white',
+            marginLeft: wp('5'),
+            borderRadius: 10,
+          }}
+        />
+        <View style={globalStyles.globalInsideImage} />
+        <View
+          style={{
+            ...styles.topText,
+            width: wp('30'),
+            height: hp('2'),
+            backgroundColor: 'white',
+            marginLeft: wp('5'),
+            borderRadius: 10,
+            marginTop: hp('3'),
+          }}
+        />
+        <View
+          style={{
+            ...styles.topText,
+            width: wp('27'),
+            height: hp('2'),
+            backgroundColor: 'white',
+            marginLeft: wp('5'),
+            borderRadius: 10,
+          }}
+        />
+      </View>
+    );
+  };
   return (
     <View>
       {props?.isloading ? (
-        <SkeletonPlaceholder>
-          <View style={{flexDirection: 'row'}}>
-            <View
-              style={{
-                ...styles.mainContainer,
-                height: hp('29%'),
-                marginLeft: wp('4.5'),
-              }}></View>
-            <View
-              style={{
-                ...styles.mainContainer,
-                height: hp('29%'),
-              }}></View>
-            <View
-              style={{
-                ...styles.mainContainer,
-                height: hp('29%'),
-              }}></View>
-            <View
-              style={{
-                ...styles.mainContainer,
-                height: hp('29%'),
-              }}></View>
-          </View>
+        <SkeletonPlaceholder direction="left">
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <View style={{flexDirection: 'row'}}>
+              {productsPlaceholder()}
+              {productsPlaceholder()}
+              {productsPlaceholder()}
+              {productsPlaceholder()}
+              {productsPlaceholder()}
+              {productsPlaceholder()}
+              {productsPlaceholder()}
+              {productsPlaceholder()}
+            </View>
+          </ScrollView>
         </SkeletonPlaceholder>
       ) : (
         <FlatList
@@ -65,18 +101,13 @@ export const HomeScreenAllProductData = props => {
                 <Text style={styles.priceText}>Price {item?.price}</Text>
                 <Image
                   source={{uri: IMAGE_BASED_URL + item.image.url}}
-                  style={globalStyles.globalInsideImage}
+                  style={{
+                    ...globalStyles.globalInsideImage,
+                    marginBottom: hp('0.5'),
+                  }}
                 />
                 {item?.in_stock == 0 ? (
-                  <Text
-                    style={{
-                      color: color.textPrimaryColor,
-                      textAlign: 'center',
-                      marginTop: hp('1.5'),
-                      marginBottom: hp('0.5'),
-                    }}>
-                    Out of stock
-                  </Text>
+                  <Text style={styles.outOfStockContainer}>Out of stock</Text>
                 ) : (
                   <TouchableOpacity style={styles.addCartbutton}>
                     <Ionicons name="add" size={25} color={'white'} />

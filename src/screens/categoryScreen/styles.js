@@ -43,4 +43,9 @@ export const styles = StyleSheet.create({
     marginTop: hp('1'),
     borderRadius: 20,
   },
+  categoryName: {
+    paddingTop: hp('0'),
+    color: '#6E6D6D',
+    fontFamily: 'Poppins-Regular',
+  },
 });
