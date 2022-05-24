@@ -8,8 +8,12 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {IMAGE_BASED_URL, SubCategoryUrl} from '../../Config/Url';
-import {ApiPost} from '../../Config/helperFunction';
+import {
+  FrontProductUrl,
+  IMAGE_BASED_URL,
+  SubCategoryUrl,
+} from '../../Config/Url';
+import {ApiGet, ApiPost} from '../../Config/helperFunction';
 import {showMessage} from 'react-native-flash-message';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {globalStyles} from '../../Reusedcomponents/globalStyle';
@@ -17,30 +21,57 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import NoProductView from '../../Reusedcomponents/NoProductView/noProductView';
 
 export default function SubCategory({route, navigation}) {
-  const item = route.params;
+  const item = route?.params;
   const [active, setActive] = useState(1);
   const [isloading, setIsLoading] = useState(true);
   const [subCategoryFlatList, setSubCategoryFlatList] = useState([]);
-
   const navigate = () => {
     navigation.goBack();
   };
   const getSubCategoryData = () => {
-    ApiPost(SubCategoryUrl, item.name, true).then(res => {
-      if (res.success == true) {
-        setSubCategoryFlatList(res.data);
-        // setIsLoading(false);
-      } else if (res.success == false) {
-        setIsLoading(true);
-        showMessage({
-          type: 'danger',
-          icon: 'danger',
-          message: 'Warning',
-          description: 'SomeThing want wrong',
-          backgroundColor: color.textPrimaryColor,
-        });
-      }
-    });
+    if (item?.search == true) {
+      let url = FrontProductUrl + '?keyword=' + item?.name;
+      ApiGet(url).then(res => {
+        if (res.success == true) {
+          setSubCategoryFlatList(res.data);
+          setIsLoading(false);
+        } else if (res.success == false && res.data == 'Not Found') {
+          setIsLoading(false);
+          setSubCategoryFlatList([]);
+        } else if (res.success == false) {
+          setIsLoading(true);
+          showMessage({
+            type: 'danger',
+            icon: 'danger',
+            message: 'Warning',
+            description: 'SomeThing want wrong',
+            backgroundColor: color.textPrimaryColor,
+          });
+        }
+      });
+    } else {
+      let body = {
+        slug: item.name,
+      };
+      ApiPost(SubCategoryUrl, item.name, true).then(res => {
+        if (res.success == true) {
+          setSubCategoryFlatList(res.data);
+          setIsLoading(false);
+        } else if (res.success == false && res.data == 'Not Found') {
+          setIsLoading(false);
+          setSubCategoryFlatList([]);
+        } else if (res.success == false) {
+          setIsLoading(true);
+          showMessage({
+            type: 'danger',
+            icon: 'danger',
+            message: 'Warning',
+            description: 'SomeThing want wrong',
+            backgroundColor: color.textPrimaryColor,
+          });
+        }
+      });
+    }
   };
   const loadingView = () => {
     return (
@@ -52,12 +83,29 @@ export default function SubCategory({route, navigation}) {
           backgroundColor: 'transparent',
           borderWidth: 2,
           borderColor: 'black',
+          height: hp('25'),
+          // justifyContent: 'center',
+          // alignItems: 'center',
         }}>
-        <View style={{...styles.topText, backgroundColor: 'white'}} />
+        <View
+          style={{
+            ...styles.topText,
+            backgroundColor: 'white',
+            height: hp('2'),
+            width: wp('30'),
+            // marginTop: hp('0.5'),
+          }}
+        />
         <View
           style={{...globalStyles.globalInsideImage, backgroundColor: 'white'}}
         />
-        <View style={{...styles.priceText, backgroundColor: 'white'}} />
+        <View
+          style={{
+            ...styles.priceText,
+            backgroundColor: 'white',
+            height: hp('2'),
+          }}
+        />
       </View>
     );
   };
@@ -110,15 +158,19 @@ export default function SubCategory({route, navigation}) {
               alignSelf: 'center',
               width: wp('100'),
               justifyContent: 'center',
+              // height: hp('100'),
             }}>
             {loadingView()}
-            <View
-              style={{
-                ...styles.mainContainer,
-                marginLeft: wp('3'),
-                marginRight: wp('3'),
-                height: hp('25'),
-              }}></View>
+            {loadingView()}
+            {loadingView()}
+            {loadingView()}
+            {loadingView()}
+            {loadingView()}
+            {loadingView()}
+            {loadingView()}
+            {loadingView()}
+            {loadingView()}
+            {loadingView()}
           </View>
         </SkeletonPlaceholder>
       ) : subCategoryFlatList.length == 0 ? (
@@ -149,12 +201,13 @@ export default function SubCategory({route, navigation}) {
                   <Text numberOfLines={1} style={styles.priceText}>
                     Rs{item?.price} {item?.product_sale_type?.single_qty_text}
                   </Text>
-                  <View style={{flexDirection: 'row'}}>
-                    {/* <Text style={styles.mlText}>225 ml</Text> */}
-                    <TouchableOpacity style={styles.addCartbutton}>
-                      <Ionicons name="add" size={hp('3')} color={'white'} />
-                    </TouchableOpacity>
-                  </View>
+                  {item.in_stock > 0 && (
+                    <View>
+                      <TouchableOpacity style={styles.addCartbutton}>
+                        <Ionicons name="add" size={hp('3')} color={'white'} />
+                      </TouchableOpacity>
+                    </View>
+                  )}
                 </TouchableOpacity>
               </View>
             );

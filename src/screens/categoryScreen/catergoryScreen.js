@@ -45,11 +45,6 @@ export default function catergoryScreen({navigation}) {
     getCategoryProduct();
   }, []);
 
-  const [catergoryName, setCatergoryName] = useState([
-    {id: 1},
-    {id: 2},
-    {id: 3},
-  ]);
   const [catergoryData, setCatergoryData] = useState([]);
 
   const getCategoryProduct = () => {
@@ -58,16 +53,10 @@ export default function catergoryScreen({navigation}) {
       if (res.success == true) {
         setCatergoryData(res.data);
         setLoading(false);
+      } else if (res.success == false && res.data == 'Not Found') {
+        setLoading(false);
+        setCatergoryData([]);
       } else if (res.success == false) {
-        setLoading(true);
-        showMessage({
-          type: 'danger',
-          icon: 'danger',
-          message: 'Warning',
-          description: 'Some thing is wrong',
-          backgroundColor: color.textPrimaryColor,
-        });
-      } else {
         setLoading(true);
         showMessage({
           type: 'danger',
@@ -83,7 +72,37 @@ export default function catergoryScreen({navigation}) {
   const navigate = () => {
     navigation.goBack();
   };
-
+  const categoryPlacholder = () => {
+    return (
+      <View
+        style={{
+          ...styles.touchContainer,
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          width: wp('28'),
+        }}>
+        <View
+          style={{
+            ...styles.imageStyle,
+            borderRadius: 10,
+            width: wp('25'),
+            height: hp('5'),
+            // marginTop: hp('-2'),
+          }}
+        />
+        <View
+          style={{
+            ...styles.categoryName,
+            height: hp('3'),
+            backgroundColor: 'white',
+            width: wp('25'),
+            marginTop: hp('1'),
+            marginBottom: hp('1'),
+          }}
+        />
+      </View>
+    );
+  };
   return (
     <View>
       <BackHeader text="Catergory" navigate={navigate} />
@@ -95,90 +114,18 @@ export default function catergoryScreen({navigation}) {
         {loading ? (
           <SkeletonPlaceholder>
             <View style={{...styles.mainContainer, marginTop: hp('2')}}>
-              <View
-                style={{
-                  ...styles.touchContainer,
-                  width: wp('27'),
-                  height: hp('11'),
-                }}
-              />
-              <View
-                style={{
-                  ...styles.touchContainer,
-                  width: wp('27'),
-                  height: hp('11'),
-                }}
-              />
-              <View
-                style={{
-                  ...styles.touchContainer,
-                  width: wp('27'),
-                  height: hp('11'),
-                }}
-              />
-              <View
-                style={{
-                  ...styles.touchContainer,
-                  width: wp('27'),
-                  height: hp('11'),
-                }}
-              />
-              <View
-                style={{
-                  ...styles.touchContainer,
-                  width: wp('27'),
-                  height: hp('11'),
-                }}
-              />
-              <View
-                style={{
-                  ...styles.touchContainer,
-                  width: wp('27'),
-                  height: hp('11'),
-                }}
-              />
-              <View
-                style={{
-                  ...styles.touchContainer,
-                  width: wp('27'),
-                  height: hp('11'),
-                }}
-              />
-              <View
-                style={{
-                  ...styles.touchContainer,
-                  width: wp('27'),
-                  height: hp('11'),
-                }}
-              />
-              <View
-                style={{
-                  ...styles.touchContainer,
-                  width: wp('27'),
-                  height: hp('11'),
-                }}
-              />
-              <View
-                style={{
-                  ...styles.touchContainer,
-                  width: wp('27'),
-                  height: hp('11'),
-                }}
-              />
-              <View
-                style={{
-                  ...styles.touchContainer,
-                  width: wp('27'),
-                  height: hp('11'),
-                }}
-              />
-              <View
-                style={{
-                  ...styles.touchContainer,
-                  width: wp('27'),
-                  height: hp('11'),
-                }}
-              />
+              {categoryPlacholder()}
+              {categoryPlacholder()}
+              {categoryPlacholder()}
+              {categoryPlacholder()}
+              {categoryPlacholder()}
+              {categoryPlacholder()}
+              {categoryPlacholder()}
+              {categoryPlacholder()}
+              {categoryPlacholder()}
+              {categoryPlacholder()}
+              {categoryPlacholder()}
+              {categoryPlacholder()}
             </View>
           </SkeletonPlaceholder>
         ) : catergoryData.length == 0 ? (
@@ -205,14 +152,7 @@ export default function catergoryScreen({navigation}) {
                     style={styles.imageStyle}
                     source={{uri: IMAGE_BASED_URL + item?.image?.url}}
                   />
-                  <Text
-                    style={{
-                      paddingTop: hp('0'),
-                      color: '#6E6D6D',
-                      fontFamily: 'Poppins-Regular',
-                    }}>
-                    {item?.name}
-                  </Text>
+                  <Text style={styles.categoryName}>{item?.name}</Text>
                 </TouchableOpacity>
               );
             }}

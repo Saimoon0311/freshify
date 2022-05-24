@@ -17,47 +17,56 @@ import {
 } from 'react-native-responsive-screen';
 import BottomButton from '../../Reusedcomponents/BottomButton/bottomButton';
 import {SliderBox, FastImage} from 'react-native-image-slider-box';
-import {IMAGE_BASED_URL} from '../../Config/Url';
-
-// const flatListProduct = [
-//   {
-//     id: 1,
-//     image: require('../../images/PureMilk.png'),
-//   },
-//   {
-//     id: 2,
-//     image: require('../../images/Product.jpg'),
-//   },
-//   {
-//     id: 3,
-//     image: require('../../images/PureMilk.png'),
-//   },
-// ];
-const flatGramButtonLists = [
-  {
-    id: 1,
-    name: '300gm',
-  },
-  {
-    id: 2,
-    name: '600gm',
-  },
-  {
-    id: 3,
-    name: '900gm',
-  },
-];
+import {allCartDataUrl, IMAGE_BASED_URL} from '../../Config/Url';
+import {ApiPost} from '../../Config/helperFunction';
+import {useSelector} from 'react-redux';
+import {showMessage} from 'react-native-flash-message';
+import {SkypeIndicator} from 'react-native-indicators';
 
 export default function ProductDetail({navigation, route}) {
+  const {cartData} = useSelector(state => state.cartData);
+
   const item = route.params;
-  const [active, setActive] = useState(1);
+  const [buttonLoading, setButtonLoading] = useState(false);
 
   const navigate = () => {
     navigation.goBack();
   };
-
+  const addToCart = () => {
+    setButtonLoading(true);
+    console.log(345435345);
+    let url = allCartDataUrl + cartData?.id;
+    let body = JSON.stringify({
+      product_id: item?.id,
+      variation_id: '0',
+      quantity: 1,
+    });
+    ApiPost(url, body, false).then(res => {
+      if (res.success == true) {
+        showMessage({
+          type: 'success',
+          icon: 'success',
+          message: 'Success',
+          description: 'Your Cart has been Added',
+          backgroundColor: color.textPrimaryColor,
+        });
+        setButtonLoading(false);
+      } else if (res.success == false) {
+        showMessage({
+          type: 'danger',
+          icon: 'danger',
+          message: 'Warning',
+          description: 'SomeThing want wrong',
+          backgroundColor: color.textPrimaryColor,
+        });
+        setButtonLoading(false);
+      }
+    });
+  };
+  const checkStock = () => {
+    item.in_stock == 0 ? console.log('jahdbvfj') : addToCart();
+  };
   const flatListProduct = [IMAGE_BASED_URL + item.image.url];
-  console.log(63, item.image_url);
   return (
     <View style={styles.mainContainer}>
       <BackHeader
@@ -121,14 +130,14 @@ export default function ProductDetail({navigation, route}) {
         </View>
       </ScrollView>
       <View style={styles.bottomView}>
-        <BottomButton
-          onPress={
-            item.in_stock == 0
-              ? console.log('jahdbvfj')
-              : console.log('jahdbvfj')
-          }
-          title={item.in_stock == 0 ? 'Out Of Stock' : 'Add to Cart'}
-        />
+        {buttonLoading ? (
+          <SkypeIndicator color={color.textPrimaryColor} size={hp('6')} />
+        ) : (
+          <BottomButton
+            onPress={checkStock}
+            title={item.in_stock == 0 ? 'Out Of Stock' : 'Add to Cart'}
+          />
+        )}
       </View>
     </View>
   );

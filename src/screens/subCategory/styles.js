@@ -55,6 +55,7 @@ export const styles = StyleSheet.create({
   },
   categoryContainer: {
     marginLeft: wp('6'),
+    // height: hp('30'),
   },
   mainContainer: {
     width: wp('40'),
@@ -71,6 +72,7 @@ export const styles = StyleSheet.create({
     marginTop: hp('1'),
     marginBottom: hp('1'),
     backgroundColor: 'white',
+    height: hp('24.8'),
   },
   topText: {
     fontFamily: 'Poppins-SemiBold',

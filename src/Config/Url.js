@@ -9,3 +9,4 @@ export const PostCreateUrl = getApi('posts/createpost');
 export const createCartIdUrl = getApi('front/cart');
 export const allCategoriesUrl = getApi('front/categories');
 export const SubCategoryUrl = getApi('front/products-viaslug');
+export const allCartDataUrl = getApi('front/cart/');
