@@ -56,7 +56,7 @@ export default function catergoryScreen({navigation}) {
     let url = allCategoriesUrl;
     ApiGet(url).then(res => {
       if (res.success == true) {
-        // setCatergoryData(res.data);
+        setCatergoryData(res.data);
         setLoading(false);
       } else if (res.success == false) {
         setLoading(true);

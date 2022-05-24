@@ -76,7 +76,6 @@ export const styles = StyleSheet.create({
   imageStyle: {
     width: wp('21'),
     height: hp('12'),
-    resizeMode: 'contain',
   },
   itemName: {
     fontSize: hp('2'),
