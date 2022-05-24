@@ -1,19 +1,20 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {store} from '../Redux/Reducer';
 import types from '../Redux/type';
 import {ApiGet} from './helperFunction';
 import {allCartDataUrl} from './Url';
 
-export const getCartData = () => {
-  const {cartData} = useSelector(state => state.cartData);
-  const dispatch = useDispatch();
+export default function getCartData() {
+  let cartData = store.getState().cartData.cartData;
+  let cartDataLength = store.getState().cartDataLength.cartDataLength;
   let url = allCartDataUrl + cartData.id;
   ApiGet(url).then(res => {
     if (res.success == true) {
-      dispatch({
-        type: types.AddCart,
-        payload: res.data.items.length,
+      store.dispatch({
+        type: 'AddCart',
+        payload: {length: res.data.items.length},
       });
+      console.log(75678587, cartDataLength);
     }
   });
-};
+}

@@ -22,6 +22,7 @@ import {ApiPost} from '../../Config/helperFunction';
 import {useDispatch, useSelector} from 'react-redux';
 import {showMessage} from 'react-native-flash-message';
 import {SkypeIndicator} from 'react-native-indicators';
+import getCartData from '../../Config/getCartData';
 
 export default function ProductDetail({navigation, route}) {
   const {cartData} = useSelector(state => state.cartData);
@@ -51,6 +52,7 @@ export default function ProductDetail({navigation, route}) {
           backgroundColor: color.textPrimaryColor,
         });
         setButtonLoading(false);
+        getCartData();
       } else if (res.success == false) {
         showMessage({
           type: 'danger',

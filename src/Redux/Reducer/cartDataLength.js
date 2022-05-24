@@ -1,17 +1,18 @@
 import types from '../type';
 
 const initial_state = {
-  cartDataLength: 0,
+  cartDataLength: {length: '0'},
 };
 
 export default function (state = initial_state, action) {
   switch (action.type) {
-    case types.AddCart:
+    case 'AddCart':
       const data = action.payload;
-      return {cartData: data};
+      console.log(11, data);
+      return {cartDataLength: action.payload};
       break;
     case types.SubtractCart:
-      return {cartData: {}};
+      return {cartDataLength: {}};
       break;
     default:
       return {...state};

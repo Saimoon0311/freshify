@@ -30,13 +30,15 @@ import {ApiGet, ApiPost} from '../../Config/helperFunction';
 import {useSelector} from 'react-redux';
 import {showMessage} from 'react-native-flash-message';
 import NoProductView from '../../Reusedcomponents/NoProductView/noProductView';
+import getCartData from '../../Config/getCartData';
 
 export default function cartScreen({navigation}) {
   const [loading, setLoading] = useState(true);
   const [cartAllData, setCartAllData] = useState([]);
   const {cartData} = useSelector(state => state.cartData);
+  const {cartDataLength} = useSelector(state => state.cartDataLength);
   console.log(8686, cartData);
-  const getCartData = () => {
+  const getCartDataAll = () => {
     let url = allCartDataUrl + cartData.id;
     // let url = allCartDataUrl + '39';
     ApiGet(url).then(res => {
@@ -76,6 +78,7 @@ export default function cartScreen({navigation}) {
       if (res.success == true) {
         setCartAllData(res?.data);
         setLoading(false);
+        getCartData();
       } else if (res.data.items == []) {
         setCartAllData([]);
         setLoading(false);
@@ -103,8 +106,8 @@ export default function cartScreen({navigation}) {
   };
 
   useEffect(() => {
-    getCartData();
-  }, []);
+    getCartDataAll();
+  }, [cartDataLength]);
 
   const navigate = () => {
     navigation.goBack();
@@ -199,7 +202,7 @@ export default function cartScreen({navigation}) {
                 <View style={styles.innerTotalView}>
                   <Text style={styles.totalText}>Total</Text>
                   <Text style={{...styles.totalText, marginLeft: 'auto'}}>
-                    Rs {cartAllData?.total}:
+                    Rs {cartAllData?.total}
                   </Text>
                 </View>
                 <View style={{...styles.innerTotalView, marginTop: wp('-6')}}>

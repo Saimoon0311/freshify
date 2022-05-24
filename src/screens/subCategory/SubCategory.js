@@ -21,6 +21,7 @@ import {globalStyles} from '../../Reusedcomponents/globalStyle';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import NoProductView from '../../Reusedcomponents/NoProductView/noProductView';
 import {useSelector} from 'react-redux';
+import getCartData from '../../Config/getCartData';
 
 export default function SubCategory({route, navigation}) {
   const item = route?.params;
@@ -50,6 +51,7 @@ export default function SubCategory({route, navigation}) {
           backgroundColor: color.textPrimaryColor,
         });
         setButtonLoading(false);
+        getCartData();
       } else if (res.success == false) {
         showMessage({
           type: 'danger',
