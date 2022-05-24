@@ -20,7 +20,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {NineCubesLoader, BallIndicator} from 'react-native-indicators';
-import {allCartDataUrl, IMAGE_BASED_URL} from '../../Config/Url';
+import {allCartDataUrl, deleteCartUrl, IMAGE_BASED_URL} from '../../Config/Url';
 import {ApiGet} from '../../Config/helperFunction';
 import {useSelector} from 'react-redux';
 import {showMessage} from 'react-native-flash-message';
@@ -33,8 +33,42 @@ export default function cartScreen({navigation}) {
 
   const getCartData = () => {
     // let url = allCartDataUrl + cartData.id;
-    let url = allCartDataUrl + '6';
+    let url = allCartDataUrl + '39';
     ApiGet(url).then(res => {
+      if (res.success == true) {
+        setCartAllData(res?.data);
+        setLoading(false);
+      } else if (res.data.items == []) {
+        setCartAllData([]);
+        setLoading(false);
+      } else if (res.success == false) {
+        setLoading(false);
+        showMessage({
+          type: 'danger',
+          icon: 'danger',
+          message: 'Warning',
+          description: 'Some thing is wrong',
+          backgroundColor: color.textPrimaryColor,
+        });
+      } else {
+        console.log(res, 56);
+        setLoading(true);
+        showMessage({
+          type: 'danger',
+          icon: 'danger',
+          message: 'Warning',
+          description: 'Network Failed',
+          backgroundColor: color.textPrimaryColor,
+        });
+      }
+    });
+  };
+  const delCartData = id => {
+    // let url = allCartDataUrl + cartData.id;
+    let url = deleteCartUrl + cartData.id + '?item_id=' + id;
+    console.log(url);
+    ApiGet(url).then(res => {
+      console.log(res, 70000000000000000000);
       if (res.success == true) {
         setCartAllData(res?.data);
         setLoading(false);
@@ -118,7 +152,8 @@ export default function cartScreen({navigation}) {
                           style={{
                             marginLeft: 'auto',
                             height: hp('3.5'),
-                          }}>
+                          }}
+                          onPress={() => delCartData(item.id)}>
                           <Entypo name="cross" color={'gray'} size={20} />
                         </TouchableOpacity>
                       </View>
