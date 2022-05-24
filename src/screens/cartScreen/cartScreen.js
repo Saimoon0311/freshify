@@ -149,7 +149,7 @@ export default function cartScreen({navigation}) {
                     <View>
                       <View style={styles.innerMainView}>
                         <Text style={styles.itemName}>
-                          {item?.products?.name}
+                          {item?.products?.name}{' '}
                           {item?.products?.product_sale_type?.single_qty_text}
                         </Text>
                         <TouchableOpacity

@@ -12,6 +12,8 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import {TextInput, Checkbox} from 'react-native-paper';
+
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {styles} from './style';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
@@ -26,6 +28,8 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 // import  from 'react-native-modal-datetime-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
+import * as Animatable from 'react-native-animatable';
+import {showMessage} from 'react-native-flash-message';
 
 function checkOutScreen({navigation}) {
   var today = moment().format('DD MMM');
@@ -37,10 +41,327 @@ function checkOutScreen({navigation}) {
   const [value, setValue] = useState('one');
   const [scheduleDay, setSchedulaDay] = useState(0);
   const [isDate, setIsDate] = useState(false);
+  const [buttonState, setButtonState] = useState(1);
+
+  const [shippingFullName, setShippingFullName] = useState('');
+  const [shippinggAddress, setShippingAddress] = useState('');
+  const [shippingCity, setShippingCity] = useState('');
+  const [shippingState, setShippingState] = useState('');
+  const [shippingZipCode, setShippingZipCode] = useState('');
+  const [shippingPhone, setShippingPhone] = useState('');
+
+  const [billingFullName, setBillingFullName] = useState('');
+  const [billinggAddress, setBillingAddress] = useState('');
+  const [billingCity, setBillingCity] = useState('');
+  const [billingState, setBillingState] = useState('');
+  const [billingZipCode, setBillingZipCode] = useState('');
+  const [billingPhone, setBillingPhone] = useState('');
+  const [mobileNumber, setMobileNumber] = useState('+14707758326');
+  const [orderDetails, setOrderDetails] = useState();
+  const [note, setNote] = useState('');
+  const [checkBox, setCheckBox] = useState('unchecked');
+
+  const setdetails = () => {
+    if (
+      shippingFullName !== '' &&
+      shippingFullName !== null &&
+      shippingPhone !== '' &&
+      shippingPhone !== null &&
+      shippingCity !== '' &&
+      shippingCity !== null &&
+      shippinggAddress !== '' &&
+      shippinggAddress !== null &&
+      shippingZipCode !== '' &&
+      shippingZipCode !== null &&
+      shippingState !== '' &&
+      shippingState !== null
+    ) {
+      setCheckBox('checked');
+      setBillingFullName(shippingFullName);
+      setBillingPhone(shippingPhone);
+      setBillingState(shippingState);
+      setBillingZipCode(shippingZipCode);
+      setBillingCity(shippingCity);
+      setBillingAddress(shippinggAddress);
+    } else {
+      showMessage({
+        type: 'warning',
+        icon: 'warning',
+        message: 'Please first complete all shipping details',
+        backgroundColor: '#E9691D',
+      });
+    }
+  };
+
+  const shippingAddress = () => {
+    return (
+      <>
+        <ScrollView>
+          <Text style={styles.topTitle2}>Shipping Details</Text>
+          <View style={{...styles.box, paddingBottom: 30}}>
+            <TextInput
+              label="Full Name"
+              underlineColor="gray"
+              theme={{colors: 'green'}}
+              style={styles.text}
+              editable={buttonState == 1 ? true : false}
+              value={shippingFullName}
+              onChangeText={text => {
+                setShippingFullName(text);
+                // updatValue(text, 'username');
+              }}
+            />
+            <TextInput
+              label="Address:"
+              underlineColor="gray"
+              theme={{colors: 'green'}}
+              style={styles.text}
+              editable={buttonState == 1 ? true : false}
+              value={shippinggAddress}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                setShippingAddress(text);
+                // updatValue(text, 'address_one');
+              }}
+            />
+            {/* <TextInput
+              label="Address Two *"
+              underlineColor="gray"
+              theme={{colors: "green"}}
+              style={styles.text}
+              value={userDataLocal?.address_two}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                updatValue(text, 'address_two');
+              }}
+            /> */}
+            <TextInput
+              label="City *"
+              underlineColor="gray"
+              theme={{colors: 'green'}}
+              style={styles.text}
+              editable={buttonState == 1 ? true : false}
+              keyboardType="default"
+              value={shippingCity}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                setShippingCity(text);
+                // updatValue(text, 'city');
+              }}
+            />
+            <TextInput
+              label="Country *"
+              underlineColor="gray"
+              theme={{colors: 'green'}}
+              style={styles.text}
+              editable={buttonState == 1 ? true : false}
+              value={shippingState}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                setShippingState(text);
+                // updatValue(text, 'country');
+              }}
+            />
+            <TextInput
+              label="Number"
+              underlineColor="gray"
+              theme={{colors: 'green'}}
+              style={styles.text}
+              editable={buttonState == 1 ? true : false}
+              keyboardType="number-pad"
+              value={shippingPhone}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                setShippingPhone(text);
+                // updatValue(text, 'phone_number');
+              }}
+            />
+            <TextInput
+              label="ZipCode *"
+              underlineColor="gray"
+              theme={{colors: 'green'}}
+              style={styles.text}
+              editable={buttonState == 1 ? true : false}
+              maxLength={7}
+              keyboardType="numeric"
+              value={shippingZipCode}
+              // value={JSON?.stringify(userDataLocal?.zipcode)}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                setShippingZipCode(text);
+                // updatValue(text, 'zipcode');
+              }}
+            />
+            <TextInput
+              label="Note"
+              underlineColor="gray"
+              theme={{colors: 'green'}}
+              style={styles.text}
+              editable={buttonState == 1 ? true : false}
+              value={note}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                setNote(text);
+              }}
+            />
+          </View>
+        </ScrollView>
+      </>
+    );
+  };
+  const billingAddress = () => {
+    return (
+      <>
+        <Animatable.View
+          // duration={2000}
+          // onAnimationEnd={() => setStateBounce('')}
+          animation={'bounceInLeft'}
+          // animation={'tada'}
+        >
+          <Text style={styles.topTitle2}>Billing Address</Text>
+          <View style={{...styles.box, paddingBottom: 30}}>
+            <TextInput
+              label="Full Name"
+              underlineColor="gray"
+              theme={{colors: 'green'}}
+              style={styles.text}
+              editable={buttonState == 1 ? true : false}
+              value={billingFullName}
+              onChangeText={text => {
+                setBillingFullName(text);
+              }}
+            />
+            <TextInput
+              label="Address:"
+              underlineColor="gray"
+              theme={{colors: 'green'}}
+              style={styles.text}
+              editable={buttonState == 1 ? true : false}
+              value={billinggAddress}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                setBillingAddress(text);
+              }}
+            />
+            {/* <TextInput
+              label="Address Two *"
+              underlineColor="gray"
+              theme={{colors: "green"}}
+              style={styles.text}
+              value={userDataLocal?.address_two}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                updatValue(text, 'address_two');
+              }}
+            /> */}
+            <TextInput
+              label="City *"
+              underlineColor="gray"
+              theme={{colors: 'green'}}
+              style={styles.text}
+              editable={buttonState == 1 ? true : false}
+              keyboardType="default"
+              value={billingCity}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                setBillingCity(text);
+              }}
+            />
+            <TextInput
+              label="Country *"
+              underlineColor="gray"
+              theme={{colors: 'green'}}
+              style={styles.text}
+              editable={buttonState == 1 ? true : false}
+              value={billingState}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                setBillingState(text);
+              }}
+            />
+            <TextInput
+              label="Number"
+              underlineColor="gray"
+              theme={{colors: 'green'}}
+              style={styles.text}
+              editable={buttonState == 1 ? true : false}
+              keyboardType="number-pad"
+              value={billingPhone}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                setBillingPhone(text);
+              }}
+            />
+            <TextInput
+              label="ZipCode *"
+              underlineColor="gray"
+              theme={{colors: 'green'}}
+              style={styles.text}
+              editable={buttonState == 1 ? true : false}
+              maxLength={7}
+              keyboardType="numeric"
+              value={billingZipCode}
+              // value={JSON?.stringify(userDataLocal?.zipcode)}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                setBillingZipCode(text);
+              }}
+            />
+            <TextInput
+              label="Note"
+              underlineColor="gray"
+              theme={{colors: 'green'}}
+              style={styles.text}
+              editable={buttonState == 1 ? true : false}
+              value={note}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                setNote(text);
+              }}
+            />
+          </View>
+        </Animatable.View>
+      </>
+    );
+  };
+
+  function CheckBox({label, status, onPress}) {
+    return (
+      <TouchableOpacity
+        onPress={onPress}
+        style={styles.checkBoxButtonContainer}>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}>
+          <View style={Platform.OS == 'ios' && styles.checkStyle}>
+            <Checkbox
+              status={status}
+              uncheckedColor={'black'}
+              color={color.themColorPrimary}
+            />
+          </View>
+          <Text style={{fontWeight: 'bold'}}>{label}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+
   const centerItem = () => {
     return (
       <>
         <Text style={styles.topTitle}>Bill Summary</Text>
+        {shippingAddress()}
+        <CheckBox
+          label="Same as Shipping Address"
+          status={checkBox}
+          onPress={() => {
+            checkBox == 'checked' ? setCheckBox('unchecked') : setdetails();
+          }}
+        />
+        {checkBox == 'unchecked' && billingAddress()}
+        {/* {billingAddress()} */}
         <View style={styles.billSummaryView}>
           <View style={styles.innerContainer}>
             <View style={styles.textContainer}>
