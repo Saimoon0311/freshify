@@ -33,7 +33,7 @@ export default function cartScreen({navigation}) {
 
   const getCartData = () => {
     // let url = allCartDataUrl + cartData.id;
-    let url = allCartDataUrl + '39';
+    let url = allCartDataUrl + '5';
     ApiGet(url).then(res => {
       if (res.success == true) {
         setCartAllData(res?.data);
