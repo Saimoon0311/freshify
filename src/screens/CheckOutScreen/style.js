@@ -1,4 +1,4 @@
-import {StyleSheet, Platform} from 'react-native';
+import {StyleSheet, Platform, Dimensions} from 'react-native';
 import {color} from '../../Reusedcomponents/color';
 import {
   widthPercentageToDP as wp,
@@ -136,5 +136,20 @@ export const styles = StyleSheet.create({
     elevation: 5,
     // height: hp('30'),
     borderRadius: 10,
+  },
+  checkStyle: {
+    borderWidth: 0.5,
+    borderColor: color.themColorPrimary,
+    // borderRadius: 60,
+    borderRadius: Math.round(
+      Dimensions.get('window').width + Dimensions.get('window').height,
+    ),
+    width: Dimensions.get('window').width * 0.08,
+    height: Dimensions.get('window').width * 0.08,
+    width: wp('8.5'),
+    height: hp('4.1'),
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: wp('2'),
   },
 });

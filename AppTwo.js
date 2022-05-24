@@ -25,7 +25,6 @@ function AppTwo({navigation}) {
   const {cartData} = useSelector(state => state.cartData);
 
   const [isVisible, setIsVisible] = useState(true);
-  console.log(566889, cartData);
   const Hide_Splash_Screen = () => {
     setIsVisible(false);
   };
@@ -49,7 +48,6 @@ function AppTwo({navigation}) {
           });
         }
       });
-      console.log(50, cartData);
     } else {
       console.log('kjadbfbak');
     }

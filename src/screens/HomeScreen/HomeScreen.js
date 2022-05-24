@@ -38,7 +38,6 @@ export default function HomeScreen({navigation, route}) {
   const [isCategoryloading, setIsCategoryLoading] = useState(true);
   const {cartData} = useSelector(state => state.cartData);
   const [searchHome, setSearchHome] = useState('');
-  console.log(7687, cartData);
 
   const getFrontProduct = () => {
     ApiGet(FrontProductUrl).then(res => {
@@ -243,7 +242,6 @@ export default function HomeScreen({navigation, route}) {
                   <Text style={{color: color.textPrimaryColor}}>View more</Text>
                 </TouchableOpacity>
               </View>
-              {console.log(220)}
               <HomeScreenCategoryData
                 navigation2={navigation2}
                 categoryFeatureProduct={categoryFeatureProduct}

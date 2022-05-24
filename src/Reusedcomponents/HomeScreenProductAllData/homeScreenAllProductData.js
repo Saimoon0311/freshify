@@ -34,17 +34,14 @@ export const HomeScreenAllProductData = props => {
   const dispatch = useDispatch();
   const addToCart = item => {
     setButtonLoading(true);
-    console.log('bilal');
     let url = allCartDataUrl + cartData.id;
     let body = JSON.stringify({
       product_id: item?.id,
       variation_id: '0',
       quantity: 1,
     });
-    console.log(40, url);
     ApiPost(url, body, false)
       .then(res => {
-        // console.log(41, res);
         if (res.success == true) {
           showMessage({
             type: 'success',
@@ -55,7 +52,6 @@ export const HomeScreenAllProductData = props => {
           });
           getCartData();
           setButtonLoading(false);
-          console.log(868686876);
         } else if (res.success == false) {
           showMessage({
             type: 'danger',
@@ -64,7 +60,6 @@ export const HomeScreenAllProductData = props => {
             description: 'SomeThing want wrong',
             backgroundColor: color.textPrimaryColor,
           });
-          console.log(86);
           setButtonLoading(false);
         }
       })

@@ -12,7 +12,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {TextInput, Checkbox} from 'react-native-paper';
+import {Checkbox} from 'react-native-paper';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {styles} from './style';
@@ -36,7 +36,6 @@ function checkOutScreen({route, navigation}) {
   var today = moment().format('DD MMM');
   var tomorrow = moment().add(1, 'days').format('DD MMM');
   var time = new Date();
-  console.log(56, item);
   const [topButton, setTopButton] = useState(1);
   const [paymentInfo, setPaymentInfo] = useState();
   const [value, setValue] = useState('one');
@@ -88,8 +87,9 @@ function checkOutScreen({route, navigation}) {
       showMessage({
         type: 'warning',
         icon: 'warning',
-        message: 'Please first complete all shipping details',
-        backgroundColor: '#E9691D',
+        message: 'Warning',
+        description: 'Please first complete all shipping details',
+        backgroundColor: color.textPrimaryColor,
       });
     }
   };
@@ -100,24 +100,20 @@ function checkOutScreen({route, navigation}) {
         <ScrollView>
           <Text style={styles.topTitle2}>Shipping Details</Text>
           <View style={{...styles.box, paddingBottom: 30}}>
-            <TextInput
-              label="Full Name"
-              underlineColor="gray"
-              theme={{colors: 'green'}}
-              style={styles.text}
-              editable={buttonState == 1 ? true : false}
+            <InputField
+              inputText="Full Name"
+              width={wp('80')}
+              editable={true}
               value={shippingFullName}
               onChangeText={text => {
                 setShippingFullName(text);
                 // updatValue(text, 'username');
               }}
             />
-            <TextInput
-              label="Address:"
-              underlineColor="gray"
-              theme={{colors: 'green'}}
-              style={styles.text}
-              editable={buttonState == 1 ? true : false}
+            <InputField
+              inputText="Address:"
+              width={wp('80')}
+              editable={true}
               value={shippinggAddress}
               selectionColor="#FF7E33"
               onChangeText={text => {
@@ -125,23 +121,22 @@ function checkOutScreen({route, navigation}) {
                 // updatValue(text, 'address_one');
               }}
             />
-            {/* <TextInput
-              label="Address Two *"
+            {/* <InputField
+              
+              inputText="Address Two *"
               underlineColor="gray"
               theme={{colors: "green"}}
-              style={styles.text}
+              
               value={userDataLocal?.address_two}
               selectionColor="#FF7E33"
               onChangeText={text => {
                 updatValue(text, 'address_two');
               }}
             /> */}
-            <TextInput
-              label="City *"
-              underlineColor="gray"
-              theme={{colors: 'green'}}
-              style={styles.text}
-              editable={buttonState == 1 ? true : false}
+            <InputField
+              inputText="City *"
+              width={wp('80')}
+              editable={true}
               keyboardType="default"
               value={shippingCity}
               selectionColor="#FF7E33"
@@ -150,12 +145,10 @@ function checkOutScreen({route, navigation}) {
                 // updatValue(text, 'city');
               }}
             />
-            <TextInput
-              label="Country *"
-              underlineColor="gray"
-              theme={{colors: 'green'}}
-              style={styles.text}
-              editable={buttonState == 1 ? true : false}
+            <InputField
+              inputText="Country *"
+              width={wp('80')}
+              editable={true}
               value={shippingState}
               selectionColor="#FF7E33"
               onChangeText={text => {
@@ -163,12 +156,10 @@ function checkOutScreen({route, navigation}) {
                 // updatValue(text, 'country');
               }}
             />
-            <TextInput
-              label="Number"
-              underlineColor="gray"
-              theme={{colors: 'green'}}
-              style={styles.text}
-              editable={buttonState == 1 ? true : false}
+            <InputField
+              inputText="Number"
+              width={wp('80')}
+              editable={true}
               keyboardType="number-pad"
               value={shippingPhone}
               selectionColor="#FF7E33"
@@ -177,12 +168,10 @@ function checkOutScreen({route, navigation}) {
                 // updatValue(text, 'phone_number');
               }}
             />
-            <TextInput
-              label="ZipCode *"
-              underlineColor="gray"
-              theme={{colors: 'green'}}
-              style={styles.text}
-              editable={buttonState == 1 ? true : false}
+            <InputField
+              inputText="ZipCode *"
+              width={wp('80')}
+              editable={true}
               maxLength={7}
               keyboardType="numeric"
               value={shippingZipCode}
@@ -193,12 +182,10 @@ function checkOutScreen({route, navigation}) {
                 // updatValue(text, 'zipcode');
               }}
             />
-            <TextInput
-              label="Note"
-              underlineColor="gray"
-              theme={{colors: 'green'}}
-              style={styles.text}
-              editable={buttonState == 1 ? true : false}
+            <InputField
+              inputText="Note"
+              width={wp('80')}
+              editable={true}
               value={note}
               selectionColor="#FF7E33"
               onChangeText={text => {
@@ -213,54 +200,44 @@ function checkOutScreen({route, navigation}) {
   const billingAddress = () => {
     return (
       <>
-        <Animatable.View
-          // duration={2000}
-          // onAnimationEnd={() => setStateBounce('')}
-          animation={'bounceInLeft'}
-          // animation={'tada'}
-        >
+        <Animatable.View animation={'bounceInLeft'}>
           <Text style={styles.topTitle2}>Billing Address</Text>
           <View style={{...styles.box, paddingBottom: 30}}>
-            <TextInput
-              label="Full Name"
-              underlineColor="gray"
-              theme={{colors: 'green'}}
-              style={styles.text}
-              editable={buttonState == 1 ? true : false}
+            <InputField
+              inputText="Full Name"
+              width={wp('80')}
+              editable={true}
               value={billingFullName}
               onChangeText={text => {
                 setBillingFullName(text);
               }}
             />
-            <TextInput
-              label="Address:"
-              underlineColor="gray"
-              theme={{colors: 'green'}}
-              style={styles.text}
-              editable={buttonState == 1 ? true : false}
+            <InputField
+              inputText="Address:"
+              width={wp('80')}
+              editable={true}
               value={billinggAddress}
               selectionColor="#FF7E33"
               onChangeText={text => {
                 setBillingAddress(text);
               }}
             />
-            {/* <TextInput
-              label="Address Two *"
+            {/* <InputField
+              
+              inputText="Address Two *"
               underlineColor="gray"
               theme={{colors: "green"}}
-              style={styles.text}
+              
               value={userDataLocal?.address_two}
               selectionColor="#FF7E33"
               onChangeText={text => {
                 updatValue(text, 'address_two');
               }}
             /> */}
-            <TextInput
-              label="City *"
-              underlineColor="gray"
-              theme={{colors: 'green'}}
-              style={styles.text}
-              editable={buttonState == 1 ? true : false}
+            <InputField
+              inputText="City *"
+              width={wp('80')}
+              editable={true}
               keyboardType="default"
               value={billingCity}
               selectionColor="#FF7E33"
@@ -268,24 +245,20 @@ function checkOutScreen({route, navigation}) {
                 setBillingCity(text);
               }}
             />
-            <TextInput
-              label="Country *"
-              underlineColor="gray"
-              theme={{colors: 'green'}}
-              style={styles.text}
-              editable={buttonState == 1 ? true : false}
+            <InputField
+              inputText="Country *"
+              width={wp('80')}
+              editable={true}
               value={billingState}
               selectionColor="#FF7E33"
               onChangeText={text => {
                 setBillingState(text);
               }}
             />
-            <TextInput
-              label="Number"
-              underlineColor="gray"
-              theme={{colors: 'green'}}
-              style={styles.text}
-              editable={buttonState == 1 ? true : false}
+            <InputField
+              inputText="Number"
+              width={wp('80')}
+              editable={true}
               keyboardType="number-pad"
               value={billingPhone}
               selectionColor="#FF7E33"
@@ -293,12 +266,10 @@ function checkOutScreen({route, navigation}) {
                 setBillingPhone(text);
               }}
             />
-            <TextInput
-              label="ZipCode *"
-              underlineColor="gray"
-              theme={{colors: 'green'}}
-              style={styles.text}
-              editable={buttonState == 1 ? true : false}
+            <InputField
+              inputText="ZipCode *"
+              width={wp('80')}
+              editable={true}
               maxLength={7}
               keyboardType="numeric"
               value={billingZipCode}
@@ -308,12 +279,10 @@ function checkOutScreen({route, navigation}) {
                 setBillingZipCode(text);
               }}
             />
-            <TextInput
-              label="Note"
-              underlineColor="gray"
-              theme={{colors: 'green'}}
-              style={styles.text}
-              editable={buttonState == 1 ? true : false}
+            <InputField
+              inputText="Note"
+              width={wp('80')}
+              editable={true}
               value={note}
               selectionColor="#FF7E33"
               onChangeText={text => {
@@ -326,7 +295,7 @@ function checkOutScreen({route, navigation}) {
     );
   };
 
-  function CheckBox({label, status, onPress}) {
+  function CheckBox({inputText, status, onPress}) {
     return (
       <TouchableOpacity
         onPress={onPress}
@@ -343,7 +312,7 @@ function checkOutScreen({route, navigation}) {
               color={color.themColorPrimary}
             />
           </View>
-          <Text style={{fontWeight: 'bold'}}>{label}</Text>
+          <Text style={{fontWeight: 'bold'}}>{inputText}</Text>
         </View>
       </TouchableOpacity>
     );
@@ -353,15 +322,7 @@ function checkOutScreen({route, navigation}) {
     return (
       <>
         <Text style={styles.topTitle}>Bill Summary</Text>
-        {shippingAddress()}
-        <CheckBox
-          label="Same as Shipping Address"
-          status={checkBox}
-          onPress={() => {
-            checkBox == 'checked' ? setCheckBox('unchecked') : setdetails();
-          }}
-        />
-        {checkBox == 'unchecked' && billingAddress()}
+
         {/* {billingAddress()} */}
         <View style={styles.billSummaryView}>
           {item.map(res => {
@@ -544,7 +505,7 @@ function checkOutScreen({route, navigation}) {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom: hp('10')}}>
-        <Text style={styles.topTitle}>Select Delivery Schedule</Text>
+        {/* <Text style={styles.topTitle}>Select Delivery Schedule</Text>
         <View style={styles.topButtonView}>
           <TouchableOpacity
             onPress={() => setTopButton(1)}
@@ -570,9 +531,19 @@ function checkOutScreen({route, navigation}) {
               Schedule Delivery
             </Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
         {topButton == 2 && scheduleContainer()}
+        {shippingAddress()}
+        <CheckBox
+          inputText="Same as Shipping Address"
+          status={checkBox}
+          onPress={() => {
+            checkBox == 'checked' ? setCheckBox('unchecked') : setdetails();
+          }}
+        />
+        {checkBox == 'unchecked' && billingAddress()}
         {centerItem()}
+
         {paymentInfoContainer()}
         {additionalInformation()}
         <BottomButton

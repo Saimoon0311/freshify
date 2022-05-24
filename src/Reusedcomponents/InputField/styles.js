@@ -8,12 +8,10 @@ import {color} from '../color';
 
 export const styles = StyleSheet.create({
   textinput: {
-    width: wp('87'),
     borderWidth: 1,
     borderRadius: 5,
     paddingLeft: wp('3'),
     marginTop: hp('2'),
-    height: hp('6'),
     color: 'black',
   },
   inputtext: {

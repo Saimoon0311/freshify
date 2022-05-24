@@ -28,7 +28,6 @@ import {store} from '../Redux/Reducer';
 const Tab = createBottomTabNavigator();
 function MybottomTabs() {
   const cartDataLength = store.getState().cartDataLength.cartDataLength;
-  console.log(30, cartDataLength?.length);
   const [dummy, setDummy] = useState(1);
   useEffect(() => {
     setDummy(1);

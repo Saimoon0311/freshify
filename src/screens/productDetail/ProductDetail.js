@@ -35,7 +35,6 @@ export default function ProductDetail({navigation, route}) {
   };
   const addToCart = () => {
     setButtonLoading(true);
-    console.log(345435345);
     let url = allCartDataUrl + cartData.id;
     let body = JSON.stringify({
       product_id: item?.id,

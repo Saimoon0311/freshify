@@ -37,7 +37,6 @@ export default function cartScreen({navigation}) {
   const [cartAllData, setCartAllData] = useState([]);
   const {cartData} = useSelector(state => state.cartData);
   const {cartDataLength} = useSelector(state => state.cartDataLength);
-  console.log(8686, cartData);
   const getCartDataAll = () => {
     let url = allCartDataUrl + cartData.id;
     // let url = allCartDataUrl + '39';
@@ -58,7 +57,6 @@ export default function cartScreen({navigation}) {
           backgroundColor: color.textPrimaryColor,
         });
       } else {
-        console.log(res, 56);
         setLoading(true);
         showMessage({
           type: 'danger',
@@ -73,7 +71,6 @@ export default function cartScreen({navigation}) {
   const delCartData = id => {
     // let url = allCartDataUrl + cartData.id;
     let url = deleteCartUrl + cartData.id + '?item_id=' + id;
-    console.log(url);
     ApiGet(url).then(res => {
       if (res.success == true) {
         setCartAllData(res?.data);
@@ -92,7 +89,6 @@ export default function cartScreen({navigation}) {
           backgroundColor: color.textPrimaryColor,
         });
       } else {
-        console.log(res, 56);
         setLoading(true);
         showMessage({
           type: 'danger',

@@ -14,7 +14,6 @@ export default function getCartData() {
         type: 'AddCart',
         payload: {length: res.data.items.length},
       });
-      console.log(75678587, cartDataLength);
     }
   });
 }

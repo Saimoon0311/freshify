@@ -34,7 +34,6 @@ export default function SubCategory({route, navigation}) {
 
   const addToCart = item => {
     setButtonLoading(true);
-    console.log('bilal');
     let url = allCartDataUrl + cartData?.id;
     let body = JSON.stringify({
       product_id: item?.id,
