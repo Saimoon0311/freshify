@@ -73,7 +73,6 @@ export default function cartScreen({navigation}) {
     let url = deleteCartUrl + cartData.id + '?item_id=' + id;
     console.log(url);
     ApiGet(url).then(res => {
-      console.log(res, 70000000000000000000);
       if (res.success == true) {
         setCartAllData(res?.data);
         setLoading(false);
@@ -102,54 +101,7 @@ export default function cartScreen({navigation}) {
       }
     });
   };
-  const quantityController = (id, product_id, quantity, confirm) => {
-    let url = quantityControllerUrl + '39';
-    // let url = quantityControllerUrl + cartData.id;
-    console.log(129, url);
-    if (confirm == 'increanment' && quantity >= 1) {
-      let quantityCheck = quantity + 1;
-      let body = JSON.stringify({
-        product_id: product_id,
-        item_id: id,
-        quantity: quantityCheck,
-      });
-      console.log(116, body);
-      ApiPost(url, body, false).then(res => {
-        console.log(129, res);
-        if (res.success == true) {
-          setCartAllData(res?.data);
-        } else if (res.success == false) {
-          showMessage({
-            type: 'danger',
-            icon: 'danger',
-            message: 'Warning',
-            description: 'Network Request Failed',
-            backgroundColor: color.textPrimaryColor,
-          });
-        }
-      });
-    } else if (confirm == 'decreanment' && quantity > 1) {
-      let quantityCheck = quantity - 1;
-      let body = JSON.stringify({
-        product_id: product_id,
-        item_id: id,
-        quantity: quantityCheck,
-      });
-      ApiPost(url, body, false).then(res => {
-        if (res.success == true) {
-          setCartAllData(res?.data);
-        } else if (res.success == false) {
-          showMessage({
-            type: 'danger',
-            icon: 'danger',
-            message: 'Warning',
-            description: 'Network Request Failed',
-            backgroundColor: color.textPrimaryColor,
-          });
-        }
-      });
-    }
-  };
+
   useEffect(() => {
     getCartData();
   }, []);
@@ -188,7 +140,7 @@ export default function cartScreen({navigation}) {
                       padding: wp('2'),
                     }}>
                     <Image
-                      // resizeMode="contain"
+                      resizeMode="contain"
                       source={{
                         uri: IMAGE_BASED_URL + item?.products?.image?.url,
                       }}
@@ -214,40 +166,24 @@ export default function cartScreen({navigation}) {
                           Rs {item?.products?.price} x {item?.quantity}
                         </Text>
                         <View style={styles.quantityContainer}>
-                          <TouchableOpacity
-                            onPress={() =>
-                              quantityController(
-                                item.id,
-                                item.product_id,
-                                item.quantity,
-                                'decreanment',
-                              )
-                            }>
+                          <TouchableOpacity>
                             <FontAwesome5
                               color={color.textPrimaryColor}
                               name="minus"
-                              size={hp('2')}
+                              size={10}
                             />
                           </TouchableOpacity>
                           <Text style={{marginLeft: wp('1'), color: 'black'}}>
                             1
                           </Text>
-                          <TouchableOpacity
-                            onPress={() =>
-                              quantityController(
-                                item.id,
-                                item.product_id,
-                                item.quantity,
-                                'increanment',
-                              )
-                            }>
+                          <TouchableOpacity>
                             <MaterialIcons
                               color={color.textPrimaryColor}
                               style={{
-                                marginRight: wp('-0.8'),
+                                marginRight: wp('-1.5'),
                               }}
                               name="add"
-                              size={hp('2')}
+                              size={18}
                             />
                           </TouchableOpacity>
                         </View>
@@ -263,7 +199,7 @@ export default function cartScreen({navigation}) {
                 <View style={styles.innerTotalView}>
                   <Text style={styles.totalText}>Total</Text>
                   <Text style={{...styles.totalText, marginLeft: 'auto'}}>
-                    Rs {cartAllData?.total}
+                    Rs {cartAllData?.total}:
                   </Text>
                 </View>
                 <View style={{...styles.innerTotalView, marginTop: wp('-6')}}>

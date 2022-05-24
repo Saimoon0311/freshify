@@ -9,6 +9,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {
+  allCartDataUrl,
   FrontProductUrl,
   IMAGE_BASED_URL,
   SubCategoryUrl,
@@ -19,12 +20,49 @@ import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {globalStyles} from '../../Reusedcomponents/globalStyle';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import NoProductView from '../../Reusedcomponents/NoProductView/noProductView';
+import {useSelector} from 'react-redux';
 
 export default function SubCategory({route, navigation}) {
   const item = route?.params;
   const [active, setActive] = useState(1);
   const [isloading, setIsLoading] = useState(true);
   const [subCategoryFlatList, setSubCategoryFlatList] = useState([]);
+
+  const {cartData} = useSelector(state => state.cartData);
+  const [buttonLoading, setButtonLoading] = useState(false);
+
+  const addToCart = item => {
+    setButtonLoading(true);
+    console.log('bilal');
+    let url = allCartDataUrl + cartData?.id;
+    let body = JSON.stringify({
+      product_id: item?.id,
+      variation_id: '0',
+      quantity: 1,
+    });
+    ApiPost(url, body, false).then(res => {
+      if (res.success == true) {
+        showMessage({
+          type: 'success',
+          icon: 'success',
+          message: 'Success',
+          description: 'Your Cart has been Added',
+          backgroundColor: color.textPrimaryColor,
+        });
+        setButtonLoading(false);
+      } else if (res.success == false) {
+        showMessage({
+          type: 'danger',
+          icon: 'danger',
+          message: 'Warning',
+          description: 'SomeThing want wrong',
+          backgroundColor: color.textPrimaryColor,
+        });
+        setButtonLoading(false);
+      }
+    });
+  };
+
   const navigate = () => {
     navigation.goBack();
   };
@@ -203,7 +241,9 @@ export default function SubCategory({route, navigation}) {
                   </Text>
                   {item.in_stock > 0 && (
                     <View>
-                      <TouchableOpacity style={styles.addCartbutton}>
+                      <TouchableOpacity
+                        onPress={() => addToCart(item)}
+                        style={styles.addCartbutton}>
                         <Ionicons name="add" size={hp('3')} color={'white'} />
                       </TouchableOpacity>
                     </View>
