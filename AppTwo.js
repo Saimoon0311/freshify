@@ -35,30 +35,12 @@ function AppTwo({navigation}) {
       return 0;
     }
   };
-  const dispatch = useDispatch();
-  const createCartId = async () => {
-    if (!cartData.id) {
-      let url = createCartIdUrl;
-      let body = {};
-      ApiPost(url, body).then(res => {
-        if (res.success == true) {
-          dispatch({
-            type: types.CreateCart,
-            payload: res.data,
-          });
-        }
-      });
-    } else {
-      console.log('kjadbfbak');
-    }
-  };
+
   useEffect(async () => {
     (async () => {
       LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
       LogBox.ignoreAllLogs(true);
     })();
-    await createCartId();
-    getCartData();
     setTimeout(function () {
       Hide_Splash_Screen();
     }, time());

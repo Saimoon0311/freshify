@@ -42,7 +42,6 @@ export default function cartScreen({navigation}) {
     let url = allCartDataUrl + id;
     // let url = allCartDataUrl + '39';
     ApiGet(url).then(res => {
-      console.log(23456789);
       if (res.success == true) {
         setCartAllData(res?.data);
         setLoading(false);
@@ -70,6 +69,55 @@ export default function cartScreen({navigation}) {
       }
     });
   };
+  const quantityController = (product_id, id, quantity, confirm) => {
+    // let url = quantityControllerUrl + '39';
+    let url = quantityControllerUrl + cartData.id;
+    console.log(129, url);
+    if (confirm == 'increanment' && quantity >= 1) {
+      let quantityCheck = quantity + 1;
+      let body = JSON.stringify({
+        product_id: product_id,
+        item_id: id,
+        quantity: quantityCheck,
+      });
+      console.log(116, body);
+      ApiPost(url, body, false).then(res => {
+        console.log(129, res);
+        if (res.success == true) {
+          setCartAllData(res?.data);
+        } else if (res.success == false) {
+          showMessage({
+            type: 'danger',
+            icon: 'danger',
+            message: 'Warning',
+            description: 'Network Request Failed',
+            backgroundColor: color.textPrimaryColor,
+          });
+        }
+      });
+    } else if (confirm == 'decreanment' && quantity > 1) {
+      let quantityCheck = quantity - 1;
+      let body = JSON.stringify({
+        product_id: product_id,
+        item_id: id,
+        quantity: quantityCheck,
+      });
+      ApiPost(url, body, false).then(res => {
+        if (res.success == true) {
+          setCartAllData(res?.data);
+        } else if (res.success == false) {
+          showMessage({
+            type: 'danger',
+            icon: 'danger',
+            message: 'Warning',
+            description: 'Network Request Failed',
+            backgroundColor: color.textPrimaryColor,
+          });
+        }
+      });
+    }
+  };
+
   const delCartData = id => {
     // let url = allCartDataUrl + cartData.id;
     let url = deleteCartUrl + cartData.id + '?item_id=' + id;
@@ -141,7 +189,6 @@ export default function cartScreen({navigation}) {
                       padding: wp('2'),
                     }}>
                     <Image
-                      resizeMode="contain"
                       source={{
                         uri: IMAGE_BASED_URL + item?.products?.image?.url,
                       }}
@@ -172,24 +219,40 @@ export default function cartScreen({navigation}) {
                           {item?.products?.product_sale_type?.pro_type_price}
                         </Text>
                         <View style={styles.quantityContainer}>
-                          <TouchableOpacity>
+                          <TouchableOpacity
+                            onPress={() =>
+                              quantityController(
+                                item?.product_id,
+                                item?.id,
+                                item?.quantity,
+                                'decreanment',
+                              )
+                            }>
                             <FontAwesome5
                               color={color.textPrimaryColor}
                               name="minus"
-                              size={10}
+                              size={hp('2')}
                             />
                           </TouchableOpacity>
                           <Text style={{marginLeft: wp('1'), color: 'black'}}>
                             1
                           </Text>
-                          <TouchableOpacity>
+                          <TouchableOpacity
+                            onPress={() =>
+                              quantityController(
+                                item?.product_id,
+                                item?.id,
+                                item?.quantity,
+                                'increanment',
+                              )
+                            }>
                             <MaterialIcons
                               color={color.textPrimaryColor}
                               style={{
-                                marginRight: wp('-1.5'),
+                                marginRight: wp('-0.8'),
                               }}
                               name="add"
-                              size={18}
+                              size={hp('2')}
                             />
                           </TouchableOpacity>
                         </View>

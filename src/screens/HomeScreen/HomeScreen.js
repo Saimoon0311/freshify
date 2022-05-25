@@ -25,11 +25,17 @@ import {HomeScreenCategoryData} from '../../Reusedcomponents/homeScreenCategoryD
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {FAB} from 'react-native-paper';
 import {Fab, Icon, NativeBaseProvider, Box, extendTheme} from 'native-base';
-import {ApiGet} from '../../Config/helperFunction';
-import {allCategoriesUrl, FrontProductUrl} from '../../Config/Url';
+import {ApiGet, ApiPost} from '../../Config/helperFunction';
+import {
+  allCategoriesUrl,
+  createCartIdUrl,
+  FrontProductUrl,
+} from '../../Config/Url';
 import {showMessage} from 'react-native-flash-message';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {LoginHeader} from '../../Reusedcomponents/loginHeader';
+import getCartData from '../../Config/getCartData';
+import types from '../../Redux/type';
 
 export default function HomeScreen({navigation, route}) {
   const [allProduct, setAllProduct] = useState([]);
@@ -135,10 +141,32 @@ export default function HomeScreen({navigation, route}) {
   const wait = timeout => {
     return new Promise(resolve => setTimeout(resolve, timeout));
   };
+  const dispatch = useDispatch();
+  const createCartId = async () => {
+    console.log(456789098765423456789, cartData);
+    if (!cartData.id) {
+      let url = createCartIdUrl;
+      let body = {};
+      ApiPost(url, body).then(res => {
+        if (res.success == true) {
+          dispatch({
+            type: types.CreateCart,
+            payload: res.data,
+          });
+        }
+      });
+    } else {
+      console.log('kjadbfbak');
+    }
+  };
   useEffect(() => {
-    getFrontProduct();
-    getFeathureFrontProduct();
-  }, []);
+    (async () => {
+      await createCartId();
+      getCartData();
+      getFrontProduct();
+      getFeathureFrontProduct();
+    })();
+  }, [cartData]);
   const searchHomeProducts = () => {
     navigation.navigate('SubCategory', {
       name: searchHome,
