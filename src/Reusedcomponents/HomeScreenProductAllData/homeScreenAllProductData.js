@@ -35,6 +35,7 @@ export const HomeScreenAllProductData = props => {
   const addToCart = item => {
     setButtonLoading(true);
     let url = allCartDataUrl + cartData.id;
+    console.log('ur,', url);
     let body = JSON.stringify({
       product_id: item?.id,
       variation_id: '0',
