@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
@@ -22,10 +22,16 @@ import {
 import {screens} from '../screens';
 import {color} from '../Reusedcomponents/color';
 import {Badge} from 'react-native-paper';
+import {useSelector} from 'react-redux';
+import {store} from '../Redux/Reducer';
 
 const Tab = createBottomTabNavigator();
 function MybottomTabs() {
-  const [badge, setBadge] = useState('99+');
+  const cartDataLength = store.getState().cartDataLength.cartDataLength;
+  const [dummy, setDummy] = useState(1);
+  useEffect(() => {
+    setDummy(1);
+  }, [cartDataLength]);
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -48,7 +54,7 @@ function MybottomTabs() {
           tabBarIcon: ({focused, color, size}) => (
             <Ionicons name="home" color={color} size={hp('3')} />
           ),
-          title: 'Home',
+          title: `Home`,
           tabBarLabelStyle: {
             fontSize: 15,
             marginBottom: hp(Platform?.OS == 'ios' ? '0' : '1'),
@@ -81,7 +87,7 @@ function MybottomTabs() {
                     alignItems: 'center',
                   }}>
                   <Badge size={22} style={styles.badgeContainer}>
-                    {badge}
+                    {cartDataLength?.length}
                   </Badge>
                 </View>
                 <Ionicons

@@ -12,7 +12,6 @@ export default function (state = initial_state, action) {
     case types.CLEAR_REDUX_STATE:
       return {userData: {}};
     default:
-      // console.log(14, state);
       return {...state};
   }
 }

@@ -30,20 +30,23 @@ import {ApiGet, ApiPost} from '../../Config/helperFunction';
 import {useSelector} from 'react-redux';
 import {showMessage} from 'react-native-flash-message';
 import NoProductView from '../../Reusedcomponents/NoProductView/noProductView';
+import getCartData from '../../Config/getCartData';
 
 export default function cartScreen({navigation}) {
   const [loading, setLoading] = useState(true);
   const [cartAllData, setCartAllData] = useState([]);
   const {cartData} = useSelector(state => state.cartData);
-
-  const getCartData = () => {
-    // let url = allCartDataUrl + cartData.id;
-    let url = allCartDataUrl + '39';
+  const {cartDataLength} = useSelector(state => state.cartDataLength);
+  const getCartDataAll = () => {
+    let id = cartData.id ? cartData.id : 'a';
+    let url = allCartDataUrl + id;
+    // let url = allCartDataUrl + '39';
     ApiGet(url).then(res => {
+      console.log(23456789);
       if (res.success == true) {
         setCartAllData(res?.data);
         setLoading(false);
-      } else if (res.data.items == []) {
+      } else if (res.data == 'Not Found') {
         setCartAllData([]);
         setLoading(false);
       } else if (res.success == false) {
@@ -56,7 +59,6 @@ export default function cartScreen({navigation}) {
           backgroundColor: color.textPrimaryColor,
         });
       } else {
-        console.log(res, 56);
         setLoading(true);
         showMessage({
           type: 'danger',
@@ -71,11 +73,11 @@ export default function cartScreen({navigation}) {
   const delCartData = id => {
     // let url = allCartDataUrl + cartData.id;
     let url = deleteCartUrl + cartData.id + '?item_id=' + id;
-    console.log(url);
     ApiGet(url).then(res => {
       if (res.success == true) {
         setCartAllData(res?.data);
         setLoading(false);
+        getCartData();
       } else if (res.data.items == []) {
         setCartAllData([]);
         setLoading(false);
@@ -89,7 +91,6 @@ export default function cartScreen({navigation}) {
           backgroundColor: color.textPrimaryColor,
         });
       } else {
-        console.log(res, 56);
         setLoading(true);
         showMessage({
           type: 'danger',
@@ -103,8 +104,8 @@ export default function cartScreen({navigation}) {
   };
 
   useEffect(() => {
-    getCartData();
-  }, []);
+    getCartDataAll();
+  }, [cartDataLength]);
 
   const navigate = () => {
     navigation.goBack();
@@ -199,12 +200,12 @@ export default function cartScreen({navigation}) {
               }}
             />
 
-            {cartAllData.items.length > 0 ? (
+            {cartAllData.length || cartAllData?.items?.length >= 1 ? (
               <View style={styles.TotalMaincontainer}>
                 <View style={styles.innerTotalView}>
                   <Text style={styles.totalText}>Total</Text>
                   <Text style={{...styles.totalText, marginLeft: 'auto'}}>
-                    Rs {cartAllData?.total}:
+                    Rs {cartAllData?.total}
                   </Text>
                 </View>
                 <View style={{...styles.innerTotalView, marginTop: wp('-6')}}>
@@ -216,7 +217,9 @@ export default function cartScreen({navigation}) {
                   </Text>
                 </View>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('checkOutScreen')}
+                  onPress={() =>
+                    navigation.navigate('checkOutScreen', cartAllData)
+                  }
                   style={styles.processButton}>
                   <Text style={styles.processText}>Proceed To Checkout</Text>
                 </TouchableOpacity>

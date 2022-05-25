@@ -1,4 +1,4 @@
-import {StyleSheet, Platform} from 'react-native';
+import {StyleSheet, Platform, Dimensions} from 'react-native';
 import {color} from '../../Reusedcomponents/color';
 import {
   widthPercentageToDP as wp,
@@ -22,10 +22,12 @@ export const styles = StyleSheet.create({
     fontSize: hp('2.3'),
   },
   topTitle2: {
-    color: color.textSecondaryColor,
+    color: 'white',
     marginTop: hp('2'),
     fontSize: hp('2.3'),
-    marginLeft: wp('7'),
+    textAlign: 'center',
+    fontWeight: 'bold',
+    // marginLeft: wp('7'),
   },
   topButtonView: {
     flexDirection: 'row',
@@ -75,7 +77,7 @@ export const styles = StyleSheet.create({
     fontSize: hp('1.5'),
     color: 'black',
   },
-  textContainer: {width: wp('45')},
+  textContainer: {width: wp('37')},
   radioText: {
     // marginTop: hp('0.9'),
     color: 'gray',
@@ -135,6 +137,27 @@ export const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 5,
     // height: hp('30'),
+    borderRadius: 10,
+  },
+  checkStyle: {
+    borderWidth: 0.5,
+    borderColor: color.themColorPrimary,
+    // borderRadius: 60,
+    borderRadius: Math.round(
+      Dimensions.get('window').width + Dimensions.get('window').height,
+    ),
+    width: Dimensions.get('window').width * 0.08,
+    height: Dimensions.get('window').width * 0.08,
+    width: wp('8.5'),
+    height: hp('4.1'),
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: wp('2'),
+  },
+  headingView: {
+    // width: wp('70'),
+    height: hp('7'),
+    backgroundColor: color.textPrimaryColor,
     borderRadius: 10,
   },
 });

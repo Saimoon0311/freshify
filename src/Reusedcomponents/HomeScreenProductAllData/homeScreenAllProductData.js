@@ -22,41 +22,49 @@ import {globalStyles} from '../globalStyle';
 import CartData from '../../Redux/Reducer/CartData';
 import {ApiPost} from '../../Config/helperFunction';
 import {showMessage} from 'react-native-flash-message';
-import {useSelector} from 'react-redux';
-export const HomeScreenAllProductData = props => {
-  const {cartData} = useSelector(state => state.cartData);
-  const [buttonLoading, setButtonLoading] = useState(false);
+import {useDispatch, useSelector} from 'react-redux';
+import getCartData from '../../Config/getCartData';
+import {store} from '../../Redux/Reducer';
 
+export const HomeScreenAllProductData = props => {
+  // const {cartData} = useSelector(state => state.cartData);
+  let cartData = store.getState().cartData.cartData;
+
+  const [buttonLoading, setButtonLoading] = useState(false);
+  const dispatch = useDispatch();
   const addToCart = item => {
     setButtonLoading(true);
-    console.log('bilal');
-    let url = allCartDataUrl + cartData?.id;
+    let url = allCartDataUrl + cartData.id;
     let body = JSON.stringify({
       product_id: item?.id,
       variation_id: '0',
       quantity: 1,
     });
-    ApiPost(url, body, false).then(res => {
-      if (res.success == true) {
-        showMessage({
-          type: 'success',
-          icon: 'success',
-          message: 'Success',
-          description: 'Your Cart has been Added',
-          backgroundColor: color.textPrimaryColor,
-        });
-        setButtonLoading(false);
-      } else if (res.success == false) {
-        showMessage({
-          type: 'danger',
-          icon: 'danger',
-          message: 'Warning',
-          description: 'SomeThing want wrong',
-          backgroundColor: color.textPrimaryColor,
-        });
-        setButtonLoading(false);
-      }
-    });
+    ApiPost(url, body, false)
+      .then(res => {
+        console.log(4567, res);
+        if (res.success == true) {
+          showMessage({
+            type: 'success',
+            icon: 'success',
+            message: 'Success',
+            description: 'Your Cart has been Added',
+            backgroundColor: color.textPrimaryColor,
+          });
+          getCartData();
+          setButtonLoading(false);
+        } else if (res.success == false) {
+          showMessage({
+            type: 'danger',
+            icon: 'danger',
+            message: 'Warning',
+            description: 'SomeThing want wrong',
+            backgroundColor: color.textPrimaryColor,
+          });
+          setButtonLoading(false);
+        }
+      })
+      .catch(e => console.log(56, e));
   };
   const productsPlaceholder = () => {
     return (

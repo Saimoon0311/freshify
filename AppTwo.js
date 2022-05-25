@@ -19,11 +19,12 @@ import {persistor, store} from './src/Redux/Reducer';
 import {ApiPost} from './src/Config/helperFunction';
 import {createCartIdUrl} from './src/Config/Url';
 import types from './src/Redux/type';
+import getCartData from './src/Config/getCartData';
 
 function AppTwo({navigation}) {
   const {cartData} = useSelector(state => state.cartData);
-  const [isVisible, setIsVisible] = useState(true);
 
+  const [isVisible, setIsVisible] = useState(true);
   const Hide_Splash_Screen = () => {
     setIsVisible(false);
   };
@@ -35,8 +36,8 @@ function AppTwo({navigation}) {
     }
   };
   const dispatch = useDispatch();
-  const createCartId = () => {
-    if (cartData != {}) {
+  const createCartId = async () => {
+    if (!cartData.id) {
       let url = createCartIdUrl;
       let body = {};
       ApiPost(url, body).then(res => {
@@ -51,12 +52,13 @@ function AppTwo({navigation}) {
       console.log('kjadbfbak');
     }
   };
-  useEffect(() => {
+  useEffect(async () => {
     (async () => {
       LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
       LogBox.ignoreAllLogs(true);
     })();
-    createCartId();
+    await createCartId();
+    getCartData();
     setTimeout(function () {
       Hide_Splash_Screen();
     }, time());

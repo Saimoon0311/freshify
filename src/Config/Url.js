@@ -12,3 +12,4 @@ export const SubCategoryUrl = getApi('front/products-viaslug');
 export const allCartDataUrl = getApi('front/cart/');
 export const deleteCartUrl = getApi('front/cart/delete/');
 export const quantityControllerUrl = getApi('front/cart/qty_upd/');
+export const PlaceOrderUrl = getApi('front/orders-wcart');
