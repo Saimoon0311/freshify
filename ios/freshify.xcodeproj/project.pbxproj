@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* freshifyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* freshifyTests.m */; };
+		04347DD8283E596600A9C55B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04347DD7283E596600A9C55B /* LaunchScreen.storyboard */; };
 		04A59CBC2812863500E67E60 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04A59CAA2812863400E67E60 /* Poppins-BoldItalic.ttf */; };
 		04A59CBD2812863500E67E60 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04A59CAB2812863400E67E60 /* Poppins-ThinItalic.ttf */; };
 		04A59CBE2812863500E67E60 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04A59CAC2812863400E67E60 /* Poppins-Thin.ttf */; };
@@ -30,7 +31,6 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		5A02753B740A3A49034EFC69 /* libPods-freshify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD55DB38DB9A9819F66206AC /* libPods-freshify.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		CEC0BEC331AA644432FFA4E5 /* libPods-freshify-freshifyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F537BB62FB26CB5830DCE181 /* libPods-freshify-freshifyTests.a */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +48,7 @@
 		00E356EE1AD99517003FC87E /* freshifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = freshifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* freshifyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = freshifyTests.m; sourceTree = "<group>"; };
+		04347DD7283E596600A9C55B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = freshify/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04A59CAA2812863400E67E60 /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
 		04A59CAB2812863400E67E60 /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
 		04A59CAC2812863400E67E60 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
@@ -81,7 +82,6 @@
 		73705C6BBC3E39BDC2A43ABB /* Pods-freshify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-freshify.release.xcconfig"; path = "Target Support Files/Pods-freshify/Pods-freshify.release.xcconfig"; sourceTree = "<group>"; };
 		75171E7A6D624CE39982B136 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		7F06FEF42EBD4AAC9E299780 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = freshify/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8F9D22B6C89179C6A2A163B7 /* Pods-freshify-freshifyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-freshify-freshifyTests.debug.xcconfig"; path = "Target Support Files/Pods-freshify-freshifyTests/Pods-freshify-freshifyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AE671F325C6B4B94902C7C70 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		B3F74BDF3C104095BEE9FBC4 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
@@ -183,8 +183,8 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				04347DD7283E596600A9C55B /* LaunchScreen.storyboard */,
 			);
 			name = freshify;
 			sourceTree = "<group>";
@@ -345,10 +345,10 @@
 				04A59CCB2812863500E67E60 /* Poppins-SemiBoldItalic.ttf in Resources */,
 				04A59CC32812863500E67E60 /* Poppins-Light.ttf in Resources */,
 				04A59CC62812863500E67E60 /* Poppins-Medium.ttf in Resources */,
+				04347DD8283E596600A9C55B /* LaunchScreen.storyboard in Resources */,
 				04A59CBC2812863500E67E60 /* Poppins-BoldItalic.ttf in Resources */,
 				04A59CBD2812863500E67E60 /* Poppins-ThinItalic.ttf in Resources */,
 				04A59CCD2812863500E67E60 /* Poppins-LightItalic.ttf in Resources */,
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				04A59CC02812863500E67E60 /* Poppins-ExtraBold.ttf in Resources */,
 				04A59CBF2812863500E67E60 /* Poppins-Regular.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,

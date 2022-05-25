@@ -20,6 +20,7 @@ import {ApiPost} from './src/Config/helperFunction';
 import {createCartIdUrl} from './src/Config/Url';
 import types from './src/Redux/type';
 import getCartData from './src/Config/getCartData';
+import {widthPercentageToDP} from 'react-native-responsive-screen';
 
 function AppTwo({navigation}) {
   const {cartData} = useSelector(state => state.cartData);
@@ -29,11 +30,12 @@ function AppTwo({navigation}) {
     setIsVisible(false);
   };
   const time = () => {
-    if (Platform?.OS == 'android') {
-      return 5000;
-    } else {
-      return 0;
-    }
+    // if (Platform?.OS == 'android') {
+    //   return 5000;
+    // } else {
+    //   return 9000;
+    // }
+    return 5000;
   };
 
   useEffect(async () => {
@@ -47,20 +49,20 @@ function AppTwo({navigation}) {
   }, []);
   let Splash_Screen = (
     <ImageBackground
-      source={require('./src/images/NoPath.png')}
+      source={require('./src/images/Splash.png')}
       style={styles.SplashScreen_RootView}>
-      <View style={styles.SplashScreen_ChildView}>
+      {/* <View style={styles.SplashScreen_ChildView}>
         <Image
           source={require('./src/images/TF.png')}
           style={{width: 150, height: '100%', resizeMode: 'contain'}}
         />
-      </View>
+      </View> */}
     </ImageBackground>
   );
   return (
     <>
       {isVisible === true ? (
-        Platform?.OS == 'android' && Splash_Screen
+        Splash_Screen
       ) : (
         <NavigationContainer>
           <StackNavigatior />
@@ -84,11 +86,9 @@ const styles = StyleSheet.create({
   SplashScreen_RootView: {
     justifyContent: 'center',
     flex: 1,
-    // margin: 10,
     position: 'absolute',
     width: '100%',
     height: '100%',
-    backgroundColor: 'white',
   },
 
   SplashScreen_ChildView: {
