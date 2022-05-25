@@ -197,8 +197,7 @@ export default function cartScreen({navigation}) {
                     <View>
                       <View style={styles.innerMainView}>
                         <Text style={styles.itemName}>
-                          {item?.products?.name}{' '}
-                          {item?.products?.product_sale_type?.single_qty_text}
+                          {item?.products?.name}
                         </Text>
                         <TouchableOpacity
                           style={{
@@ -209,9 +208,15 @@ export default function cartScreen({navigation}) {
                           <Entypo name="cross" color={'gray'} size={20} />
                         </TouchableOpacity>
                       </View>
+                      <View>
+                        <Text style={styles.itemName}>
+                          Total : {item?.rowtotal}
+                        </Text>
+                      </View>
                       <View style={styles.priceContainer}>
                         <Text style={{color: 'gray'}}>
-                          Rs {item?.products?.price} x {item?.quantity}
+                          Rs {item?.products?.price} x {item?.quantity}{' '}
+                          {item?.products?.product_sale_type?.pro_type_price}
                         </Text>
                         <View style={styles.quantityContainer}>
                           <TouchableOpacity
