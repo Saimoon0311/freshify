@@ -42,6 +42,7 @@ export const HomeScreenAllProductData = props => {
     });
     ApiPost(url, body, false)
       .then(res => {
+        console.log(4567, res);
         if (res.success == true) {
           showMessage({
             type: 'success',

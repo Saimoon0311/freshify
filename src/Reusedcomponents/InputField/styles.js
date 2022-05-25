@@ -8,7 +8,6 @@ import {color} from '../color';
 
 export const styles = StyleSheet.create({
   textinput: {
-    borderWidth: 1,
     borderRadius: 5,
     paddingLeft: wp('3'),
     marginTop: hp('2'),
@@ -18,6 +17,5 @@ export const styles = StyleSheet.create({
     marginTop: hp('2'),
     fontSize: hp('2'),
     fontFamily: 'Poppins-SemiBold',
-    color: 'gray',
   },
 });

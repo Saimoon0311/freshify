@@ -12,7 +12,7 @@ export default function (state = initial_state, action) {
       return {cartDataLength: action.payload};
       break;
     case types.SubtractCart:
-      return {cartDataLength: {}};
+      return {cartDataLength: action.payload};
       break;
     default:
       return {...state};

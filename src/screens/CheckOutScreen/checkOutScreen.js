@@ -13,25 +13,27 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {Checkbox} from 'react-native-paper';
-
+import {SkypeIndicator} from 'react-native-indicators';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {styles} from './style';
-import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import {ActivityIndicator, Divider} from 'react-native-paper';
 import {BackHeader} from '../../Reusedcomponents/Header/BackHeader';
 import {color} from '../../Reusedcomponents/color';
-import {Radio, NativeBaseProvider} from 'native-base';
-import {RadioButton} from 'react-native-paper';
 import {InputField} from '../../Reusedcomponents/InputField/inputFeild';
 import BottomButton from '../../Reusedcomponents/BottomButton/bottomButton';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
-// import  from 'react-native-modal-datetime-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
 import * as Animatable from 'react-native-animatable';
 import {showMessage} from 'react-native-flash-message';
+import {useDispatch, useSelector} from 'react-redux';
+import {ApiPost} from '../../Config/helperFunction';
+import {PlaceOrderUrl} from '../../Config/Url';
+import types from '../../Redux/type';
 
 function checkOutScreen({route, navigation}) {
+  const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const {cartData} = useSelector(state => state.cartData);
+  const dispatch = useDispatch();
   const item = route.params;
   var today = moment().format('DD MMM');
   var tomorrow = moment().add(1, 'days').format('DD MMM');
@@ -42,15 +44,21 @@ function checkOutScreen({route, navigation}) {
   const [scheduleDay, setSchedulaDay] = useState(0);
   const [isDate, setIsDate] = useState(false);
   const [buttonState, setButtonState] = useState(1);
+  const [orderLoading, setOrderLoading] = useState(false);
 
-  const [shippingFullName, setShippingFullName] = useState('');
+  const [shippingFirstName, setShippingFirstName] = useState('');
+  const [shippingLastName, setShippingLastName] = useState('');
   const [shippinggAddress, setShippingAddress] = useState('');
   const [shippingCity, setShippingCity] = useState('');
   const [shippingState, setShippingState] = useState('');
   const [shippingZipCode, setShippingZipCode] = useState('');
   const [shippingPhone, setShippingPhone] = useState('');
+  const [shippingEmail, setShippingEmail] = useState('');
 
-  const [billingFullName, setBillingFullName] = useState('');
+  const [billingFirstName, setBillingFirstName] = useState('');
+  const [billing_notes, setBilling_notes] = useState('');
+  const [billingLastName, setBillingLastName] = useState('');
+  const [billingEmail, setBillingEmail] = useState('');
   const [billinggAddress, setBillingAddress] = useState('');
   const [billingCity, setBillingCity] = useState('');
   const [billingState, setBillingState] = useState('');
@@ -60,11 +68,33 @@ function checkOutScreen({route, navigation}) {
   const [orderDetails, setOrderDetails] = useState();
   const [note, setNote] = useState('');
   const [checkBox, setCheckBox] = useState('unchecked');
+  const [isFocused, setIsFocused] = useState({
+    shippingFirstName: false,
+    shippingLastName: false,
+    shippinggAddress: false,
+    shippingPhone: false,
+    shippingCity: false,
+    shippingEmail: false,
+    shippinggAddress: false,
+    shippingZipCode: false,
+    shippingState: false,
+    billingFirstName: false,
+    billingLastName: false,
+    billingEmail: false,
+    billinggAddress: false,
+    billingCity: false,
+    billingState: false,
+    billingZipCode: false,
+    billingPhone: false,
+    billing_notes: false,
+  });
 
   const setdetails = () => {
     if (
-      shippingFullName !== '' &&
-      shippingFullName !== null &&
+      shippingFirstName !== '' &&
+      shippingFirstName !== null &&
+      shippingLastName !== '' &&
+      shippingLastName !== null &&
       shippingPhone !== '' &&
       shippingPhone !== null &&
       shippingCity !== '' &&
@@ -73,16 +103,19 @@ function checkOutScreen({route, navigation}) {
       shippinggAddress !== null &&
       shippingZipCode !== '' &&
       shippingZipCode !== null &&
-      shippingState !== '' &&
-      shippingState !== null
+      shippingEmail !== '' &&
+      shippingEmail !== null &&
+      reg.test(shippingEmail) == true
     ) {
       setCheckBox('checked');
-      setBillingFullName(shippingFullName);
+      setBillingLastName(shippingLastName);
+      setBillingFirstName(shippingFirstName);
       setBillingPhone(shippingPhone);
       setBillingState(shippingState);
       setBillingZipCode(shippingZipCode);
       setBillingCity(shippingCity);
       setBillingAddress(shippinggAddress);
+      setBillingEmail(shippingEmail);
     } else {
       showMessage({
         type: 'warning',
@@ -93,62 +126,184 @@ function checkOutScreen({route, navigation}) {
       });
     }
   };
+  const orderPlaceFun = () => {
+    setOrderLoading(true);
+    if (
+      shippingFirstName !== '' &&
+      shippingFirstName !== null &&
+      shippingLastName !== '' &&
+      shippingLastName !== null &&
+      shippingPhone !== '' &&
+      shippingPhone !== null &&
+      shippingCity !== '' &&
+      shippingCity !== null &&
+      shippinggAddress !== '' &&
+      shippinggAddress !== null &&
+      shippingZipCode !== '' &&
+      shippingZipCode !== null &&
+      shippingEmail !== '' &&
+      shippingEmail !== null &&
+      reg.test(shippingEmail) == true
+    ) {
+      let body = JSON.stringify({
+        billing_first_name:
+          checkBox == 'checked' ? shippingFirstName : billingFirstName,
+        billing_last_name:
+          checkBox == 'checked' ? shippingLastName : billingLastName,
+        billing_address:
+          checkBox == 'checked' ? shippinggAddress : billinggAddress,
+        billing_address_2: checkBox == 'checked' ? shippingState : billingState,
+        billing_city: checkBox == 'checked' ? shippingCity : billingCity,
+        billing_zip: checkBox == 'checked' ? shippingZipCode : billingZipCode,
+        billing_phone: checkBox == 'checked' ? shippingPhone : billingPhone,
+        billing_email: checkBox == 'checked' ? shippingEmail : billingEmail,
+        billing_notes: billing_notes,
+        shipping_first_name: shippingFirstName,
+        shipping_last_name: shippingLastName,
+        shipping_address: shippinggAddress,
+        shipping_address_2: shippingState,
+        shipping_city: shippingCity,
+        shipping_zip: shippingZipCode,
+        shipping_phone: shippingPhone,
+        shippingEmail: shippingEmail,
+        cart_id: cartData.id,
+      });
+      console.log(67890, body);
+      ApiPost(PlaceOrderUrl, body, false).then(res => {
+        console.log(7567890, res);
+        if (res.success == true) {
+          setOrderLoading(false);
+          dispatch({
+            type: types.DeleteCart,
+          });
+          navigation.navigate('confirmOrderScreen', res.data);
+        } else if (res.success == false) {
+          showMessage({
+            type: 'warning',
+            icon: 'warning',
+            message: 'Warning',
+            description: 'Something is wrong',
+            backgroundColor: color.textPrimaryColor,
+          });
+        } else {
+          setOrderLoading(false);
+          console.log(res);
+          showMessage({
+            type: 'warning',
+            icon: 'warning',
+            message: 'Warning',
+            description: 'Network Request Failed.',
+            backgroundColor: color.textPrimaryColor,
+          });
+        }
+      });
+    } else {
+      setOrderLoading(false);
 
+      showMessage({
+        type: 'warning',
+        icon: 'warning',
+        message: 'Warning',
+        description: 'Please first complete all shipping details',
+        backgroundColor: color.textPrimaryColor,
+      });
+    }
+  };
+  // handlers
+  const handleInputFocus = textinput => {
+    setIsFocused({
+      [textinput]: true,
+    });
+  };
+  const handleInputBlur = textinput => {
+    setIsFocused({
+      [textinput]: false,
+    });
+  };
   const shippingAddress = () => {
     return (
       <>
         <ScrollView>
-          <Text style={styles.topTitle2}>Shipping Details</Text>
           <View style={{...styles.box, paddingBottom: 30}}>
+            <View style={styles.headingView}>
+              <Text style={styles.topTitle2}>Shipping Details</Text>
+            </View>
+
             <InputField
-              inputText="Full Name"
+              inputText="First Name *"
               width={wp('80')}
               editable={true}
-              value={shippingFullName}
+              onFocus={() => handleInputFocus('shippingFirstName')}
+              onBlur={() => handleInputBlur('shippingFirstName')}
+              isFocused={isFocused.shippingFirstName}
+              value={shippingFirstName}
               onChangeText={text => {
-                setShippingFullName(text);
+                setShippingFirstName(text);
                 // updatValue(text, 'username');
               }}
             />
             <InputField
-              inputText="Address:"
+              inputText="Last Name *"
               width={wp('80')}
               editable={true}
+              onFocus={() => handleInputFocus('shippingLastName')}
+              onBlur={() => handleInputBlur('shippingLastName')}
+              isFocused={isFocused.shippingLastName}
+              value={shippingLastName}
+              onChangeText={text => {
+                setShippingLastName(text);
+                // updatValue(text, 'username');
+              }}
+            />
+
+            <InputField
+              inputText="Email *"
+              width={wp('80')}
+              editable={true}
+              onFocus={() => handleInputFocus('shippingEmail')}
+              onBlur={() => handleInputBlur('shippingEmail')}
+              isFocused={isFocused.shippingEmail}
+              keyboardType="default"
+              value={shippingEmail}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                setShippingEmail(text);
+              }}
+            />
+            <InputField
+              inputText="Address *"
+              width={wp('80')}
+              editable={true}
+              onFocus={() => handleInputFocus('shippinggAddress')}
+              onBlur={() => handleInputBlur('shippinggAddress')}
+              isFocused={isFocused.shippinggAddress}
               value={shippinggAddress}
               selectionColor="#FF7E33"
               onChangeText={text => {
                 setShippingAddress(text);
-                // updatValue(text, 'address_one');
               }}
             />
-            {/* <InputField
-              
-              inputText="Address Two *"
-              underlineColor="gray"
-              theme={{colors: "green"}}
-              
-              value={userDataLocal?.address_two}
-              selectionColor="#FF7E33"
-              onChangeText={text => {
-                updatValue(text, 'address_two');
-              }}
-            /> */}
             <InputField
               inputText="City *"
               width={wp('80')}
               editable={true}
+              onFocus={() => handleInputFocus('shippingCity')}
+              onBlur={() => handleInputBlur('shippingCity')}
+              isFocused={isFocused.shippingCity}
               keyboardType="default"
               value={shippingCity}
               selectionColor="#FF7E33"
               onChangeText={text => {
                 setShippingCity(text);
-                // updatValue(text, 'city');
               }}
             />
             <InputField
-              inputText="Country *"
+              inputText="Apartment, suite, etc. (optional)"
               width={wp('80')}
               editable={true}
+              onFocus={() => handleInputFocus('shippingState')}
+              onBlur={() => handleInputBlur('shippingState')}
+              isFocused={isFocused.shippingState}
               value={shippingState}
               selectionColor="#FF7E33"
               onChangeText={text => {
@@ -157,9 +312,12 @@ function checkOutScreen({route, navigation}) {
               }}
             />
             <InputField
-              inputText="Number"
+              inputText="Phone Number *"
               width={wp('80')}
               editable={true}
+              onFocus={() => handleInputFocus('shippingPhone')}
+              onBlur={() => handleInputBlur('shippingPhone')}
+              isFocused={isFocused.shippingPhone}
               keyboardType="number-pad"
               value={shippingPhone}
               selectionColor="#FF7E33"
@@ -172,6 +330,9 @@ function checkOutScreen({route, navigation}) {
               inputText="ZipCode *"
               width={wp('80')}
               editable={true}
+              onFocus={() => handleInputFocus('shippingZipCode')}
+              onBlur={() => handleInputBlur('shippingZipCode')}
+              isFocused={isFocused.shippingZipCode}
               maxLength={7}
               keyboardType="numeric"
               value={shippingZipCode}
@@ -180,16 +341,6 @@ function checkOutScreen({route, navigation}) {
               onChangeText={text => {
                 setShippingZipCode(text);
                 // updatValue(text, 'zipcode');
-              }}
-            />
-            <InputField
-              inputText="Note"
-              width={wp('80')}
-              editable={true}
-              value={note}
-              selectionColor="#FF7E33"
-              onChangeText={text => {
-                setNote(text);
               }}
             />
           </View>
@@ -201,21 +352,57 @@ function checkOutScreen({route, navigation}) {
     return (
       <>
         <Animatable.View animation={'bounceInLeft'}>
-          <Text style={styles.topTitle2}>Billing Address</Text>
           <View style={{...styles.box, paddingBottom: 30}}>
+            <View style={styles.headingView}>
+              <Text style={styles.topTitle2}>Billing Details</Text>
+            </View>
+
             <InputField
-              inputText="Full Name"
+              inputText="First Name *"
               width={wp('80')}
               editable={true}
-              value={billingFullName}
+              onFocus={() => handleInputFocus('billingFirstName')}
+              onBlur={() => handleInputBlur('billingFirstName')}
+              isFocused={isFocused.billingFirstName}
+              value={billingFirstName}
               onChangeText={text => {
-                setBillingFullName(text);
+                setBillingFirstName(text);
               }}
             />
             <InputField
-              inputText="Address:"
+              inputText="Last Name *"
               width={wp('80')}
               editable={true}
+              onFocus={() => handleInputFocus('billingLastName')}
+              onBlur={() => handleInputBlur('billingLastName')}
+              isFocused={isFocused.billingLastName}
+              value={billingLastName}
+              onChangeText={text => {
+                setBillingLastName(text);
+              }}
+            />
+
+            <InputField
+              inputText="Email *"
+              width={wp('80')}
+              editable={true}
+              onFocus={() => handleInputFocus('billingEmail')}
+              onBlur={() => handleInputBlur('billingEmail')}
+              isFocused={isFocused.billingEmail}
+              keyboardType="default"
+              value={billingEmail}
+              selectionColor="#FF7E33"
+              onChangeText={text => {
+                setBillingEmail(text);
+              }}
+            />
+            <InputField
+              inputText="Address *"
+              width={wp('80')}
+              editable={true}
+              onFocus={() => handleInputFocus('billinggAddress')}
+              onBlur={() => handleInputBlur('billinggAddress')}
+              isFocused={isFocused.billinggAddress}
               value={billinggAddress}
               selectionColor="#FF7E33"
               onChangeText={text => {
@@ -238,6 +425,9 @@ function checkOutScreen({route, navigation}) {
               inputText="City *"
               width={wp('80')}
               editable={true}
+              onFocus={() => handleInputFocus('billingCity')}
+              onBlur={() => handleInputBlur('billingCity')}
+              isFocused={isFocused.billingCity}
               keyboardType="default"
               value={billingCity}
               selectionColor="#FF7E33"
@@ -246,9 +436,12 @@ function checkOutScreen({route, navigation}) {
               }}
             />
             <InputField
-              inputText="Country *"
+              inputText="Apartment, suite, etc. (optional)"
               width={wp('80')}
               editable={true}
+              onFocus={() => handleInputFocus('billingState')}
+              onBlur={() => handleInputBlur('billingState')}
+              isFocused={isFocused}
               value={billingState}
               selectionColor="#FF7E33"
               onChangeText={text => {
@@ -256,9 +449,12 @@ function checkOutScreen({route, navigation}) {
               }}
             />
             <InputField
-              inputText="Number"
+              inputText="Phone Number *"
               width={wp('80')}
               editable={true}
+              onFocus={() => handleInputFocus('billingPhone')}
+              onBlur={() => handleInputBlur('billingPhone')}
+              isFocused={isFocused.billingPhone}
               keyboardType="number-pad"
               value={billingPhone}
               selectionColor="#FF7E33"
@@ -270,6 +466,9 @@ function checkOutScreen({route, navigation}) {
               inputText="ZipCode *"
               width={wp('80')}
               editable={true}
+              onFocus={() => handleInputFocus('billingZipCode')}
+              onBlur={() => handleInputBlur('billingZipCode')}
+              isFocused={isFocused.billingZipCode}
               maxLength={7}
               keyboardType="numeric"
               value={billingZipCode}
@@ -280,13 +479,17 @@ function checkOutScreen({route, navigation}) {
               }}
             />
             <InputField
-              inputText="Note"
+              inputText="Billing Note"
               width={wp('80')}
               editable={true}
-              value={note}
+              onFocus={() => handleInputFocus('billing_notes')}
+              onBlur={() => handleInputBlur('billing_notes')}
+              isFocused={isFocused.billing_notes}
+              keyboardType="number-pad"
+              value={billing_notes}
               selectionColor="#FF7E33"
               onChangeText={text => {
-                setNote(text);
+                setBilling_notes(text);
               }}
             />
           </View>
@@ -321,14 +524,15 @@ function checkOutScreen({route, navigation}) {
   const centerItem = () => {
     return (
       <>
-        <Text style={styles.topTitle}>Bill Summary</Text>
+        <View style={styles.box}>
+          <View style={{...styles.headingView, marginBottom: hp('2')}}>
+            <Text style={styles.topTitle2}>Bill Summary</Text>
+          </View>
 
-        {/* {billingAddress()} */}
-        <View style={styles.billSummaryView}>
-          {item.map(res => {
+          {item.items.map(res => {
             return (
               <View style={styles.innerContainer}>
-                <View style={styles.textContainer}>
+                <View style={{...styles.textContainer, width: wp('43')}}>
                   <Text style={styles.innerText}>
                     {res?.products?.name} x {res?.quantity}
                   </Text>
@@ -349,12 +553,16 @@ function checkOutScreen({route, navigation}) {
             style={{borderWidth: 1, borderColor: 'gray', marginBottom: hp('1')}}
           />
           <View style={styles.innerContainer}>
-            <View style={styles.textContainer}>
+            <View style={{...styles.textContainer, width: wp('43')}}>
               <Text style={{color: 'black', fontSize: hp('2')}}>
                 Payment Total
               </Text>
             </View>
-            <View style={{...styles.textContainer, alignItems: 'flex-end'}}>
+            <View
+              style={{
+                ...styles.textContainer,
+                alignItems: 'flex-end',
+              }}>
               <Text
                 numberOfLines={1}
                 style={{
@@ -362,7 +570,7 @@ function checkOutScreen({route, navigation}) {
                   fontWeight: 'bold',
                   color: 'black',
                 }}>
-                Rs 150
+                Rs {item.total}
               </Text>
             </View>
           </View>
@@ -374,14 +582,23 @@ function checkOutScreen({route, navigation}) {
   const paymentInfoContainer = () => {
     return (
       <>
-        <Text style={styles.topTitle}>Payment Information</Text>
-        <View
-          style={{
-            width: wp('93'),
-            alignSelf: 'center',
-            marginTop: hp('1'),
-          }}>
-          <RadioButton.Group
+        <View style={{...styles.box, paddingBottom: hp('2')}}>
+          <View style={{...styles.headingView, marginBottom: hp('2')}}>
+            <Text style={styles.topTitle2}>Payment Information</Text>
+          </View>
+          <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+            <Ionicons name="ios-cash-outline" size={hp('3')} color={'gray'} />
+            <View style={{marginLeft: hp('2')}}>
+              <Text
+                style={{fontSize: hp('2'), color: 'black', fontWeight: 'bold'}}>
+                Cash on delivery
+              </Text>
+              <Text style={{color: 'black', fontSize: hp('1.7')}}>
+                Pay cash at the time of order delivery
+              </Text>
+            </View>
+          </View>
+          {/* <RadioButton.Group
             onValueChange={newValue => setPaymentInfo(newValue)}
             value={paymentInfo}>
             <View style={styles.paymentRadioButtonView}>
@@ -409,7 +626,7 @@ function checkOutScreen({route, navigation}) {
               <RadioButton color={color.textPrimaryColor} value="Easypaisa" />
               <Text style={styles.radioButtonText}>Easypaisa</Text>
             </View>
-          </RadioButton.Group>
+          </RadioButton.Group> */}
         </View>
       </>
     );
@@ -545,11 +762,14 @@ function checkOutScreen({route, navigation}) {
         {centerItem()}
 
         {paymentInfoContainer()}
-        {additionalInformation()}
-        <BottomButton
-          onPress={() => navigation.navigate('confirmOrderScreen')}
-          title="Place Order"
-        />
+        {/* {additionalInformation()} */}
+        <View style={{marginTop: hp('3')}}>
+          {orderLoading ? (
+            <SkypeIndicator color={color.textPrimaryColor} size={hp('6')} />
+          ) : (
+            <BottomButton onPress={() => orderPlaceFun()} title="Place Order" />
+          )}
+        </View>
       </ScrollView>
       {isDate && (
         <DateTimePicker

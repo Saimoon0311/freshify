@@ -38,13 +38,15 @@ export default function cartScreen({navigation}) {
   const {cartData} = useSelector(state => state.cartData);
   const {cartDataLength} = useSelector(state => state.cartDataLength);
   const getCartDataAll = () => {
-    let url = allCartDataUrl + cartData.id;
+    let id = cartData.id ? cartData.id : 'a';
+    let url = allCartDataUrl + id;
     // let url = allCartDataUrl + '39';
     ApiGet(url).then(res => {
+      console.log(23456789);
       if (res.success == true) {
         setCartAllData(res?.data);
         setLoading(false);
-      } else if (res.data.items == []) {
+      } else if (res.data == 'Not Found') {
         setCartAllData([]);
         setLoading(false);
       } else if (res.success == false) {
@@ -193,7 +195,7 @@ export default function cartScreen({navigation}) {
               }}
             />
 
-            {cartAllData.items.length > 0 ? (
+            {cartAllData.length || cartAllData?.items?.length >= 1 ? (
               <View style={styles.TotalMaincontainer}>
                 <View style={styles.innerTotalView}>
                   <Text style={styles.totalText}>Total</Text>
@@ -211,7 +213,7 @@ export default function cartScreen({navigation}) {
                 </View>
                 <TouchableOpacity
                   onPress={() =>
-                    navigation.navigate('checkOutScreen', cartAllData.items)
+                    navigation.navigate('checkOutScreen', cartAllData)
                   }
                   style={styles.processButton}>
                   <Text style={styles.processText}>Proceed To Checkout</Text>
