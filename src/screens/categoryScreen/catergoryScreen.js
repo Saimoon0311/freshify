@@ -34,6 +34,7 @@ export default function catergoryScreen({navigation}) {
   const onRefresh = useCallback(() => {
     // setRefreshing(true);
     setLoading(true);
+    getCategoryProduct();
     // setAloading(true);
     wait(2000).then(() => {
       setLoading(false);
@@ -79,6 +80,7 @@ export default function catergoryScreen({navigation}) {
           backgroundColor: 'transparent',
           borderWidth: 2,
           width: wp('28'),
+          paddingTop: hp('1'),
         }}>
         <View
           style={{
@@ -130,32 +132,62 @@ export default function catergoryScreen({navigation}) {
         ) : catergoryData.length == 0 ? (
           <NoProductView text={'No Category Found.'} />
         ) : (
-          <FlatList
-            data={catergoryData}
-            keyExtractor={item => item.id}
-            numColumns={3}
-            contentContainerStyle={{paddingBottom: hp('15')}}
-            showsVerticalScrollIndicator={false}
-            renderItem={({item}) => {
-              return (
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('SubCategory', item)}
-                  style={{
-                    ...styles.touchContainer,
-                    marginLeft: wp('3'),
-                    marginRight: wp('2.0'),
-                    marginTop: hp('1.5'),
-                  }}>
-                  <Image
-                    resizeMode="contain"
-                    style={styles.imageStyle}
-                    source={{uri: IMAGE_BASED_URL + item?.image?.url}}
-                  />
-                  <Text style={styles.categoryName}>{item?.name}</Text>
-                </TouchableOpacity>
-              );
-            }}
-          />
+          <>
+            <Text style={styles.headText}>Fresh Meat</Text>
+            <FlatList
+              data={catergoryData.Meat}
+              keyExtractor={(item, index) => index.toString()}
+              numColumns={3}
+              // contentContainerStyle={{paddingBottom: hp('15')}}
+              showsVerticalScrollIndicator={false}
+              renderItem={({item}) => {
+                return (
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('SubCategory', item)}
+                    style={{
+                      ...styles.touchContainer,
+                      marginLeft: wp('3'),
+                      marginRight: wp('2.0'),
+                      marginTop: hp('1.5'),
+                    }}>
+                    <Image
+                      resizeMode="contain"
+                      style={styles.imageStyle}
+                      source={{uri: IMAGE_BASED_URL + item?.image?.url}}
+                    />
+                    <Text style={styles.categoryName}>{item?.name}</Text>
+                  </TouchableOpacity>
+                );
+              }}
+            />
+            <Text style={styles.headText}>Dairy</Text>
+            <FlatList
+              data={catergoryData.Dairy}
+              keyExtractor={(item, index) => index.toString()}
+              numColumns={3}
+              contentContainerStyle={{paddingBottom: hp('15')}}
+              showsVerticalScrollIndicator={false}
+              renderItem={({item}) => {
+                return (
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('SubCategory', item)}
+                    style={{
+                      ...styles.touchContainer,
+                      marginLeft: wp('3'),
+                      marginRight: wp('2.0'),
+                      marginTop: hp('1.5'),
+                    }}>
+                    <Image
+                      resizeMode="contain"
+                      style={styles.imageStyle}
+                      source={{uri: IMAGE_BASED_URL + item?.image?.url}}
+                    />
+                    <Text style={styles.categoryName}>{item?.name}</Text>
+                  </TouchableOpacity>
+                );
+              }}
+            />
+          </>
         )}
       </ScrollView>
     </View>

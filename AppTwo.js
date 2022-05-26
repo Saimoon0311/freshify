@@ -9,6 +9,7 @@ import {
   Alert,
   LogBox,
   ImageBackground,
+  StatusBar,
 } from 'react-native';
 import FlashMessage from 'react-native-flash-message';
 import {NavigationContainer} from '@react-navigation/native';
@@ -61,6 +62,7 @@ function AppTwo({navigation}) {
   );
   return (
     <>
+      <StatusBar hidden={true} />
       {isVisible === true ? (
         Splash_Screen
       ) : (

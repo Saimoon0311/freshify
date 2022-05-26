@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import {color} from '../../Reusedcomponents/color';
 import {styles} from './style';
@@ -19,7 +20,11 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
-import {NineCubesLoader, BallIndicator} from 'react-native-indicators';
+import {
+  NineCubesLoader,
+  BallIndicator,
+  SkypeIndicator,
+} from 'react-native-indicators';
 import {
   allCartDataUrl,
   deleteCartUrl,
@@ -165,7 +170,7 @@ export default function cartScreen({navigation}) {
       <ScrollView contentContainerStyle={{paddingBottom: hp('8')}}>
         {loading ? (
           <View style={{alignSelf: 'center', marginTop: hp('20%')}}>
-            <BallIndicator
+            <SkypeIndicator
               size={50}
               color={color.textPrimaryColor}
               dotRadius={10}
@@ -178,7 +183,7 @@ export default function cartScreen({navigation}) {
             }}>
             <FlatList
               data={cartAllData.items}
-              keyExtractor={item => item.id}
+              keyExtractor={(item, index) => index.toString()}
               renderItem={({item}) => {
                 return (
                   <TouchableOpacity

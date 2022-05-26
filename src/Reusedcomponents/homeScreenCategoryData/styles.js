@@ -27,7 +27,8 @@ export const styles = StyleSheet.create({
   main: {
     width: wp('93'),
     // marginLeft: wp('3'),
-    // alignSelf: 'center',
+    alignSelf: 'center',
+    marginRight: wp('2'),
     // alignItems: 'center',
   },
   name: {
@@ -35,6 +36,8 @@ export const styles = StyleSheet.create({
     fontSize: hp('1.5'),
     textAlign: 'center',
     marginBottom: hp('0.5'),
+    width: wp('15'),
+    alignSelf: 'center',
   },
   categoryImage: {
     width: wp('19.6'),

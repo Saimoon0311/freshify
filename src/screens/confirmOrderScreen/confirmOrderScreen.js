@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   ActivityIndicatorBase,
   ScrollView,
+  BackHandler,
+  Alert,
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -36,6 +38,8 @@ export default function confirmOrderScreen({route, navigation}) {
       }),
     );
   };
+
+  // BackHandler.addEventListener('hardwareBackPress', resetNavigation());
   const cancelContainer = () => {
     return (
       <AwesomeAlert
@@ -104,13 +108,6 @@ export default function confirmOrderScreen({route, navigation}) {
                     </Text>
                   </View>
                 </View>
-                <Divider
-                  style={{
-                    borderWidth: 1,
-                    borderColor: '#E9E9E9',
-                    marginBottom: hp('1'),
-                  }}
-                />
               </>
             );
           })}
@@ -131,9 +128,9 @@ export default function confirmOrderScreen({route, navigation}) {
               <Text
                 numberOfLines={1}
                 style={{
-                  fontSize: hp('2'),
-                  fontWeight: 'bold',
+                  ...styles.innerText,
                   color: 'black',
+                  fontWeight: 'bold',
                 }}>
                 Rs {item?.total}
               </Text>

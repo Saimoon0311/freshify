@@ -60,6 +60,14 @@ export default function SubCategory({route, navigation}) {
           backgroundColor: color.textPrimaryColor,
         });
         setButtonLoading(false);
+      } else {
+        showMessage({
+          type: 'danger',
+          icon: 'danger',
+          message: 'Warning',
+          description: 'Network request Faild',
+          backgroundColor: color.textPrimaryColor,
+        });
       }
     });
   };
@@ -84,6 +92,14 @@ export default function SubCategory({route, navigation}) {
             icon: 'danger',
             message: 'Warning',
             description: 'SomeThing want wrong',
+            backgroundColor: color.textPrimaryColor,
+          });
+        } else {
+          showMessage({
+            type: 'danger',
+            icon: 'danger',
+            message: 'Warning',
+            description: 'Network request Faild',
             backgroundColor: color.textPrimaryColor,
           });
         }

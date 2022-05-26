@@ -105,7 +105,7 @@ export default function ProductDetail({navigation, route}) {
         />
         <View>
           <Text style={styles.textMainContainer}>
-            {item.name}, 300gm Soft Pack
+            {item.name} , {item?.product_sale_type?.pro_type_price}
           </Text>
           <View
             style={{

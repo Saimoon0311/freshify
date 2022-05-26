@@ -56,7 +56,7 @@ function checkOutScreen({route, navigation}) {
   const [shippingEmail, setShippingEmail] = useState('');
 
   const [billingFirstName, setBillingFirstName] = useState('');
-  const [billing_notes, setBilling_notes] = useState('');
+  const [billing_notes, setBilling_notes] = useState('Optional');
   const [billingLastName, setBillingLastName] = useState('');
   const [billingEmail, setBillingEmail] = useState('');
   const [billinggAddress, setBillingAddress] = useState('');
@@ -187,7 +187,7 @@ function checkOutScreen({route, navigation}) {
           });
         } else {
           setOrderLoading(false);
-          console.log(res);
+          console.log(123456789098765432, res);
           showMessage({
             type: 'warning',
             icon: 'warning',
@@ -263,7 +263,8 @@ function checkOutScreen({route, navigation}) {
               onFocus={() => handleInputFocus('shippingEmail')}
               onBlur={() => handleInputBlur('shippingEmail')}
               isFocused={isFocused.shippingEmail}
-              keyboardType="default"
+              keyboardType="email-address"
+              autoCapitalize="none"
               value={shippingEmail}
               selectionColor="#FF7E33"
               onChangeText={text => {
@@ -386,6 +387,7 @@ function checkOutScreen({route, navigation}) {
               inputText="Email *"
               width={wp('80')}
               editable={true}
+              autoCapitalize="none"
               onFocus={() => handleInputFocus('billingEmail')}
               onBlur={() => handleInputBlur('billingEmail')}
               isFocused={isFocused.billingEmail}
@@ -404,6 +406,7 @@ function checkOutScreen({route, navigation}) {
               onBlur={() => handleInputBlur('billinggAddress')}
               isFocused={isFocused.billinggAddress}
               value={billinggAddress}
+              keyboardType="email-address"
               selectionColor="#FF7E33"
               onChangeText={text => {
                 setBillingAddress(text);
@@ -515,7 +518,13 @@ function checkOutScreen({route, navigation}) {
               color={color.themColorPrimary}
             />
           </View>
-          <Text style={{fontWeight: 'bold'}}>{inputText}</Text>
+          <Text
+            style={{
+              fontWeight: 'bold',
+              color: checkBox == 'checked' ? color.textPrimaryColor : 'gray',
+            }}>
+            {inputText}
+          </Text>
         </View>
       </TouchableOpacity>
     );
