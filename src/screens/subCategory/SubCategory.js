@@ -93,6 +93,7 @@ export default function SubCategory({route, navigation}) {
         slug: item.name,
       };
       ApiPost(SubCategoryUrl, item.name, true).then(res => {
+        console.log(item?.name, 96);
         if (res.success == true) {
           setSubCategoryFlatList(res.data);
           setIsLoading(false);
@@ -154,6 +155,7 @@ export default function SubCategory({route, navigation}) {
   return (
     <View style={styles.container}>
       <View style={{marginBottom: hp('2')}}>
+        {console.log(item?.name, 157)}
         <BackHeader
           text={item?.name}
           Iconname="arrow-back"

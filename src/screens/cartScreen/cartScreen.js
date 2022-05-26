@@ -70,7 +70,7 @@ export default function cartScreen({navigation}) {
     });
   };
   const quantityController = (product_id, id, quantity, confirm) => {
-    // let url = quantityControllerUrl + '39';
+    // let url = quantityControllerUrl + '';
     let url = quantityControllerUrl + cartData.id;
     console.log(129, url);
     if (confirm == 'increanment' && quantity >= 1) {
