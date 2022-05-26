@@ -10,6 +10,7 @@ import {
   Dimensions,
   RefreshControl,
   StatusBar,
+  Platform,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {color} from '../../Reusedcomponents/color';
@@ -143,7 +144,6 @@ export default function HomeScreen({navigation, route}) {
   };
   const dispatch = useDispatch();
   const createCartId = async () => {
-    console.log(456789098765423456789, cartData);
     if (!cartData.id) {
       let url = createCartIdUrl;
       let body = {};
@@ -168,11 +168,21 @@ export default function HomeScreen({navigation, route}) {
     })();
   }, [cartData]);
   const searchHomeProducts = () => {
-    navigation.navigate('SubCategory', {
-      name: searchHome,
-      search: true,
-    });
-    setSearchHome('');
+    if (searchHome != '' && searchHome !== null) {
+      navigation.navigate('SubCategory', {
+        name: searchHome,
+        search: true,
+      });
+      setSearchHome('');
+    } else {
+      showMessage({
+        type: 'danger',
+        icon: 'danger',
+        message: 'Warning',
+        description: 'Kindly write some text to search.',
+        backgroundColor: color.textPrimaryColor,
+      });
+    }
   };
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -189,7 +199,11 @@ export default function HomeScreen({navigation, route}) {
   return (
     <NativeBaseProvider theme={theme}>
       <View>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar
+          hidden={false}
+          barStyle={Platform.OS == 'ios' ? 'dark-content' : 'light-content'}
+          // backgroundColor={'white'}
+        />
         {/* <View style={styles.header}>
           <View style={{width: wp('20')}} />
           <View style={styles.locationText}>
@@ -248,16 +262,16 @@ export default function HomeScreen({navigation, route}) {
                     return <Image source={require('../../images/sale2.png')} />;
                   })}
               </ScrollView>
-              <HomeBrandAllText name="Top Selling" />
+              <HomeBrandAllText name="Dairy Products" />
               <HomeScreenAllProductData
                 navigation1={navigation1}
-                allProduct={allProduct}
+                allProduct={allProduct?.Dairy}
                 isloading={isloading}
               />
-              <HomeBrandAllText name="Popular Deals" />
+              <HomeBrandAllText name="Meat Products" />
               <HomeScreenAllProductData
                 navigation1={navigation1}
-                allProduct={allProduct}
+                allProduct={allProduct?.Meat}
                 isloading={isloading}
               />
               <View style={{flexDirection: 'row'}}>
@@ -272,8 +286,15 @@ export default function HomeScreen({navigation, route}) {
               </View>
               <HomeScreenCategoryData
                 navigation2={navigation2}
-                categoryFeatureProduct={categoryFeatureProduct}
+                categoryFeatureProduct={categoryFeatureProduct?.Meat}
                 isCategoryloading={isCategoryloading}
+                Subtitle="Meat"
+              />
+              <HomeScreenCategoryData
+                navigation2={navigation2}
+                categoryFeatureProduct={categoryFeatureProduct?.Dairy}
+                isCategoryloading={isCategoryloading}
+                Subtitle="Dairy"
               />
             </View>
           </View>

@@ -35,17 +35,21 @@ export const styles = StyleSheet.create({
     marginBottom: hp('1.5'),
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 6,
+    borderRadius: 9,
   },
   imageStyle: {
     width: wp('28'),
     height: hp('7'),
-    marginTop: hp('1'),
+    // marginTop: hp('1'),
     borderRadius: 20,
   },
   categoryName: {
     paddingTop: hp('0'),
     color: '#6E6D6D',
     fontFamily: 'Poppins-Regular',
+    width: wp('25'),
+    // backgroundColor: 'yellow',
+    textAlign: 'center',
+    marginBottom: hp('1'),
   },
 });

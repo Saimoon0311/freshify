@@ -37,6 +37,7 @@ export const InputField = props => {
         value={props?.value}
         onFocus={props?.onFocus}
         onBlur={props?.onBlur}
+        autoCapitalize={props?.autoCapitalize}
       />
     </>
   );

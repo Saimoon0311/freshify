@@ -22,13 +22,15 @@ export const styles = StyleSheet.create({
     marginTop: hp('3'),
     // width: wp('80'),
     alignSelf: 'center',
+    alignItems: 'center',
   },
   bottomBoldText: {
     fontSize: hp('2.5'),
     color: 'black',
     fontFamily: 'Poppins-SemiBold',
     textAlign: 'center',
-    // width: wp('85'),
+    width: wp('85'),
+
     // marginTop: hp('2'),
   },
   bottomNormalText: {
@@ -82,6 +84,7 @@ export const styles = StyleSheet.create({
     elevation: 5,
     // height: hp('30'),
     borderRadius: 10,
+    width: wp('90'),
   },
   headingView: {
     // width: wp('70'),
@@ -102,11 +105,16 @@ export const styles = StyleSheet.create({
     width: wp('45'),
     marginBottom: hp('1'),
   },
-  textContainer: {width: wp('37')},
+  textContainer: {width: wp('40')},
   radioText: {
     // marginTop: hp('0.9'),
     color: 'gray',
     marginLeft: wp('3'),
   },
   innerText: {color: '#434345', fontSize: hp('2')},
+  totalSubTitle: {
+    alignSelf: 'flex-end',
+    fontSize: hp('1.5'),
+    color: 'black',
+  },
 });

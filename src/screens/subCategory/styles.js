@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, StatusBar} from 'react-native';
+import {StyleSheet, StatusBar, Platform} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -72,7 +72,7 @@ export const styles = StyleSheet.create({
     marginTop: hp('1'),
     marginBottom: hp('1'),
     backgroundColor: 'white',
-    height: hp('24.8'),
+    height: Platform.OS == 'ios' ? hp('24.8') : hp('24.7'),
   },
   topText: {
     fontFamily: 'Poppins-SemiBold',

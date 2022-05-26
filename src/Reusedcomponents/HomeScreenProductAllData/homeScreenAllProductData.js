@@ -29,43 +29,48 @@ import {store} from '../../Redux/Reducer';
 export const HomeScreenAllProductData = props => {
   // const {cartData} = useSelector(state => state.cartData);
   let cartData = store.getState().cartData.cartData;
-
+  console.log(32, cartData);
   const [buttonLoading, setButtonLoading] = useState(false);
   const dispatch = useDispatch();
   const addToCart = item => {
     setButtonLoading(true);
-    let url = allCartDataUrl + cartData.id;
-    console.log('ur,', url);
+    let url = allCartDataUrl + cartData?.id;
     let body = JSON.stringify({
       product_id: item?.id,
       variation_id: '0',
       quantity: 1,
     });
-    ApiPost(url, body, false)
-      .then(res => {
-        console.log(4567, res);
-        if (res.success == true) {
-          showMessage({
-            type: 'success',
-            icon: 'success',
-            message: 'Success',
-            description: 'Your Cart has been Added',
-            backgroundColor: color.textPrimaryColor,
-          });
-          getCartData();
-          setButtonLoading(false);
-        } else if (res.success == false) {
-          showMessage({
-            type: 'danger',
-            icon: 'danger',
-            message: 'Warning',
-            description: 'SomeThing want wrong',
-            backgroundColor: color.textPrimaryColor,
-          });
-          setButtonLoading(false);
-        }
-      })
-      .catch(e => console.log(56, e));
+    ApiPost(url, body, false).then(res => {
+      if (res.success == true) {
+        showMessage({
+          type: 'success',
+          icon: 'success',
+          message: 'Success',
+          description: 'Your Cart has been Added',
+          backgroundColor: color.textPrimaryColor,
+        });
+        setButtonLoading(false);
+        getCartData();
+      } else if (res.success == false) {
+        showMessage({
+          type: 'danger',
+          icon: 'danger',
+          message: 'Warning',
+          description: 'SomeThing want wrong',
+          backgroundColor: color.textPrimaryColor,
+        });
+        setButtonLoading(false);
+      } else {
+        console.log(64, res);
+        showMessage({
+          type: 'danger',
+          icon: 'danger',
+          message: 'Warning',
+          description: 'Network request Faild',
+          backgroundColor: color.textPrimaryColor,
+        });
+      }
+    });
   };
   const productsPlaceholder = () => {
     return (

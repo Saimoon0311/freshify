@@ -101,9 +101,18 @@ export const HomeScreenCategoryData = props => {
         </View>
       ) : (
         <View style={styles.main}>
+          <Text
+            style={{
+              marginLeft: wp('3'),
+              marginBottom: hp('2'),
+              fontSize: hp('2.3'),
+              color: color.themeColorDark,
+            }}>
+            {props?.Subtitle}
+          </Text>
           <FlatList
             data={props?.categoryFeatureProduct}
-            keyExtractor={item => item.key}
+            keyExtractor={(item, index) => index.toString()}
             contentContainerStyle={{flexWrap: 'wrap', flexDirection: 'row'}}
             renderItem={({item}) => {
               return (
@@ -115,7 +124,9 @@ export const HomeScreenCategoryData = props => {
                     resizeMode="contain"
                     source={{uri: IMAGE_BASED_URL + item?.icon?.url}}
                   />
-                  <Text style={styles.name}>{item?.name}</Text>
+                  <Text numberOfLines={1} style={styles.name}>
+                    {item?.name}
+                  </Text>
                 </TouchableOpacity>
               );
             }}
