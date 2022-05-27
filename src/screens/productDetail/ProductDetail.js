@@ -7,6 +7,7 @@ import {
   FlatList,
   ScrollView,
   Platform,
+  Vibration,
 } from 'react-native';
 import {color} from '../../Reusedcomponents/color';
 import {BackHeader} from '../../Reusedcomponents/Header/BackHeader';
@@ -23,6 +24,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {showMessage} from 'react-native-flash-message';
 import {SkypeIndicator} from 'react-native-indicators';
 import getCartData from '../../Config/getCartData';
+import AwesomeAlert from 'react-native-awesome-alerts';
 
 export default function ProductDetail({navigation, route}) {
   const {cartData} = useSelector(state => state.cartData);
@@ -50,8 +52,10 @@ export default function ProductDetail({navigation, route}) {
           description: 'Your Cart has been Added',
           backgroundColor: color.textPrimaryColor,
         });
+        Vibration.vibrate();
         setButtonLoading(false);
         getCartData();
+        setShowAlert(true);
       } else if (res.success == false) {
         showMessage({
           type: 'danger',
@@ -68,6 +72,57 @@ export default function ProductDetail({navigation, route}) {
     item.in_stock == 0 ? console.log('jahdbvfj') : addToCart();
   };
   const flatListProduct = [IMAGE_BASED_URL + item.image.url];
+  const [showAlert, setShowAlert] = useState(false);
+
+  const cancelContainer = () => {
+    return (
+      <AwesomeAlert
+        show={showAlert}
+        showProgress={false}
+        title="Product Confirm!"
+        // message={'Want to View Cart ? \n Continue Shopping .'}
+        contentContainerStyle={{
+          maxWidth: wp('94'),
+          backgroundColor: 'white',
+          // height: hp('20'),
+          // paddingBottom: hp('-5'),
+        }}
+        closeOnTouchOutside={true}
+        closeOnHardwareBackPress={true}
+        showCancelButton={true}
+        showConfirmButton={true}
+        confirmText="View Cart Details"
+        cancelText="Continue Shopping"
+        // overlayStyle={{backgroundColor: color.alertBackgroundColor}}
+        confirmButtonStyle={styles.buttonstyle}
+        cancelButtonStyle={styles.buttonstyle}
+        confirmButtonTextStyle={{
+          textAlign: 'center',
+          color: color.textPrimaryColor,
+          fontSize: hp('2.2%'),
+        }}
+        cancelButtonTextStyle={{
+          textAlign: 'center',
+          color: color.textPrimaryColor,
+          fontSize: hp('2.2%'),
+        }}
+        titleStyle={{
+          color: color.textPrimaryColor,
+          textAlign: 'center',
+          fontWeight: 'bold',
+          fontSize: hp('3'),
+        }}
+        messageStyle={{color: 'black', textAlign: 'center'}}
+        onConfirmPressed={() => {
+          setShowAlert(false);
+          navigation.navigate('cartScreen');
+        }}
+        onCancelPressed={() => {
+          setShowAlert(false);
+        }}
+      />
+    );
+  };
   return (
     <View style={styles.mainContainer}>
       <BackHeader
@@ -87,6 +142,7 @@ export default function ProductDetail({navigation, route}) {
           // backgroundColor: 'yellow',
         }}>
         <SliderBox
+          imageLoadingColor={color.textPrimaryColor}
           ImageComponent={FastImage}
           images={flatListProduct}
           style={styles.flatListMainContainer}
@@ -140,6 +196,7 @@ export default function ProductDetail({navigation, route}) {
           />
         )}
       </View>
+      {cancelContainer()}
     </View>
   );
 }

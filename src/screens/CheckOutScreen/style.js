@@ -140,19 +140,18 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
   },
   checkStyle: {
-    borderWidth: 0.5,
-    borderColor: color.themColorPrimary,
     // borderRadius: 60,
     borderRadius: Math.round(
       Dimensions.get('window').width + Dimensions.get('window').height,
     ),
-    width: Dimensions.get('window').width * 0.08,
-    height: Dimensions.get('window').width * 0.08,
+    width: Dimensions.get('screen').width * 0.08,
+    height: Dimensions.get('screen').width * 0.08,
     width: wp('8.5'),
     height: hp('4.1'),
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: wp('2'),
+    alignContent: 'center',
   },
   headingView: {
     // width: wp('70'),

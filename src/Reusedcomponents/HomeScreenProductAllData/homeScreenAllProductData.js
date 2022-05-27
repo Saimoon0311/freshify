@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ActivityIndicatorBase,
   ScrollView,
+  Vibration,
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -32,46 +33,46 @@ export const HomeScreenAllProductData = props => {
   console.log(32, cartData);
   const [buttonLoading, setButtonLoading] = useState(false);
   const dispatch = useDispatch();
-  const addToCart = item => {
-    setButtonLoading(true);
-    let url = allCartDataUrl + cartData?.id;
-    let body = JSON.stringify({
-      product_id: item?.id,
-      variation_id: '0',
-      quantity: 1,
-    });
-    ApiPost(url, body, false).then(res => {
-      if (res.success == true) {
-        showMessage({
-          type: 'success',
-          icon: 'success',
-          message: 'Success',
-          description: 'Your Cart has been Added',
-          backgroundColor: color.textPrimaryColor,
-        });
-        setButtonLoading(false);
-        getCartData();
-      } else if (res.success == false) {
-        showMessage({
-          type: 'danger',
-          icon: 'danger',
-          message: 'Warning',
-          description: 'SomeThing want wrong',
-          backgroundColor: color.textPrimaryColor,
-        });
-        setButtonLoading(false);
-      } else {
-        console.log(64, res);
-        showMessage({
-          type: 'danger',
-          icon: 'danger',
-          message: 'Warning',
-          description: 'Network request Faild',
-          backgroundColor: color.textPrimaryColor,
-        });
-      }
-    });
-  };
+  // const addToCart = item => {
+  //   let url = allCartDataUrl + cartData.id;
+  //   let body = JSON.stringify({
+  //     product_id: item?.id,
+  //     variation_id: '0',
+  //     quantity: 1,
+  //   });
+  //   ApiPost(url, body, false).then(res => {
+  //     if (res.success == true) {
+  //       showMessage({
+  //         type: 'success',
+  //         icon: 'success',
+  //         message: 'Success',
+  //         description: 'Your Cart has been Added',
+  //         backgroundColor: color.textPrimaryColor,
+  //       });
+  //       Vibration.vibrate();
+  //       setButtonLoading(false);
+  //       getCartData();
+  //     } else if (res.success == false) {
+  //       showMessage({
+  //         type: 'danger',
+  //         icon: 'danger',
+  //         message: 'Warning',
+  //         description: 'SomeThing want wrong',
+  //         backgroundColor: color.textPrimaryColor,
+  //       });
+  //       setButtonLoading(false);
+  //     } else {
+  //       console.log(64, res);
+  //       showMessage({
+  //         type: 'danger',
+  //         icon: 'danger',
+  //         message: 'Warning',
+  //         description: 'Network request Faild',
+  //         backgroundColor: color.textPrimaryColor,
+  //       });
+  //     }
+  //   });
+  // };
   const productsPlaceholder = () => {
     return (
       <View
@@ -163,7 +164,7 @@ export const HomeScreenAllProductData = props => {
                 ) : (
                   <TouchableOpacity
                     style={styles.addCartbutton}
-                    onPress={() => addToCart(item)}>
+                    onPress={() => props?.addToCart(item)}>
                     <Ionicons name="add" size={25} color={'white'} />
                   </TouchableOpacity>
                 )}

@@ -11,6 +11,7 @@ import {
   RefreshControl,
   StatusBar,
   Platform,
+  Vibration,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {color} from '../../Reusedcomponents/color';
@@ -28,6 +29,7 @@ import {FAB} from 'react-native-paper';
 import {Fab, Icon, NativeBaseProvider, Box, extendTheme} from 'native-base';
 import {ApiGet, ApiPost} from '../../Config/helperFunction';
 import {
+  allCartDataUrl,
   allCategoriesUrl,
   createCartIdUrl,
   FrontProductUrl,
@@ -72,7 +74,43 @@ export default function HomeScreen({navigation, route}) {
       }
     });
   };
-
+  const addToCart = item => {
+    let url = allCartDataUrl + cartData.id;
+    let body = JSON.stringify({
+      product_id: item?.id,
+      variation_id: '0',
+      quantity: 1,
+    });
+    ApiPost(url, body, false).then(res => {
+      if (res.success == true) {
+        getCartData();
+        showMessage({
+          type: 'success',
+          icon: 'success',
+          message: 'Success',
+          description: 'Your Cart has been Added',
+          backgroundColor: color.textPrimaryColor,
+        });
+        Vibration.vibrate();
+      } else if (res.success == false) {
+        showMessage({
+          type: 'danger',
+          icon: 'danger',
+          message: 'Warning',
+          description: 'SomeThing want wrong',
+          backgroundColor: color.textPrimaryColor,
+        });
+      } else {
+        showMessage({
+          type: 'danger',
+          icon: 'danger',
+          message: 'Warning',
+          description: 'Network request Faild',
+          backgroundColor: color.textPrimaryColor,
+        });
+      }
+    });
+  };
   const getFeathureFrontProduct = () => {
     let url = allCategoriesUrl + '?is_featured=1';
     ApiGet(url).then(res => {
@@ -267,12 +305,14 @@ export default function HomeScreen({navigation, route}) {
                 navigation1={navigation1}
                 allProduct={allProduct?.Dairy}
                 isloading={isloading}
+                addToCart={addToCart}
               />
               <HomeBrandAllText name="Meat Products" />
               <HomeScreenAllProductData
                 navigation1={navigation1}
                 allProduct={allProduct?.Meat}
                 isloading={isloading}
+                addToCart={addToCart}
               />
               <View style={{flexDirection: 'row'}}>
                 <View style={{marginTop: hp('1.3')}}>

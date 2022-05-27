@@ -511,11 +511,20 @@ function checkOutScreen({route, navigation}) {
             flexDirection: 'row',
             alignItems: 'center',
           }}>
-          <View style={Platform.OS == 'ios' && styles.checkStyle}>
+          <View
+            style={
+              Platform.OS == 'ios' && {
+                ...styles.checkStyle,
+                borderColor:
+                  checkBox == 'checked' ? color.textPrimaryColor : 'gray',
+                borderWidth: 0.5,
+                // borderWidth: checkBox == 'checked' ? 2 : 0.5,
+              }
+            }>
             <Checkbox
               status={status}
               uncheckedColor={'black'}
-              color={color.themColorPrimary}
+              color={color.textPrimaryColor}
             />
           </View>
           <Text
