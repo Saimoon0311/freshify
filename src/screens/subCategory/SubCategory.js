@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, Text, View, TouchableOpacity, Image} from 'react-native';
+import {
+  FlatList,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  Vibration,
+} from 'react-native';
 import {color} from '../../Reusedcomponents/color';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {BackHeader} from '../../Reusedcomponents/Header/BackHeader';
@@ -49,6 +56,7 @@ export default function SubCategory({route, navigation}) {
           description: 'Your Cart has been Added',
           backgroundColor: color.textPrimaryColor,
         });
+        Vibration.vibrate();
         setButtonLoading(false);
         getCartData();
       } else if (res.success == false) {

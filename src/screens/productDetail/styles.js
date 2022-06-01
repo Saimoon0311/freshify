@@ -119,4 +119,9 @@ export const styles = StyleSheet.create({
     color: 'gray',
     textAlign: 'justify',
   },
+  buttonstyle: {
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: color.textPrimaryColor,
+  },
 });
