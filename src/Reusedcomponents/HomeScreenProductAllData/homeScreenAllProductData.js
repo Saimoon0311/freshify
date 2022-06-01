@@ -137,11 +137,52 @@ export const HomeScreenAllProductData = props => {
           </ScrollView>
         </SkeletonPlaceholder>
       ) : (
+        // <View>
+        //   <FlatList
+        //     data={props?.allProduct}
+        //     keyExtractor={(item, index) => index.toString()}
+        //     horizontal
+        //     contentContainerStyle={{paddingRight: wp('3')}}
+        //     showsHorizontalScrollIndicator={false}
+        //     renderItem={({item}) => {
+        //       return (
+        //         <TouchableOpacity
+        //           style={styles.mainContainer}
+        //           onPress={() => props?.navigation1(item)}>
+        //           <Text numberOfLines={1} style={styles.topText}>
+        //             {item?.name}
+        //           </Text>
+        //           <Text style={styles.priceText}>Price {item?.price}</Text>
+        //           <Image
+        //             source={{uri: IMAGE_BASED_URL + item.image.url}}
+        //             style={{
+        //               ...globalStyles.globalInsideImage,
+        //               marginBottom: hp('0.5'),
+        //             }}
+        //           />
+        //           {item?.in_stock == 0 ? (
+        //             <Text style={styles.outOfStockContainer}>Out of stock</Text>
+        //           ) : (
+        //             <TouchableOpacity
+        //               style={styles.addCartbutton}
+        //               onPress={() => props?.addToCart(item)}>
+        //               <Ionicons name="add" size={25} color={'white'} />
+        //             </TouchableOpacity>
+        //           )}
+        //         </TouchableOpacity>
+        //       );
+        //     }}
+        //   />
         <FlatList
+          numColumns={2}
           data={props?.allProduct}
           keyExtractor={(item, index) => index.toString()}
-          horizontal
-          contentContainerStyle={{paddingRight: wp('3')}}
+          vertical
+          contentContainerStyle={{
+            alignSelf: 'center',
+            width: wp('96'),
+            marginRight: wp('2.5'),
+          }}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => {
             return (
@@ -172,6 +213,7 @@ export const HomeScreenAllProductData = props => {
             );
           }}
         />
+        // </View>
       )}
     </View>
   );

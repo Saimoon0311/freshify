@@ -18,7 +18,7 @@ export const LoginHeader = () => {
       }}>
       <Image
         style={{
-          width: wp('60'),
+          width: wp('50'),
           height: hp('7'),
           justifyContent: 'center',
           alignSelf: 'center',

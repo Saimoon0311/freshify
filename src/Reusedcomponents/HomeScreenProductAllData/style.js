@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     marginLeft: wp('3'),
   },
   mainContainer: {
-    width: wp('40'),
+    width: wp('45'),
     borderRadius: 15,
     marginLeft: wp('3'),
     shadowColor: '#000',
@@ -31,13 +31,13 @@ export const styles = StyleSheet.create({
   },
   topText: {
     color: 'black',
-    fontSize: hp('2'),
+    fontSize: hp('2.5'),
     marginLeft: wp('3'),
     marginTop: hp('1.5'),
   },
   priceText: {
     color: color.textSecondaryColor,
-    fontSize: hp('1.5'),
+    fontSize: hp('2.0'),
     marginLeft: wp('3'),
   },
   insideImage: {
