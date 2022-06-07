@@ -23,6 +23,17 @@ export const styles = StyleSheet.create({
     fontSize: hp('1.8'),
     color: 'black',
   },
+  flatListMainContainer: {
+    width: wp('90'),
+    height: hp('25'),
+    // backgroundColor:'red',
+    marginBottom: hp('2'),
+    borderRadius: 15,
+    
+    overflow: 'hidden',
+    alignItems: 'center',
+    alignSelf:'center'
+  },
   search: {
     flexDirection: 'row',
     justifyContent: 'center',

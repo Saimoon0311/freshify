@@ -39,6 +39,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {LoginHeader} from '../../Reusedcomponents/loginHeader';
 import getCartData from '../../Config/getCartData';
 import types from '../../Redux/type';
+import {SliderBox, FastImage} from 'react-native-image-slider-box';
 
 export default function HomeScreen({navigation, route}) {
   const [allProduct, setAllProduct] = useState([]);
@@ -177,6 +178,14 @@ export default function HomeScreen({navigation, route}) {
       id: 6,
     },
   ]);
+
+  const [images,setImage] =useState([
+    require('../../images/sale2.png'),
+  require('../../images/sale2.png'),
+  require('../../images/sale2.png'),
+  require('../../images/sale2.png'),// Network image
+  require('../../images/sale2.png'), ])
+  
   const wait = timeout => {
     return new Promise(resolve => setTimeout(resolve, timeout));
   };
@@ -288,10 +297,8 @@ export default function HomeScreen({navigation, route}) {
               />
             </View>
             <View
-              style={{
-                marginTop: hp('2'),
-              }}>
-              <ScrollView
+              >
+              {/* <ScrollView
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
                 contentContainerStyle={{flexDirection: 'row'}}>
@@ -299,7 +306,25 @@ export default function HomeScreen({navigation, route}) {
                   silderData?.map(res => {
                     return <Image source={require('../../images/sale2.png')} />;
                   })}
-              </ScrollView>
+              </ScrollView> */}
+              <SliderBox
+          imageLoadingColor={color.textPrimaryColor}
+          ImageComponent={FastImage}
+          images={images}
+          style={styles.flatListMainContainer}
+          dotColor={color.textPrimaryColor}
+          inactiveDotColor="#90A4AE"
+          resizeMode={'contain'}
+          autoplay
+          circleLoop
+          dotStyle={{
+            width: 10,
+            height: 10,
+            borderRadius: 5,
+            marginHorizontal: 0,
+            padding: 0,
+          }}
+        />
               <HomeBrandAllText name="Dairy Products" />
               <HomeScreenAllProductData
                 navigation1={navigation1}
