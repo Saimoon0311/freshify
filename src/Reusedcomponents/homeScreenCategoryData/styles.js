@@ -53,4 +53,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  subTitle: {
+    marginLeft: wp('3'),
+    marginBottom: hp('2'),
+    fontSize: hp('2.3'),
+    color: color.themeColorDark,
+    fontWeight: '600',
+  },
 });

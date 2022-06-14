@@ -186,7 +186,7 @@ export default function cartScreen({navigation}) {
               keyExtractor={(item, index) => index.toString()}
               renderItem={({item}) => {
                 return (
-                  <TouchableOpacity
+                  <View
                     style={{
                       ...styles.TotalMaincontainer,
                       flexDirection: 'row',
@@ -240,7 +240,7 @@ export default function cartScreen({navigation}) {
                             />
                           </TouchableOpacity>
                           <Text style={{marginLeft: wp('1'), color: 'black'}}>
-                            1
+                            {item?.quantity}
                           </Text>
                           <TouchableOpacity
                             onPress={() =>
@@ -263,7 +263,7 @@ export default function cartScreen({navigation}) {
                         </View>
                       </View>
                     </View>
-                  </TouchableOpacity>
+                  </View>
                 );
               }}
             />

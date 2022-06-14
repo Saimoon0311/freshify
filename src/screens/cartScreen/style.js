@@ -73,7 +73,7 @@ export const styles = StyleSheet.create({
   },
   imageStyle: {
     width: wp('21'),
-    height: hp('12'),
+    height: hp('14'),
     borderRadius: 10,
   },
   itemName: {

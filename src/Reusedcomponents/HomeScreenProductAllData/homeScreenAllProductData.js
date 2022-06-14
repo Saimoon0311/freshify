@@ -79,7 +79,7 @@ export const HomeScreenAllProductData = props => {
         style={{
           ...styles.mainContainer,
           height: hp('29%'),
-          marginLeft: wp('4.5'),
+          // marginLeft: wp('4.5'),
           backgroundColor: 'transparent',
           width: wp('45'),
           borderWidth: 2,
@@ -123,8 +123,15 @@ export const HomeScreenAllProductData = props => {
     <View>
       {props?.isloading ? (
         <SkeletonPlaceholder direction="left">
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <View style={{flexDirection: 'row'}}>
+          <ScrollView showsHorizontalScrollIndicator={false}>
+            <View
+              style={{
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                alignSelf: 'center',
+                width: wp('100'),
+                marginRight: wp('2.5'),
+              }}>
               {productsPlaceholder()}
               {productsPlaceholder()}
               {productsPlaceholder()}

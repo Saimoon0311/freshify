@@ -101,15 +101,7 @@ export const HomeScreenCategoryData = props => {
         </View>
       ) : (
         <View style={styles.main}>
-          <Text
-            style={{
-              marginLeft: wp('3'),
-              marginBottom: hp('2'),
-              fontSize: hp('2.3'),
-              color: color.themeColorDark,
-            }}>
-            {props?.Subtitle}
-          </Text>
+          <Text style={styles.subTitle}>{props?.Subtitle}</Text>
           <FlatList
             data={props?.categoryFeatureProduct}
             keyExtractor={(item, index) => index.toString()}

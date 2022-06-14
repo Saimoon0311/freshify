@@ -23,7 +23,8 @@ export const LoginHeader = () => {
           justifyContent: 'center',
           alignSelf: 'center',
         }}
-        source={require('../images/header.png')}
+        resizeMode="contain"
+        source={require('../images/logo_ff.png')}
       />
     </View>
   );

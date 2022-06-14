@@ -24,6 +24,7 @@ import {color} from '../Reusedcomponents/color';
 import {Badge} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {store} from '../Redux/Reducer';
+import Svg, {Path} from 'react-native-svg';
 
 const Tab = createBottomTabNavigator();
 function MybottomTabs() {
@@ -41,11 +42,43 @@ function MybottomTabs() {
         tabBarInactiveTintColor: '#919191',
         swipeEnabled: true,
         animationEnabled: true,
-        tabBarActiveBackgroundColor: 'white',
-        tabBarInactiveBackgroundColor: 'white',
+        tabBarActiveBackgroundColor: 'transparent',
+        tabBarInactiveBackgroundColor: 'transparent',
+        tabBarVisibilityAnimationConfig: 'hide',
         tabBarStyle: {
-          height: hp(Platform?.OS == 'ios' ? '10%' : '8%'),
-          backgroundColor: 'white',
+          height: hp(Platform?.OS == 'ios' ? '9' : '7'),
+          // backgroundColor: 'rgba(182,182,182,0.1)',
+          // opacity: 0.7,
+          width: wp('100'),
+          shadowOffset: {width: 0, height: 0},
+          elevation: 0,
+        },
+        tabBarBackground: () => {
+          return (
+            <Svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={wp('100')}
+              height={hp('10')}
+              style={{
+                position: 'absolute',
+                bottom: Platform.OS == 'ios' ? hp('0') : hp('-2'),
+                zIndex: 1,
+              }}
+              viewBox="0 0 429.292 85.134">
+              <Path
+                id="Path_179"
+                data-name="Path 179"
+                d="M1472.044,984c-15.208,0-29.043,8.5-36.893,21.951C1430.5,1013.918,1422.557,1021,1409,1021s-21.5-7.082-26.151-15.049C1375,992.5,1361.164,984,1345.956,984H1195v82.5h381.8c13.573,0,36.215,4.072,46.2,0,.718-9.4,0-35.376,0-47.706V984Z"
+                transform="translate(-1194.5 -983.5)"
+                fill="#fff"
+                stroke="#fff"
+                stroke-miterlimit="10"
+                stroke-width="1"
+
+                // strokeWidth={wp('100')}
+              />
+            </Svg>
+          );
         },
       })}>
       <Tab.Screen
@@ -161,7 +194,7 @@ const styles = StyleSheet.create({
   cartCircle: {
     backgroundColor: color.textSecondaryColor,
     position: 'absolute',
-    bottom: hp('-2'),
+    bottom: hp('1'),
     borderRadius: Math.round(
       Dimensions.get('window').width + Dimensions.get('window').height,
     ),

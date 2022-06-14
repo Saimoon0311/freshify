@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {color} from '../../Reusedcomponents/color';
 import {
   widthPercentageToDP as wp,
@@ -31,14 +31,16 @@ export const styles = StyleSheet.create({
   },
   topText: {
     color: 'black',
-    fontSize: hp('2.5'),
+    fontSize: hp(Platform.OS == 'ios' ? '2' : '2.2'),
     marginLeft: wp('3'),
     marginTop: hp('1.5'),
+    fontWeight: 'bold',
   },
   priceText: {
     color: color.textSecondaryColor,
-    fontSize: hp('2.0'),
+    fontSize: hp('1.8'),
     marginLeft: wp('3'),
+    fontWeight: '600',
   },
   insideImage: {
     width: wp('28'),

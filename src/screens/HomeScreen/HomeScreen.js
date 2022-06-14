@@ -179,13 +179,14 @@ export default function HomeScreen({navigation, route}) {
     },
   ]);
 
-  const [images,setImage] =useState([
-    require('../../images/sale2.png'),
-  require('../../images/sale2.png'),
-  require('../../images/sale2.png'),
-  require('../../images/sale2.png'),// Network image
-  require('../../images/sale2.png'), ])
-  
+  const [images, setImage] = useState([
+    require('../../images/sale.png'),
+    require('../../images/sale.png'),
+    require('../../images/sale.png'),
+    require('../../images/sale.png'), // Network image
+    require('../../images/sale.png'),
+  ]);
+
   const wait = timeout => {
     return new Promise(resolve => setTimeout(resolve, timeout));
   };
@@ -199,6 +200,15 @@ export default function HomeScreen({navigation, route}) {
           dispatch({
             type: types.CreateCart,
             payload: res.data,
+          });
+        } else {
+          showMessage({
+            type: 'danger',
+            icon: 'danger',
+            message: 'Warning',
+            description:
+              'Please check your internet connection and restart you app for successfully initialize the app !',
+            backgroundColor: color.textPrimaryColor,
           });
         }
       });
@@ -296,8 +306,7 @@ export default function HomeScreen({navigation, route}) {
                 autoCorrect={false}
               />
             </View>
-            <View
-              >
+            <View>
               {/* <ScrollView
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
@@ -308,23 +317,23 @@ export default function HomeScreen({navigation, route}) {
                   })}
               </ScrollView> */}
               <SliderBox
-          imageLoadingColor={color.textPrimaryColor}
-          ImageComponent={FastImage}
-          images={images}
-          style={styles.flatListMainContainer}
-          dotColor={color.textPrimaryColor}
-          inactiveDotColor="#90A4AE"
-          resizeMode={'contain'}
-          autoplay
-          circleLoop
-          dotStyle={{
-            width: 10,
-            height: 10,
-            borderRadius: 5,
-            marginHorizontal: 0,
-            padding: 0,
-          }}
-        />
+                imageLoadingColor={color.textPrimaryColor}
+                ImageComponent={FastImage}
+                images={images}
+                style={styles.flatListMainContainer}
+                dotColor={color.textPrimaryColor}
+                inactiveDotColor="#90A4AE"
+                resizeMode={'contain'}
+                autoplay
+                circleLoop
+                dotStyle={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: 5,
+                  marginHorizontal: 0,
+                  padding: 0,
+                }}
+              />
               <HomeBrandAllText name="Dairy Products" />
               <HomeScreenAllProductData
                 navigation1={navigation1}
