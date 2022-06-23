@@ -245,7 +245,7 @@ export default function HomeScreen({navigation, route}) {
   }, []);
   return (
     <NativeBaseProvider theme={theme}>
-      <View>
+      <View >
         <StatusBar
           hidden={false}
           barStyle={Platform.OS == 'ios' ? 'dark-content' : 'light-content'}
@@ -278,7 +278,7 @@ export default function HomeScreen({navigation, route}) {
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
-          contentContainerStyle={{paddingBottom: hp('23')}}>
+          contentContainerStyle={{...styles.container,paddingBottom: hp('23'),}}>
           <View>
             <View style={styles.search}>
               <TouchableOpacity onPress={() => searchHomeProducts()}>

@@ -356,6 +356,7 @@ PODS:
     - React-Core
   - RNCClipboard (1.5.1):
     - React-Core
+<<<<<<< HEAD
   - RNCMaskedView (0.2.6):
     - React-Core
   - RNCPicker (2.2.1):
@@ -379,6 +380,15 @@ PODS:
   - SDWebImageWebPCoder (0.8.4):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.10)
+=======
+  - RNCPicker (2.2.1):
+    - React-Core
+  - RNScreens (3.10.1):
+    - React-Core
+    - React-RCTImage
+  - RNVectorIcons (9.0.0):
+    - React-Core
+>>>>>>> 7e12b757e5a6dc14e2ea5a204b178cfe8d6851c2
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -441,12 +451,17 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCClipboard (from `../node_modules/@react-native-community/clipboard`)"
+<<<<<<< HEAD
   - "RNCMaskedView (from `../node_modules/@react-native-masked-view/masked-view`)"
   - "RNCPicker (from `../node_modules/@react-native-picker/picker`)"
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
+=======
+  - "RNCPicker (from `../node_modules/@react-native-picker/picker`)"
+  - RNScreens (from `../node_modules/react-native-screens`)
+>>>>>>> 7e12b757e5a6dc14e2ea5a204b178cfe8d6851c2
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -539,6 +554,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCClipboard:
     :path: "../node_modules/@react-native-community/clipboard"
+<<<<<<< HEAD
   RNCMaskedView:
     :path: "../node_modules/@react-native-masked-view/masked-view"
   RNCPicker:
@@ -551,6 +567,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNSVG:
     :path: "../node_modules/react-native-svg"
+=======
+  RNCPicker:
+    :path: "../node_modules/@react-native-picker/picker"
+  RNScreens:
+    :path: "../node_modules/react-native-screens"
+>>>>>>> 7e12b757e5a6dc14e2ea5a204b178cfe8d6851c2
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   Yoga:
@@ -605,6 +627,7 @@ SPEC CHECKSUMS:
   ReactCommon: 9bac022ab71596f2b0fde1268272543184c63971
   RNCAsyncStorage: ea6b5c280997b2b32a587793163b1f10e580c4f7
   RNCClipboard: 41d8d918092ae8e676f18adada19104fa3e68495
+<<<<<<< HEAD
   RNCMaskedView: c298b644a10c0c142055b3ae24d83879ecb13ccd
   RNCPicker: cb57c823d5ce8d2d0b5dfb45ad97b737260dc59e
   RNDateTimePicker: 1dd15d7ed1ab7d999056bc77879a42920d139c12
@@ -614,6 +637,11 @@ SPEC CHECKSUMS:
   RNVectorIcons: 4143ba35feebab8fdbe6bc43d1e776b393d47ac8
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
+=======
+  RNCPicker: cb57c823d5ce8d2d0b5dfb45ad97b737260dc59e
+  RNScreens: 522705f2e5c9d27efb17f24aceb2bf8335bc7b8e
+  RNVectorIcons: 4143ba35feebab8fdbe6bc43d1e776b393d47ac8
+>>>>>>> 7e12b757e5a6dc14e2ea5a204b178cfe8d6851c2
   Yoga: 32a18c0e845e185f4a2a66ec76e1fd1f958f22fa
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
