@@ -19,10 +19,11 @@ export const styles = StyleSheet.create({
     color: 'black',
   },
   bottomContainer: {
-    marginTop: hp('3'),
+    paddingTop: hp('3'),
     // width: wp('80'),
     alignSelf: 'center',
     alignItems: 'center',
+    backgroundColor: color.backgroundColor,
   },
   bottomBoldText: {
     fontSize: hp('2.5'),

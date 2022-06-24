@@ -144,7 +144,7 @@ export default function confirmOrderScreen({route, navigation}) {
   return (
     <>
       <BackHeader text="Order Details" navigate={() => resetNavigation()} />
-      <View style={{flex: 1, backgroundColor: 'white'}}>
+      <View style={{flex: 1, backgroundColor: color.backgroundColor}}>
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{
