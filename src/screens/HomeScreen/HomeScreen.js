@@ -40,6 +40,7 @@ import {LoginHeader} from '../../Reusedcomponents/loginHeader';
 import getCartData from '../../Config/getCartData';
 import types from '../../Redux/type';
 import {SliderBox, FastImage} from 'react-native-image-slider-box';
+import { globalStyles } from '../../Reusedcomponents/globalStyle';
 
 export default function HomeScreen({navigation, route}) {
   const [allProduct, setAllProduct] = useState([]);
@@ -288,7 +289,7 @@ export default function HomeScreen({navigation, route}) {
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
-          contentContainerStyle={{...styles.container,paddingBottom: hp('23'),}}>
+          contentContainerStyle={{...globalStyles.globalBackgroundColor,paddingBottom: hp('23'),}}>
           <View>
             <View style={styles.search}>
               <TouchableOpacity onPress={() => searchHomeProducts()}>

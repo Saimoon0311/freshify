@@ -12,10 +12,7 @@ export const styles = StyleSheet.create({
     // backgroundColor: 'blue',
     // alignSelf: 'center',
   },
-  container: {
-    paddingTop: hp('2'),
-    // marginLeft: wp('7'),
-  },
+
   topButtonMainContainer: {
     width: wp('20'),
     height: hp('5'),

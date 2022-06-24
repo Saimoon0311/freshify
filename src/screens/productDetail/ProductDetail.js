@@ -25,6 +25,7 @@ import {showMessage} from 'react-native-flash-message';
 import {SkypeIndicator} from 'react-native-indicators';
 import getCartData from '../../Config/getCartData';
 import AwesomeAlert from 'react-native-awesome-alerts';
+import { globalStyles } from '../../Reusedcomponents/globalStyle';
 
 export default function ProductDetail({navigation, route}) {
   const {cartData} = useSelector(state => state.cartData);
@@ -133,7 +134,10 @@ export default function ProductDetail({navigation, route}) {
 
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={styles.container}
+        style={{  
+          ...globalStyles.globalBackgroundColor
+          ,paddingTop: hp('2'),
+        }}
         contentContainerStyle={{
           paddingBottom: hp('15'),
           width: wp('94'),

@@ -29,6 +29,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {ApiPost} from '../../Config/helperFunction';
 import {PlaceOrderUrl} from '../../Config/Url';
 import types from '../../Redux/type';
+import { globalStyles } from '../../Reusedcomponents/globalStyle';
 
 function checkOutScreen({route, navigation}) {
   const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -328,7 +329,7 @@ function checkOutScreen({route, navigation}) {
               }}
             />
             <InputField
-              inputText="ZipCode *"
+              inputText="Postal Code *"
               width={wp('80')}
               editable={true}
               onFocus={() => handleInputFocus('shippingZipCode')}
@@ -466,7 +467,7 @@ function checkOutScreen({route, navigation}) {
               }}
             />
             <InputField
-              inputText="ZipCode *"
+              inputText="Postal Code *"
               width={wp('80')}
               editable={true}
               onFocus={() => handleInputFocus('billingZipCode')}
@@ -735,7 +736,7 @@ function checkOutScreen({route, navigation}) {
     );
   };
   return (
-    <View style={{flex: 1}}>
+    <View style={{...globalStyles.globalBackgroundColor,flex: 1}}>
       <BackHeader text="Checkout" navigate={() => navigation.goBack()} />
       <ScrollView
         showsVerticalScrollIndicator={false}

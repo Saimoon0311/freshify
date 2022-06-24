@@ -36,6 +36,7 @@ import {useSelector} from 'react-redux';
 import {showMessage} from 'react-native-flash-message';
 import NoProductView from '../../Reusedcomponents/NoProductView/noProductView';
 import getCartData from '../../Config/getCartData';
+import { globalStyles } from '../../Reusedcomponents/globalStyle';
 
 export default function cartScreen({navigation}) {
   const [loading, setLoading] = useState(true);
@@ -167,7 +168,7 @@ export default function cartScreen({navigation}) {
     <>
       <BackHeader text="My Cart" navigate={navigate} />
 
-      <ScrollView contentContainerStyle={{paddingBottom: hp('8')}}>
+      <ScrollView contentContainerStyle={{...globalStyles.globalBackgroundColor,paddingBottom: hp('8')}}>
         {loading ? (
           <View style={{alignSelf: 'center', marginTop: hp('20%')}}>
             <SkypeIndicator

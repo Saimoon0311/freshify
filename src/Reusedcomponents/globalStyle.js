@@ -15,4 +15,8 @@ export const globalStyles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 10,
   },
+  globalBackgroundColor:{
+    flex:1,
+    backgroundColor:color.backgroundColor
+  }
 });

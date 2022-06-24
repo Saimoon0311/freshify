@@ -22,6 +22,7 @@ import {ApiGet} from '../../Config/helperFunction';
 import {Skeleton} from 'native-base';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import NoProductView from '../../Reusedcomponents/NoProductView/noProductView';
+import { globalStyles } from '../../Reusedcomponents/globalStyle';
 
 export default function catergoryScreen({navigation}) {
   const {cartData} = useSelector(state => state.cartData);
@@ -109,6 +110,7 @@ export default function catergoryScreen({navigation}) {
       <BackHeader text="Catergory" navigate={navigate} />
       <ScrollView
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={globalStyles.globalBackgroundColor}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>

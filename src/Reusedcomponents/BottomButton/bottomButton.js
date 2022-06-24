@@ -8,7 +8,7 @@ import {
 
 const BottomButton = props => {
   var width = props.width ? props.width : '85';
-  let bgColor = props.bgColor ? bgColor : color.textPrimaryColor;
+  let bgColor = props.bgColor ? props?.bgColor : color.textPrimaryColor;
   return (
     <TouchableOpacity
       onPress={() => props?.onPress()}

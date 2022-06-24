@@ -7,9 +7,7 @@ import {
 } from 'react-native-responsive-screen';
 
 export const styles = StyleSheet.create({
-  container:{
-    backgroundColor:color.backgroundColor
-  },
+ 
   header: {
     flexDirection: 'row',
     width: wp('100'),
