@@ -186,11 +186,12 @@ export default function ProductDetail({navigation, route}) {
           </View>
         </View>
       </ScrollView>
-      <View style={styles.bottomView}>
+      <View style={{...styles.bottomView}}>
         {buttonLoading ? (
           <SkypeIndicator color={color.textPrimaryColor} size={hp('6')} />
         ) : (
           <BottomButton
+            bgColor={item.in_stock == 0 ? 'gray' : color.textPrimaryColor}
             onPress={checkStock}
             title={item.in_stock == 0 ? 'Out Of Stock' : 'Add to Cart'}
           />
