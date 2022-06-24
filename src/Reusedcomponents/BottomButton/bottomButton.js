@@ -8,10 +8,15 @@ import {
 
 const BottomButton = props => {
   var width = props.width ? props.width : '85';
+  let bgColor = props.bgColor ? bgColor : color.textPrimaryColor;
   return (
     <TouchableOpacity
       onPress={() => props?.onPress()}
-      style={{...styles.cartButton, width: wp(width)}}>
+      style={{
+        ...styles.cartButton,
+        width: wp(width),
+        backgroundColor: bgColor,
+      }}>
       <Text style={styles.textCart}>{props?.title}</Text>
     </TouchableOpacity>
   );
@@ -24,7 +29,6 @@ const styles = StyleSheet.create({
     height: hp('7'),
     width: wp('85'),
     borderRadius: 10,
-    backgroundColor: color.textPrimaryColor,
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
