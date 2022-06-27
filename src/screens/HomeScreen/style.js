@@ -7,7 +7,6 @@ import {
 } from 'react-native-responsive-screen';
 
 export const styles = StyleSheet.create({
- 
   header: {
     flexDirection: 'row',
     width: wp('100'),
@@ -30,10 +29,14 @@ export const styles = StyleSheet.create({
     // backgroundColor:'red',
     marginBottom: hp('2'),
     borderRadius: 15,
-    
+    shadowColor: '#000',
+    shadowOffset: {width: 1, height: 3},
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    elevation: 5,
     overflow: 'hidden',
     alignItems: 'center',
-    alignSelf:'center'
+    alignSelf: 'center',
   },
   search: {
     flexDirection: 'row',

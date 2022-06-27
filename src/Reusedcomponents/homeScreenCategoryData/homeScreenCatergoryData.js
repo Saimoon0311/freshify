@@ -13,33 +13,6 @@ import {IMAGE_BASED_URL} from '../../Config/Url';
 import NoProductView from '../NoProductView/noProductView';
 
 export const HomeScreenCategoryData = props => {
-  const [loading, setLoading] = useState(false);
-  const [categoryData, setcategoryData] = useState([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    },
-    {
-      id: 5,
-    },
-    {
-      id: 6,
-    },
-    {
-      id: 7,
-    },
-    {
-      id: 8,
-    },
-  ]);
   const categoriesPlaceholder = () => {
     return (
       <View

@@ -40,7 +40,7 @@ import {LoginHeader} from '../../Reusedcomponents/loginHeader';
 import getCartData from '../../Config/getCartData';
 import types from '../../Redux/type';
 import {SliderBox, FastImage} from 'react-native-image-slider-box';
-import { globalStyles } from '../../Reusedcomponents/globalStyle';
+import {globalStyles} from '../../Reusedcomponents/globalStyle';
 
 export default function HomeScreen({navigation, route}) {
   const [allProduct, setAllProduct] = useState([]);
@@ -159,33 +159,10 @@ export default function HomeScreen({navigation, route}) {
       },
     },
   });
-  const [silderData, setSliderData] = useState([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    },
-    {
-      id: 5,
-    },
-    {
-      id: 6,
-    },
-  ]);
 
   const [images, setImage] = useState([
-    require('../../images/sale.png'),
-    require('../../images/sale.png'),
-    require('../../images/sale.png'),
-    require('../../images/sale.png'), // Network image
-    require('../../images/sale.png'),
+    require('../../images/Component3.png'),
+    require('../../images/Component4.png'),
   ]);
 
   const wait = timeout => {
@@ -256,7 +233,7 @@ export default function HomeScreen({navigation, route}) {
   }, []);
   return (
     <NativeBaseProvider theme={theme}>
-      <View >
+      <View>
         <StatusBar
           hidden={false}
           barStyle={Platform.OS == 'ios' ? 'dark-content' : 'light-content'}
@@ -289,7 +266,10 @@ export default function HomeScreen({navigation, route}) {
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
-          contentContainerStyle={{...globalStyles.globalBackgroundColor,paddingBottom: hp('23'),}}>
+          contentContainerStyle={{
+            ...globalStyles.globalBackgroundColor,
+            paddingBottom: hp('23'),
+          }}>
           <View>
             <View style={styles.search}>
               <TouchableOpacity onPress={() => searchHomeProducts()}>
@@ -327,10 +307,10 @@ export default function HomeScreen({navigation, route}) {
                 resizeMode={'contain'}
                 autoplay
                 circleLoop
+                onCurrentImagePressed={e => navigation2(e)}
                 dotStyle={{
                   width: 10,
                   height: 10,
-                  borderRadius: 5,
                   marginHorizontal: 0,
                   padding: 0,
                 }}

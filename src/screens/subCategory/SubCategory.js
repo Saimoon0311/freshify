@@ -76,7 +76,33 @@ export default function SubCategory({route, navigation}) {
     navigation.goBack();
   };
   const getSubCategoryData = () => {
-    if (item?.search == true) {
+    if (item == 0 || item == 1) {
+      ApiGet(FrontProductUrl).then(res => {
+        if (res.success == true) {
+          let dataConfirm = item == 0 ? res.data?.Dairy : res.data?.Meat;
+          setSubCategoryFlatList(dataConfirm);
+          setIsLoading(false);
+        } else if (res.success == false) {
+          setIsLoading(true);
+          showMessage({
+            type: 'danger',
+            icon: 'danger',
+            message: 'Warning',
+            description: 'Some thing is wrong',
+            backgroundColor: color.textPrimaryColor,
+          });
+        } else {
+          setIsLoading(true);
+          showMessage({
+            type: 'danger',
+            icon: 'danger',
+            message: 'Warning',
+            description: 'Success not found',
+            backgroundColor: color.textPrimaryColor,
+          });
+        }
+      });
+    } else if (item?.search == true) {
       let url = FrontProductUrl + '?keyword=' + item?.name;
       ApiGet(url).then(res => {
         if (res.success == true) {
@@ -160,12 +186,21 @@ export default function SubCategory({route, navigation}) {
   useEffect(() => {
     getSubCategoryData();
   }, []);
+  let name;
+  const headerName = () => {
+    if (item == 0) {
+      return 'Dairy';
+    } else if (item == 1) {
+      return 'Meat';
+    } else {
+      return item?.name;
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={{marginBottom: hp('2')}}>
-        {console.log(item?.name, 157)}
         <BackHeader
-          text={item?.name}
+          text={headerName()}
           Iconname="arrow-back"
           navigate={navigate}
         />
