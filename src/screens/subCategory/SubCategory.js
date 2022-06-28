@@ -197,7 +197,7 @@ export default function SubCategory({route, navigation}) {
     }
   };
   return (
-    <View style={styles.container}>
+    <View style={{...styles.container, ...globalStyles.globalBackgroundColor}}>
       <View style={{marginBottom: hp('2')}}>
         <BackHeader
           text={headerName()}
@@ -205,34 +205,7 @@ export default function SubCategory({route, navigation}) {
           navigate={navigate}
         />
       </View>
-      {/* <View style={styles.subContainer}>
-        <FlatList
-          data={subCategoryFlatList}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          renderItem={({item}) => {
-            return (
-              <View style={styles.topButtonMainContainerActive}>
-                <TouchableOpacity onPress={() => setActive(item.id)}>
-                  <View
-                    style={
-                      active == item.id ? styles.button : styles.inactiveButton
-                    }>
-                    <Text
-                      style={
-                        active == item.id
-                          ? styles.buttonText
-                          : styles.inactiveButtonText
-                      }>
-                      {item.name}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            );
-          }}
-        />
-      </View> */}
+
       {isloading ? (
         <SkeletonPlaceholder>
           <View
