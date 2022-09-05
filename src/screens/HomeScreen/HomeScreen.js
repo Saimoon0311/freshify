@@ -162,7 +162,7 @@ export default function HomeScreen({navigation, route}) {
 
   const [images, setImage] = useState([
     require('../../images/Component3.png'),
-    require('../../images/Component4.png'),
+    // require('../../images/Component4.png'),
   ]);
 
   const wait = timeout => {
@@ -322,13 +322,13 @@ export default function HomeScreen({navigation, route}) {
                 isloading={isloading}
                 addToCart={addToCart}
               />
-              <HomeBrandAllText name="Meat Products" />
+              {/* <HomeBrandAllText name="Meat Products" />
               <HomeScreenAllProductData
                 navigation1={navigation1}
                 allProduct={allProduct?.Meat}
                 isloading={isloading}
                 addToCart={addToCart}
-              />
+              /> */}
               <View style={{flexDirection: 'row'}}>
                 <View style={{marginTop: hp('1.3')}}>
                   <HomeBrandAllText name="Categories" />
@@ -339,12 +339,12 @@ export default function HomeScreen({navigation, route}) {
                   <Text style={{color: color.textPrimaryColor}}>View more</Text>
                 </TouchableOpacity>
               </View>
-              <HomeScreenCategoryData
+              {/* <HomeScreenCategoryData
                 navigation2={navigation2}
                 categoryFeatureProduct={categoryFeatureProduct?.Meat}
                 isCategoryloading={isCategoryloading}
                 Subtitle="Meat"
-              />
+              /> */}
               <HomeScreenCategoryData
                 navigation2={navigation2}
                 categoryFeatureProduct={categoryFeatureProduct?.Dairy}

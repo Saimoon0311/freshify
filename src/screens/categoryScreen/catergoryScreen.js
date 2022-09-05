@@ -107,7 +107,7 @@ export default function catergoryScreen({navigation}) {
   };
   return (
     <View style={{...globalStyles.globalBackgroundColor, flex: 1}}>
-      <BackHeader text="Catergory" navigate={navigate} />
+      <BackHeader text="Catergory" navigate={()=>navigation.goBack()} />
       <ScrollView
         showsVerticalScrollIndicator={false}
         refreshControl={
@@ -134,7 +134,7 @@ export default function catergoryScreen({navigation}) {
           <NoProductView text={'No Category Found.'} />
         ) : (
           <>
-            <Text style={styles.headText}>Fresh Meat</Text>
+            {/* <Text style={styles.headText}>Fresh Meat</Text>
             <FlatList
               data={catergoryData.Meat}
               keyExtractor={(item, index) => index.toString()}
@@ -160,7 +160,7 @@ export default function catergoryScreen({navigation}) {
                   </TouchableOpacity>
                 );
               }}
-            />
+            /> */}
             <Text style={styles.headText}>Dairy</Text>
             <FlatList
               data={catergoryData.Dairy}
